@@ -39,11 +39,6 @@
         $(this).css('background-image', 'url(' + bg + ')');
     });
 
-    //Search Switch
-    $('.search-switch').on('click', function () {
-        $('.search-model').fadeIn(400);
-    });
-
     $('.search-close-switch').on('click', function () {
         $('.search-model').fadeOut(400, function () {
             $('#search-input').val('');
@@ -94,7 +89,8 @@
         animateIn: 'fadeIn',
         smartSpeed: 1200,
         autoHeight: false,
-        autoplay: false
+        autoplay: true,
+        autoplayTimeout : 8000
     });
 
     /*--------------------------

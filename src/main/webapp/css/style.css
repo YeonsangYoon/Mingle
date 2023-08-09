@@ -133,8 +133,8 @@ ol {
 
 .set-bg {
 	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: top center;
+	background-size: contain;
+	background-position: top right;
 }
 
 .spad {
@@ -584,8 +584,8 @@ ol {
 }
 
 .hero__items {
-	height: 800px;
-	padding-top: 230px;
+	height: 600px;
+	padding-top: 180px;
 }
 
 .hero__text h6 {
