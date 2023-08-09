@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.header .fa {
+	color:white;
+	margin: 0px 5px;
+}
+
+.header .fa:before{
+	margin-right: 10px;
+}

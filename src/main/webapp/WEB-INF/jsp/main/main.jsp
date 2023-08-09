@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>스터디 플랫폼, Mingle</title>
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
 rel="stylesheet">
@@ -18,6 +18,7 @@ rel="stylesheet">
 <link rel="stylesheet" href="/mingle/css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="/mingle/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="/mingle/css/style.css" type="text/css">
+<link rel="stylesheet" href="/mingle/css/header.css" type="text/css">
 </head>
 <body>
   <tiles:insertAttribute name="header"/>
