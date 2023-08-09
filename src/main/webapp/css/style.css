@@ -29,11 +29,11 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
-
+@charset "UTF-8";
 html,
 body {
 	height: 100%;
-	font-family: "Nunito Sans", sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -46,7 +46,7 @@ h6 {
 	margin: 0;
 	color: #111111;
 	font-weight: 400;
-	font-family: "Nunito Sans", sans-serif;
+	font-family: "Noto Sans KR", sans-serif;
 }
 
 h1 {
@@ -75,7 +75,7 @@ h6 {
 
 p {
 	font-size: 15px;
-	font-family: "Nunito Sans", sans-serif;
+	font-family: "Noto Sans KR", sans-serif;
 	color: #3d3d3d;
 	font-weight: 400;
 	line-height: 25px;
@@ -1393,7 +1393,7 @@ ol {
 
 .shop__sidebar__accordion .card-heading a:after,
 .shop__sidebar__accordion .card-heading>a.active[aria-expanded=false]:after {
-	content: "";
+	content: "�꼪";
 	font-family: "FontAwesome";
 	font-size: 24px;
 	font-weight: 700;
@@ -1405,7 +1405,7 @@ ol {
 }
 
 .shop__sidebar__accordion .card-heading.active a:after {
-	content: "";
+	content: "�꼪";
 	font-family: "FontAwesome";
 	font-size: 24px;
 	font-weight: 700;
@@ -1574,7 +1574,7 @@ ol {
 	position: absolute;
 	right: -14px;
 	top: 0;
-	content: "";
+	content: "�꼨";
 	font-family: "FontAwesome";
 }
 
@@ -2076,7 +2076,7 @@ ol {
 	position: absolute;
 	right: -14px;
 	top: 0;
-	content: "";
+	content: "�꼨";
 	font-family: "FontAwesome";
 }
 
