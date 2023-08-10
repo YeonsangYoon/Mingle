@@ -16,7 +16,7 @@
 	text-align:center;
 }
 
-input[type="email"] , input[type="password"]{
+.login input[type="text"] , .login input[type="password"]{
     width: 100%;
     padding: 10px;
     margin-bottom: 30px;
@@ -62,6 +62,13 @@ input[type="checkbox"]{
     display: inline-block;
     margin: 0px 10px 30px;
 }
+
+#login-result-msg{
+    color: red;
+    display: none;
+    text-align: center;
+}
+
 .login ul{
     list-style: none;
     margin-bottom:40px;  
