@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="/mingle/main/main.do"><img src="/mingle/img/logo.png" alt=""></a>
+                        <a href="${pageContext.request.contextPath}/main/main.do"><img src="${pageContext.request.contextPath}/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

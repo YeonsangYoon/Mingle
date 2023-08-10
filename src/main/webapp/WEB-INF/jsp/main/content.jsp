@@ -4,7 +4,7 @@
 	<section class="hero">
         <div class="hero__slider owl-carousel">
             <div class="container">
-            	<div class="hero__items set-bg" data-setbg="/mingle/img/home/study-space.png">
+            	<div class="hero__items set-bg" data-setbg="${pageContext.request.contextPath}/img/home/study-space.png">
                     <div class="row">
                         <div class="col-xl-5 offset-xl-1 col-lg-7 col-md-8">
                             <div class="hero__text">
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="container">
-            	<div class="hero__items set-bg set-bg-left" data-setbg="/mingle/img/home/mentoring.png">
+            	<div class="hero__items set-bg set-bg-left" data-setbg="${pageContext.request.contextPath}/img/home/mentoring.png">
                     <div class="row">
                         <div class="col-xl-5 offset-xl-7 col-lg-7 col-md-8">
                             <div class="hero__text">
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="container">
-            	<div class="hero__items set-bg" data-setbg="/mingle/img/home/study-gathering.png">
+            	<div class="hero__items set-bg" data-setbg="${pageContext.request.contextPath}/img/home/study-gathering.png">
                     <div class="row">
                         <div class="col-xl-5 offset-xl-1 col-lg-7 col-md-8">
                             <div class="hero__text">

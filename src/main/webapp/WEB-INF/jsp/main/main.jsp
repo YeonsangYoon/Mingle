@@ -9,16 +9,16 @@
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <!-- Css Styles -->
-<link rel="stylesheet" href="/mingle/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="/mingle/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="/mingle/css/elegant-icons.css" type="text/css">
-<link rel="stylesheet" href="/mingle/css/magnific-popup.css" type="text/css">
-<link rel="stylesheet" href="/mingle/css/nice-select.css" type="text/css">
-<link rel="stylesheet" href="/mingle/css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="/mingle/css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="/mingle/css/style.css" type="text/css">
-<link rel="stylesheet" href="/mingle/css/header.css" type="text/css">
-<link rel="stylesheet" href="/mingle/css/sign.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/magnific-popup.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/sign.css" type="text/css">
 <!-- jQuery Modal -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
@@ -38,17 +38,17 @@
 	</div>
     
     <!-- Js Plugins -->
-    <script src="/mingle/js/jquery-3.3.1.min.js"></script>
-    <script src="/mingle/js/bootstrap.min.js"></script>
-    <script src="/mingle/js/jquery.nice-select.min.js"></script>
-    <script src="/mingle/js/jquery.nicescroll.min.js"></script>
-    <script src="/mingle/js/jquery.magnific-popup.min.js"></script>
-    <script src="/mingle/js/jquery.countdown.min.js"></script>
-    <script src="/mingle/js/jquery.slicknav.js"></script>
-    <script src="/mingle/js/mixitup.min.js"></script>
-    <script src="/mingle/js/owl.carousel.min.js"></script>
-    <script src="/mingle/js/main.js"></script>
-    <script src="/mingle/js/sign.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.nice-select.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.nicescroll.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.countdown.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.slicknav.js"></script>
+    <script src="${pageContext.request.contextPath}/js/mixitup.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/sign.js"></script>
     <!-- jQuery Modal -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </body>
