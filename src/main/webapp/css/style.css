@@ -137,6 +137,10 @@ ol {
 	background-position: top right;
 }
 
+.set-bg-left{
+	background-position: top left;
+}
+
 .spad {
 	padding-top: 100px;
 	padding-bottom: 100px;

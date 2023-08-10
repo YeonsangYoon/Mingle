@@ -18,9 +18,9 @@
                 </div>
             </div>
             <div class="container">
-            	<div class="hero__items set-bg" data-setbg="/mingle/img/home/mentoring.png">
+            	<div class="hero__items set-bg set-bg-left" data-setbg="/mingle/img/home/mentoring.png">
                     <div class="row">
-                        <div class="col-xl-5 offset-xl-1 col-lg-7 col-md-8">
+                        <div class="col-xl-5 offset-xl-7 col-lg-7 col-md-8">
                             <div class="hero__text">
                                 <h6>Mentoring</h6>
                                 <h2>멘토링</h2>

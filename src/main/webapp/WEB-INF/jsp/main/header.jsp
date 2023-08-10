@@ -18,7 +18,7 @@
                         <div class="header__top__right">
                             <div class="header__top__links">
                                 <i class="fa fa-user-plus"><a href="#">회원가입</a></i>
-                                <i class="fa fa-sign-in"><a href="#">로그인</a></i>
+                                <i class="fa fa-sign-in"><a href="#login-modal" rel="modal:open">로그인</a></i>
                             </div>
                         </div>
                     </div>

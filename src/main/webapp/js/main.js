@@ -85,12 +85,15 @@
         dots: false,
         nav: true,
         navText: ["<span class='arrow_left'><span/>", "<span class='arrow_right'><span/>"],
+		lazyLoad : true,
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
-        smartSpeed: 1200,
         autoHeight: false,
         autoplay: true,
-        autoplayTimeout : 8000
+        autoplayTimeout : 5000,
+        autoplayHoverPause : true,
+        autoplaySpeed:2000,
+        navSpeed:2000
     });
 
     /*--------------------------
