@@ -486,7 +486,7 @@ ol {
 	font-size: 18px;
 	color: #111111;
 	display: block;
-	font-weight: 600;
+	font-weight: 500;
 	position: relative;
 	padding: 3px 0;
 }
@@ -1397,7 +1397,7 @@ ol {
 
 .shop__sidebar__accordion .card-heading a:after,
 .shop__sidebar__accordion .card-heading>a.active[aria-expanded=false]:after {
-	content: "�꼪";
+	content: "";
 	font-family: "FontAwesome";
 	font-size: 24px;
 	font-weight: 700;
@@ -1409,7 +1409,7 @@ ol {
 }
 
 .shop__sidebar__accordion .card-heading.active a:after {
-	content: "�꼪";
+	content: "";
 	font-family: "FontAwesome";
 	font-size: 24px;
 	font-weight: 700;
@@ -1476,7 +1476,6 @@ ol {
 	font-size: 16px;
 	font-weight: 700;
 	color: #111111;
-	height: 30px;
 	width: 30px;
 	border: 1px solid transparent;
 	border-radius: 50%;
@@ -1578,7 +1577,7 @@ ol {
 	position: absolute;
 	right: -14px;
 	top: 0;
-	content: "�꼨";
+	content: ">";
 	font-family: "FontAwesome";
 }
 
@@ -2080,7 +2079,7 @@ ol {
 	position: absolute;
 	right: -14px;
 	top: 0;
-	content: "�꼨";
+	content: ">";
 	font-family: "FontAwesome";
 }
 
