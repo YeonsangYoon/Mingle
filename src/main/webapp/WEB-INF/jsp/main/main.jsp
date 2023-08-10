@@ -30,11 +30,12 @@
   	<!-- Log in Modal -->
   	<div id="login-modal" class="login modal">
         <h1>로그인</h1>
-        <input type="email" placeholder="ID">
-        <input type="password" placeholder="Password"><br>
+        <input id="idInput" type="text" placeholder="아이디 입력">
+        <input id="pwdInput" type="password" placeholder="비밀번호 입력"><br>
+        <p id="login-result-msg"></p>
         <input type="checkbox"><span>아이디 저장</span>
         <a href="#">Forgot password?</a>
-        <button id="sign-in">log in</button>
+        <button id="loginBtn">log in</button>
 	</div>
     
     <!-- Js Plugins -->

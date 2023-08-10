@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -17,8 +18,20 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <i class="fa fa-user-plus"><a href="#">회원가입</a></i>
-                                <i class="fa fa-sign-in"><a href="#login-modal" rel="modal:open">로그인</a></i>
+                                <c:choose>
+                                    <c:when test="${sessionScope.id==null}">
+                                        <i class="fa fa-user-plus"><a href="#">회원가입</a></i>
+                                        <i class="fa fa-sign-in"><a href="#login-modal" rel="modal:open">로그인</a></i>
+                                    </c:when>
+                                    <c:when test="${sessionScope.id=='admin'}">
+                                        <i class="fa fa-user-circle"><a href="#">관리자페이지</a></i>
+                                        <i class="fa fa-sign-out"><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></i>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <i class="fa fa-user-circle"><a href="#">마이페이지(${sessionScope.nickname})</a></i>
+                                        <i class="fa fa-sign-out"><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></i>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
