@@ -21,15 +21,16 @@
                                 <c:choose>
                                     <c:when test="${sessionScope.id==null}">
                                         <i class="fa fa-user-plus"><a href="#">회원가입</a></i>
-                                        <i class="fa fa-sign-in"><a href="#login-modal" rel="modal:open">로그인</a></i>
-                                    </c:when>
-                                    <c:when test="${sessionScope.id=='admin'}">
-                                        <i class="fa fa-user-circle"><a href="${pageContext.request.contextPath}/member/admin.do">관리자페이지</a></i>
-                                        <i class="fa fa-sign-out"><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></i>
+                                        <i class="fa fa-sign-in"><a id="open-login-btn" href="#login-modal" rel="modal:open">로그인</a></i>
                                     </c:when>
                                     <c:otherwise>
-                                        <i class="fa fa-user-circle"><a href="${pageContext.request.contextPath}/member/mypage.do">마이페이지(${sessionScope.nickname})</a></i>
-                                        <i class="fa fa-sign-out"><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></i>
+                                        <c:if test="${sessionScope.id=='admin'}">
+                                            <i class="fa fa-user-circle"><a href="${pageContext.request.contextPath}/member/admin.do">관리자페이지</a></i>
+                                        </c:if>
+                                        <c:if test="${sessionScope.id!='admin'}">
+                                            <i class="fa fa-user-circle"><a href="${pageContext.request.contextPath}/member/mypage.do">마이페이지(${sessionScope.nickname})</a></i>
+                                        </c:if>
+                                        <i class="fa fa-sign-out"><span id="logout-btn">로그아웃</span></i>
                                     </c:otherwise>
                                 </c:choose>
                             </div>

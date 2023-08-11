@@ -1,9 +1,6 @@
 /**
  *
  */
-const inputs = document.querySelectorAll(".input");
-
-
 function addcl(){
     let parent = this.parentNode.parentNode;
     parent.classList.add("focus");
@@ -16,13 +13,18 @@ function remcl(){
     }
 }
 
+function clearLoginModal(){ // 로그인 창 비우기
+    $('#idInput').val('');
+    $('#pwdInput').val('');
+    $('#login-result-msg').hide();
+}
 
-inputs.forEach(input => {
-    input.addEventListener("focus", addcl);
-    input.addEventListener("blur", remcl);
-});
+function logoutCheck(){ // 로그아웃 확인
+    if(confirm('정말 로그아웃 하시겠습니까?')){
+        location.href="/mingle/member/logout.do";
+    }
+}
 
-//Source :- https://github.com/sefyudem/Responsive-Login-Form/blob/master/img/avatar.svg
 
 function sendLoginRequest(){ // 로그인 버튼 클릭
     let id = $('#idInput');
@@ -70,5 +72,11 @@ function sendLoginRequest(){ // 로그인 버튼 클릭
         })
 }
 
+const inputs = document.querySelectorAll(".login-content .input");
+inputs.forEach(input => {
+    input.addEventListener("focus", addcl);
+    input.addEventListener("blur", remcl);
+});
+$('#open-login-btn').click(clearLoginModal);
 $('#loginBtn').click(sendLoginRequest);
-
+$('#logout-btn').click(logoutCheck);
