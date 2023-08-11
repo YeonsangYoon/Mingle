@@ -19,6 +19,11 @@ public class MemberController {
         return "member/mypage";
     }
 
+    @GetMapping("admin.do")
+    public String adminPage(){
+        return "member/adminpage";
+    }
+
     @GetMapping("logout.do")
     public String logout(HttpSession session){
         session.invalidate();

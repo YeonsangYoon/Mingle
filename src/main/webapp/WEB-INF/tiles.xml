@@ -7,15 +7,11 @@
     <put-attribute name="header" value="/WEB-INF/jsp/main/header.jsp"/>
     <put-attribute name="footer" value="/WEB-INF/jsp/main/footer.jsp"/>
     <put-attribute name="content" value="/WEB-INF/jsp/main/content.jsp"/>
+    <put-attribute name="login" value="/WEB-INF/jsp/member/login.jsp"/>
   </definition>
-<!--   <definition name="board/list" extends="main">
-    <put-attribute name="body" value="/WEB-INF/jsp/board/list.jsp"/>
-  </definition>
-  <definition name="notice/list" extends="main">
-    <put-attribute name="body" value="/WEB-INF/jsp/notice/list.jsp"/>
-  </definition> -->
+
   <definition name="*/*" extends="main">
-    <put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}.jsp"></put-attribute>
+    <put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}.jsp"/>
   </definition>
   
 </tiles-definitions>
