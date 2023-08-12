@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/space.css" type="text/css">
 <!-- jQuery Modal -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
