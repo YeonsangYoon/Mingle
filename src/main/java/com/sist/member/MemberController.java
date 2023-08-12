@@ -14,11 +14,6 @@ public class MemberController {
         return "member/join.jsp";
     }
 
-    @GetMapping("mypage.do")
-    public String memberMyPage(){
-        return "member/mypage";
-    }
-
     @GetMapping("admin.do")
     public String adminPage(){
         return "member/adminpage";

@@ -146,7 +146,7 @@
 }
 
 .app-content {
-    padding: 16px;
+    padding: 16px 40px;
     background-color: var(--app-bg);
     height: 100%;
     flex: 1;

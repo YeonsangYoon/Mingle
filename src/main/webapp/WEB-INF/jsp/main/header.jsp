@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
     <!-- Header Section Begin -->
     <header class="header">
         <div class="header__top">
@@ -28,7 +24,7 @@
                                             <i class="fa fa-user-circle"><a href="${pageContext.request.contextPath}/member/admin.do">관리자페이지</a></i>
                                         </c:if>
                                         <c:if test="${sessionScope.id!='admin'}">
-                                            <i class="fa fa-user-circle"><a href="${pageContext.request.contextPath}/member/mypage.do">마이페이지(${sessionScope.nickname})</a></i>
+                                            <i class="fa fa-user-circle"><a href="${pageContext.request.contextPath}/mypage/info.do">마이페이지(${sessionScope.nickname})</a></i>
                                         </c:if>
                                         <i class="fa fa-sign-out"><span id="logout-btn">로그아웃</span></i>
                                     </c:otherwise>
