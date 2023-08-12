@@ -321,6 +321,7 @@ ol {
 
 .header {
 	background: #ffffff;
+	margin-bottom: 40px;
 }
 
 .header__top {
@@ -1943,6 +1944,7 @@ ol {
 .footer {
 	background: #111111;
 	padding-top: 70px;
+	margin-top: 70px;
 }
 
 .footer__about {
