@@ -46,11 +46,12 @@
                         <a href="${pageContext.request.contextPath}/main/main.do"><img src="${pageContext.request.contextPath}/img/logo.png" alt=""></a>
                     </div>
                 </div>
+                
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="../space/main.do">스터디 공간</a></li>
-                            <li><a href="#">멘토링</a></li>
+                            <li><a href="../mento/mento_list.do">멘토링</a></li>
                             <li><a href="#">스터디 모집</a>
                                 <ul class="dropdown">
                                     <li><a href="#">About Us</a></li>
@@ -61,6 +62,7 @@
                         </ul>
                     </nav>
                 </div>
+                
             </div>
         </div>
     </header>
