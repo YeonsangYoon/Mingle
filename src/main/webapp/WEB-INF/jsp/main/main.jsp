@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/space.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/study.css" type="text/css">
 <!-- jQuery Modal -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
@@ -43,6 +44,7 @@
     <script src="${pageContext.request.contextPath}/js/main.js"></script>
     <script src="${pageContext.request.contextPath}/js/member.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin.js"></script>
+    <script src="${pageContext.request.contextPath}/js/study.js"></script>
     <!-- jQuery Modal -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </body>

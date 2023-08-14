@@ -50,7 +50,9 @@
                             <li><a href="../mento/mento_list.do">멘토링</a></li>
                             <li><a href="#">스터디 모집</a>
                                 <ul class="dropdown">
-                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="../study/list.do">스터디 홈</a></li>
+                                    <li><a href="../study/insert.do">스터디 글 작성</a></li>
+                                    <li><a href="#">나의 스터디 글</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Q&A</a></li>
