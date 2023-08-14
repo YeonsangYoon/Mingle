@@ -157,3 +157,24 @@
 	overflow: visible;
     height: 600px;
 }
+
+.login-require{
+    position:relative;
+    height: 600px;
+}
+.login-require div{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.login-require img{
+    display: block;
+    width: 350px;
+    margin: 0 auto;
+}
+.login-require h1{
+    margin: 50px 0;
+    text-align: center;
+}

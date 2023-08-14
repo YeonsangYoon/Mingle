@@ -21,7 +21,7 @@ function clearLoginModal(){ // 로그인 창 비우기
 
 function logoutCheck(){ // 로그아웃 확인
     if(confirm('정말 로그아웃 하시겠습니까?')){
-        location.href="/mingle/member/logout.do";
+        location.href="/mingle/auth/logout.do";
     }
 }
 
@@ -44,7 +44,7 @@ function sendLoginRequest(){ // 로그인 버튼 클릭
         return;
     }
 
-    $.post('/mingle/member/loginCheck.do', {
+    $.post('/mingle/auth/login.do', {
             id:id.val(),
             pwd:pwd.val()
         },

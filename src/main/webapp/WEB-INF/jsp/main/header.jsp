@@ -21,7 +21,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <c:if test="${sessionScope.id=='admin'}">
-                                            <i class="fa fa-user-circle"><a href="${pageContext.request.contextPath}/member/admin.do">관리자페이지</a></i>
+                                            <i class="fa fa-user-circle"><a href="#">관리자페이지</a></i>
                                         </c:if>
                                         <c:if test="${sessionScope.id!='admin'}">
                                             <i class="fa fa-user-circle"><a href="${pageContext.request.contextPath}/mypage/info.do">마이페이지(${sessionScope.nickname})</a></i>

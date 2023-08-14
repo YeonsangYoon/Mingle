@@ -1,4 +1,4 @@
-package com.sist.member;
+package com.sist.Authentication;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,23 +11,23 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
-@RequestMapping("member/")
-public class MemberRestController {
-    private MemberService service;
+@RequestMapping("auth/")
+public class AuthenticationRestController {
+    private AuthenticationService service;
     private BCryptPasswordEncoder encoder;
 
     @Autowired
-    MemberRestController(MemberService service, BCryptPasswordEncoder encoder){
+    AuthenticationRestController(AuthenticationService service, BCryptPasswordEncoder encoder){
         this.service = service;
         this.encoder = encoder;
     }
 
-    @PostMapping("loginCheck.do") // login 수행
+    @PostMapping("login.do") // login 수행
     public String loginCheck(String id, String pwd, HttpSession session){
-        List<MemberVO> members = service.getMembersByID(id);
+        List<AuthenticationVO> members = service.getMembersByID(id);
 
         if(members.size()==1){
-            MemberVO member = members.get(0);
+            AuthenticationVO member = members.get(0);
             if(encoder.matches(pwd, member.getPassword())){
                 session.setAttribute("id", id);
                 session.setAttribute("nickname", member.getNickname());

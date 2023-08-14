@@ -1,4 +1,4 @@
-package com.sist.member;
+package com.sist.Authentication;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -6,16 +6,16 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class MemberDAO {
-    private MemberMapper mapper;
+public class AuthenticationDAO {
+    private AuthenticationMapper mapper;
 
     @Autowired
-    MemberDAO(MemberMapper mapper){
+    AuthenticationDAO(AuthenticationMapper mapper){
         this.mapper = mapper;
     }
 
     // login check
-    public List<MemberVO> getMembersByID(String id){
+    public List<AuthenticationVO> getMembersByID(String id){
         return mapper.getMembersByID(id);
     }
 }

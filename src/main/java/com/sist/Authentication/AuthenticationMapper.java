@@ -1,14 +1,14 @@
-package com.sist.member;
+package com.sist.Authentication;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
-public interface MemberMapper {
+public interface AuthenticationMapper {
     // login 검사
     @Select("SELECT password, NICKNAME FROM member WHERE user_id=#{id}")
-    public List<MemberVO> getMembersByID(String id);
+    public List<AuthenticationVO> getMembersByID(String id);
 
     // 회원 join
     @Insert("INSERT INTO member VALUES (" +
@@ -23,5 +23,5 @@ public interface MemberMapper {
             "#{address}," +
             "#{detail_address}," +
             "SYSDATE)")
-    public int insertMember(MemberVO vo);
+    public int insertMember(AuthenticationVO vo);
 }

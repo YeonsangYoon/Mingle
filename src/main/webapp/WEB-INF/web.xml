@@ -33,4 +33,13 @@
 	  <url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<!-- Error Page Mapping -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/error/404page.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/error/500page.jsp</location>
+	</error-page>
 </web-app>
