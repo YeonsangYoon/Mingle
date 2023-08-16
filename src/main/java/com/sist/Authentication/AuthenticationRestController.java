@@ -2,7 +2,6 @@ package com.sist.Authentication;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,10 +23,10 @@ public class AuthenticationRestController {
 
     @PostMapping("login.do") // login 수행
     public String loginCheck(String id, String pwd, HttpSession session){
-        List<AuthenticationVO> members = service.getMembersByID(id);
+        List<MemberVO> members = service.getMembersByID(id);
 
         if(members.size()==1){
-            AuthenticationVO member = members.get(0);
+            MemberVO member = members.get(0);
             if(encoder.matches(pwd, member.getPassword())){
                 session.setAttribute("id", id);
                 session.setAttribute("nickname", member.getNickname());

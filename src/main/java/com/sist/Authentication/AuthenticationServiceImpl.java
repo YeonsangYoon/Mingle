@@ -17,7 +17,22 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public List<AuthenticationVO> getMembersByID(String id) {
+    public List<MemberVO> getMembersByID(String id) {
         return dao.getMembersByID(id);
+    }
+
+    @Override
+    public MemberVO getMemberByID(String id){
+        MemberVO member = dao.getMemberByID(id);
+
+        // 성별 전환
+        if(member.getGender().equals("m")){
+            member.setGender("남자");
+        }
+        else{
+            member.setGender("여자");
+        }
+
+        return member;
     }
 }

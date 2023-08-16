@@ -6,8 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>스터디 플랫폼, Mingle</title>
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <!-- Css Styles -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css" type="text/css">

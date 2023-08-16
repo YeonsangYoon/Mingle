@@ -1,16 +1,33 @@
 package com.sist.member;
 
+import com.sist.Authentication.AuthenticationService;
+import com.sist.Authentication.MemberVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("mypage/")
 public class MypageController {
+    private AuthenticationService authService;
+
+    @Autowired
+    public MypageController(AuthenticationService authService){
+        this.authService = authService;
+    }
+
     @GetMapping("info.do")
-    public String mypage_info(Model model){
+    public String mypage_info(HttpSession session, Model model){
+        String id = (String)session.getAttribute("id");
+        MemberVO member = authService.getMemberByID(id);
+
+        model.addAttribute("member", member);
         model.addAttribute("content_jsp", "info.jsp");
+
         return "member/mypage";
     }
 

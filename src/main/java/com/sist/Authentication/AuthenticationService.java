@@ -3,5 +3,6 @@ package com.sist.Authentication;
 import java.util.List;
 
 public interface AuthenticationService {
-    public List<AuthenticationVO> getMembersByID(String id);
+    public List<MemberVO> getMembersByID(String id);
+    public MemberVO getMemberByID(String id);
 }
