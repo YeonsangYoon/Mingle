@@ -20,15 +20,26 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
         String id = (String)session.getAttribute("id");
+        String uri = request.getRequestURI();
 
         if(id == null){ // login 하지 않은 경우
-            String uri = request.getRequestURI();
             if(!isWhiteList(uri)){ // login이 필요한 요청일 경우
                 response.sendRedirect("/mingle/auth/login_require.do");
                 return false;
             }
         }
+        else{
+            if(isDuplicatedAuthentication(uri)){
+                response.sendRedirect("/mingle/main/main.do");
+                return false;
+            }
+        }
         return true;
+    }
+
+    private boolean isDuplicatedAuthentication(String uri){
+        return PatternMatchUtils.simpleMatch("/mingle/auth/*", uri) &&
+                !PatternMatchUtils.simpleMatch("/mingle/auth/logout.do", uri);
     }
 
     private boolean isWhiteList(String uri){

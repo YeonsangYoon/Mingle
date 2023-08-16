@@ -35,4 +35,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         return member;
     }
+
+    @Override
+    public int getIDCount(String id) {
+        return dao.getIDCount(id);
+    }
+
+    @Override
+    public int getNicknameCount(String nickname) {
+        return dao.getNicknameCount(nickname);
+    }
 }

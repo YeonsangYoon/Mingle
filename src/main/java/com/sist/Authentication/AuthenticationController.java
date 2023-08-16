@@ -15,9 +15,9 @@ public class AuthenticationController {
         return "redirect:/main/main.do";
     }
 
-    @GetMapping("join.do")
-    public String memberJoinPage(){
-        return "member/join.jsp";
+    @GetMapping("register.do")
+    public String memberRegisterPage(){
+        return "auth/register";
     }
 
     @GetMapping("login_require.do")

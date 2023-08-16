@@ -16,7 +16,7 @@
                             <div class="header__top__links">
                                 <c:choose>
                                     <c:when test="${sessionScope.id==null}">
-                                        <i class="fa fa-user-plus"><a href="#">회원가입</a></i>
+                                        <i class="fa fa-user-plus"><a href="${pageContext.request.contextPath}/auth/register.do">회원가입</a></i>
                                         <i class="fa fa-sign-in"><a id="open-login-btn" href="#login-modal" rel="modal:open">로그인</a></i>
                                     </c:when>
                                     <c:otherwise>

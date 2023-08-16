@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 로그인 */
 .login-content{
     justify-content: flex-start;
     align-items: center;
@@ -178,3 +179,155 @@
     margin: 50px 0;
     text-align: center;
 }
+
+/* 회원가입 */
+.register-content{
+    margin : 0 auto;
+    width: 800px;
+}
+
+.register-content h3{
+    margin-bottom: 20px;
+}
+
+.register-content fieldset{
+    border: none;
+}
+
+.register-content fieldset > div{
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.register-content .none{
+    display: none;
+}
+
+
+.register-content .error{
+    font-size: 0.8em;
+    position: absolute;
+    width: auto;
+    top: 24px; right: 170px;
+    text-align: right;
+    color: red;
+}
+
+.register-content .vaild{
+    font-size: 0.8em;
+    position: absolute;
+    width: 150px;
+    top: 23px; right: 170px;
+    text-align: right;
+    color: forestgreen;
+}
+
+.register-content fieldset>div>label{
+    width: 20%;
+    text-align: right;
+    padding-right: 20px;
+    color: black;
+}
+
+.register-content input[type=text], select, input[type=password], input[type=email]{
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.register-content input[type=date]{
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    word-spacing: 2px;
+}
+.register-content input[type=text]:not(.nofocus):focus,
+.register-content select:not(.nofocus):focus,
+.register-content input[type=password]:not(.nofocus):focus,
+.register-content input[type=email]:not(.nofocus):focus,
+.register-content input[type=date]:not(.nofocus):focus {
+    border: 1px solid black;
+}
+
+.register-content input[type=submit],input[type=button] {
+    width: 30%;
+    background-color: #704DE4;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+}
+
+.register-content button{
+    background-color: #704DE4;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.register-content input[type=submit]:hover,input[type=boutton]:hover {
+    background-color: #45a049;
+}
+
+.register-content #wrap_gender{
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: 60%;
+}
+
+.register-content .gender{
+    display: inline-block;
+    height: 100%; width: 50%;
+    border-right: 1px solid #ccc;
+}
+
+.register-content .no_line{
+    border-right:none;
+}
+
+.register-content .gender > label {
+    display: block;
+    /*width: 100%; height: 100%;*/
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1em;
+    color: #666;
+    margin: 0;
+}
+
+.register-content input[type=radio]{
+    display: none;
+}
+
+.register-content .gender_act{
+    display: inline-block;
+    height: 100%; width: 50%;
+    background-color: #704DE4;
+    color:#fff;
+}
+
+.register-content .gender_act > label {
+    display: inline-block;
+    width: 100%; height: 100%;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1em;
+    color: #fff;
+    margin: 0;
+}
+

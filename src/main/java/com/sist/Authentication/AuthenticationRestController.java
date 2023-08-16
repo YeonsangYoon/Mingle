@@ -40,4 +40,16 @@ public class AuthenticationRestController {
             return "NOID";
         }
     }
+
+    @PostMapping("dupIdCheck.do")
+    public String duplicate_userid_check(String userid){
+        int count = service.getIDCount(userid);
+        return (count==0) ? "OK" : "NO";
+    }
+
+    @PostMapping("dupNicknameCheck.do")
+    public String duplicate_nickname_check(String nickname){
+        int count = service.getNicknameCount(nickname);
+        return (count==0) ? "OK" : "NO";
+    }
 }
