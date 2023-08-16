@@ -970,8 +970,8 @@ ol {
 	visibility: visible;
 }
 
-.product__item:hover .product__item__text h6 {
-	opacity: 0;
+.product__item:hover .product__item__text h6:hover{
+	cursor:pointer;
 }
 
 .product__item:hover .product__item__text .product__color__select {
@@ -1056,7 +1056,8 @@ ol {
 }
 
 .product__item__text {
-	padding-top: 25px;
+	padding-top: 20px;
+	padding-left: 5px;
 	position: relative;
 }
 
@@ -1399,7 +1400,7 @@ ol {
 
 .shop__sidebar__accordion .card-heading a:after,
 .shop__sidebar__accordion .card-heading>a.active[aria-expanded=false]:after {
-	content: "";
+	content: "\f107";
 	font-family: "FontAwesome";
 	font-size: 24px;
 	font-weight: 700;
@@ -1411,7 +1412,7 @@ ol {
 }
 
 .shop__sidebar__accordion .card-heading.active a:after {
-	content: "";
+	content: "\f106";
 	font-family: "FontAwesome";
 	font-size: 24px;
 	font-weight: 700;

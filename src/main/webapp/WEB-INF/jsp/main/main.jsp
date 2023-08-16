@@ -43,6 +43,8 @@
     <script src="${pageContext.request.contextPath}/js/member.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin.js"></script>
     <script src="${pageContext.request.contextPath}/js/study.js"></script>
+    <script src="${pageContext.request.contextPath}/js/space_carousel.js"></script>
+    
     <!-- jQuery Modal -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </body>
