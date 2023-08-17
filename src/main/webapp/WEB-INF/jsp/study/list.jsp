@@ -4,6 +4,10 @@
 <html>
 <head>
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 
@@ -163,144 +167,129 @@
                 </div>
                 
                 <!-- 스터디 글 -->
-<!--                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                       <div class="product__item__text">
-                           <h6>Piqué Biker Jacket</h6>
-                           <div class="rating">
-                               <i class="fa fa-star-o"></i>
-                           </div>
-                           <h5>$67.24</h5>
-                       </div>
-                    </div>
-                </div> -->
+				<div class="container-study" v-for="vo in study_list">
+				  <ul class="studyList_studyList__3xoys">
+					<a class="studyItem_studyItem__1Iipn studyItem_open__1PGn-" href="/study/64d3de39ab30a5001306ca54">
+				        <li>
+				            <div class="studyItem_badgeWrapper__3AW7k">
+				                <div class="badge_badge__ZfNyB">
+				                    <div class="badge_new__DZ5tY">new</div>
+				                </div>
+				            </div>
+				            
+				            <div class="studyItem_schedule__3oAnA">
+				                <p class="studyItem_scheduleTitle__1KN_9">마감일 |</p>
+				                <p>{{vo.deadline}}</p>
+				            </div>
+				            
+				            <h1 class="studyItem_title__2B_2o">{{vo.title}}</h1>
+				            
+				            <ul class="studyItem_content__1mJ9M">
+				                <li class="studyItem_language__20yqw">
+				                  <img class="studyItem_languageImage__1AfGa" title="java" src="../img/language/figma.svg" alt="language">
+				                </li>
+				            </ul>
+				            
+				            <div class="studyItem_border__2zAjs"></div>
+				            
+				            <section class="studyItem_info__OFIQU">
+				            
+				                <div class="studyItem_userInfo__1KkGa">
+				                    <div class="avatar_user__1Pgut"><img class="avatar_userImg__hogPI" width="30px" height="30px"
+				                            src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" alt="avatar">
+				                    </div>
+				                    <div>작성자</div>
+				                </div>
+				                
+				                <div class="studyItem_viewsAndComment__1Bxpj">
+				                
+				                    <div class="studyItem_infoItem__3vxSf"><svg stroke="currentColor" fill="currentColor"
+				                            stroke-width="0" viewBox="0 0 1024 1024" color="#999999" height="24" width="24"
+				                            xmlns="http://www.w3.org/2000/svg" style="color: rgb(153, 153, 153);">
+				                        </svg>
+				                        <p>조회수{{vo.hit}}</p>
+				                    </div>
+				                    
+				                </div>
+				            </section>
+				            <img class="studyItem_bookmark__2YtKX" src="../img/language/pen-to-square-regular.svg" alt="bookmark">
+				        </li>
+				    </a>
+				  </ul>
                 
-				<div class="container">
-				<ul class="studyList_studyList__3xoys">
-				<a class="studyItem_studyItem__1Iipn studyItem_open__1PGn-" href="/study/64d3de39ab30a5001306ca54">
-			        <li>
-			            <div class="studyItem_badgeWrapper__3AW7k">
-			                <div class="badge_badge__ZfNyB">
-			                    <div class="badge_new__DZ5tY">new</div>
-			                </div>
-			            </div>
-			            
-			            <div class="studyItem_schedule__3oAnA">
-			                <p class="studyItem_scheduleTitle__1KN_9">마감일 |</p>
-			                <p>2023.08.24</p>
-			            </div>
-			            
-			            <h1 class="studyItem_title__2B_2o">제목</h1>
-			            
-			            <ul class="studyItem_content__1mJ9M">
-			                <li class="studyItem_language__20yqw">
-			                  <img class="studyItem_languageImage__1AfGa" title="java" src="../img/language/figma.svg" alt="language">
-			                </li>
-			            </ul>
-			            
-			            <div class="studyItem_border__2zAjs"></div>
-			            
-			            <section class="studyItem_info__OFIQU">
-			            
-			                <div class="studyItem_userInfo__1KkGa">
-			                    <div class="avatar_user__1Pgut"><img class="avatar_userImg__hogPI" width="30px" height="30px"
-			                            src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" alt="avatar">
-			                    </div>
-			                    <div>작성자</div>
-			                </div>
-			                
-			                <div class="studyItem_viewsAndComment__1Bxpj">
-			                
-			                    <div class="studyItem_infoItem__3vxSf"><svg stroke="currentColor" fill="currentColor"
-			                            stroke-width="0" viewBox="0 0 1024 1024" color="#999999" height="24" width="24"
-			                            xmlns="http://www.w3.org/2000/svg" style="color: rgb(153, 153, 153);">
-			                        </svg>
-			                        <p>조회수</p>
-			                    </div>
-			                    
-			                    <div class="studyItem_infoItem__3vxSf">
-			                    	<svg stroke="currentColor" fill="currentColor"
-			                            stroke-width="0" viewBox="0 0 512 512" color="#999999" height="18" width="18"
-			                            xmlns="http://www.w3.org/2000/svg" style="color: rgb(153, 153, 153);">
-			                        </svg>
-			                        <p>댓글수</p>
-			                    </div>
-			                    
-			                </div>
-			            </section>
-			            <img class="studyItem_bookmark__2YtKX" src="../img/language/pen-to-square-regular.svg" alt="bookmark">
-			        </li>
-			    </a>
-			    
-			    <a class="studyItem_studyItem__1Iipn studyItem_open__1PGn-" href="/study/64d3de39ab30a5001306ca54">
-			        <li>
-			            
-			            <div class="studyItem_schedule__3oAnA">
-			                <p class="studyItem_scheduleTitle__1KN_9">마감일 |</p>
-			                <p>2023.08.24</p>
-			            </div>
-			            
-			            <h1 class="studyItem_title__2B_2o">[백엔드] 패션정보 공유 커뮤니티 "폴더" 글로벌 패션 커뮤니티 함께 만드실분!</h1>
-			            
-			            <ul class="studyItem_content__1mJ9M">
-			                <li class="studyItem_language__20yqw">
-			                  <img class="studyItem_languageImage__1AfGa" title="java" src="../img/language/figma.svg" alt="language">
-			                </li>
-			            </ul>
-			            
-			            <div class="studyItem_border__2zAjs"></div>
-			            
-			            <section class="studyItem_info__OFIQU">
-			            
-			                <div class="studyItem_userInfo__1KkGa">
-			                    <div class="avatar_user__1Pgut"><img class="avatar_userImg__hogPI" width="30px" height="30px"
-			                            src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" alt="avatar">
-			                    </div>
-			                    <div>워어닝</div>
-			                </div>
-			                
-			                <div class="studyItem_viewsAndComment__1Bxpj">
-			                
-			                    <div class="studyItem_infoItem__3vxSf"><svg stroke="currentColor" fill="currentColor"
-			                            stroke-width="0" viewBox="0 0 1024 1024" color="#999999" height="24" width="24"
-			                            xmlns="http://www.w3.org/2000/svg" style="color: rgb(153, 153, 153);">
-			                        </svg>
-			                        <p>49</p>
-			                    </div>
-			                    
-			                    <div class="studyItem_infoItem__3vxSf">
-			                    	<svg stroke="currentColor" fill="currentColor"
-			                            stroke-width="0" viewBox="0 0 512 512" color="#999999" height="18" width="18"
-			                            xmlns="http://www.w3.org/2000/svg" style="color: rgb(153, 153, 153);">
-			                        </svg>
-			                        <p>0</p>
-			                    </div>
-			                    
-			                </div>
-			            </section>
-			            <img class="studyItem_bookmark__2YtKX" src="../img/language/pen-to-square-regular.svg" alt="bookmark">
-			        </li>
-			    </a>
-				</ul>
+	                <!-- 페이징 -->
+	                <div class="row">
+	                    <div class="col-lg-12">
+						  <div class="text-center">
+							<ul class="product__pagination">
+							  <li v-if="startpage>1"><a href="#" v-on:click="prev()">&lt;</a></li>
+							  <li v-for="i in range(startpage,endpage)" :class="i==curpage?'active':''"><a href="#" v-on:click="selectpage(i)">{{i}}</a></li>
+							  <li v-if="endpage<totalpage"><a href="#" @click="next()">&gt;</a></li>
+							</ul>
+						  </div>
+	                    </div>
+	                </div>
 				</div>                
-                
-                <!-- 페이징 -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product__pagination">
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <span>...</span>
-                            <a href="#">21</a>
-                        </div>
-                    </div>
-                </div>
                 
             </div>
         </div>
     </div>
 	</section>
+
+	<script>
+	new Vue({
+		el:'.container-study',
+		data:{ // 명시적 초기화
+			study_list:[],
+			curpage:1,
+			totalpage:0,
+			startpage:0,
+			endpage:0
+		},
+		mounted:function(){
+			this.send()
+		},
+		methods:{
+			send:function(){
+				let _this=this
+				axios.get("/mingle/study/list_vue.do",{
+					params:{ // 전송할 데이터
+						page:this.curpage
+					}
+				}).then(function(response){
+					console.log(response.data)
+					_this.study_list=response.data.list
+					_this.curpage=response.data.curpage
+					_this.totalpage=response.data.totalpage
+					_this.startpage=response.data.startpage
+					_this.endpage=response.data.endpage
+				})
+			},
+			range:function(start,end){
+				let arr=[]
+				let length=end-start
+				for(let i=0;i<=length;i++)
+				{
+					arr[i]=start;
+					start++;
+				}
+				return arr
+			},
+			prev:function(){
+				this.curpage=this.startpage-1
+				this.send()
+			},
+			next:function(){
+				this.curpage=this.endpage+1
+				this.send()
+			},
+			selectpage:function(page){
+				this.curpage=page
+				this.send()
+			}
+		}
+	})
+	</script>
 
 </body>
 </html>
