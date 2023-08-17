@@ -23,11 +23,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public Map<String, String> isValidLogin(String id, String pwd) {
-        List<MemberVO> members = dao.getMembersByID(id);
+        MemberVO member = dao.getMemberByID(id);
 
         Map<String, String> ret = new HashMap<String, String>();
-        if(members.size() == 1){
-            MemberVO member = members.get(0);
+        if(member != null){
             if(pwdEncoder.matches(pwd, member.getPassword())){
                 ret.put("result", "OK");
                 ret.put("nickname", member.getNickname());
@@ -74,5 +73,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         member.setPassword(pwdEncoder.encode(member.getPassword()));
 
         return dao.insertMember(member);
+    }
+
+    @Override
+    public boolean isValidPassword(String user_id, String pwd) {
+        MemberVO member = dao.getMemberByID(user_id);
+        return pwdEncoder.matches(pwd, member.getPassword());
     }
 }

@@ -5,6 +5,7 @@
     justify-content: flex-start;
     align-items: center;
     margin: 50px;
+    text-align: center;
 }
 .login-content form{
     margin: 10px 0 20px 0;
@@ -229,7 +230,10 @@
     color: black;
 }
 
-.register-content input[type=text], select, input[type=password], input[type=email]{
+.register-content input[type=text],
+.register-content select,
+.register-content input[type=password],
+.register-content input[type=email]{
     width: 60%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -256,7 +260,8 @@
     border: 1px solid black;
 }
 
-.register-content input[type=submit],input[type=button] {
+.register-content input[type=submit],
+.register-content input[type=button] {
     background-color: #704DE4;
     color: white;
     padding: 10px 14px;
@@ -322,11 +327,22 @@
     color: #fff;
     margin: 0;
 }
-
+#alertModal{
+    width: 500px;
+    height: 150px;
+    position: relative;
+}
 #alertModal p{
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    line-height: 100px;
     text-align: center;
-    height: 60px;
-    line-height: 60px;
+    left: 50%;
+    top: 50%;
+    font-size: 20px;
+    margin: -50px 0 0 -200px;
+    color: red;
 }
 .ui-dialog-buttonpane{
     margin-top: 0px!important;

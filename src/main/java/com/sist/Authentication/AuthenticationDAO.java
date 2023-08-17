@@ -16,10 +16,6 @@ public class AuthenticationDAO {
     }
 
     // login check
-    public List<MemberVO> getMembersByID(String id){
-        return mapper.getMembersByID(id);
-    }
-
     public MemberVO getMemberByID(String id){
         return mapper.getMemberByID(id);
     }

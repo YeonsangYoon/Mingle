@@ -76,13 +76,21 @@
             </div>
             <div class="offset-sm-1 col-sm-8">
                 <p>${member.address}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <p>상세 주소</p>
+            </div>
+            <div class="offset-sm-1 col-sm-8">
                 <p>${member.detail_address}</p>
             </div>
         </div>
     </div>
     <div class="info-modify">
-        <a href="#pwd-modal" rel="modal:open" class="primary-btn">회원 정보 수정</a>
-        <div id="pwd-modal" class="modal" style="height: 300px;">
+        <a href="#edit-profile-modal" rel="modal:open" id="edit-profile-button">회원 정보 수정</a>
+        <a href="#withdraw-modal" rel="modal:open" id="withdraw-button">회원 탈퇴</a>
+        <div id="edit-profile-modal" class="modal" style="height: 300px; display: none;">
             <div class="login-content">
                 <h3 class="title text-center">비밀번호 재확인</h3>
                 <form>
@@ -91,9 +99,26 @@
                             <i class="fa fa-lock"></i>
                         </div>
                         <div class="div">
-                            <input type="password" class="input" autocomplete="off"  placeholder="비밀번호 입력">
+                            <input type="password" class="input" autocomplete="off" placeholder="비밀번호 입력">
                         </div>
                     </div>
+                    <input type="button" value="확인" class="btn okBtn" onclick="editProfileRequest()">
+                </form>
+            </div>
+        </div>
+        <div id="withdraw-modal" class="modal" style="height: 300px; display: none;">
+            <div class="login-content">
+                <h3 class="title text-center">비밀번호 재확인</h3>
+                <form>
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fa fa-lock"></i>
+                        </div>
+                        <div class="div">
+                            <input type="password" class="input" autocomplete="off" placeholder="비밀번호 입력">
+                        </div>
+                    </div>
+                    <input type="button" value="확인" class="btn okBtn" onclick="withdrawMemberRequest()">
                 </form>
             </div>
         </div>

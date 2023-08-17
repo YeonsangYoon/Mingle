@@ -57,7 +57,7 @@
             <span id="MsgGender" class="none">유효성체크</span>
             <div>
                 <label for="phone">전화번호 :</label>
-                <input type="text" id="phone" placeholder="전화번호 입력" oninput="ck_phone()" autocomplete="off">
+                <input type="text" id="phone" placeholder="- 없이 입력" oninput="ck_phone()" autocomplete="off">
                 <span id="MsgPhone" class="none"></span>
             </div>
             <div>
@@ -77,10 +77,10 @@
                 <label for="detail_address">상세 주소:</label>
                 <input type="text" id="detail_address" onblur="ck_detail_address()" autocomplete="off">
             </div>
-            <input type="button" value="회원가입" onclick="sendMemberRegisterRequest()" class="block_buttion">
+            <input type="button" value="회원가입" onclick="sendMemberRegisterRequest()" class="block_buttion" style="display: block; margin: 0 auto">
         </fieldset>
     </form>
 </div>
-<div id="alertModal" style="display: none">
+<div id="alertModal" class="modal" style="display: none">
     <p></p>
 </div>

@@ -258,7 +258,7 @@ function ck_phone(){
 
 function openAlertModal(t){
     $('#alertModal > p').text(t);
-    $('#alertModal').dialog('open');
+    $('#alertModal').modal();
 }
 
 function sendMemberRegisterRequest(){

@@ -22,7 +22,6 @@ public class SpaceRestController {
 		map.put("end", 10);
 		List<SpaceVO> list=service.spaceListData(map);
 		ObjectMapper mapper=new ObjectMapper();
-		String json=mapper.writeValueAsString(list);
-		return json;
+        return mapper.writeValueAsString(list);
 	}
 }

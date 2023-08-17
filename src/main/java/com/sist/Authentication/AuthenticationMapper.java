@@ -6,11 +6,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 public interface AuthenticationMapper {
-    // login 검사
-    @Select("SELECT password, NICKNAME FROM MEMBER WHERE user_id=#{id}")
-    public List<MemberVO> getMembersByID(String id);
-
-    @Select("SELECT USER_ID ,USER_NAME, NICKNAME, GENDER, PHONE, EMAIL, BIRTHDAY, ADDRESS, DETAIL_ADDRESS, REGDATE " +
+    @Select("SELECT USER_ID, PASSWORD, USER_NAME, NICKNAME, GENDER, PHONE, EMAIL, BIRTHDAY, ADDRESS, DETAIL_ADDRESS, REGDATE " +
             "FROM MEMBER " +
             "WHERE USER_ID=#{id}")
     public MemberVO getMemberByID(String id);
