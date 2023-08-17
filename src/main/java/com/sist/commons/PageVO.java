@@ -1,4 +1,4 @@
-package com.sist.main;
+package com.sist.commons;
 
 import lombok.Getter;
 import lombok.Setter;
