@@ -1,1 +1,51 @@
 @charset "UTF-8";
+.boxlist:hover{
+	cursor:pointer;
+}
+.mento_list_box{
+	border: 1px solid black;
+    margin: 20px 20px;
+    padding: 15px 15px;
+    border-radius: 12px;
+    box-shadow: 10px 10px 20px 0px;
+    background: #ededed
+}
+.mento_list_box_top{
+	border-radius: 10px;
+	background: white;
+	margin:5px;
+}
+.mento_list_box_bottom{
+	
+}
+.mento_list_info{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+ 	
+}
+.mento_list_info > div > div{
+    display:flex;
+}
+.mento_list_info > div > div > span{
+    margin: 0px 10px;
+}
+.follow{
+	height: 40px;
+    background: #e53f4f;
+    border-radius: 10px;
+    padding: 8px;
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
+}
+.star{
+	height: 40px;
+    background: #fbbf4e;
+    border-radius: 10px;
+    padding: 8px;
+    color: black;
+    font-weight: 700;
+    font-size: 17px;
+}

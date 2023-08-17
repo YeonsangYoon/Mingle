@@ -154,7 +154,7 @@
                             <div class="nice-select" tabindex="0">
                                <span class="current">정렬순서</span>
                                  <ul class="list">
-                                    <li data-value="" class="option selected">최신순</li>
+                                    <li data-valueA="" class="option selected">최신순</li>
                                     <li data-value="" class="option">인기순</li>
                                  </ul>
                            </div>

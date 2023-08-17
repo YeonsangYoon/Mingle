@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mento.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/space.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/study.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.min.css" type="text/css">
@@ -47,6 +48,7 @@
     <script src="${pageContext.request.contextPath}/js/admin.js"></script>
     <script src="${pageContext.request.contextPath}/js/study.js"></script>
     <script src="${pageContext.request.contextPath}/js/space_carousel.js"></script>
+	<script src="${pageContext.request.contextPath}/js/mento.js"></script>
     
     <!-- jQuery Modal -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
