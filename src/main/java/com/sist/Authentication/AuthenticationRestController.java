@@ -8,37 +8,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("auth/")
 public class AuthenticationRestController {
     private AuthenticationService service;
-    private BCryptPasswordEncoder encoder;
 
     @Autowired
-    AuthenticationRestController(AuthenticationService service, BCryptPasswordEncoder encoder){
+    AuthenticationRestController(AuthenticationService service){
         this.service = service;
-        this.encoder = encoder;
     }
 
     @PostMapping("login.do") // login 수행
     public String loginCheck(String id, String pwd, HttpSession session){
-        List<MemberVO> members = service.getMembersByID(id);
+        Map<String, String> result = service.isValidLogin(id, pwd);
 
-        if(members.size()==1){
-            MemberVO member = members.get(0);
-            if(encoder.matches(pwd, member.getPassword())){
-                session.setAttribute("id", id);
-                session.setAttribute("nickname", member.getNickname());
-                return "OK";
-            }
-            else{
-                return "NOPWD";
-            }
+        if(result.get("result").equals("OK")){
+            session.setAttribute("id", id);
+            session.setAttribute("nickname", result.get("nickname"));
         }
-        else {
-            return "NOID";
-        }
+
+        return result.get("result");
     }
 
     @PostMapping("addMember.do")

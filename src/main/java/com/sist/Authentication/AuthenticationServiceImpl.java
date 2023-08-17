@@ -5,7 +5,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Primary
@@ -20,8 +22,25 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public List<MemberVO> getMembersByID(String id) {
-        return dao.getMembersByID(id);
+    public Map<String, String> isValidLogin(String id, String pwd) {
+        List<MemberVO> members = dao.getMembersByID(id);
+
+        Map<String, String> ret = new HashMap<String, String>();
+        if(members.size() == 1){
+            MemberVO member = members.get(0);
+            if(pwdEncoder.matches(pwd, member.getPassword())){
+                ret.put("result", "OK");
+                ret.put("nickname", member.getNickname());
+            }
+            else{
+                ret.put("result", "NOPWD");
+            }
+        }
+        else{
+            ret.put("result", "NOID");
+        }
+
+        return ret;
     }
 
     @Override
