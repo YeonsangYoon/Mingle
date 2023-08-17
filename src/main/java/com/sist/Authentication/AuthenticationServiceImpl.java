@@ -2,6 +2,7 @@ package com.sist.Authentication;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,10 +11,12 @@ import java.util.List;
 @Primary
 public class AuthenticationServiceImpl implements AuthenticationService {
     private AuthenticationDAO dao;
+    private BCryptPasswordEncoder pwdEncoder;
 
     @Autowired
-    AuthenticationServiceImpl(AuthenticationDAO dao){
+    AuthenticationServiceImpl(AuthenticationDAO dao, BCryptPasswordEncoder encoder){
         this.dao = dao;
+        this.pwdEncoder = encoder;
     }
 
     @Override
@@ -44,5 +47,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public int getNicknameCount(String nickname) {
         return dao.getNicknameCount(nickname);
+    }
+
+    @Override
+    public int addMember(MemberVO member) {
+        // password 인코딩
+        member.setPassword(pwdEncoder.encode(member.getPassword()));
+
+        return dao.insertMember(member);
     }
 }

@@ -25,7 +25,6 @@ function logoutCheck(){ // 로그아웃 확인
     }
 }
 
-
 function sendLoginRequest(){ // 로그인 버튼 클릭
     let id = $('#idInput');
     let pwd = $('#pwdInput');
@@ -92,7 +91,7 @@ function ck_id(){
     )
         .done(function(result){
             if(result === 'OK'){
-                MsgId.attr('class', 'vaild');
+                MsgId.attr('class', 'valid');
                 MsgId.text('ok');
                 user_id.css('background-color', 'rgb(232, 240, 254)');
             }
@@ -122,7 +121,7 @@ function ck_nickname(){
     )
         .done(function (result){
             if(result === 'OK'){
-                MsgNickname.attr('class', 'vaild');
+                MsgNickname.attr('class', 'valid');
                 MsgNickname.text('ok');
                 nickname.css('background-color', 'rgb(232, 240, 254)');
             }
@@ -144,10 +143,12 @@ function ck_email(){
         MsgEmail.attr('class', 'error');
         MsgEmail.text('이메일 형식을 확인하세요');
         email.css('background-color', 'rgb(255, 255, 255)');
+        return false;
     } else{
-        MsgEmail.attr('class', 'vaild');
+        MsgEmail.attr('class', 'valid');
         MsgEmail.text('ok');
         email.css('background-color', 'rgb(232, 240, 254)');
+        return true;
     }
 }
 
@@ -161,10 +162,12 @@ function ck_pwd(){
         MsgPw.attr('class', 'error');
         MsgPw.text('영어, 숫자 포함 8자 이상');
         pwd.css('background-color', 'rgb(255, 255, 255)');
+        return false;
     } else{
-        MsgPw.attr('class', 'vaild');
+        MsgPw.attr('class', 'valid');
         MsgPw.text('ok');
         pwd.css('background-color', 'rgb(232, 240, 254)')
+        return true;
     }
 }
 
@@ -179,10 +182,12 @@ function ck_pwd2(){
         MsgPwck.attr('class', 'error');
         MsgPwck.text('비밀번호가 일치하지 않습니다.');
         pwd_ck.css('background-color', 'rgb(255, 255, 255)');
+        return false;
     } else{
-        MsgPwck.attr('class', 'vaild');
+        MsgPwck.attr('class', 'valid');
         MsgPwck.text('ok');
         pwd_ck.css('background-color', 'rgb(232, 240, 254)')
+        return true;
     }
 }
 
@@ -196,10 +201,12 @@ function ck_name(){
         MsgName.attr('class', 'error');
         MsgName.text('2자 이상 입력하세요.');
         name.css('background-color', 'rgb(255, 255, 255)');
+        return false;
     } else{
-        MsgName.attr('class', 'vaild');
+        MsgName.attr('class', 'valid');
         MsgName.text('ok');
         name.css('background-color', 'rgb(232, 240, 254)');
+        return true;
     }
 }
 
@@ -239,22 +246,122 @@ function ck_phone(){
         MsgPhone.attr('class', 'error');
         MsgPhone.text('휴대폰 번호 형식을 확인하세요');
         phone.css('background-color', 'rgb(255, 255, 255)')
+        return false;
     }
     else{
-        MsgPhone.attr('class', 'vaild');
+        MsgPhone.attr('class', 'valid');
         MsgPhone.text('ok');
         phone.css('background-color', 'rgb(232, 240, 254)');
+        return true;
     }
 }
 
-/*
-    if(man.checked == false && woman.checked == false){
-        MsgGender.style.display="block";
-        MsgGender.className='error'
-        MsgGender.innerHTML="필수 정보입니다."        wrap_gender.style.borderColor="red";
-        return false;
+function openAlertModal(t){
+    $('#alertModal > p').text(t);
+    $('#alertModal').dialog('open');
+}
+
+function sendMemberRegisterRequest(){
+    let id = $('#userId');
+    let pwd = $('#pwd');
+    let pwd_ck = $('#pwd_ck');
+    let name = $('#name');
+    let nickname = $('#nickname');
+    let email = $('#email');
+    let gender = $('input[name=gender]:checked').val();
+    let phone = $('#phone');
+    let birthday = $('#birthday');
+    let zipcode = $('#zipcode');
+    let address = $('#address');
+    let detail_address = $('#detail_address');
+
+    // 최종 유효성 체크
+    if($('#MsgId').attr('class') !== 'valid'){
+        id.val();
+        id.focus();
+        openAlertModal('아이디 중복체크를 해주세요');
+        return;
     }
-*/
+    if(!ck_pwd()){
+        pwd.val('');
+        pwd_ck.val('');
+        pwd.focus();
+        openAlertModal('유효한 비밀번호를 입력해주세요');
+        return;
+    }
+    if(!ck_pwd2()){
+        pwd_ck.val('');
+        pwd_ck.focus();
+        openAlertModal('비밀번호 확인을 입력해주세요')
+        return;
+    }
+    if(!ck_name()){
+        name.val('');
+        name.focus();
+        openAlertModal('이름을 입력해주세요')
+        return;
+    }
+    if($('#MsgNickName').attr('class') !== 'valid'){
+        nickname.val('');
+        nickname.focus();
+        openAlertModal('닉네임 중복체크를 해주세요')
+        return;
+    }
+    if(!ck_email()){
+        email.val('');
+        email.focus();
+        openAlertModal('유효한 이메일을 입력해주세요')
+        return;
+    }
+    if(gender === undefined){
+        openAlertModal('성별을 선택해주세요')
+        return;
+    }
+    if(!ck_phone()){
+        phone.val('');
+        phone.focus();
+        openAlertModal('유효한 휴대번호를 입력해주세요')
+        return;
+    }
+    if(birthday.val() === ''){
+        openAlertModal('생년월일을 선택해주세요')
+        return;
+    }
+    if(zipcode.val() === '' || address.val() === ''){
+        zipcode.val('');
+        address.val('');
+        openAlertModal('우편번호를 입력해주세요')
+        return;
+    }
+    if(detail_address.val().trim()===''){
+        detail_address.focus();
+        openAlertModal('상세주소를 입력해주세요')
+        return;
+    }
+    $.post('/mingle/auth/addMember.do',{
+        user_id:id.val(),
+        password:pwd.val(),
+        user_name:name.val(),
+        nickname:nickname.val(),
+        gender:gender,
+        phone:phone.val(),
+        email:email.val(),
+        birthday:birthday.val(),
+        address:address.val(),
+        detail_address:detail_address.val()
+    }, 'text')
+        .done(function (result){
+            if(result==='OK'){
+                location.href="/mingle/main/main.do";
+            }
+            else{
+                alert('회원가입에 실패했습니다')
+            }
+        })
+        .fail(function (){
+            alert('회원가입에 실패했습니다')
+        })
+}
 
 function openZipCodeSearch() {
     new daum.Postcode({
@@ -267,6 +374,25 @@ function openZipCodeSearch() {
                 addr = data.roadAddress;
             } else { // 사용자가 지번 주소를 선택했을 경우(J)
                 addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if(data.userSelectedType === 'R'){
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+                // 조합된 참고항목을 해당 필드에 넣는다.
+                addr = addr + ' ' + extraAddr;
             }
 
             // 우편번호와 주S소 정보를 해당 필드에 넣는다.
@@ -301,3 +427,12 @@ $('#pwdInput').keydown(function (e){
 $('#open-login-btn').click(clearLoginModal);
 $('#loginBtn').click(sendLoginRequest);
 $('#logout-btn').click(logoutCheck);
+$('#alertModal').dialog({
+    autoOpen:false,
+    modal:true,
+    buttons:{
+        '확인' : function (){
+            $(this).dialog('close');
+        }
+    }
+})

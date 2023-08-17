@@ -31,4 +31,8 @@ public class AuthenticationDAO {
     public int getNicknameCount(String nickname){
         return mapper.getNicknameCount(nickname);
     }
+
+    public int insertMember(MemberVO vo){
+        return mapper.insertMember(vo);
+    }
 }

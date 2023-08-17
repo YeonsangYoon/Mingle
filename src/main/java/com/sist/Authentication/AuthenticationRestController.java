@@ -41,14 +41,26 @@ public class AuthenticationRestController {
         }
     }
 
+    @PostMapping("addMember.do")
+    public String addMember(MemberVO member, HttpSession session){
+        int result = service.addMember(member);
+
+        if(result == 1){
+            session.setAttribute("id", member.getUser_id());
+            session.setAttribute("nickname", member.getNickname());
+        }
+
+        return (result==0) ? "NO" : "OK";
+    }
+
     @PostMapping("dupIdCheck.do")
-    public String duplicate_userid_check(String userid){
+    public String duplicateUseridCheck(String userid){
         int count = service.getIDCount(userid);
         return (count==0) ? "OK" : "NO";
     }
 
     @PostMapping("dupNicknameCheck.do")
-    public String duplicate_nickname_check(String nickname){
+    public String duplicateNicknameCheck(String nickname){
         int count = service.getNicknameCount(nickname);
         return (count==0) ? "OK" : "NO";
     }

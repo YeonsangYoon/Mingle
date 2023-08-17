@@ -213,7 +213,7 @@
     color: red;
 }
 
-.register-content .vaild{
+.register-content .valid{
     font-size: 0.8em;
     position: absolute;
     width: 150px;
@@ -257,30 +257,22 @@
 }
 
 .register-content input[type=submit],input[type=button] {
-    width: 30%;
-    background-color: #704DE4;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px auto;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: block;
-}
-
-.register-content button{
     background-color: #704DE4;
     color: white;
     padding: 10px 14px;
+    margin-left: 10px;
     border: none;
     border-radius: 4px;
-    display: inline-block;
+    cursor: pointer;
     font-size: 15px;
-    margin-left: 10px;
+    display: inline-block;
 }
 
-.register-content input[type=submit]:hover,input[type=boutton]:hover {
-    background-color: #45a049;
+.register-content .block_buttion{
+    display: block;
+    width: 30%;
+    margin: 8px auto;
+    padding: 15px;
 }
 
 .register-content #wrap_gender{
@@ -330,4 +322,22 @@
     color: #fff;
     margin: 0;
 }
+
+#alertModal p{
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+}
+.ui-dialog-buttonpane{
+    margin-top: 0px!important;
+    padding: 0px!important;
+}
+.ui-dialog-buttonset{
+    float: none!important;
+    text-align: center;
+}
+.ui-dialog-titlebar{
+    display: none!important;
+}
+
 

@@ -7,4 +7,6 @@ public interface AuthenticationService {
     public MemberVO getMemberByID(String id);
     public int getIDCount(String id);
     public int getNicknameCount(String nickname);
+
+    public int addMember(MemberVO member);
 }
