@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mento.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/space.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/study.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/booking.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.min.css" type="text/css">
 <!-- jQuery Modal -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />

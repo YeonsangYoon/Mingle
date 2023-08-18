@@ -232,7 +232,7 @@
 .shop__sidebar__accordion .card-heading a:after,
 .shop__sidebar__accordion .card-heading > a.active[aria-expanded=false]:after {
   content: "\f107";
-  font-family: "FontAwesome";
+  font-family: "Pretendard";
   font-size: 24px;
   font-weight: 700;
   color: $heading-color;
@@ -244,7 +244,7 @@
 
 .shop__sidebar__accordion .card-heading.active a:after {
   content: "\f107";
-  font-family: "FontAwesome";
+  font-family: "Pretendard";
   font-size: 24px;
   font-weight: 700;
   color: $heading-color;

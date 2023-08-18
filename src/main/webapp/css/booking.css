@@ -1,0 +1,410 @@
+@charset "UTF-8";
+
+.pc-mobile-header-container {
+    padding-top: 0;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.pb-lg-3, .py-lg-3 {
+    padding-bottom: 1rem !important;
+}
+
+.reservation-row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.mb-lg-5, .my-lg-5 {
+    margin-bottom: 2rem !important;
+}
+
+.cm-lg-rounded {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 7px 18px -6px rgba(65,78,118,.1);
+}
+
+.mx-n15px {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.ml-lg-0, .mx-lg-0 {
+    margin-left: 0 !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.pl-5, .px-5 {
+    padding-left: 2rem !important;
+}
+
+.pr-5, .px-5 {
+    padding-right: 2rem !important;
+}
+
+.offset-xl-3 {
+    margin-left: 25%;
+}
+
+.col-xl-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.col-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+#vcd_container_tabs {
+    right: 0;
+    left: 0;
+    -webkit-transform: translateY(-1px);
+}
+
+#vcd_container_tabs .nav-item {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+}
+
+
+
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+
+.nav-classic.nav-borderless {
+    border: none;
+}
+
+.common-nav-tabs {
+    background: #fff;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.h-auto {
+    height: auto !important;
+}
+
+.cm-lg-rounded .carmore-section, .cm-lg-rounded .modal .filter-section, .modal .cm-lg-rounded .filter-section {
+    background: #fff;
+}
+.carmore-section, .modal .filter-section {
+    background: #fafafa;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: .5rem;
+}
+
+.dc-flex {
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.align-items-center {
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+
+.justify-content-between {
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+}
+
+.carmore-section h3, .modal .filter-section h3, .carmore-section .section-title, .modal .filter-section .section-title {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    color: #494949;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.pt-2, .py-2 {
+    padding-top: .5rem !important;
+}
+
+.mt-0, .my-0 {
+    margin-top: 0 !important;
+}
+
+
+
+.dc-lg-block {
+    display: block;
+}
+
+
+
+
+.mx-n15px {
+    /* margin-right: -15px; */
+    margin-left: -15px;
+}
+
+.sticky-element-inner-scroll {
+    overflow-y: auto;
+    max-height: calc(100vh - 64px - 3rem);
+}
+
+.sticky-pc-menu-top {
+    top: calc(64px + 2rem);
+    transition: margin-top .3s,top .3s;
+}
+
+.cm-rounded, .filter-section {
+    border-radius: 16px;
+}
+
+.bg-shadow, .filter-section {
+    box-shadow: 0 7px 18px -6px rgba(65,78,118,.1);
+}
+
+.ml-lg-0, .mx-lg-0 {
+    margin-left: 0 !important;
+}
+
+.bg-white, .filter-section {
+    background-color: #fff !important;
+}
+.p-3 {
+    padding: 1rem !important;
+}
+
+.mt-3, .my-3 {
+    margin-top: 1rem !important;
+}
+
+.color-grey-2 {
+    color: #333;
+}
+
+.font-weight-bold {
+    font-weight: 700 !important;
+}
+
+.text-12 {
+    font-size: .9rem;
+}
+
+.text-14, .text-10, .text-12, .text-18-b, .text-16-b, .text-20, .text-28, .text-24-absolute, .text-24, .badge {
+    letter-spacing: -0.05em;
+    word-spacing: .01em;
+}
+
+.btn-primary:not(label.btn):not(label.membership-grade-status-benefit-btn):not(label#address_search_more_show_btn), #address_search_more_show_btn:not(label.btn):not(label.membership-grade-status-benefit-btn):not(label#address_search_more_show_btn), .btn-primary:not(label.btn):not(label.membership-grade-status-benefit-btn):not(label#address_search_more_show_btn):not([href]):not(:disabled):not(.disabled), .btn-primary:not([href]), #address_search_more_show_btn:not([href]), .btn-primary:not([href]):not([href]):not(:disabled):not(.disabled) {
+    background-color: #0d6ffc;
+    border-color: #0d6ffc;
+}
+
+.btn:not([href]):not([type]):not(:disabled):not(.disabled), .membership-grade-status-benefit-btn:not([href]):not([type]):not(:disabled):not(.disabled), #address_search_more_show_btn:not([href]):not([type]):not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn:not(:disabled):not(.disabled), .membership-grade-status-benefit-btn:not(:disabled):not(.disabled), #address_search_more_show_btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn-primary:hover, #address_search_more_show_btn:hover {
+    background-color: #0d6ffc;
+    border-color: #0d6ffc;
+}
+
+.btn-primary:hover, #address_search_more_show_btn:hover {
+    color: #fff;
+    background-color: #035de0;
+    border-color: #0358d3;
+}
+
+.btn:hover, .membership-grade-status-benefit-btn:hover, #address_search_more_show_btn:hover {
+    color: #424346;
+    text-decoration: none;
+}
+
+button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
+    cursor: pointer;
+}
+
+
+
+.btn-border-10 {
+    border-radius: 10px;
+}
+
+.btn-block, #address_search_more_show_btn {
+    display: block;
+    width: 100%;
+}
+
+.btn-lg, .btn-group-lg>.btn, .btn-group-lg>.membership-grade-status-benefit-btn, .btn-group-lg>#address_search_more_show_btn {
+    padding: .5rem 1rem;
+    font-size: 1.00625rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+}
+
+.btn-primary, #address_search_more_show_btn {
+    color: #fff;
+    background-color: #0d6ffc;
+    border-color: #0d6ffc;
+}
+
+.btn, .membership-grade-status-benefit-btn, #address_search_more_show_btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #424346;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid rgba(0,0,0,0);
+    padding: .6125rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+button, [type=button], [type=reset], [type=submit] {
+    -webkit-appearance: button;
+}
+
+.btn-outline-grey-4 {
+    background: none;
+    border-color: #666;
+}
+
+
+.rent-period-item {
+    -ms-flex: 1 1 40%;
+    flex: 1 1 40%;
+}
+
+.rent-period-item-day {
+    -ms-flex: 1 1 20%;
+    flex: 1 1 20%;
+    text-align: center;
+}
+
+.nav-classic .nav-link.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+    font-weight: bold;
+}
+
+.nav-classic .nav-link.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+    font-weight: bold;
+}
+
+.nav-classic .nav-link {
+    color: #495057;
+    border-width: 0 0 3px 0;
+    border-style: solid;
+    border-color: rgba(0,0,0,0);
+    padding: 1rem 1.5rem;
+    border-radius: 0;
+    transition: .3s;
+}
+
+.nav .nav-link {
+    color: #495057;
+}
+
+.nav-classic .nav-link {
+    color: #495057;
+    border-width: 0 0 3px 0;
+    border-style: solid;
+    border-color: rgba(0,0,0,0);
+    padding: 1rem 1.5rem;
+    border-radius: 0;
+    transition: .3s;
+}
+
+
+.nav-link {
+    display: block;
+    padding: .5rem .55rem;
+}
+
+.nav-fill .nav-item {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.color-blue {
+    color: #0d6ffc;
+}
+
+
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.map-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.pay-info-desc {
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.pay-info-desc>div {
+    padding: 1rem 0;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+[role=button] {
+    cursor: pointer;
+}
+
+.dc-flex {
+    display: -ms-flexbox;
+    display: flex;
+}
+
+
+
+
