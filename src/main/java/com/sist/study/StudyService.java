@@ -1,5 +1,9 @@
 package com.sist.study;
 
-public interface StudyService {
+import java.util.List;
+import java.util.Map;
 
+public interface StudyService {
+	public List<StudyVO> studyListData(Map map);
+	public int studyTotalpage();
 }
