@@ -14,9 +14,9 @@ public class SpaceDAO {
 		return mapper.spaceListData(map);
 	}
 	
-	public int databoardTotalPage()
+	public int spaceTotalpage()
 	{
-		return mapper.databoardTotalPage();
+		return mapper.spaceTotalpage();
 	}
 	
 	

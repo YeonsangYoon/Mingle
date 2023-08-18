@@ -8,6 +8,6 @@ public interface SpaceService {
 		
 		public List<SpaceVO> spaceListData(Map map);
 		
-		public int databoardTotalPage();
+		public int spaceTotalpage();
 		
 }

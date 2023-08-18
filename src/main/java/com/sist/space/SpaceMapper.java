@@ -25,7 +25,9 @@ public interface SpaceMapper {
 		  + "WHERE num BETWEEN #{start} AND #{end}")
 	public List<SpaceVO> spaceListData(Map map);
 */	
-	@Select("SELECT CEIL(COUNT(*)/10.0) FROM space_list")
-	public int databoardTotalPage();
+	@Select("SELECT COUNT(*) FROM space_list")
+	public int spaceTotalpage();
+	
+	
 	
 }

@@ -5,130 +5,168 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 
-  <!-- Breadcrumb Section Begin 
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row" style="text-align: center;">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h4>스터디 공간</h4>
-                        <div class="breadcrumb__links">
-                            <a href="#">Home</a>
-                            <span>스터디 공간</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-     Breadcrumb Section End -->
-    
-    <!-- Shop Details Section Begin -->
+   <!-- Shop Details Section Begin -->
     <section class="shop-details">
         <div class="space__details__pic">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-7">
-
-						<div id="wrapper">
-						   	  <div id="slider-wrap">
-						      	  <ul id="space-slider">
-						          	 <li data-color="#1abc9c">
-						                <div>
-						                </div>                
-						             </li>
-						          </ul>
-						          
-						           <!--controls-->
-						          <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
-						          <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
-						          <div id="counter"></div>
-						          
-						          <div id="pagination-wrap">
-						            <ul>
-						            </ul>
-						          </div>
-						          <!--controls-->  
-						      </div>
-						   </div>              
-                    
-                    </div>
-                    
-                    <div class="col-lg-5 aligning">
-			            <h4 class="mb-4">숙소 이름</h4>
-			            <p class="mb-4 text-muted">부제목 라라라라라라라랄ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ</p>
-			            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
-			              <ul class="list-inline mb-2 mb-sm-0">
-			                <li class="list-inline-item h4 font-weight-light mb-0">$할인가</li>
-			                <li class="list-inline-item text-muted font-weight-light"> 
-			                  <del>정가</del>
-			                </li>
-			              </ul>
-			              <div class="d-flex align-items-center text-sm">
-			                <ul class="list-inline mr-2 mb-0">
-			                  <li class="list-inline-item mr-0"><i class="fa fa-star text-primary"></i></li>
-			                  <li class="list-inline-item mr-0"><i class="fa fa-star text-primary"></i></li>
-			                  <li class="list-inline-item mr-0"><i class="fa fa-star text-primary"></i></li>
-			                  <li class="list-inline-item mr-0"><i class="fa fa-star text-primary"></i></li>
-			                  <li class="list-inline-item mr-0"><i class="fa fa-star text-gray-300"></i></li>
-			                </ul><span class="text-muted text-uppercase">25 reviews</span>
-			              </div>
-			            </div>
-			            
-			              <div class="row">
-			                <div class="col-sm-6 col-lg-12 detail-option mb-4">
-		                  <h6 class="detail-option-heading">예약일 <span>(required)</span></h6>
-			                  <select class="selectpicker" name="size" data-style="btn-selectpicker">
-			                    <option value="value_0">Small</option>
-			                    <option value="value_1">Medium</option>
-			          	          <option value="value_2">Large</option>
-			                  </select>
-			                </div>
-			              </div>
-			              <div class="input-group w-100 mb-4">
-			                <input class="form-control form-control-lg detail-quantity" name="items" type="number" value="1">
-			                <div class="input-group-append flex-grow-1">
-			                  <button class="btn btn-dark btn-block" type="submit"> <i class="fa fa-shopping-cart mr-2"></i>예약하기</button>
-			                </div>
-			              </div>
-			              <div class="row mb-4">
-			                <div class="col-6"><a href="#"> <i class="far fa-heart"></i>Add to wishlist </a></div>
-			                <div class="col-6 text-right">
-			                  <ul class="list-inline mb-0">
-			                    <li class="list-inline-item mr-2"><a class="text-dark text-hover-primary" href="#"><i class="fab fa-facebook-f"> </i></a></li>
-			                    <li class="list-inline-item"><a class="text-dark text-hover-primary" href="#"><i class="fab fa-twitter"> </i></a></li>
-			                  </ul>
-			                </div>
-			              </div>
+                    <div class="col-lg-12">
+                      <div class="space__details__title">
+                         <h2>업스테어스</h2>
+                         <p>여행하듯 일하고 싶은 로컬크리에이터를 위한 공간</p>
+                      </div>
                     </div>
                 </div>
-                
+				<div class="row">
+                    <div class="col-lg-9 col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="space__details__pic__item">
+                                    <img src="/mingle/img/spaceimg.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="space__details__pic__item">
+                                    <img src="/mingle/img/shop-details/product-big.png" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <div class="space__details__pic__item">
+                                    <img src="/mingle/img/spaceimg.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-4" role="tabpanel">
+                                <div class="space__details__pic__item">
+                                    <img src="/mingle/img/spaceimg.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-5" role="tabpanel">
+                                <div class="space__details__pic__item">
+                                    <img src="/mingle/img/spaceimg.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-lg-3 col-md-3">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                    <div class="space__thumb__pic set-bg" data-setbg="/mingle/img/spaceimg.jpg" style="background-image: url(&quot;/mingle/img/spaceimg.jpg&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
+                                    <div class="space__thumb__pic set-bg" data-setbg="/mingle/img/shop-details/product-big.png" style="background-image: url(&quot;/mingle/img/shop-details/product-big.png&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
+                                    <div class="space__thumb__pic set-bg" data-setbg="/mingle/img/spaceimg.jpg" style="background-image: url(&quot;/mingle/img/spaceimg.jpg&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
+                                    <div class="space__thumb__pic set-bg" data-setbg="/mingle/img/spaceimg.jpg" style="background-image: url(&quot;/mingle/img/spaceimg.jpg&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">
+                                    <div class="space__thumb__pic set-bg" data-setbg="/mingle/img/spaceimg.jpg" style="background-image: url(&quot;/mingle/img/spaceimg.jpg&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div></div>
             </div>
         </div>
-
-
-    <div class="space__details__content">
-      <div class="container">
-       <div class="row">
-        <div class="col-lg-12">
-         <div class="space__details__tab">       
-           <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item"><a class="nav-link detail-nav-link active" data-toggle="tab" href="#tab-5" role="tab">공간소개</a></li>
-            <li class="nav-item"><a class="nav-link detail-nav-link" data-toggle="tab" href="#tab-6" role="tab">위치정보</a></li>
-            <li class="nav-item"><a class="nav-link detail-nav-link" data-toggle="tab" href="#tab-7" role="tab">이용후기</a></li>
-           </ul>
-
-          <div class="tab-content">
-            <div class="tab-pane active" id="tab-5" role="tabpanel">
-              <div class="space__details__tab__content">
-                <p class="note">Nam tempus turpis at metus scelerisque placerat nulla deumantos
-                pharetras loremos.</p>
-                <div class="space__details__tab__content__item">
-                  <h5>공간 설명</h5>
-                  <p>모임이 즐겁다-! 모임공간 모락(樂) 서울대입구점 입니다 :D
+        <div class="space__details__content">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="space__details__text">
+                            <h4>Hooded thermal anorak</h4>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <span> - 5 Reviews</span>
+                            </div>
+                            <h3>$270.00 <span>70.00</span></h3>
+                            <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
+                                cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
+                            with placket.</p>
+                            <div class="space__details__option">
+                                <div class="space__details__option__size">
+                                    <span>Size:</span>
+                                    <label for="xxl">xxl
+                                        <input type="radio" id="xxl">
+                                    </label>
+                                    <label class="active" for="xl">xl
+                                        <input type="radio" id="xl">
+                                    </label>
+                                    <label for="l">l
+                                        <input type="radio" id="l">
+                                    </label>
+                                    <label for="sm">s
+                                        <input type="radio" id="sm">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="space__details__cart__option">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" value="1">
+                                    </div>
+                                </div>
+                                <a href="../space/booking.do" class="primary-btn">바로 예약하기</a>
+                            </div>
+                            <div class="space__details__btns__option">
+                                <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
+                            </div>
+                            <div class="space__details__last__option">
+                                <h5><span>Guaranteed Safe Checkout</span></h5>
+                                <ul>
+                                    <li><span>SKU:</span> 3812912</li>
+                                    <li><span>Categories:</span> Clothes</li>
+                                    <li><span>Tag:</span> Clothes, Skin, Body</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="space__details__tab">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-5" role="tab">공간소개
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">위치정보
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">이용후기
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                    <div class="space__details__tab__content">
+                                        <div class="space__details__tab__content__item">
+                                            <h5>공간 설명</h5>
+                                            <p>모임이 즐겁다-! 모임공간 모락(樂) 서울대입구점 입니다 :D
 											👉 여러 명이 접속해도 끊김 없는 GIGA WIFI
 											👉 스터디, 소모임, 회의, 과외, 면접, 인터뷰, 영상 촬영, 원데이클래스, 파티 등 단독 모임을 위한 복합 공간
 											👉 단독으로 사용 가능한 약 9평의 공간 및 편안한 휴식이 가능한 쇼파 구비
@@ -141,92 +179,97 @@
 											※ 기타 문의사항은 유선 또는 카카오톡(@moraksn)으로 연락 바랍니다.
 											※ 인원이 확정되지 않은 경우, 확정된 인원으로 우선 예약 후 이용 당일 추가 이체해 주시면 됩니다.
 											※ 예약 시 이용 당일 2시간 전에 비밀번호 포함된 안내 문자가 카카오톡으로 발송됩니다.</p>
+                                        </div>
+                                        <div class="space__details__tab__content__item">
+                                            <h5>시설 안내</h5>
+                                            <p>Polyester is deemed lower quality due to its none natural quality’s. Made
+                                                from synthetic materials, not natural like wool. Polyester suits become
+                                                creased easily and are known for not being breathable. Polyester suits
+                                                tend to have a shine to them compared to wool and cotton suits, this can
+                                                make the suit look cheap. The texture of velvet is luxurious and
+                                                breathable. Velvet is a great choice for dinner party jacket and can be
+                                            worn all year round.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                    <div class="space__details__tab__content">
+                                        <div class="space__details__tab__content__item">
+                                            <h5>다음 지도 API</h5>
+										    <section class="detailinfo_button pt-0" id="js_vcd_section_shuttle_info" style="display: block;">  
+			                                  <div class="container">
+												  <div class="js-rpri-container-twice-btns">
+												      <div class="dc-flex justify-content-between">
+												        <button class="btn btn-outline-grey-4 w-50 mr-1" data-bt="0647492139">
+													  <div class="dc-flex justify-content-center align-items-center"><i class=fa-fa-phone></i>
+													     <div class="text-16 color-grey-4 ml-1">전화걸기</div>
+													  </div>
+													  </button><button class="btn btn-outline-grey-4 w-50 text-16 color-grey-4 ml-1" data-bi="IN80">길찾기</button></div>
+												  </div>
+											  </div>
+										    </section>                                            
+
+                                        </div>
+                                        <div class="space__details__tab__content__item">
+                                            <h5>Material used</h5>
+                                            <p>Polyester is deemed lower quality due to its none natural quality’s. Made
+                                                from synthetic materials, not natural like wool. Polyester suits become
+                                                creased easily and are known for not being breathable. Polyester suits
+                                                tend to have a shine to them compared to wool and cotton suits, this can
+                                                make the suit look cheap. The texture of velvet is luxurious and
+                                                breathable. Velvet is a great choice for dinner party jacket and can be
+                                            worn all year round.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-7" role="tabpanel">
+                                    <div class="space__details__tab__content">
+                                        <div class="space__details__tab__content__item">
+                                            <h5>이용자 이름</h5>
+                                            <p>후기후기후기</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="space__details__tab__content__item">
-                  <h5>시설 안내</h5>
-				  <p>55인치 4K UHD TV (유튜브 프리미엄/넷플릭스/디즈니+/노트북 미러링) / HDMI 케이블 구비
-                                               55인치 4K UHD TV (유튜브 프리미엄/넷플릭스/디즈니+/노트북 미러링) / HDMI 케이블 구비
-                                               55인치 4K UHD TV (유튜브 프리미엄/넷플릭스/디즈니+/노트북 미러링) / HDMI 케이블 구비
-                                               55인치 4K UHD TV (유튜브 프리미엄/넷플릭스/디즈니+/노트북 미러링) / HDMI 케이블 구비
-                                               55인치 4K UHD TV (유튜브 프리미엄/넷플릭스/디즈니+/노트북 미러링) / HDMI 케이블 구비</p>
-                  <p>He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
-                  <h5>You will love</h5>
-                </div>
-                <div class="space__details__tab__content__item">
-                  <h5>주의사항</h5>
-                  <p>최소 3인, 최대 8인 이용이 가능합니다.(3인 미만은 3인 요금 결제)
-                  최소 2시간 이상, 1시간 단위로 이용이 가능합니다.
-                  예약은 선입금제로만 가능하며, 예약된 사용 시간 전에 퇴실하여도 잔여 시간은 환불이 불가합니다.</p>
-                </div>
-              </div>
             </div>
-          
-            <div class="tab-pane" id="tab-6" role="tabpanel">
-             <div class="space__details__tab__content">
-               <div class="space__details__tab__content__item">
-                <div class="col-lg-6">
-                <table class="table text-sm">
-                  <tbody>
-                    <tr>
-                      <th class="font-weight-normal border-0">Product #</th>
-                      <td class="text-muted border-0">Lorem ipsum dolor sit amet</td>
-                    </tr>
-                    <tr>
-                      <th class="font-weight-normal ">Available packaging</th>
-                      <td class="text-muted ">LOLDuis aute irure dolor in reprehenderit</td>
-                    </tr>
-                    <tr>
-                      <th class="font-weight-normal ">Weight</th>
-                      <td class="text-muted ">dolor sit amet</td>
-                    </tr>
-                    <tr>
-                      <th class="font-weight-normal ">Sunt in culpa qui</th>
-                      <td class="text-muted ">Lorem ipsum dolor sit amet</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-                <div class="col-lg-6">
-                <table class="table text-sm">
-                  <tbody>
-                    <tr>
-                      <th class="font-weight-normal border-0">Weight</th>
-                      <td class="text-muted border-0">dolor sit amet                           </td>
-                    </tr>
-                    <tr>
-                      <th class="font-weight-normal ">Sunt in culpa qui</th>
-                      <td class="text-muted ">Lorem ipsum dolor sit amet                           </td>
-                    </tr>
-                    <tr>
-                      <th class="font-weight-normal ">Product #</th>
-                      <td class="text-muted ">Lorem ipsum dolor sit amet                           </td>
-                    </tr>
-                    <tr>
-                      <th class="font-weight-normal ">Available packaging</th>
-                      <td class="text-muted ">LOLDuis aute irure dolor in reprehenderit                           </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              </div>
-             </div>
-            </div>
-             
-            <div class="tab-pane" id="tab-7" role="tabpanel">
-            </div>
-            
-           </div>
-            
-            
-          </div> <!--  product_detail_tab -->
-        </div> <!--  col-lg-12 -->
-        </div> <!-- row -->
-       </div>  <!--  container -->
-      </div> <!-- product_detail_content -->
-      
-      
+        </div>
     </section>
     <!-- Shop Details Section End -->
-    <div style="height:200px"></div>
+
+    <!-- Related Section Begin -->
+    <section class="related spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="related-title">근처 다른 공간도 둘러보세요!</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
+                    <div class="space__item">
+                        <div class="space__item__pic set-bg" data-setbg="/mingle/img/product/product-2.jpg">
+                            <ul class="space__hover">
+                                <li><a href="#"><img src="/mingle/img/icon/heart.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                        <div class="space__item__text">
+                           <ul>
+                             <li><a :href="'../space/detail.do?sno='+vo.space_id">{{vo.title}}</a></li>
+                             <li>서초동</li>
+                             <li>{{vo.price|currency}}원/시간</li>
+                             <li>최대 {{vo.max_guest}}인</li>
+                           </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Related Section End -->
+
 </body>
 </html>
+

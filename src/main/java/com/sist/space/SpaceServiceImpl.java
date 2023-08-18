@@ -23,8 +23,8 @@ public class SpaceServiceImpl implements SpaceService{
 	}
 
 	@Override
-	public int databoardTotalPage() {
-		return dao.databoardTotalPage();
+	public int spaceTotalpage() {
+		return dao.spaceTotalpage();
 	}
 
 	@Override
