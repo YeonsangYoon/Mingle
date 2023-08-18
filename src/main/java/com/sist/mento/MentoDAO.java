@@ -12,12 +12,12 @@ public class MentoDAO {
 	@Autowired
 	private MentoMapper mapper;
 	
-	public List<MentoVO> MentoListData(){
-		return mapper.MentoListData();
+	public List<MentoVO> MentoListData(Map map){
+		return mapper.MentoListData(map);
 	}
 	
-	public int mentoTotalPage() {
-		return mapper.mentoTotalPage();
+	public int mentoTotalPage(Map map) {
+		return mapper.mentoTotalPage(map);
 	}
 
 }

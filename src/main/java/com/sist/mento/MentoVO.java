@@ -25,8 +25,9 @@ CNT_STAR
 @Getter
 @Setter
 public class MentoVO {
-	private int mento_no, career, cost, follow, sum_star, rev_cnt, cnt_star ;
-	private String user_id, job_cat, kind_cat, job, title, intro, image ;
+	private int mento_no, cost, follow, sum_star, rev_cnt, cnt_star ;
+	private double avg_star;
+	private String user_id, job_cat, job, title, intro, image, career ;
 	private Date dbday;
 
 }

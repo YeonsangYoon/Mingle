@@ -5,7 +5,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	
-    <!-- Breadcrumb Section Begin -->
+    <!-- Breadcrumb Section Begin 상단 탭 -->
     <section class="breadcrumb-option">
         <div class="container">
             <div class="row" style="text-align: center;">
@@ -30,89 +30,48 @@
     	<div style="display: flex; justify-content: center;">
           	<select style="display:inline;">
 				<option value="all">전체</option>          	
-				<option value="title">제목</option>          	
-				<option value="USER_ID">아이디</option>          	
-				<option value="CAREER">직업</option>          	
+				<option value="TITLE">제목</option>          	
+				<option value="JOB">회사</option>          	
+				<option value="CAREER">직업</option>   	
           	</select>
           	<input type="text" class="input-sm" size=20 >
-          	<input type="button" value="검색" class="btn btn-sm btn-primary" @find="find()">
+          	<input type="button" value="검색" class="btn btn-sm btn-primary" @click="find()">
         </div>
         <!-- Search Section End -->
         
         <div class="container">
             <div class="row">
-            
-            	<div class="col-sm-4 text-center" v-for="vo in mento_list">
-            	  <div class="mento_list_box boxlist" @click="mentoDetail()" >
-            		<div class="mento_list_box_top">
-            			<div style="height: 100px"> 
-            				<h3>제목{{vo.title}}</h3>
-            			</div>
-            			<div class="mento_list_info" style="height:100px;">
-            				<div style="width: 140px;" >
-	            				<div class="mento_list_info_detail" >
-	            					<span>직무</span>
-	            					<span>{{vo.job_cat}}</span> 
-	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>경력</span>
-	            					<span>{{vo.career}}</span> 
-	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>현직</span>
-	            					<span>{{vo.job}}</span> 
-	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>이름</span>
-	            					<span>{{vo.name}}</span> 
-	            				</div>
-		            		</div>
-		            		<div style="width: 110px; height:100px;">
-		            			<div>사진{{vo.image}}</div>
-		            		</div>
-            			</div>
-            		</div>
-            		
-            		<div class="mento_list_box_top" style="height:70px; padding: 16px 0px">
-	            		<div class="mento_list_info">
-	            			<div class="follow">
-	            				팔로우 &nbsp; {{vo.follow}}
-	            			</div>
-	            			<div class="star">
-	            				별점 &nbsp; {{vo.avg_star}}</div>
-	            		</div>
-            		</div>
-            		
-            	  </div>
-            	</div>
             	
+            	<!-- 멘토 리스트 Start-->
             	<div class="col-sm-4 text-center" v-for="vo in mento_list">
-            	  <div class="mento_list_box">
+            		
+            		<!-- 상세보기 -->
+            	  <div class="mento_list_box boxhover" @click="mentoDetail()" >
             		<div class="mento_list_box_top">
-            			<div style="height: 100px"> 
-            				<h3>제목{{vo.title}}</h3>
+            			<div style="height: 100px;"> 
+            				<h3 class="mento_list_box_title">{{vo.title}}</h3>
+            				<h3 class="mento_list_box_title" style="font-size: 20px !important">{{vo.job}}</h3>
             			</div>
             			<div class="mento_list_info" style="height:100px;">
             				<div style="width: 140px;" >
-	            				<div class="mento_list_info_detail" >
-	            					<span>직무</span>
-	            					<span>{{vo.job_cat}}</span> 
+	            				<div style="margin-top: 5px">
+	            					<span class="mento_list_info_detail_title">직무</span>
+	            					<span class="mento_list_info_detail_content">{{vo.job_cat}}</span> 
 	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>경력</span>
-	            					<span>{{vo.career}}</span> 
+	            				<div tyle="margin-top: 5px" >
+	            					<span class="mento_list_info_detail_title">경력</span>
+	            					<span class="mento_list_info_detail_content">{{vo.career}}</span> 
 	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>현직</span>
-	            					<span>{{vo.job}}</span> 
-	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>이름</span>
-	            					<span>{{vo.name}}</span> 
+	            				<div tyle="margin-top: 5px" >
+	            					<div class="mento_list_info_detail_title">현직</div>
+	            					<div class="mento_list_info_detail_content">{{vo.job}}</div> 
 	            				</div>
 		            		</div>
-		            		<div style="width: 110px; height:100px;">
-		            			<div>사진{{vo.image}}</div>
+		            		<div style="width: 100px; height:100px;">
+		            			<div>
+		            				<img src="${pageContext.request.contextPath}/img/blog/blog-1.jpgg" alt="">
+		            				{{vo.image}}
+		            			</div>
 		            		</div>
             			</div>
             		</div>
@@ -129,112 +88,28 @@
             		
             	  </div>
             	</div>
-            	
-            	<div class="col-sm-4 text-center" v-for="vo in mento_list">
-            	  <div class="mento_list_box">
-            		<div class="mento_list_box_top">
-            			<div style="height: 100px"> 
-            				<h3>제목{{vo.title}}</h3>
-            			</div>
-            			<div class="mento_list_info" style="height:100px;">
-            				<div style="width: 140px;" >
-	            				<div class="mento_list_info_detail" >
-	            					<span>직무</span>
-	            					<span>{{vo.job_cat}}</span> 
-	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>경력</span>
-	            					<span>{{vo.career}}</span> 
-	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>현직</span>
-	            					<span>{{vo.job}}</span> 
-	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>이름</span>
-	            					<span>{{vo.name}}</span> 
-	            				</div>
-		            		</div>
-		            		<div style="width: 110px; height:100px;">
-		            			<div>사진{{vo.image}}</div>
-		            		</div>
-            			</div>
-            		</div>
+            	<!-- 멘토 리스트 End-->
             		
-            		<div class="mento_list_box_top" style="height:70px; padding: 16px 0px">
-	            		<div class="mento_list_info">
-	            			<div class="follow">
-	            				팔로우 &nbsp; {{vo.follow}}
-	            			</div>
-	            			<div class="star">
-	            				별점 &nbsp; {{vo.avg_star}}</div>
-	            		</div>
-            		</div>
-            		
-            	  </div>
-            	</div>
-            	
-            	<div class="col-sm-4 text-center" v-for="vo in mento_list">
-            	  <div class="mento_list_box">
-            		<div class="mento_list_box_top">
-            			<div style="height: 100px"> 
-            				<h3>제목{{vo.title}}</h3>
-            			</div>
-            			<div class="mento_list_info" style="height:100px;">
-            				<div style="width: 140px;" >
-	            				<div class="mento_list_info_detail" >
-	            					<span>직무</span>
-	            					<span>{{vo.job_cat}}</span> 
-	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>경력</span>
-	            					<span>{{vo.career}}</span> 
-	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>현직</span>
-	            					<span>{{vo.job}}</span> 
-	            				</div>
-	            				<div class="mento_list_info_detail" >
-	            					<span>이름</span>
-	            					<span>{{vo.name}}</span> 
-	            				</div>
-		            		</div>
-		            		<div style="width: 110px; height:100px;">
-		            			<div>사진{{vo.image}}</div>
-		            		</div>
-            			</div>
-            		</div>
-            		
-            		<div class="mento_list_box_top" style="height:70px; padding: 16px 0px">
-	            		<div class="mento_list_info">
-	            			<div class="follow">
-	            				팔로우 &nbsp; {{vo.follow}}
-	            			</div>
-	            			<div class="star">
-	            				별점 &nbsp; {{vo.avg_star}}</div>
-	            		</div>
-            		</div>
-            		
-            	  </div>
-            	</div>
+           	  </div>
+           	</div>
                
-            </div>
-        </div>
-        
-        <div class="text-center">
-	        <ul>
-	          <li v-if="startPage>1"><a href="#" v-on:click="prev()">&laquo; Previous</a></li>
-	          
-	          <li v-for="i in range(startPage, endPage)" >
-	          	<a href="#" v-on:click="pageChange(i)">{{i}}</a>
+        <!-- PageNation -->
+        <div class="col-lg-12 inline">
+        	<div class="product__pagination">
+	        <ul style="display:inline-flex;">
+	          <li v-if="startPage>1">
+	          	<a href="#" v-on:click="prev()" style="width:90px">&laquo; Previous</a>
 	          </li>
-	          
-	          <li v-if="endPage<totalpage"><a href="#"  @click="next()">Next &raquo;</a></li>
+	          <li v-for="i in range(startPage, endPage)" >
+	          	<a href="#" v-on:click="pageChange(i)" :class="i==curpage?'active':''">{{i}}</a>
+	          </li>
+	          <li v-if="endPage<totalpage">
+	          	<a href="#"  @click="next()" style="width:90px">Next &raquo;</a>
+	          </li>
 	        </ul>
-       </div>
+	        </div>
+        </div>
        
-       
-      
     </section>
     
     <script>
@@ -242,7 +117,9 @@
     	el:'.container-mento',
     	data:{
     		mento_list:[],
+    		mento_detail:{},
     		column:'all',
+    		fd:'',
     		
    			page_list:{},
    			curpage:1,
@@ -255,13 +132,15 @@
 			menus:[]
     	},
     	mounted:function(){
-    		this.find();
+    		this.setData();
     	},
     	methods:{
-    		find:function(){
+    		setData:function(){
     			axios.get("http://localhost/mingle/mento/mento_list_vue.do",{
     				params:{
-    					
+    					column:this.column,
+    					fd:this.fd,
+    					page:this.curpage
     				}
     			}).then(response=>{
     				console.log(response.data)
@@ -270,6 +149,7 @@
     			axios.get("http://localhost/mingle/mento/mento_page_vue.do",{
 					params:{
 						column:this.column,
+						fd:this.fd,
 						page:this.curpage
 					}
 				}).then(response=>{
@@ -294,16 +174,20 @@
 			},
     		pageChange:function(page){
 				this.curpage=page
-				this.find()
+				this.setData()
 			},
 			prev:function(){
 				this.curpage=this.startPage>1?this.startPage-1:this.startPage;
-				this.dataSend()
+				this.setData()
 			},
 			next:function(){
 				//this.curpage=this.endPage<totalpage?this.endPage+1:this.endPage;
 				this.curpage=this.endPage+1;
-				this.dataSend();
+				this.setData();
+			},
+			find:function(){
+				this.curpage=1;
+				this.setData();
 			},
 			mentoDetail:function(fno,bool){
 				this.isShow=bool;

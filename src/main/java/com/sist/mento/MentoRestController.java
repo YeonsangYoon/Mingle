@@ -18,14 +18,27 @@ import com.sist.commons.*;
 
 @RestController
 public class MentoRestController {
-	
 	@Autowired
 	private MentoDAO dao;
 	
 	@GetMapping(value = "mento/mento_list_vue.do", produces = "text/plain;charset=UTF-8")
-	public String mento_list_vue() throws Exception{
-			
-		List<MentoVO> list=dao.MentoListData();
+	public String mento_list_vue(int page, String column, String fd) throws Exception{
+		
+		int rowSize=12;
+		int start=(rowSize*page)-(rowSize-1);
+		int end=rowSize*page;
+		
+		Map map=new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("column", column);
+		map.put("fd", fd);
+		
+		List<MentoVO> list=dao.MentoListData(map);
+		for(MentoVO vo:list) {
+			double star = ((double)vo.getSum_star()/vo.getCnt_star());
+			vo.setAvg_star(star);
+		}
 		ObjectMapper obj= new ObjectMapper();
 		String json = obj.writeValueAsString(list);
 		
@@ -34,15 +47,15 @@ public class MentoRestController {
 	}
 	
 	@GetMapping(value="mento/mento_page_vue.do", produces="text/plain;charset=UTF-8")
-	public String food_page(int page, String column) throws Exception{
+	public String food_page(int page, String column, String fd) throws Exception{
 		
-		/*
-		 * Map map=new HashMap(); map.put("column", column);
-		 */
+		Map map=new HashMap();
+		map.put("column", column);
+		map.put("fd", fd);
 		
-		int totalpage=dao.mentoTotalPage();
+		int totalpage=dao.mentoTotalPage(map);
 		
-		final int BLOCK=9;
+		final int BLOCK=5;
 		int startPage=((page-1)/BLOCK*BLOCK)+1;
 		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
 		
@@ -55,8 +68,6 @@ public class MentoRestController {
 		vo.setTotalpage(totalpage);
 		vo.setStartPage(startPage);
 		vo.setEndPage(endPage);
-		
-		System.out.println(vo.getCurpage());
 		
 		ObjectMapper obj=new ObjectMapper();
 		String json= obj.writeValueAsString(vo);

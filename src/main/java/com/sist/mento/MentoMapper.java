@@ -23,14 +23,15 @@ REV_CNT
 CNT_STAR
  */
 public interface MentoMapper {
-	@Select("SELECT MENTO_NO, USER_ID, JOB_CAT, KIND_CAT, CAREER,"
-			+ "JOB, COST, TITLE, INTRO, REGDATE, IMAGE,FOLLOW,"
-			+ " sum_star, rev_cnt, cnt_star "
-			+ "FROM mento_reg")
-	public List<MentoVO> MentoListData();
+	@Select("SELECT MENTO_NO, USER_ID, JOB_CAT,  JOB, COST, TITLE, INTRO, REGDATE, IMAGE, FOLLOW, sum_star, rev_cnt, cnt_star, num "
+			+ "FROM (SELECT MENTO_NO, USER_ID, JOB_CAT,  JOB, COST, TITLE, INTRO, REGDATE, IMAGE, FOLLOW, sum_star, rev_cnt, cnt_star, rownum as num "
+			+ "FROM (SELECT MENTO_NO, USER_ID, JOB_CAT,  JOB, COST, TITLE, INTRO, REGDATE, IMAGE, FOLLOW, sum_star, rev_cnt, cnt_star "
+			+ "FROM mento_reg ORDER BY mento_no ASC)) "
+			+ "WHERE num BETWEEN #{start} AND #{end}")
+	public List<MentoVO> MentoListData(Map map);
 	
-	
-	public int mentoTotalPage();
+	@Select("SELECT CEIL(COUNT(*)/12.0) FROM mento_reg")
+	public int mentoTotalPage(Map map);
 	
 	
 	

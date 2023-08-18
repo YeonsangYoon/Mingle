@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.boxlist:hover{
+.boxhover:hover{
 	cursor:pointer;
 }
 .mento_list_box{
@@ -15,7 +15,13 @@
 	background: white;
 	margin:5px;
 }
-.mento_list_box_bottom{
+.mento_list_box_title{
+	padding: 10px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 26px;
+    font-weight: 600;
 	
 }
 .mento_list_info{
@@ -28,8 +34,14 @@
 .mento_list_info > div > div{
     display:flex;
 }
-.mento_list_info > div > div > span{
-    margin: 0px 10px;
+.mento_list_info_detail_title{
+	width:50px
+}
+.mento_list_info_detail_content{
+	width:90px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .follow{
 	height: 40px;
@@ -49,3 +61,4 @@
     font-weight: 700;
     font-size: 17px;
 }
+
