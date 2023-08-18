@@ -7,9 +7,4 @@
  	<typeAliases>
  		<typeAlias type="com.sist.mento.MentoVO" alias="MentoVO"/>
  	</typeAliases>
- 	<mappers>
- 		<mapper resource="com/sist/mento/mento-mapper.xml"/>
- 		<!-- <mapper resource="com/sist/member/member-mapper.xml"/>
- 		<mapper resource="com/sist/space/space-mapper.xml"/> -->
- 	</mappers>
  </configuration>
