@@ -87,11 +87,11 @@
 		                            </div>
                                     <div class="nice-select" tabindex="0" style="margin-right:20px;">
 		                               <span class="current"> &nbsp;날짜&nbsp; </span>
-		                                  <ul class="list">
-		                                   <p><input type="date"></p>
+		                                  <ul class="list" value="">
+		                                   <li><input type="text" id="datepicker_init_day" placeholder="예약할 날짜를 입력하세요."></li>
 		                                  </ul>
 		                            </div>
-		                            
+    								
                                 </div>
                             
                                 <div class="shop__space__option__right">
@@ -108,7 +108,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6" v-for="vo in space_list">
                             <div class="space__item" >
                             
-                                <div class="space__item__pic set-bg" data-setbg="/mingle/img/product/product-2.jpg">
+                                <div class="space__item__pic set-bg" :data-setbg="vo.poster">
                                   <ul class="space__hover">
                                     <li><a href="#"><img src="/mingle/img/icon/heart.png" alt=""></a></li>
                                   </ul>
@@ -216,6 +216,12 @@
 		  }
 	  }
   })
+ $(function () {
+     $("#datepicker_init_day").datepicker();
+     $("#datepicker_init_day").datepicker('setDate', new Date);
+  });
+
+
  </script>
 </body>
 </html>

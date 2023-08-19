@@ -135,6 +135,7 @@ ol {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: top right;
+	background-size: cover;
 }
 
 .set-bg-left{
@@ -163,10 +164,10 @@ ol {
 
 .primary-btn {
 	display: inline-block;
-	font-size: 13px;
+	font-size: 14px;
 	font-weight: 700;
 	text-transform: uppercase;
-	padding: 14px 30px;
+	padding: 15px 30px;
 	color: #ffffff;
 	background: #000000;
 	letter-spacing: 4px;

@@ -12,9 +12,9 @@ public interface SpaceMapper {
 		  + "FROM space_list WHERE space_id=#{space_id}")
 	public SpaceVO spaceDetailData(int space_id);
 	
-	@Select("SELECT space_id,title,price,max_guest,num "
-			+ "FROM (SELECT space_id,title,price,max_guest,rownum as num "
-			+ "FROM (SELECT/*+INDEX_DESC(space_list PK_SPACE_LIST)*/ space_id,title,price,max_guest "
+	@Select("SELECT space_id,poster,title,price,max_guest,num "
+			+ "FROM (SELECT space_id,poster,title,price,max_guest,rownum as num "
+			+ "FROM (SELECT/*+INDEX_DESC(space_list PK_SPACE_LIST)*/ space_id,poster,title,price,max_guest "
 			+ "FROM space_list)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<SpaceVO> spaceListData(Map map);
