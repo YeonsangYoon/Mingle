@@ -1481,6 +1481,7 @@ ol {
 
 .product__pagination li{
 	margin: 0 5px;
+	display: inline-block;
 }
 
 .product__pagination span {
