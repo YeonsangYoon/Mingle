@@ -6,9 +6,24 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="container">
+<!-- 부제목 -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row" style="text-align: center;">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>회원가입</h4>
+                    <div class="breadcrumb__links">
+                        <a href="${pageContext.request.contextPath}/main/main.do">Home</a>
+                        <span>회원가입</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container" style="margin-top: 30px">
     <form class="register-content">
-        <h3 class="text-center">회원가입</h3>
         <fieldset>
             <div>
                 <label for="userId">아이디 :</label>

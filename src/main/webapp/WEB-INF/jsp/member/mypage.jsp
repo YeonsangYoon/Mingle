@@ -1,6 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- partial:index.partial.html -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row" style="text-align: center;">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>마이페이지</h4>
+                    <div class="breadcrumb__links">
+                        <a href="${pageContext.request.contextPath}/main/main.do">Home</a>
+                        <span>마이페이지</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="app-container">
     <div class="sidebar">
         <div class="account-info">
