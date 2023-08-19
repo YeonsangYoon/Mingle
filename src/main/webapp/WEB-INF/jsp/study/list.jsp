@@ -22,18 +22,19 @@
         <!-- 검색바 -->
         <div id="row">
             <div class="study-search-bar">
+              <form method="post" action="../study/find.do">
                 <label for="writer" class="pretty-checkbox">
-                    <input id="writer" type="checkbox">
+                    <input id="writer" type="checkbox" name="fd" value="N">
                     <span class="checkmark"></span>
                     <span>작성자</span>
                 </label>
                 <label for="title" class="pretty-checkbox">
-                    <input id="title" type="checkbox">
+                    <input id="title" type="checkbox" name="fd" value="T">
                     <span class="checkmark"></span>
                     <span>제목</span>
                 </label>
                 <label for="content" class="pretty-checkbox">
-                    <input id="content" type="checkbox">
+                    <input id="content" type="checkbox" name="fd" value="C">
                     <span class="checkmark"></span>
                     <span>내용</span>
                 </label>
@@ -42,6 +43,7 @@
                 </label>
 
                 <button class="search-btn">검색</button>
+              </form>
             </div>
         </div>
         
@@ -49,7 +51,7 @@
         <div id="row">
             <div class="css-goiz5j" id="headlessui-popover-panel-3" tabindex="-1" data-headlessui-state="open">
                 <ul class="Category_categories__F4wF5">
-                    <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">기술스택</li>
+                    <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">기술 스택</li>
                 </ul>
                 <ul class="LanguageBar_languages__243rH">
                     <li class="LanguageBar_languageIcon__2PTl1 LanguageBar_full__2eorP"><img
@@ -217,7 +219,9 @@
         <!-- 스터디 글 -->
         <div id="row">
             <ul class="studyList_studyList__3xoys">
-                <a v-for="vo in study_list" class="studyItem_studyItem__1Iipn" href="#">
+              <div v-for="vo in study_list">
+                <a class="studyItem_studyItem__1Iipn"
+                	:href="'../study/detail.do?study_id='+vo.study_id">
                     <li>
                         <div class="studyItem_badgeWrapper__3AW7k">
                             <div class="badge_badge__ZfNyB">
@@ -247,12 +251,14 @@
                         </div>
                     </li>
                 </a>
+              </div>
             </ul>
 
             <!-- 페이징 -->
             <div id="row">
                 <div class="text-center">
-                    <ul class="study__pagination">
+                   <div class="product__pagination">
+                    <ul>
                         <li v-if="startpage>1">
                         	<span v-on:click="prev()"><i class="fa fa-angle-left"></i></span>
                         </li>
@@ -263,6 +269,7 @@
                         	<span @click="next()"><i class="fa fa-angle-right"></i></span>
                         </li>
                     </ul>
+                  </div>
                 </div>
             </div>
         </div>

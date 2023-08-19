@@ -22,4 +22,10 @@ public class StudyDAO {
 	{
 		return mapper.studyTotalpage();
 	}
+	
+	// 상세 페이지
+	public StudyVO studyDetailData(int study_id)
+	{
+		return mapper.studyDetailData(study_id);
+	}
 }

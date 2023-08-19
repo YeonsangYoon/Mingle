@@ -23,6 +23,12 @@ public class StudyServiceImpl implements StudyService{
 		// TODO Auto-generated method stub
 		return dao.studyTotalpage();
 	}
+
+	@Override
+	public StudyVO studyDetailData(int study_id) {
+		// TODO Auto-generated method stub
+		return dao.studyDetailData(study_id);
+	}
 	
 	
 }

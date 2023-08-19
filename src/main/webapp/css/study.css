@@ -15,7 +15,7 @@
     border-bottom: 3px solid #f2f2f2;
     padding-bottom: 10px;
     padding-left: 16px;
-    margin-bottom: 25px
+    margin-bottom: 40px
 }
 
 .Category_categoryItem__CfZqy {
@@ -266,37 +266,6 @@
     background-color: #5231d2;
 }
 
-.study__pagination{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.study__pagination li{
-    display: inline-block;
-}
-
-.study__pagination span{
-	cursor: pointer;	
-	display: inline-block;
-	font-size: 16px;
-	font-weight: 700;
-	color: #111111;
-	width: 30px;
-	border: 1px solid transparent;
-	border-radius: 50%;
-	line-height: 30px;
-	text-align: center;
-}
-
-.study__pagination span.active {
-	border-color: #111111;
-}
-
-.study__pagination span:hover {
-	border-color: #111111;
-}
-
 .studyItem_badgeWrapper__3AW7k {
     display: flex;
     align-items: center;
@@ -461,6 +430,20 @@
     text-decoration: none
 }
 
+/*---------------------
+  	insert
+-----------------------*/
+
+.detail-left {
+    width: 50%;
+    float: left;
+}
+
+.detail-right {
+    width: 50%;
+    float: right;
+}
+
 
 /*---------------------
   	insert
@@ -529,3 +512,4 @@
     line-height: 20px;
     height: 20px;
 }
+

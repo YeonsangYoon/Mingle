@@ -3,6 +3,7 @@ package com.sist.study;
 import java.util.*;
 
 import org.apache.ibatis.annotations.Select;
+import org.springframework.web.bind.annotation.GetMapping;
 
 public interface StudyMapper {
 	// 목록
@@ -14,6 +15,13 @@ public interface StudyMapper {
 	public List<StudyVO> studyListData(Map map);
 	
 	// 총 페이지
-	@Select("SELECT CEIL(COUNT(*)/10.0) FROM study")
+	@Select("SELECT CEIL(COUNT(*)/5.0) FROM study")
 	public int studyTotalpage();
+	
+	// 상세페이지
+	@Select("SELECT study_id,title,content,onoff,recruit,contact_type,contact_link,period,deadline "
+			+ "FROM study "
+			+ "WHERE study_id=#{study_id}")
+	public StudyVO studyDetailData(int study_id);
+	
 }

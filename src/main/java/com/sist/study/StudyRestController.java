@@ -2,9 +2,14 @@ package com.sist.study;
 
 import java.util.*;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sist.study.*;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +28,7 @@ public class StudyRestController {
 		int curpage=page;
 		int totalpage=service.studyTotalpage();
 		
-		final int BLOCK=10;
+		final int BLOCK=5;
 		int startpage=((curpage-1)/BLOCK*BLOCK)+1;
 		int endpage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
 		
@@ -57,6 +62,15 @@ public class StudyRestController {
 		retval.put("endpage", endpage);
 		
 		return retval.toJSONString();
+	}
+	
+	@GetMapping(value = "study/study_detail_vue.do",produces = "text/plain;charset=UTF-8")
+	public String study_detail(int study_id) throws Exception
+	{
+		StudyVO vo=service.studyDetailData(study_id);
+		ObjectMapper mapper=new ObjectMapper();
+		String json=mapper.writeValueAsString(vo);
+		return json;
 	}
 
 }
