@@ -18,8 +18,9 @@
 </section>
 <section class="study" id="vue-area">
     <div class="container">
-        <div class="row">
-            <!-- 검색바 -->
+    
+        <!-- 검색바 -->
+        <div id="row">
             <div class="study-search-bar">
                 <label for="writer" class="pretty-checkbox">
                     <input id="writer" type="checkbox">
@@ -43,8 +44,9 @@
                 <button class="search-btn">검색</button>
             </div>
         </div>
-        <div class="row">
-            <!-- 기술분야 탭 -->
+        
+        <!-- 기술분야 탭 -->
+        <div id="row">
             <div class="css-goiz5j" id="headlessui-popover-panel-3" tabindex="-1" data-headlessui-state="open">
                 <ul class="Category_categories__F4wF5">
                     <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">기술스택</li>
@@ -191,18 +193,19 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <!-- 소제목 및 정렬순 -->
+        
+        <!-- 소제목 및 정렬순 -->
+        <div id="row">
             <div class="shop__product__option">
                 <ul class="Category_categories__F4wF5">
                     <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">스터디 목록</li>
                 </ul>
-                <div class="row">
+                <div id="row">
                     <div class="shop__product__option__right" style="text-align: right">
                         <div class="nice-select" tabindex="0">
                             <span class="current">정렬순서</span>
                             <ul class="list">
-                                <li data-valueA="" class="option selected">최신순</li>
+                                <li data-value="" class="option selected">최신순</li>
                                 <li data-value="" class="option">인기순</li>
                             </ul>
                         </div>
@@ -210,8 +213,9 @@
                 </div>
             </div>
         </div>
+        
         <!-- 스터디 글 -->
-        <div class="row">
+        <div id="row">
             <ul class="studyList_studyList__3xoys">
                 <a v-for="vo in study_list" class="studyItem_studyItem__1Iipn" href="#">
                     <li>
@@ -246,15 +250,21 @@
             </ul>
 
             <!-- 페이징 -->
-            <div class="row">
+            <div id="row">
                 <div class="text-center">
-                    <ul class="product__pagination">
-                        <li v-if="startpage>1"><a href="#" v-on:click="prev()">&lt;</a></li>
-                        <li v-for="i in range(startpage,endpage)" :class="i==curpage?'active':''"><a
-                                href="#" v-on:click="selectpage(i)">{{i}}</a></li>
-                        <li v-if="endpage<totalpage"><a href="#" @click="next()">&gt;</a></li>
+                    <ul class="study__pagination">
+                        <li v-if="startpage>1">
+                        	<span v-on:click="prev()"><i class="fa fa-angle-left"></i></span>
+                        </li>
+                        <li v-for="i in range(startpage,endpage)">
+                        	<span :class="i==curpage?'active':''" v-on:click="selectpage(i)">{{i}}</span>
+                        </li>
+                        <li v-if="endpage<totalpage">
+                        	<span @click="next()"><i class="fa fa-angle-right"></i></span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
+	</div>
 </section>

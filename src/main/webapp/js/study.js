@@ -12,7 +12,6 @@ new Vue({
     },
     methods:{
         send:function(){
-            let _this=this
             axios.get("/mingle/study/list_vue.do",{
                 params:{ // 전송할 데이터
                     page:this.curpage
