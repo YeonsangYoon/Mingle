@@ -50,8 +50,8 @@
                             <li><a href="../mento/mento_list.do">멘토링</a>
                             	<ul class="dropdown">
                             		<li><a href="../mento/mento_list.do">멘토 리스트</a></li>
-                            		<li><a href="#">멘토 등록</a></li>
-                            		<li><a href="#">멘토 관리페이지</a></li>
+                            		<li><a href="../mento/mento_regist.do">멘토 등록</a></li>
+                            		<li><a href="../mento/mento_info.do">멘토 관리페이지</a></li>
                             	</ul>
                             </li>
                             <li><a href="#">스터디 모집</a>

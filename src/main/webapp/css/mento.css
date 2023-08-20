@@ -35,9 +35,12 @@
     display:flex;
 }
 .mento_list_info_detail_title{
-	width:50px
+	width:50px;
+	color: blueviolet;
+    font-weight: 900;
 }
 .mento_list_info_detail_content{
+	text-align:left;
 	width:90px;
 	overflow: hidden;
     text-overflow: ellipsis;

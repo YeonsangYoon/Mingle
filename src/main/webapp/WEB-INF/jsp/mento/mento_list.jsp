@@ -28,13 +28,13 @@
     	
     	<!-- Search Section Begin -->
     	<div style="display: flex; justify-content: center;">
-          	<select style="display:inline;">
+          	<select style="display:inline;" v-model="column">
 				<option value="all">전체</option>          	
 				<option value="TITLE">제목</option>          	
-				<option value="JOB">회사</option>          	
-				<option value="CAREER">직업</option>   	
+				<option value="JOB">회사명</option>          	
+				<option value="DEPT">부서명</option>   	
           	</select>
-          	<input type="text" class="input-sm" size=20 >
+          	<input type="text" class="input-sm" size=20 ref="fd" v-model="fd">
           	<input type="button" value="검색" class="btn btn-sm btn-primary" @click="find()">
         </div>
         <!-- Search Section End -->
@@ -46,11 +46,11 @@
             	<div class="col-sm-4 text-center" v-for="vo in mento_list">
             		
             		<!-- 상세보기 -->
-            	  <div class="mento_list_box boxhover" @click="mentoDetail()" >
-            		<div class="mento_list_box_top">
+            	  <div class="mento_list_box "  >
+            		<div class="mento_list_box_top boxhover" @click="mentoDetail(vo.mento_no,true)">
             			<div style="height: 100px;"> 
-            				<h3 class="mento_list_box_title">{{vo.title}}</h3>
-            				<h3 class="mento_list_box_title" style="font-size: 20px !important">{{vo.job}}</h3>
+            				<h3 class="mento_list_box_title">{{vo.job}}</h3>
+            				<h3 class="mento_list_box_title" style="font-size: 20px !important">{{vo.intro}}</h3>
             			</div>
             			<div class="mento_list_info" style="height:100px;">
             				<div style="width: 140px;" >
@@ -59,17 +59,17 @@
 	            					<span class="mento_list_info_detail_content">{{vo.job_cat}}</span> 
 	            				</div>
 	            				<div tyle="margin-top: 5px" >
-	            					<span class="mento_list_info_detail_title">경력</span>
-	            					<span class="mento_list_info_detail_content">{{vo.career}}</span> 
+	            					<span class="mento_list_info_detail_title">부서</span>
+	            					<span class="mento_list_info_detail_content">{{vo.dept}}</span> 
 	            				</div>
 	            				<div tyle="margin-top: 5px" >
-	            					<div class="mento_list_info_detail_title">현직</div>
-	            					<div class="mento_list_info_detail_content">{{vo.job}}</div> 
+	            					<div class="mento_list_info_detail_title">경력</div>
+	            					<div class="mento_list_info_detail_content">{{vo.career}}</div> 
 	            				</div>
 		            		</div>
 		            		<div style="width: 100px; height:100px;">
 		            			<div>
-		            				<img src="${pageContext.request.contextPath}/img/blog/blog-1.jpgg" alt="">
+		            				<img src="${pageContext.request.contextPath}/img/blog/blog-1.jpg" alt="">
 		            				{{vo.image}}
 		            			</div>
 		            		</div>
@@ -98,17 +98,65 @@
         	<div class="product__pagination">
 	        <ul style="display:inline-flex;">
 	          <li v-if="startPage>1">
-	          	<a href="#" v-on:click="prev()" style="width:90px">&laquo; Previous</a>
+	          	<span v-on:click="prev()" >&laquo; Previous</span>
 	          </li>
 	          <li v-for="i in range(startPage, endPage)" >
-	          	<a href="#" v-on:click="pageChange(i)" :class="i==curpage?'active':''">{{i}}</a>
+	          	<span v-on:click="pageChange(i)" :class="i==curpage?'active':''">{{i}}</span>
 	          </li>
 	          <li v-if="endPage<totalpage">
-	          	<a href="#"  @click="next()" style="width:90px">Next &raquo;</a>
+	          	<span  @click="next()">Next &raquo;</span>
 	          </li>
 	        </ul>
 	        </div>
         </div>
+        
+        <div id="dialog" title="멘토 상세보기" v-if="isShow">
+        
+        <table class="table">
+          <tr>
+           <td class="text-center" >
+            <img src="${pageContext.request.contextPath}/img/blog/blog-2.jpg" style="width: 100%">
+           </td>
+          </tr>
+        </table>
+        
+        <table class="table">
+          <tr>
+           <td colspan="2">
+            <h3>{{mento_detail.title}}&nbsp;<span style="color:orange">{{mento_detail.follow}}</span></h3>
+            <br>
+            <h5>{{mento_detail.intro}}</h5>
+           </td>
+          </tr>
+          <tr>
+            <td width="25%">현 재직 기업</td>
+            <td width="75%">{{mento_detail.job}}</td>
+          </tr>
+          <tr>
+            <td width="25%">담당 부서</td>
+            <td width="75%">{{mento_detail.dept}}</td>
+          </tr>
+          <tr>
+            <td width="25%">재직 직군</td>
+            <td width="75%">{{mento_detail.job_cat}}</td>
+          </tr>
+          <tr>
+            <td width="30%">시간당 멘토링 비용</td>
+            <td width="70%">{{mento_detail.cost}}</td>
+          </tr>
+          <tr>
+            <td width="25%">커리어</td>
+            <td width="75%">{{mento_detail.career}}</td>
+          </tr>
+          <tr>
+            <td colspan=2 class="text-center">
+            	<span><a href="../mento/mento_contact.do">멘토링 신청</a></span>
+            	<input type="button" value="닫기" class="btn btn-lg btn-warning" @click="modalClose(false)">
+            </td>
+          </tr>
+          
+        </table>
+      </div>
        
     </section>
     
@@ -127,9 +175,8 @@
    			startPage:0,
    			endPage:0,
    			
-   			isShow:false,
-			posters:[],
-			menus:[]
+   			isShow:false
+			
     	},
     	mounted:function(){
     		this.setData();
@@ -189,31 +236,39 @@
 				this.curpage=1;
 				this.setData();
 			},
-			mentoDetail:function(fno,bool){
+			mentoDetail:function(mento_no,bool){
 				this.isShow=bool;
-				axios.get('http://localhost/web/food/food_detail_vue.do',{
+				axios.get('http://localhost/mingle/mento/mento_detail_vue.do',{
 					params:{
-						fno:fno
+						mento_no:mento_no
 					}
 				}).then(response=>{
 					console.log(response.data)
-					this.food_detail=response.data
-					this.posters=this.food_detail.poster.split("^");
-					console.log(this.posters)
-					if(this.food_detail.menu!='no'){
-						this.menus=this.food_detail.menu.split("원");
-					}
+					this.mento_detail=response.data
+					/* this.posters=this.food_detail.poster.split("^"); */
 					
 					$('#dialog').dialog({
 						autoOpen:false,
 						modal:true,
 						width:700,
-						height:600
+						height:800
 					}).dialog("open")
 					
 				}).catch(error=>{
 					console.log(error.response)
 				})
+			},
+			mentoContact:function(){
+				
+			},
+			modalClose:function(bool){
+				this.isShow=bool;
+				$('#dialog').dialog({
+					autoOpen:false,
+					modal:true,
+					width:700,
+					height:800
+				}).dialog("close")
 			}
     	}
     })

@@ -11,6 +11,23 @@ public class MentoController {
 		return "mento/mento_list";
 	}
 	
+	@GetMapping("mento/mento_contact.do")
+	public String mento_contact() {
+		return "mento/mento_contact";
+	}
+	
+	@GetMapping("mento/mento_regist.do")
+	public String mento_regist() {
+		return "mento/mento_regist";
+	}
+	
+	@GetMapping("mento/mento_info.do")
+	public String mento_info() {
+		return "mento/mento_info";
+	}
+	
+	
+	
 	
 	
 

@@ -19,5 +19,10 @@ public class MentoDAO {
 	public int mentoTotalPage(Map map) {
 		return mapper.mentoTotalPage(map);
 	}
+	
+	public MentoVO mentoDetailData(int mento_no) {
+		return mapper.mentoDetailData(mento_no);
+	}
+	
 
 }
