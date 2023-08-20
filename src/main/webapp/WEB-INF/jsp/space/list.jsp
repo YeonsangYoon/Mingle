@@ -70,48 +70,42 @@
             <div class="row">
                     <div class="shop__space__option">
                         
-                               <div class="shop__space__option__left">
-                                    <div class="nice-select" tabindex="0" style="margin-right:20px;">
-		                               <span class="current">&nbsp;지역&nbsp; </span>
-		                                 <ul class="list">
-		                                    <li data-value="" class="option selected">최신순</li>
-		                                    <li data-value="" class="option">인기순</li>
-		                                 </ul>
-		                            </div>
-                                    <div class="nice-select" tabindex="0" style="margin-right:20px;">
-		                               <span class="current"> &nbsp;카테고리&nbsp; </span>
-		                                 <ul class="list">
-		                                    <li data-value="" class="option selected">최신순</li>
-		                                    <li data-value="" class="option">인기순</li>
-		                                 </ul>
-		                            </div>
-                                    <div class="nice-select" tabindex="0" style="margin-right:20px;">
-		                               <span class="current"> &nbsp;날짜&nbsp; </span>
-		                                  <ul class="list" value="">
-		                                   <li><input type="text" id="datepicker_init_day" placeholder="예약할 날짜를 입력하세요."></li>
-		                                  </ul>
-		                            </div>
-    								
-                                </div>
-                            
-                                <div class="shop__space__option__right">
-                                   <div class="space__sidebar__search">
-			                            <form action="#">
-			                                <input type="text" placeholder="검색어를 입력하세요." size="25">
-			                                <button type="submit"><span class="icon_search"></span></button>
-			                            </form>
-			                       </div>
-                                </div>
+                      <div class="nice-select" tabindex="0" style="margin-right:20px;">
+                        <span class="current">&nbsp;지역&nbsp; </span>
+                          <ul class="list">
+                           <li data-value="" class="option selected">최신순</li>
+                           <li data-value="" class="option">인기순</li>
+                          </ul>
+                      </div>
+                      <div class="nice-select" tabindex="0" style="margin-right:20px;">
+                        <span class="current"> &nbsp;카테고리&nbsp; </span>
+                          <ul class="list">
+                            <li data-value="" class="option selected">최신순</li>
+                            <li data-value="" class="option">인기순</li>
+                          </ul>
+                      </div>
+                      <div class="nice-select" tabindex="0" style="margin-right:20px;">
+                        <span class="current"> &nbsp;날짜&nbsp; </span>
+                          <ul class="list" value="">
+                            <li><input type="text" id="datepicker_init_day" placeholder="예약할 날짜를 입력하세요."></li>
+                            </ul>
+                      </div>
+                      <div class="space__sidebar__search">
+                        <input type="text" placeholder="검색어를 입력하세요." size="25">
+                        <button type="submit"><span class="icon_search"></span></button>
+                      </div>
+  
                     </div>
                     
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6" v-for="vo in space_list">
                             <div class="space__item" >
                             
-                                <div class="space__item__pic set-bg" :data-setbg="vo.poster">
-                                  <ul class="space__hover">
-                                    <li><a href="#"><img src="/mingle/img/icon/heart.png" alt=""></a></li>
-                                  </ul>
+                                <div class="space__item__pic">
+                                  <a :href="'../space/detail.do?sno='+vo.space_id"><img :src="vo.poster"></a>
+	                                  <ul class="space__hover">
+	                                    <li><a href="../space/list.do"><img src="/mingle/img/icon/heart.png" alt=""></a></li>
+	                                  </ul>
                                 </div>
                                 
                                 <div class="space__item__text">
@@ -131,11 +125,17 @@
                     <div class="row">
                         <div class="col-lg-12">
                         <%-- class="active" --%>
-                            <div class="space__pagination inline">
+                            <div class="product__pagination inline">
                               <ul>
-                                <li v-if="startPage>1" @click="prev()">&laquo;</li>
-                                <li href="#" v-for="p in range(startPage,endPage)" :class="p==curpage?'active':''" class="hoverable" @click="pageChange(p)">{{p}}</li>
-                                <li v-if="endPage<totalpage" @click="next()">&raquo;</li>
+                                <li v-if="startPage>1">
+                           	      <span v-on:click="prev()"><i class="fa fa-angle-left"></i></span>
+                                </li>
+                                <li href="#" v-for="p in range(startPage,endPage)">
+                                  <span :class="p==curpage?'active':''" v-on:click="selectPage(P)">{{p}}
+                                </li>
+                                <li v-if="endPage<totalpage">
+                                  <span @click="next()"><i class="fa fa-angle-right"></i></span>
+                                </li>
                               </ul>
                             </div>
                         </div>
@@ -202,7 +202,7 @@
 			  }
 			  return arr
 		  },
-		  pageChange:function(page){
+		  selectPage:function(page){
 			  this.curpage=page
 			  this.dataReceive()
 		  },
