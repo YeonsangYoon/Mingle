@@ -10,5 +10,5 @@ public class StudyVO {
 	private int study_id,hit,recruit;
 	private String title,content,nickname,dbday,deadline,period,onoff,contact_type,contact_link;
 	private Date regdate;
-	private String[] techs;
+	private List<String> techs;
 }

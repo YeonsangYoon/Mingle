@@ -20,7 +20,7 @@
     <div class="container">
     
         <!-- 검색바 -->
-        <div id="row">
+        <div class="row-study">
             <div class="study-search-bar">
               <form method="post" action="../study/find.do">
                 <label for="writer" class="pretty-checkbox">
@@ -48,7 +48,7 @@
         </div>
         
         <!-- 기술분야 탭 -->
-        <div id="row">
+        <div class="row-study">
             <div class="css-goiz5j" id="headlessui-popover-panel-3" tabindex="-1" data-headlessui-state="open">
                 <ul class="Category_categories__F4wF5">
                     <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">기술 스택</li>
@@ -197,12 +197,12 @@
         </div>
         
         <!-- 소제목 및 정렬순 -->
-        <div id="row">
+        <div class="row-study">
             <div class="shop__product__option">
                 <ul class="Category_categories__F4wF5">
                     <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">스터디 목록</li>
                 </ul>
-                <div id="row">
+                <div>
                     <div class="shop__product__option__right" style="text-align: right">
                         <div class="nice-select" tabindex="0">
                             <span class="current">정렬순서</span>
@@ -217,7 +217,7 @@
         </div>
         
         <!-- 스터디 글 -->
-        <div id="row">
+        <div class="row-study">
             <ul class="studyList_studyList__3xoys">
               <div v-for="vo in study_list">
                 <a class="studyItem_studyItem__1Iipn"
@@ -237,9 +237,9 @@
                         <h1 class="studyItem_title__2B_2o">{{vo.title}}</h1>
 
                         <ul class="studyItem_content__1mJ9M">
-                            <li class="studyItem_language__20yqw">
+                            <li class="studyItem_language__20yqw" v-for="tech in vo.techs">
                                 <img class="studyItem_languageImage__1AfGa" title="java"
-                                     src="../img/language/figma.svg" alt="language">
+                                     :src="'../img/language/'+tech+'.svg'" alt="language">
                             </li>
                         </ul>
                         <div class="study_info">
@@ -255,7 +255,7 @@
             </ul>
 
             <!-- 페이징 -->
-            <div id="row">
+            <div class="row-study">
                 <div class="text-center">
                    <div class="product__pagination">
                     <ul>

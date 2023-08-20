@@ -22,6 +22,10 @@ public class StudyDAO {
 	{
 		return mapper.studyTotalpage();
 	}
+
+	public List<Map<String, Object>> getTechListData(int start, int end){
+		return mapper.getTechListData(start, end);
+	}
 	
 	// �� ������
 	public StudyVO studyDetailData(int study_id)
