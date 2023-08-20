@@ -13,20 +13,17 @@ public class StudyServiceImpl implements StudyService{
 	private StudyDAO dao;
 
 	@Override
-	public List<StudyVO> studyListData(Map map) {
-		// TODO Auto-generated method stub
-		return dao.studyListData(map);
+	public List<StudyVO> studyListData(int start, int end) {
+		return dao.studyListData(start, end);
 	}
 
 	@Override
 	public int studyTotalpage() {
-		// TODO Auto-generated method stub
 		return dao.studyTotalpage();
 	}
 
 	@Override
 	public StudyVO studyDetailData(int study_id) {
-		// TODO Auto-generated method stub
 		return dao.studyDetailData(study_id);
 	}
 	

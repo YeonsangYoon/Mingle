@@ -11,19 +11,19 @@ public class StudyDAO {
 	@Autowired
 	private StudyMapper mapper;
 	
-	// ¸ñ·Ï
-	public List<StudyVO> studyListData(Map map)
+	// ï¿½ï¿½ï¿½
+	public List<StudyVO> studyListData(int start, int end)
 	{
-		return mapper.studyListData(map);
+		return mapper.studyListData(start, end);
 	}
 	
-	// ÃÑ ÆäÀÌÁö
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int studyTotalpage()
 	{
 		return mapper.studyTotalpage();
 	}
 	
-	// »ó¼¼ ÆäÀÌÁö
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public StudyVO studyDetailData(int study_id)
 	{
 		return mapper.studyDetailData(study_id);

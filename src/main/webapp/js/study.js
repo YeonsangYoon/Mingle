@@ -20,9 +20,9 @@ new Vue({
                 console.log(response.data);
                 this.curpage = response.data.curpage;
                 this.totalpage = response.data.totalpage;
-                this.startpage = response.data.startpage;
-                this.endpage = response.data.endpage;
                 this.study_list = response.data.list;
+                this.startpage = (Math.trunc((this.curpage-1)/5)*5) + 1;
+                this.endpage = (this.startpage+4 > this.totalpage) ? this.totalpage : this.startpage+4;
             })
         },
         range:function(start,end){
