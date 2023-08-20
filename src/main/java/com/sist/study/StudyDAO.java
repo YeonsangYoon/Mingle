@@ -11,25 +11,33 @@ public class StudyDAO {
 	@Autowired
 	private StudyMapper mapper;
 	
-	// ï¿½ï¿½ï¿½
+	// ½ºÅÍµğ ¸ñ·Ï
 	public List<StudyVO> studyListData(int start, int end)
 	{
 		return mapper.studyListData(start, end);
 	}
 	
-	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ÃÑ ÆäÀÌÁö
 	public int studyTotalpage()
 	{
 		return mapper.studyTotalpage();
 	}
 
-	public List<Map<String, Object>> getTechListData(int start, int end){
+	// ±â¼ú ¸ñ·Ï
+	public List<Map<String, Object>> getTechListData(int start, int end)
+	{
 		return mapper.getTechListData(start, end);
 	}
 	
-	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// »ó¼¼ ÆäÀÌÁö
 	public StudyVO studyDetailData(int study_id)
 	{
 		return mapper.studyDetailData(study_id);
+	}
+	
+	// °Ë»ö ÆäÀÌÁö
+	public List<StudyVO> studyFindData(Map map)
+	{
+		return mapper.studyFindData(map);
 	}
 }

@@ -56,5 +56,9 @@ public class StudyServiceImpl implements StudyService{
 		return dao.studyDetailData(study_id);
 	}
 	
-	
+	@Override
+	public List<StudyVO> studyFindData(Map map) {
+		// TODO Auto-generated method stub
+		return dao.studyFindData(map);
+	}
 }

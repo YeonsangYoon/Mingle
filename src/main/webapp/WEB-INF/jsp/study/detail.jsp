@@ -26,22 +26,22 @@
     <!-- 프로그램 정보 -->
 	<section class="shop spad">
 	 <div class="container" id="sdetail">
-	  <h2>{{vo.title}}</h2>
-	  <div style="height: 20px"></div>
+	  <h2>${vo.title}</h2>
+	  <div style="height: 30px"></div>
 	  <div class="row">
         <div class="col-sm-6">
           <table class="table">
             <tr>
 		      <th width="20%">진행방식</th>
-		      <td width="80%">{{vo.onoff}}</td>
+		      <td width="80%">${vo.onoff}</td>
             </tr>
             <tr>
 		      <th width="20%">시작예정일</th>
-		      <td width="80%">{{vo.deadline}}</td>
+		      <td width="80%">${vo.deadline}</td>
             </tr>
             <tr>
 		      <th width="20%">진행기간</th>
-		      <td width="80%">{{vo.period}}</td>
+		      <td width="80%">${vo.period}</td>
             </tr>
           </table>
         </div>
@@ -49,15 +49,15 @@
           <table class="table">
             <tr>
 		      <th width="20%">모집인원</th>
-		      <td width="80%">{{vo.recruit}}</td>
+		      <td width="80%">${vo.recruit}명</td>
             </tr>
             <tr>
 		      <th width="20%">기술스택</th>
-		      <td width="80%">{{vo.techs}}</td>
+		      <td width="80%">${vo.techs}</td>
             </tr>
             <tr>
 		      <th width="20%">연락방법</th>
-		      <td width="80%">{{vo.contact_type}}&nbsp;{{vo.contact_link}}</td>
+		      <td width="80%">${vo.contact_type}:&nbsp;<a href="${vo.contact_link}">${vo.contact_link}</a></td>
             </tr>
           </table>
         </div>
@@ -66,8 +66,8 @@
       <div class="container">
       	<table class="table">
       		<tr>
-      			<td>
-      				{{vo.content}}
+      			<td style="padding-top: 30px;">
+      				${vo.content}
       			</td>
       		</tr>
       	</table>
@@ -118,29 +118,6 @@
 	</section>
 	
 	<script>
-	new Vue({
-		el:'#sdetail',
-		data:{
-			study_id:${study_id},
-			study_detail:{}
-		},
-		mounted:function(){
-			// 상세정보
-			axios.get('../study/study_detail_vue.do',{
-				params:{
-					study_id:this.study_id
-				}
-			}).then(res=>{
-				console.log(res.data)
-				this.study_detail=res.data
-			}).catch(error=>{
-				console.log(error.res)
-			})
-		},
-		methods:{
-			
-		}
-	})
 	</script>
 </body>
 </html>

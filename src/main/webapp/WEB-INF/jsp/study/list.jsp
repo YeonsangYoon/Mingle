@@ -225,7 +225,7 @@
                     <li>
                         <div class="studyItem_badgeWrapper__3AW7k">
                             <div class="badge_badge__ZfNyB">
-                                <div class="badge_new__DZ5tY">new</div>
+                                <div class="badge_new__DZ5tY"></div>
                             </div>
                         </div>
 
