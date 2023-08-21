@@ -19,7 +19,7 @@
 	  p:password="#{db['password']}"
 	/>
 	<!--  트랜잭션 선언 -->
-	<tx:annotation-driven/>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 
 	<bean id="transactionManager"
 	  class="org.springframework.jdbc.datasource.DataSourceTransactionManager"

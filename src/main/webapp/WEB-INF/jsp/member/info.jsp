@@ -108,7 +108,8 @@
         </div>
         <div id="withdraw-modal" class="modal" style="height: 300px; display: none;">
             <div class="login-content">
-                <h3 class="title text-center">비밀번호 재확인</h3>
+                <p style="font-size: 18px;">탈퇴 시 삭제된 데이터는 복구되지 않습니다.</p>
+                <p style="font-size: 18px;">정말 탈퇴하시겠습니까?</p>
                 <form>
                     <div class="input-div pass">
                         <div class="i">

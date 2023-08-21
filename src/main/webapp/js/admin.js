@@ -150,21 +150,34 @@ function withdrawMemberRequest(){
         pwd.focus();
         return;
     }
-    // 추후 기능 완성
-    // $.post('/mingle/mypage/withdraw.do',{
-    //     pwd : pwd.val()
-    // }, 'text')
-    //     .done(function (result){
-    //         if(result === 'OK'){
-    //             alert('회원 탈퇴 동작 수행');
-    //         }
-    //         else if(result === 'NOPWD'){
-    //             alert('잘못된 비밀번호 입니다');
-    //         }
-    //     })
-    //     .fail(function (){
-    //         alert('비밀번호 확인에 실패했습니다');
-    //     })
+    $.post('/mingle/mypage/checkPassword.do',{
+        pwd : pwd.val()
+    }, 'text')
+        .done(function (result){
+            if(result === 'OK'){
+                $.post('/mingle/auth/withdraw.do',{
+                    pwd : pwd.val()
+                })
+                    .done(function (res){
+                        if(res === 'OK'){
+                            alert('회원탈퇴 완료');
+                            location.href = '/mingle/main/main.do';
+                        }
+                        else if(res === 'NOPWD'){
+                            alert('잘못된 비밀번호입니다');
+                        }
+                        else{
+                            alert('회원가입 실패');
+                        }
+                    })
+            }
+            else if(result === 'NOPWD'){
+                alert('잘못된 비밀번호입니다');
+            }
+        })
+        .fail(function (){
+            alert('비밀번호 확인에 실패했습니다');
+        })
 }
 
 $('#pwd-edit').keydown(function(e){
