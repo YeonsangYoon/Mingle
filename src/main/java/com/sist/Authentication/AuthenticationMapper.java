@@ -2,6 +2,7 @@ package com.sist.Authentication;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -30,4 +31,16 @@ public interface AuthenticationMapper {
             "#{detail_address}," +
             "SYSDATE)")
     public int insertMember(MemberVO vo);
+
+    @Update("UPDATE MEMBER SET " +
+                "USER_NAME=#{user_name}," +
+                "NICKNAME=#{nickname}," +
+                "GENDER=#{gender}," +
+                "PHONE=#{phone}," +
+                "email=#{email}," +
+                "BIRTHDAY=#{birthday}," +
+                "ADDRESS=#{address}," +
+                "DETAIL_ADDRESS=#{detail_address} " +
+            "WHERE USER_ID=#{user_id}")
+    public int updateMember(MemberVO vo);
 }

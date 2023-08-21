@@ -572,7 +572,7 @@
 }
 
 .info-content{
-    margin: 40px;
+    margin: 10px 40px 40px 40px;
     padding: 0 100px;
 }
 .info-content .row{
@@ -585,10 +585,55 @@
     font-size: 16px;
     margin:0;
 }
-.info-content input{
+.info-content input[type="text"],
+.info-content input[type="email"]{
     text-align: left;
     font-size: 16px;
     line-height: 30px;
+    width: 280px;
+    padding-left: 10px;
+}
+.info-content input[type="date"]{
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+}
+.info-content input[type="radio"] {
+    display: none;
+}
+.info-content label{
+    display: inline-block;
+    margin : 0 10px 0 0;
+    padding: 6px 12px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+.info-content input[type="radio"]:checked + label {
+    background-color: #704DE4;
+    color: white;
+}
+.info-content button{
+    display: inline-block;
+    margin : 0 0 0 10px;
+    padding: 6px 14px;
+    border-radius: 10px;
+    background-color: #704DE4;
+    color: white;
+    font-size: 14px;
+    border: none;
+}
+
+.info-content button.confirm{
+    margin: 20px 0 0 10px;
+}
+.info-content button.cancel{
+    background-color: #dcdcdc;
+    color: black;
+}
+.info-content button:hover{
+    opacity: 0.8;
 }
 
 .info-modify{

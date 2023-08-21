@@ -80,4 +80,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         MemberVO member = dao.getMemberByID(user_id);
         return pwdEncoder.matches(pwd, member.getPassword());
     }
+
+    @Override
+    public int updateMember(MemberVO member) {
+        return dao.updateMember(member);
+    }
 }

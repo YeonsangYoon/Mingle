@@ -31,4 +31,8 @@ public class AuthenticationDAO {
     public int insertMember(MemberVO vo){
         return mapper.insertMember(vo);
     }
+
+    public int updateMember(MemberVO vo){
+        return mapper.updateMember(vo);
+    }
 }

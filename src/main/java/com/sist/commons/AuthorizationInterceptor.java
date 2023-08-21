@@ -16,6 +16,12 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             "/mingle/auth/*"
     };
 
+    private static final String[] authUrlsCanAccessAnyone = {
+            "/mingle/auth/logout.do",
+            "/mingle/auth/dupIdCheck.do",
+            "/mingle/auth/dupNicknameCheck.do"
+    };
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
@@ -39,7 +45,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 
     private boolean isDuplicatedAuthentication(String uri){
         return PatternMatchUtils.simpleMatch("/mingle/auth/*", uri) &&
-                !PatternMatchUtils.simpleMatch("/mingle/auth/logout.do", uri);
+                !PatternMatchUtils.simpleMatch(authUrlsCanAccessAnyone, uri);
     }
 
     private boolean isWhiteList(String uri){

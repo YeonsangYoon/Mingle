@@ -10,4 +10,5 @@ public interface AuthenticationService {
     public int getNicknameCount(String nickname);
     public int addMember(MemberVO member);
     public boolean isValidPassword(String user_id, String pwd);
+    public int updateMember(MemberVO member);
 }

@@ -3,9 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="app-content">
     <div class="app-content-header">
-        <h1 class="app-content-headerText">회원 정보</h1>
+        <h1 class="app-content-headerText">회원 정보 수정</h1>
     </div>
-    <div class="info-content">
+    <div class="info-content edit-info-content">
         <div class="row">
             <div class="col-sm-3">
                 <p>아이디</p>
@@ -27,7 +27,7 @@
                 <p>이름</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>${member.user_name}</p>
+                <input id="edit-user-name" type="text" value="${member.user_name}">
             </div>
         </div>
         <div class="row">
@@ -35,7 +35,7 @@
                 <p>닉네임</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>${member.nickname}</p>
+                <input id="edit-nickname" type="text" value="${member.nickname}">
             </div>
         </div>
         <div class="row">
@@ -43,7 +43,10 @@
                 <p>성별</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>${member.gender}</p>
+                <p>
+                    <input id="info-man" type="radio" name="gender" value="m" ${member.gender=='남자' ? 'checked' : ''}><label for="info-man">남자</label>
+                    <input id="info-woman" type="radio" name="gender" value="w" ${member.gender=='여자' ? 'checked' : ''}><label for="info-woman">여자</label>
+                </p>
             </div>
         </div>
         <div class="row">
@@ -51,7 +54,7 @@
                 <p>전화번호</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>${member.phone}</p>
+                <input id="edit-phone" type="text" value="${member.phone}">
             </div>
         </div>
         <div class="row">
@@ -59,7 +62,7 @@
                 <p>이메일</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>${member.email}</p>
+                <input id="edit-email" type="email" value="${member.email}">
             </div>
         </div>
         <div class="row">
@@ -67,7 +70,7 @@
                 <p>생년 월일</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>${member.birthday}</p>
+                <input id="edit-birthday" type="date" value="${member.birthday}">
             </div>
         </div>
         <div class="row">
@@ -75,7 +78,8 @@
                 <p>주소</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>${member.address}</p>
+                <input id="edit-address" type="text" value="${member.address}" readonly>
+                <button id="address-check" onclick="openAddressSearch()">주소검색</button>
             </div>
         </div>
         <div class="row">
@@ -83,44 +87,12 @@
                 <p>상세 주소</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>${member.detail_address}</p>
+                <input id="edit-detail-address" type="text" value="${member.detail_address}">
             </div>
         </div>
-    </div>
-    <div class="info-modify">
-        <a href="#edit-profile-modal" rel="modal:open" id="edit-profile-button">회원 정보 수정</a>
-        <a href="#withdraw-modal" rel="modal:open" id="withdraw-button">회원 탈퇴</a>
-        <div id="edit-profile-modal" class="modal" style="height: 300px; display: none;">
-            <div class="login-content">
-                <h3 class="title text-center">비밀번호 재확인</h3>
-                <form>
-                    <div class="input-div pass">
-                        <div class="i">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                        <div class="div">
-                            <input type="password" class="input" id="pwd-edit" autocomplete="off" placeholder="비밀번호 입력">
-                        </div>
-                    </div>
-                    <input type="button" value="확인" class="btn okBtn" onclick="editInfoPage()">
-                </form>
-            </div>
-        </div>
-        <div id="withdraw-modal" class="modal" style="height: 300px; display: none;">
-            <div class="login-content">
-                <h3 class="title text-center">비밀번호 재확인</h3>
-                <form>
-                    <div class="input-div pass">
-                        <div class="i">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                        <div class="div">
-                            <input type="password" class="input" id="pwd-withdraw" autocomplete="off" placeholder="비밀번호 입력">
-                        </div>
-                    </div>
-                    <input type="button" value="확인" class="btn okBtn" onclick="withdrawMemberRequest()">
-                </form>
-            </div>
+        <div class="text-center">
+            <button class="confirm" onclick="editInfoRequest()">정보수정</button>
+            <button class="cancel" onclick="history.back()">취소</button>
         </div>
     </div>
 </div>
