@@ -27,7 +27,7 @@
         <fieldset>
             <div>
                 <label for="userId">아이디 :</label>
-                <input type="text" id="userId" placeholder="아이디 입력 후 중복체크" autocomplete="off">
+                <input type="text" id="userId" placeholder="아이디 입력 후 중복체크" oninput="id_change()" autocomplete="off">
                 <span id="MsgId" class="none">유효성체크</span>
                 <input type="button" onclick="ck_id()" value="중복체크">
             </div>
@@ -48,7 +48,7 @@
             </div>
             <div>
                 <label for="nickname">닉네임 :</label>
-                <input type="text" id="nickname" placeholder="닉네임 입력 후 중복체크" autocomplete="off">
+                <input type="text" id="nickname" placeholder="닉네임 입력 후 중복체크" oninput="nick_change()" autocomplete="off">
                 <span id="MsgNickName" class="none">유효성체크</span>
                 <input type="button" onclick="ck_nickname()" value="중복체크">
             </div>

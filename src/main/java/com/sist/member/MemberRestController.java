@@ -46,6 +46,7 @@ public class MemberRestController {
             return "DUPNICKNAME";
         }
         else if(service.updateMember(vo) == 1){
+            session.setAttribute("nickname", vo.getNickname());
             return "OK";
         }
         return "FAIL";
