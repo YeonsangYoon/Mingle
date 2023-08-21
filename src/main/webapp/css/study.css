@@ -15,7 +15,7 @@
     border-bottom: 3px solid #f2f2f2;
     padding-bottom: 10px;
     padding-left: 16px;
-    margin-bottom: 40px
+    margin-bottom: 20px
 }
 
 .Category_categoryItem__CfZqy {
@@ -110,7 +110,7 @@
     flex-wrap: wrap;
     grid-gap: 10px;
     gap: 10px;
-    margin-bottom: 100px
+    margin-bottom: 50px
 }
 
 .LanguageBar_languageIcon__2PTl1 {
@@ -431,21 +431,6 @@
   	insert
 -----------------------*/
 
-.detail-left {
-    width: 50%;
-    float: left;
-}
-
-.detail-right {
-    width: 50%;
-    float: right;
-}
-
-
-/*---------------------
-  	insert
------------------------*/
-
 /* * {
   margin: 0;
   padding: 0;
@@ -455,10 +440,6 @@
 
 .insertpage {
   display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -17px -54px;
 }
 
 .select-dropdown {

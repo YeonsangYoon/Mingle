@@ -27,6 +27,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"  type="text/css"/>
 <!-- jQuery Modal -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
   	<tiles:insertAttribute name="header"/>
@@ -46,14 +48,11 @@
     <script src="${pageContext.request.contextPath}/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <!-- 사용자 정의 js -->
     <script src="${pageContext.request.contextPath}/js/main.js"></script>
     <script src="${pageContext.request.contextPath}/js/member.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin.js"></script>
-    <script src="${pageContext.request.contextPath}/js/study.js"></script>
     <script src="${pageContext.request.contextPath}/js/space_carousel.js"></script>
 	<script src="${pageContext.request.contextPath}/js/mento.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
