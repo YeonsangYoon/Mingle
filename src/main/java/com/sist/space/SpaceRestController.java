@@ -2,6 +2,8 @@ package com.sist.space;
 
 import java.util.*;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,49 +13,42 @@ import com.sist.commons.PageVO;
 
 @RestController
 public class SpaceRestController {
+	private static final int SPACE_COUNT_IN_PAGE = 12;
+
 	@Autowired
-	private SpaceServiceImpl service;
+	private SpaceService service;
 	
 	@GetMapping(value = "space/list_vue.do", produces = "text/plain;charset=UTF-8")
-	public String space_list_vue(int page, String category) throws Exception
-	{
-		Map map=new HashMap();
-		map.put("category", category);
-		int rowSize=12;
-		int start=(page-1)*rowSize+1;
-		int end=page*rowSize;
-		map.put("start", start);
-		map.put("end", end);
-		List<SpaceVO> list=service.spaceListByCategory(map);
+	public String space_list_vue(int page, String category) throws JsonProcessingException {
+		Map<String, Object> listParam=new HashMap<>();
+		listParam.put("category", category);
+		listParam.put("start", (page - 1) * SPACE_COUNT_IN_PAGE + 1);
+		listParam.put("end", page * SPACE_COUNT_IN_PAGE);
+		List<SpaceVO> list=service.spaceListByCategory(listParam);
+
+		int totalpage = service.spaceTotalpage(category);
+
 		ObjectMapper mapper=new ObjectMapper();
-		String json=mapper.writeValueAsString(list);
-		return json;
+		Map<String, Object> json = new HashMap<>();
+		json.put("totalpage", totalpage);
+		json.put("list", list);
+
+		return mapper.writeValueAsString(new JSONObject(json));
 	}
-	
-	@GetMapping(value = "space/list_pagination_vue.do", produces = "text/plain;charset=UTF-8")
-	public String space_pagination(int page,String category) throws Exception{
-		
-		Map map=new HashMap();
-		map.put("category", category);
-		int totalpage=service.spaceTotalpage(map);
-		
-		final int BLOCK=10;
-		int startPage=((page-1)/BLOCK*BLOCK)+1;
-		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
-		
-		if(endPage>totalpage) {
-			endPage=totalpage;
-		}
-		
-		PageVO vo=new PageVO();
-		vo.setTotalpage(totalpage);
-		vo.setCurpage(page);
-		vo.setStartPage(startPage);
-		vo.setEndPage(endPage);
-		
-		ObjectMapper mapper=new ObjectMapper();
-		String json=mapper.writeValueAsString(vo);
-		return json;
-	}
-	
 }
+
+/*
+{
+	"totalpage" : 123,
+	"list" : [
+	 	{
+	 		space_id : 141,
+	 		...
+	 	},
+	 	{
+
+	 	},
+	 	...
+	 ]
+}
+ */

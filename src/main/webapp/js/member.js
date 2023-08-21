@@ -103,6 +103,15 @@ function ck_id(){
         })
 }
 
+function id_change(){
+    $('#MsgId').attr('class', 'none');
+    $('#userId').css('background-color', 'rgb(255, 255, 255)');
+}
+function nick_change(){
+    $('#MsgNickName').attr('class', 'none');
+    $('#nickname').css('background-color', 'rgb(255, 255, 255)');
+}
+
 function ck_nickname(){
     let nickname = $('#nickname');
     let MsgNickname = $('#MsgNickName');

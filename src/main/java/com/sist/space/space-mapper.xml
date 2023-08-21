@@ -14,7 +14,7 @@
         ))
     WHERE num BETWEEN #{start} AND #{end}
    </select>
-   <select id="spaceTotalpage" resultType="int" parameterType="hashMap">
+   <select id="spaceTotalpage" resultType="int" parameterType="String">
      SELECT CEIL(COUNT(*)/12.0) FROM space_list
      <if test="category!='all'">
        WHERE category=#{category}

@@ -1,6 +1,7 @@
 package com.sist.space;
 import java.util.*;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 /*
 private int space_id,avg_rate,cnt_rate,price,min_guest,max_guest,starttime,endtime,hit;
@@ -9,9 +10,9 @@ private String title,subject,phone,address,latitude,longitude,region_code,descri
 import com.sist.space.*;
 public interface SpaceMapper {
 	/* --------------------- List ------------------------*/
-	public List<SpaceVO> spaceListByCategory(Map map);
+	public List<SpaceVO> spaceListByCategory(Map<String, Object> map);
 
-	public int spaceTotalpage(Map map);
+	public int spaceTotalpage(@Param("category") String category);
 	/* --------------------- List ------------------------*/
 
 	

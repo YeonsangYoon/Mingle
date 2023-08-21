@@ -9,14 +9,14 @@ public class SpaceDAO {
 	@Autowired
 	private SpaceMapper mapper;
 	
-	public List<SpaceVO> spaceListByCategory(Map map)
+	public List<SpaceVO> spaceListByCategory(Map<String, Object> map)
 	{
 		return mapper.spaceListByCategory(map);
 	}
 
-	public int spaceTotalpage(Map map)
+	public int spaceTotalpage(String category)
 	{
-		return mapper.spaceTotalpage(map);
+		return mapper.spaceTotalpage(category);
 	}
 	
 	public SpaceVO spaceDetailData(int space_id)
