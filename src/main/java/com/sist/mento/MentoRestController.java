@@ -92,5 +92,56 @@ public class MentoRestController {
 		return json;
 		
 	}
+	
+	//문자 제거
+	@GetMapping(value="mento/mento_edit_data.do", produces="text/plain;charset=UTF-8")
+	public String mento_edit_data() throws Exception{
+		List<MentoVO> list=dao.mentoEdit();
+		
+		for(MentoVO vo:list) {
+			Map map=new HashMap();
+			
+			String intro=vo.getIntro().replaceAll("(<p>)", "");
+			intro=intro.replaceAll("(</p>)", "");
+			intro=intro.replaceAll("(<br>)", "");
+			
+			String career=vo.getCareer().replaceAll("(<p>)", "");
+			career=career.replaceAll("(</p>)", "");
+			career=career.replaceAll("(<br>)", "");
+			
+			int mento_no=vo.getMento_no();
+			
+			System.out.println(vo.getMento_no());
+			System.out.println(intro);
+			
+			System.out.println("---------------");
+			map.put("intro", intro);
+			map.put("mento_no", mento_no);
+			map.put("career", career);
+			
+			dao.mentoEditUpdate(map);
+			System.out.println("---------------");
+			
+		}
+		/*
+		 * 
+		 * mentoEdit:function(){
+				axios.get("http://localhost/mingle/mento/mento_edit_data.do",{
+    				params:{
+    				
+    				}
+    			}).then(response=>{
+    				console.log(response.data)
+    			})
+			}
+		 */
+		
+		ObjectMapper mapper=new ObjectMapper();
+		
+		return "편집 종료";
+		
+	}
+	
+	
 
 }

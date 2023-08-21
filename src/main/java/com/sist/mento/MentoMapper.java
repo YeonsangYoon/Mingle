@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 /*
  * MENTO_NO
@@ -38,6 +39,16 @@ public interface MentoMapper {
 			+ "FROM mento_reg "
 			+ "WHERE mento_no=#{mento_no}")
 	public MentoVO mentoDetailData(int mento_no);
+	
+	
+	
+	@Select("SELECT mento_no, intro, career FROM mento_reg ORDER BY MENTO_NO")
+	public List<MentoVO> mentoEdit();
+	
+	@Update("UPDATE mento_reg SET INTRO = #{intro}, CAREER = #{career} WHERE mento_no=#{mento_no}")
+	public void mentoEditUpdate(Map map);
+	
+	
 	
 	
 	

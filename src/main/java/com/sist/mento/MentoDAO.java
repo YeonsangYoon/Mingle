@@ -24,5 +24,12 @@ public class MentoDAO {
 		return mapper.mentoDetailData(mento_no);
 	}
 	
+	public List<MentoVO> mentoEdit(){
+		return mapper.mentoEdit();
+	}
+	public void mentoEditUpdate(Map map){
+		mapper.mentoEditUpdate(map);
+	}
+	
 
 }
