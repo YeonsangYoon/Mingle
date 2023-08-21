@@ -17,6 +17,11 @@ public class SpaceController {
 	{
 		return "space/detail";
 	}
+	@GetMapping("space/booking_test.do")
+	public String space_detail_before()
+	{
+		return "space/bookingtest";
+	}
 	
 	@GetMapping("space/booking.do")
 	public String space_booking()

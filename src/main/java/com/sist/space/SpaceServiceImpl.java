@@ -18,13 +18,14 @@ public class SpaceServiceImpl implements SpaceService{
     }
 	
 	@Override
-	public List<SpaceVO> spaceListData(Map map) {
-		return dao.spaceListData(map);
+	public List<SpaceVO> spaceListByCategory(Map map) {
+		return dao.spaceListByCategory(map);
 	}
 
+
 	@Override
-	public int spaceTotalpage() {
-		return dao.spaceTotalpage();
+	public int spaceTotalpage(Map map) {
+		return dao.spaceTotalpage(map);
 	}
 
 	@Override
@@ -32,4 +33,5 @@ public class SpaceServiceImpl implements SpaceService{
 		return dao.spaceDetailData(space_id);
 	}
 
+	
 }

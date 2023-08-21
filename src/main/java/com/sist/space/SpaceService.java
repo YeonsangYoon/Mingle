@@ -4,10 +4,10 @@ import java.util.*;
 
 
 public interface SpaceService {
+		public List<SpaceVO> spaceListByCategory(Map map);
+
 		public SpaceVO spaceDetailData(int space_id);
 		
-		public List<SpaceVO> spaceListData(Map map);
-		
-		public int spaceTotalpage();
+		public int spaceTotalpage(Map map);
 		
 }

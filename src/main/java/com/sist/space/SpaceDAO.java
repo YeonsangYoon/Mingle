@@ -9,21 +9,19 @@ public class SpaceDAO {
 	@Autowired
 	private SpaceMapper mapper;
 	
-	public List<SpaceVO> spaceListData(Map map)
+	public List<SpaceVO> spaceListByCategory(Map map)
 	{
-		return mapper.spaceListData(map);
+		return mapper.spaceListByCategory(map);
 	}
-	
-	public int spaceTotalpage()
+
+	public int spaceTotalpage(Map map)
 	{
-		return mapper.spaceTotalpage();
+		return mapper.spaceTotalpage(map);
 	}
-	
 	
 	public SpaceVO spaceDetailData(int space_id)
 	{
 		return mapper.spaceDetailData(space_id);
 	}
-	
 	
 }
