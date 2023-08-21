@@ -111,7 +111,6 @@
         </div>
         
         <div id="dialog" title="멘토 상세보기" v-if="isShow">
-        
         <table class="table">
           <tr>
            <td class="text-center" >
@@ -150,8 +149,8 @@
           </tr>
           <tr>
             <td colspan=2 class="text-center">
-            	<span><a href="../mento/mento_contact.do">멘토링 신청</a></span>
-            	<input type="button" value="닫기" class="btn btn-lg btn-warning" @click="modalClose(false)">
+            	<span class="follow"><a href="../mento/mento_contact.do">멘토링 신청</a></span>
+            	<input type="button" value="닫기" class="star" @click="modalClose(false)">
             </td>
           </tr>
           
@@ -180,6 +179,7 @@
     	},
     	mounted:function(){
     		this.setData();
+    		this.mentoEdit();
     	},
     	methods:{
     		setData:function(){
@@ -262,7 +262,6 @@
 				
 			},
 			modalClose:function(bool){
-				this.isShow=bool;
 				$('#dialog').dialog({
 					autoOpen:false,
 					modal:true,
