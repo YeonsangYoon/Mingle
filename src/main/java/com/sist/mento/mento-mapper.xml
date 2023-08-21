@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.sist.mento.MentoMapper">
+	 <select id="MentoListData" resultType="MentoVO" parameterType="hashmap">
+ 		SELECT MENTO_NO, USER_ID, JOB_CAT, JOB, COST, TITLE, INTRO, REGDATE, IMAGE, FOLLOW, sum_star, rev_cnt, cnt_star, career, dept, num
+ 		FROM (SELECT MENTO_NO, USER_ID, JOB_CAT, JOB, COST, TITLE, INTRO, REGDATE, IMAGE, FOLLOW, sum_star, rev_cnt, cnt_star, career, dept, rownum as num
+ 		FROM (SELECT MENTO_NO, USER_ID, JOB_CAT, JOB, COST, TITLE, INTRO, REGDATE, IMAGE, FOLLOW, sum_star, rev_cnt, cnt_star, career, dept 
+ 		FROM mento_reg 
+ 			<if test="column!='all'">
+ 				WHERE ${column} LIKE '%'||#{fd}||'%'
+ 			</if>
+ 			<if test="column=='all'">
+ 				WHERE job LIKE '%'||#{fd}||'%'
+ 			</if>
+ 			
+ 		ORDER BY mento_no ASC))
+ 		WHERE num BETWEEN #{start} AND #{end}
+ 	</select>
+ 	
+ 	<select id="mentoTotalPage" resultType="int" parameterType="hashmap">
+ 		SELECT CEIL(COUNT(*)/20.0)
+ 		FROM mento_reg
+ 		<if test="column!='all'">
+ 				WHERE ${column} LIKE '%'||#{fd}||'%'
+ 		</if>
+ 	</select>
+ 	
+ 	
+ </mapper>

@@ -37,7 +37,7 @@ public class MentoRestController {
 		List<MentoVO> list=dao.MentoListData(map);
 		
 		for(MentoVO vo:list) {
-			double star = ((double)vo.getSum_star()/vo.getCnt_star());
+			double star = Math.round(((double)vo.getSum_star()/vo.getCnt_star())*10)/10.0;
 			vo.setAvg_star(star);
 		}
 		ObjectMapper obj= new ObjectMapper();

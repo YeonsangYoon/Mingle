@@ -30,9 +30,9 @@
     	<div style="display: flex; justify-content: center;">
           	<select style="display:inline;" v-model="column">
 				<option value="all">전체</option>          	
-				<option value="TITLE">제목</option>          	
-				<option value="JOB">회사명</option>          	
-				<option value="DEPT">부서명</option>   	
+				<option value="title">제목</option>          	
+				<option value="job">회사명</option>          	
+				<option value="dept">부서명</option>   	
           	</select>
           	<input type="text" class="input-sm" size=20 ref="fd" v-model="fd">
           	<input type="button" value="검색" class="btn btn-sm btn-primary" @click="find()">
@@ -95,20 +95,20 @@
                
         <!-- PageNation -->
         <div class="col-lg-12 inline">
-        	<div class="product__pagination">
-	        <ul style="display:inline-flex;">
-	          <li v-if="startPage>1">
-	          	<span v-on:click="prev()" >&laquo; Previous</span>
-	          </li>
-	          <li v-for="i in range(startPage, endPage)" >
-	          	<span v-on:click="pageChange(i)" :class="i==curpage?'active':''">{{i}}</span>
-	          </li>
-	          <li v-if="endPage<totalpage">
-	          	<span  @click="next()">Next &raquo;</span>
-	          </li>
-	        </ul>
+	        <div class="product__pagination">
+	            <ul style="display:inline-flex;">
+	                <li v-if="startPage>1">
+	                    <span v-on:click="prev()"><i class="fa fa-angle-left"></i> 이전</span>
+	                </li>
+	                <li v-for="i in range(startPage, endPage)">
+	                    <span v-on:click="pageChange(i)" :class="i==curpage?'active':''">{{i}}</span>
+	                </li>
+	                <li v-if="endPage<totalpage">
+	                    <span @click="next()">다음 <i class="fa fa-angle-right"></i></span>
+	                </li>
+	            </ul>
 	        </div>
-        </div>
+    	</div>
         
         <div id="dialog" title="멘토 상세보기" v-if="isShow">
         <table class="table">
@@ -179,7 +179,7 @@
     	},
     	mounted:function(){
     		this.setData();
-    		this.mentoEdit();
+    		/* this.mentoEdit(); */
     	},
     	methods:{
     		setData:function(){

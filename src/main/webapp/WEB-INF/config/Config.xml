@@ -2,11 +2,17 @@
 <!DOCTYPE configuration
  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
  <configuration>
+ 
    <typeAliases>
      <typeAlias type="com.sist.space.SpaceVO" alias="SpaceVO"/>
+     <typeAlias type="com.sist.mento.MentoVO" alias="MentoVO"/>
    </typeAliases>
+   
    <mappers>
      <mapper resource="com/sist/space/space-mapper.xml"/>
+     <mapper resource="com/sist/mento/mento-mapper.xml"/>
    </mappers>
+   
  </configuration>
