@@ -30,45 +30,69 @@
     </section>
     <!-- Breadcrumb Section End -->
     
-    <section class="wrapper-keyword slpad">
-    <h2 class="text-center">어떤 공간을 찾고 있나요?</h2>
-    <div class="container">
-      <div class="row">
+   <!-- <section class="wrapper-keyword slpad">
+  
+     <div class="container">
+      <div class="row" style="justify-content: space-around;">
 	     <div class="text-center">
-		   <button class="btn btn-sm">
+	       <button class="btn btn-sm" @click="spaceCategoryData('all')">
+		     <img src="../img/spaceIcon/private_office.svg"><div>전체</div>
+		   </button>
+		   <button class="btn btn-sm" @click="spaceCategoryData('스터디룸')">
 		     <img src="../img/spaceIcon/study.svg"><div>스터디룸</div>
 		   </button>
-		   <button class="btn btn-sm">
+		   <button class="btn btn-sm" @click="spaceCategoryData('회의실')">
 		     <img src="../img/spaceIcon/meeting.svg"><div>회의실</div>
 		   </button>
-		   <button class="btn btn-sm">
+		   <button class="btn btn-sm" @click="spaceCategoryData('카페')">
 		     <img src="../img/spaceIcon/cafe.svg"><div>카페</div>
 		   </button>
-		   <button class="btn btn-sm">
-		     <img src="../img/spaceIcon/seminar.svg" ><div>세미나실</div>
+		   <button class="btn btn-sm" @click="spaceCategoryData('세미나실')">
+		     <img src="../img/spaceIcon/seminar.svg"><div>세미나실</div>
 		   </button>
-		   <button class="btn btn-sm">
+		   <button class="btn btn-sm" @click="spaceCategoryData('컨퍼런스')">
 		     <img src="../img/spaceIcon/conference.svg"><div>컨퍼런스</div>
 		   </button>
-		   <button class="btn btn-sm">
+		   <button class="btn btn-sm" @click="spaceCategoryData('강의실')">
 		     <img src="../img/spaceIcon/lecture.svg"><div>강의실</div>
-		   </button>
-		   <button class="btn btn-sm">
-		     <img src="../img/spaceIcon/private_office.svg"><div>독립오피스</div>
-		   </button>
-		   <button class="btn btn-sm">
-		     <img src="../img/spaceIcon/coworking_office.svg"><div>코워킹오피스</div>
 		   </button>
       </div>
     </div> 
    </div>
-  </section>
+  </section> -->
     
         <!-- Shop Section Begin -->
     <section class="shop spad">
+        <h2 class="text-center">어떤 공간을 찾고 있나요?</h2>
         <div class="container container-area">
+		   <div class="row" style="justify-content: space-around;">
+			     <div class="text-center">
+			       <button class="btn btn-sm" @click="spaceCategoryData('all')">
+				     <img src="../img/spaceIcon/private_office.svg"><div>전체</div>
+				   </button>
+				   <button class="btn btn-sm" @click="spaceCategoryData('스터디룸')">
+				     <img src="../img/spaceIcon/study.svg"><div>스터디룸</div>
+				   </button>
+				   <button class="btn btn-sm" @click="spaceCategoryData('회의실')">
+				     <img src="../img/spaceIcon/meeting.svg"><div>회의실</div>
+				   </button>
+				   <button class="btn btn-sm" @click="spaceCategoryData('카페')">
+				     <img src="../img/spaceIcon/cafe.svg"><div>카페</div>
+				   </button>
+				   <button class="btn btn-sm" @click="spaceCategoryData('세미나실')">
+				     <img src="../img/spaceIcon/seminar.svg"><div>세미나실</div>
+				   </button>
+				   <button class="btn btn-sm" @click="spaceCategoryData('컨퍼런스')">
+				     <img src="../img/spaceIcon/conference.svg"><div>컨퍼런스</div>
+				   </button>
+				   <button class="btn btn-sm" @click="spaceCategoryData('강의실')">
+				     <img src="../img/spaceIcon/lecture.svg"><div>강의실</div>
+				   </button>
+		      </div>
+		    </div>
+        
             <div class="row">
-                    <div class="shop__space__option">
+                    <div class="shop__space__option" style="display:contents">
                         
                       <div class="nice-select" tabindex="0" style="margin-right:20px;">
                         <span class="current">&nbsp;지역&nbsp; </span>
@@ -112,8 +136,8 @@
                                     <ul>
                                       <li><a :href="'../space/detail.do?sno='+vo.space_id">{{vo.title}}</a></li>
                                       <li>서초동</li>
-                                      <li>{{vo.price|currency}}원/시간</li>
-                                      <li>최대 {{vo.max_guest}}인</li>
+                                      <li><b>{{vo.price|currency}}</b>원/시간</li>
+                                      <li>최대 <b>{{vo.max_guest}}</b>인</li>
                                     </ul>
                                 </div>
                             </div>
@@ -131,7 +155,7 @@
                            	      <span v-on:click="prev()"><i class="fa fa-angle-left"></i></span>
                                 </li>
                                 <li href="#" v-for="p in range(startPage,endPage)">
-                                  <span :class="p==curpage?'active':''" v-on:click="selectPage(P)">{{p}}
+                                  <span :class="p==curpage?'active':''" v-on:click="selectPage(p)">{{p}}
                                 </li>
                                 <li v-if="endPage<totalpage">
                                   <span @click="next()"><i class="fa fa-angle-right"></i></span>
@@ -152,7 +176,8 @@
 		  curpage:1,
 		  totalpage:0,
 		  startPage:0,
-		  endPage:0
+		  endPage:0,
+		  category:'all'
 	  },
 	  filters:{
           currency: function(value){
@@ -161,13 +186,14 @@
           }
       },
 	  mounted:function(){
-		  this.dataReceive()
+		  this.spaceCategoryData(this.category)
 	  },
 	  methods:{
-		  dataReceive:function(){
+		  spaceCategoryData:function(category){
 			  axios.get("http://localhost/mingle/space/list_vue.do",{
 				  params:{
-					  page:this.curpage
+					  page:this.curpage,
+					  category:this.category
 				  }
 			  })
 			  .then(res=>{
@@ -179,7 +205,8 @@
 			  
 			  axios.get("http://localhost/mingle/space/list_pagination_vue.do",{
 				  params:{
-					  page:this.curpage
+					  page:this.curpage,
+					  category:this.category
 				  }
 			  }).then(res=>{
 				  console.log(res.data)
@@ -204,15 +231,15 @@
 		  },
 		  selectPage:function(page){
 			  this.curpage=page
-			  this.dataReceive()
+			  this.spaceCategoryData()
 		  },
 		  prev:function(){
 			  this.curpage=this.startPage-1
-			  this.dataReceive()
+			  this.spaceCategoryData()
 	      },
 		  next:function(){
 		 	  this.curpage=this.endPage+1
-			  this.dataReceive()
+			  this.spaceCategoryData()
 		  }
 	  }
   })
