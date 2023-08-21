@@ -7,6 +7,6 @@
      <typeAlias type="com.sist.space.SpaceVO" alias="SpaceVO"/>
    </typeAliases>
    <mappers>
-     <mapper resource="com/sist/dao/space-mapper.xml"/>
+     <mapper resource="com/sist/space/space-mapper.xml"/>
    </mappers>
  </configuration>
