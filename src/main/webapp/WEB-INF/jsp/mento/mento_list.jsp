@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	
-	<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	
     <!-- Breadcrumb Section Begin 상단 탭 -->
     <section class="breadcrumb-option">
         <div class="container">
@@ -27,7 +22,7 @@
     <section class="blog spad container-mento">
     	
     	<!-- Search Section Begin -->
-    	<div style="display: flex; justify-content: center;">
+    	<div class="text-center">
           	<select style="display:inline;" v-model="column">
 				<option value="all">전체</option>          	
 				<option value="title">제목</option>          	
@@ -43,11 +38,11 @@
             <div class="row">
             	
             	<!-- 멘토 리스트 Start-->
-            	<div class="col-sm-4 text-center" v-for="vo in mento_list">
+            	<div class="col-sm-4 text-center" v-for="vo in mento_list" v-on:click="mentoDetail()">
             		
             		<!-- 상세보기 -->
             	  <div class="mento_list_box "  >
-            		<div class="mento_list_box_top boxhover" @click="mentoDetail(vo.mento_no,true)">
+            		<div class="mento_list_box_top ">
             			<div style="height: 100px;"> 
             				<h3 class="mento_list_box_title">{{vo.job}}</h3>
             				<h3 class="mento_list_box_title" style="font-size: 20px !important">{{vo.intro}}</h3>
@@ -110,8 +105,9 @@
 	        </div>
     	</div>
         
-        <div id="dialog" title="멘토 상세보기" v-if="isShow">
-        <table class="table">
+        <div id="#modalTest" class="modal" >
+        <h1>test</h1>
+        <%-- <table class="table">
           <tr>
            <td class="text-center" >
             <img src="${pageContext.request.contextPath}/img/blog/blog-2.jpg" style="width: 100%">
@@ -150,11 +146,11 @@
           <tr>
             <td colspan=2 class="text-center">
             	<span class="follow"><a href="../mento/mento_contact.do">멘토링 신청</a></span>
-            	<input type="button" value="닫기" class="star" @click="modalClose(false)">
+            	<input type="button" value="닫기" class="star" @click="modalClose()">
             </td>
           </tr>
           
-        </table>
+        </table> --%>
       </div>
        
     </section>
@@ -183,7 +179,7 @@
     	},
     	methods:{
     		setData:function(){
-    			axios.get("http://localhost/mingle/mento/mento_list_vue.do",{
+    			axios.get("/mingle/mento/mento_list_vue.do",{
     				params:{
     					column:this.column,
     					fd:this.fd,
@@ -193,7 +189,7 @@
     				console.log(response.data)
     				this.mento_list=response.data
     			})
-    			axios.get("http://localhost/mingle/mento/mento_page_vue.do",{
+    			axios.get("/mingle/mento/mento_page_vue.do",{
 					params:{
 						column:this.column,
 						fd:this.fd,
@@ -236,38 +232,11 @@
 				this.curpage=1;
 				this.setData();
 			},
-			mentoDetail:function(mento_no,bool){
-				this.isShow=bool;
-				axios.get('http://localhost/mingle/mento/mento_detail_vue.do',{
-					params:{
-						mento_no:mento_no
-					}
-				}).then(response=>{
-					console.log(response.data)
-					this.mento_detail=response.data
-					/* this.posters=this.food_detail.poster.split("^"); */
-					
-					$('#dialog').dialog({
-						autoOpen:false,
-						modal:true,
-						width:700,
-						height:800
-					}).dialog("open")
-					
-				}).catch(error=>{
-					console.log(error.response)
-				})
+			mentoDetail:function(){
+				$('#modalTest').modal();		
 			},
 			mentoContact:function(){
 				
-			},
-			modalClose:function(bool){
-				$('#dialog').dialog({
-					autoOpen:false,
-					modal:true,
-					width:700,
-					height:800
-				}).dialog("close")
 			}
     	}
     })

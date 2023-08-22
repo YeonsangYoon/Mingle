@@ -26,6 +26,11 @@ public class MentoController {
 		return "mento/mento_info";
 	}
 	
+	@GetMapping("mento/mento_date.do")
+	public String mento_date() {
+		return "mento/mento_date";
+	}
+	
 	
 	
 	

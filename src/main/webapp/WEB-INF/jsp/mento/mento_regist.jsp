@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
                 <form action="#">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
-                            <h4> 안녕하세요 ..님</h4> 
+                            <h4> 안녕하세요 <span style="color: orange; font-weight: 800">${sessionScope.nickname}</span>님</h4> 
                             <h4> 지식 공유자가 되기 위해서는 아래의 정보가 필요해요</h4> 
                             
                             <h6 class="checkout__title">Billing Details</h6>
