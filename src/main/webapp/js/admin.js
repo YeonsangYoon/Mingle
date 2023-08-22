@@ -22,7 +22,7 @@ function editInfoPage(){
         pwd.focus();
         return;
     }
-
+    $.modal.close();
     $.post('/mingle/mypage/checkPassword.do',{
         pwd : pwd.val(),
     }, 'text')
