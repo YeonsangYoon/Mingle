@@ -4,8 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sist.Authentication.AuthenticationService;
 import com.sist.Authentication.MemberVO;
+import com.sist.mento.MentoVO;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -58,14 +60,30 @@ public class MemberRestController {
         json.put("totalpage", totalpage);
         json.put("list", list);
 
-        return objectMapper.writeValueAsString(new JSONObject(json));
+        return objectMapper.writeValueAsString(json);
+    }
+
+    @GetMapping(value = "admin/mento_list.do", produces = "application/json;charset=UTF-8")
+    public String getMentoListData(int page) throws JsonProcessingException {
+        int totalpage = memberService.getMentoTotalPage();
+        List<MentoVO> list = memberService.getAllListMento((page-1)*12, page*12);
+
+        Map<String, Object> json = new HashMap<>();
+        json.put("totalpage", totalpage);
+        json.put("list", list);
+
+        return objectMapper.writeValueAsString(json);
     }
 
     @PostMapping("admin/withdraw.do")
     public String withdrawMemberByAdmin(String user_id){
-        if(user_id == null)
-            return "NOID";
         int result = authService.withdrawByAdmin(user_id);
+        return (result == 1) ? "OK" : "NO";
+    }
+
+    @PostMapping("admin/deleteMento.do")
+    public String deleteMentoByAdmin(int mento_no){
+        int result = memberService.deleteMentoByAdmin(mento_no);
         return (result == 1) ? "OK" : "NO";
     }
 }
