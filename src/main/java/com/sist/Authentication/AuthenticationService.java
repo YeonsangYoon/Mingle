@@ -11,4 +11,7 @@ public interface AuthenticationService {
     public int addMember(MemberVO member);
     public boolean isValidPassword(String user_id, String pwd);
     public int updateMember(MemberVO member);
+
+    // 회원 탈퇴
+    public int withdrawMember(String user_id, String pwd);
 }

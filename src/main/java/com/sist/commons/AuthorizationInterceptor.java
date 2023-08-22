@@ -19,7 +19,8 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     private static final String[] authUrlsCanAccessAnyone = {
             "/mingle/auth/logout.do",
             "/mingle/auth/dupIdCheck.do",
-            "/mingle/auth/dupNicknameCheck.do"
+            "/mingle/auth/dupNicknameCheck.do",
+            "/mingle/auth/withdraw.do"
     };
 
     @Override

@@ -55,4 +55,27 @@ public class AuthenticationRestController {
         int count = service.getNicknameCount(nickname);
         return (count==0) ? "OK" : "NO";
     }
+
+    @PostMapping("withdraw.do")
+    public String withdrawMember(String pwd, HttpSession session){
+        String user_id = (String)session.getAttribute("id");
+
+        int result = 0;
+        try{
+            result = service.withdrawMember(user_id, pwd);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(result == 1){
+            session.invalidate();
+            return "OK";
+        }
+        else if(result == -1){
+            return "NOPWD";
+        }
+        else{
+            return "FAIL";
+        }
+    }
 }
