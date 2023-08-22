@@ -52,7 +52,6 @@
     <script src="${pageContext.request.contextPath}/js/main.js"></script>
     <script src="${pageContext.request.contextPath}/js/member.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin.js"></script>
-    <script src="${pageContext.request.contextPath}/js/space_carousel.js"></script>
 	<script src="${pageContext.request.contextPath}/js/mento.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
