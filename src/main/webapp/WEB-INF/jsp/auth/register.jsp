@@ -96,6 +96,6 @@
         </fieldset>
     </form>
 </div>
-<div id="alertModal" class="modal" style="display: none">
+<div id="alertModal" class="modal" >
     <p></p>
 </div>

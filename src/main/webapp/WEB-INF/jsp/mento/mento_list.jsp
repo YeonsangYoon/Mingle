@@ -8,7 +8,7 @@
                     <div class="breadcrumb__text">
                         <h4>멘토링</h4>
                         <div class="breadcrumb__links">
-                            <a href="#">Home</a>
+                            <a href="../main/main.do">Home</a>
                             <span>멘토 리스트</span>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
     <section class="blog spad container-mento">
     	
     	<!-- Search Section Begin -->
-    	<div class="text-center">
+    	<div class="text-center" style="display:flex; justify-content: center;" v-model="column">
           	<select style="display:inline;" v-model="column">
 				<option value="all">전체</option>          	
 				<option value="title">제목</option>          	
@@ -38,11 +38,11 @@
             <div class="row">
             	
             	<!-- 멘토 리스트 Start-->
-            	<div class="col-sm-4 text-center" v-for="vo in mento_list" v-on:click="mentoDetail()">
+            	<div class="col-sm-4 text-center" v-for="vo in mento_list" >
             		
             		<!-- 상세보기 -->
             	  <div class="mento_list_box "  >
-            		<div class="mento_list_box_top ">
+            		<div class="mento_list_box_top boxhover" v-on:click="mentoDetail(vo.mento_no)">
             			<div style="height: 100px;"> 
             				<h3 class="mento_list_box_title">{{vo.job}}</h3>
             				<h3 class="mento_list_box_title" style="font-size: 20px !important">{{vo.intro}}</h3>
@@ -105,9 +105,9 @@
 	        </div>
     	</div>
         
-        <div id="#modalTest" class="modal" >
-        <h1>test</h1>
-        <%-- <table class="table">
+     <div id="Detailmodal" class="modal">
+     <div class="modalinner">
+        <table class="table">
           <tr>
            <td class="text-center" >
             <img src="${pageContext.request.contextPath}/img/blog/blog-2.jpg" style="width: 100%">
@@ -145,12 +145,13 @@
           </tr>
           <tr>
             <td colspan=2 class="text-center">
-            	<span class="follow"><a href="../mento/mento_contact.do">멘토링 신청</a></span>
-            	<input type="button" value="닫기" class="star" @click="modalClose()">
+            	<div class="follow">
+            		<a href="../mento/mento_contact.do">멘토링 신청</a>
+            	</div>
             </td>
           </tr>
-          
-        </table> --%>
+        </table> 
+        </div>
       </div>
        
     </section>
@@ -232,8 +233,20 @@
 				this.curpage=1;
 				this.setData();
 			},
-			mentoDetail:function(){
-				$('#modalTest').modal();		
+			mentoDetail:function(mento_no){
+				$('#Detailmodal').modal();
+				
+				axios.get('/mingle/mento/mento_detail_vue.do',{
+					params:{
+						mento_no:mento_no
+					}
+				}).then(response=>{
+					console.log(response.data)
+					this.mento_detail=response.data
+					
+				}).catch(error=>{
+					console.log(error.response)
+				})
 			},
 			mentoContact:function(){
 				

@@ -9,95 +9,105 @@
 </head>
 <body>
 
+<!-- Breadcrumb Section Begin 상단 탭 -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row" style="text-align: center;">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>멘토링</h4>
+                        <div class="breadcrumb__links">
+                            <a href="../main/main.do">Home</a>
+                            <span>멘토 등록</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- Breadcrumb Section End -->
+
 <!-- Checkout Section Begin -->
     <section class="checkout spad">
+    
+    	<c:if test="${sessionScope.id==null}">
+	    	<script>
+			    alert("로그인 후 진행해주세요.");
+			    window.location.href = '/mingle/main/main.do';
+			</script>
+        	<i>로그인 후 진행해 주세요!</i> 
+        </c:if>
+        
         <div class="container">
-            <div class="checkout__form">
                 <form action="#">
                     <div class="row">
+                    	<h4> 안녕하세요 
+                    	<span style="color: orange; font-weight: 800">${sessionScope.nickname}</span> 님<br>
+                        지식 공유자가 되기 위해서는 아래의 정보가 필요해요</h4> 
                         <div class="col-lg-8 col-md-6">
-                            <h4> 안녕하세요 <span style="color: orange; font-weight: 800">${sessionScope.nickname}</span>님</h4> 
-                            <h4> 지식 공유자가 되기 위해서는 아래의 정보가 필요해요</h4> 
+                            <div> <hr> </div>
                             
-                            <h6 class="checkout__title">Billing Details</h6>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Fist Name<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Last Name<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
+                            <div class="mentoregist">
+                            	<span>사용자 ID :</span>
+                                <input type="text" value=${sessionScope.id} readonly>
                             </div>
-                            <div class="checkout__input">
-                                <p>Country<span>*</span></p>
-                                <input type="text">
+                            
+                            <div class="mentoregist">
+                                <span>직무 카테고리 :</span>
+                                <select style="height: 25px; width:300px; font-size: 17px">
+									<option value="all">전체</option>
+									<option value="dev">IT개발/데이터</option>          	
+									<option value="finance">회사/재무/금융</option>          	
+									<option value="official">공사/공기업</option>   	
+									<option value="art">디자인/예술 </option>   	
+					          	</select>
                             </div>
-                            <div class="checkout__input">
-                                <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                            
+                            <div class="mentoregist">
+                            	<span>현재 직업</span>
+                               <input type="text" placeholder="현재 직업을 입력해 주세요" >
                             </div>
-                            <div class="checkout__input">
-                                <p>Town/City<span>*</span></p>
-                                <input type="text">
+                            <div class="mentoregist">
+                            	<span>멘토링 제목</span>
+                                <input type="text" placeholder="등록할 멘토링 제목을 입력해주세요" >
                             </div>
-                            <div class="checkout__input">
-                                <p>Country/State<span>*</span></p>
-                                <input type="text">
+                            <div class="mentoregist">
+                            	<span>멘토링 내용</span>
+                                <input type="textarea" placeholder="간단한 자기소개부터 멘토링에 대한 설명을 해주세요" >
                             </div>
-                            <div class="checkout__input">
-                                <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
+                            <div class="mentoregist">
+                            	<span>경력 사항</span>
+                                <input type="textarea" placeholder="등록할 멘토링 제목을 입력해주세요" >
                             </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Phone<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
+                            <div class="mentoregist">
+                            	<span>부서</span>
+                                <input type="textarea" placeholder="속하신 부서를 적어주세요" >
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc">
-                                    Create an account?
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <p>Create an account by entering the information below. If you are a returning customer
-                                please login at the top of the page</p>
+                            <div class="mentoregist">
+                                 <span>시간당 희망금액</span>
+                                 <input type="number" value="1000" min="1000" max="15000" step="2000">
                             </div>
-                            <div class="checkout__input">
-                                <p>Account Password<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Note about your order, e.g, special noe for delivery
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
+	                                
+                            
+                            
+                            
+                            <div>
+	                            <p>
+	                                개인정보 활용동의, 수익에 대한 약관 동의
+	                            </p>
+                                <label>
+                                    <input type="checkbox" name="color" value="agree"> 동의하기
                                 </label>
                             </div>
-                            <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input type="text"
-                                placeholder="Notes about your order, e.g. special notes for delivery.">
-                            </div>
+                            
                         </div>
+                        
+                        
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
-                                <h4 class="order__title">Your order</h4>
+                                <h4 class="order__title">상담 희망 요일과, 시간대를 선택해 주세요</h4>
+                                <label for="birthday">상담 희망 날짜</label>
+                				<input type="date" id="birthday" onchange="ck_birthday()">
                                 <div class="checkout__order__products">Product <span>Total</span></div>
                                 <ul class="checkout__total__products">
                                     <li>01. Vanilla salted caramel <span>$ 300.0</span></li>
@@ -137,7 +147,7 @@
                         </div>
                     </div>
                 </form>
-            </div>
+                
         </div>
     </section>
     <!-- Checkout Section End -->

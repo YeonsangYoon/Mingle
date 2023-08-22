@@ -55,18 +55,52 @@
     font-weight: 700;
     font-size: 17px;
 }
+.follow > a{
+	color: white;
+}
+.follow > a:hover{
+	color: yellow;
+}
+
 .star{
+	
 	height: 40px;
     background: #fbbf4e;
     border-radius: 10px;
     padding: 8px;
-    color: black;
+    color: black !important;
     font-weight: 700;
     font-size: 17px;
 }
 
-#modalTest{
+.modalinner{
+	overflow-y: scroll;
+	height:550px;
 	
+}
+.mentoregist{
+	margin-bottom: 40px;
+	font-size: 20px;
+    font-weight: bold;
+}
+.mentoregist > span{
+	text-align:right;
+	margin-right:20px;
+	display:inline-block;
+	color:blueviolet;
+	width:150px;
+	font-size: 20px;
+    font-weight: bold;
+}
+
+.mentoregist > input{
+	
+	width:350px;
+	height:60px;
+	font-size: 17px;
+}
+.mentoregist > input:focus{
+	outline: 2px solid red;
 }
 
 
