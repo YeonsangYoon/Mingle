@@ -20,7 +20,8 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             "/mingle/auth/logout.do",
             "/mingle/auth/dupIdCheck.do",
             "/mingle/auth/dupNicknameCheck.do",
-            "/mingle/auth/withdraw.do"
+            "/mingle/auth/withdraw.do",
+            "/mingle/auth/admin_require.do"
     };
 
     @Override
@@ -36,7 +37,11 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             }
         }
         else{
-            if(isDuplicatedAuthentication(uri)){
+            if(PatternMatchUtils.simpleMatch("/mingle/admin/*", uri) && !id.equals("admin")){
+                response.sendRedirect("/mingle/auth/admin_require.do");
+                return false;
+            }
+            else if(isDuplicatedAuthentication(uri)){
                 response.sendRedirect("/mingle/main/main.do");
                 return false;
             }

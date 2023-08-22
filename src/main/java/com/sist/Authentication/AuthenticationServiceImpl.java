@@ -108,12 +108,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     @Transactional
-    public int withdrawMember(String user_id, String pwd){
-        // 비밀번호 우선 확인
-        if(!isValidPassword(user_id, pwd)){
-            return -1;
-        }
-
+    public int withdrawMember(String user_id){ // 탈퇴 로직
         // 스터디 삭제
         dao.deleteStudyFile(user_id);
         dao.deleteStudyTech(user_id);
@@ -134,5 +129,19 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         dao.deleteMento(user_id);
 
         return dao.deleteMember(user_id);
+    }
+
+    @Override
+    public int withdrawSelf(String user_id, String pwd) { // user 스스로 탈퇴
+        // 비밀번호 우선 확인
+        if(!isValidPassword(user_id, pwd)){
+            return -1;
+        }
+        return withdrawMember(user_id);
+    }
+
+    @Override
+    public int withdrawByAdmin(String user_id) { // 관리자가 삭제
+        return withdrawMember(user_id);
     }
 }

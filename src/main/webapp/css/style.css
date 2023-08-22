@@ -1485,12 +1485,13 @@ ol {
 
 .product__pagination span {
 	display: inline-block;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 700;
 	color: #704DE4;
 	min-width: 30px;
 	line-height: 30px;
 	text-align: center;
+	padding: 0 5px;
 }
 
 .product__pagination span:hover {

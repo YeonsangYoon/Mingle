@@ -62,7 +62,7 @@ public class AuthenticationRestController {
 
         int result = 0;
         try{
-            result = service.withdrawMember(user_id, pwd);
+            result = service.withdrawSelf(user_id, pwd);
         } catch (Exception e){
             e.printStackTrace();
         }
