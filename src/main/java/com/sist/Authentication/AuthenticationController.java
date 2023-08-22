@@ -21,7 +21,7 @@ public class AuthenticationController {
     }
 
     @GetMapping("login_require.do")
-    public String login_require_page(HttpSession session){
+    public String loginRequirePage(HttpSession session){
         String id = (String)session.getAttribute("id");
         if(id != null){
             return "redirect:/main/main.do";
@@ -29,5 +29,9 @@ public class AuthenticationController {
         else{
             return "auth/login_require";
         }
+    }
+    @GetMapping("admin_require.do")
+    public String adminRequirePage(){
+        return "auth/admin_require";
     }
 }

@@ -10,6 +10,6 @@ import java.util.Date;
 @Setter
 @ToString
 public class MemberVO {
-    private String user_id, password, user_name, nickname, gender, phone, email, birthday, address, detail_address;
+    private String user_id, password, user_name, nickname, gender, phone, email, birthday, address, detail_address, dbday;
     private Date regdate;
 }

@@ -454,28 +454,20 @@
     display: flex;
     align-items: center;
     padding: 4px 8px;
-    font-size: 12px;
+    font-size: 14px;
+    cursor: pointer;
 }
-.status:before {
-    content: "";
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    margin-right: 4px;
-}
+
 .status.active {
-    color: #2ba972;
-    background-color: rgba(43, 169, 114, 0.2);
+    color: red;
+    background-color: #ffc1c1;
 }
-.status.active:before {
-    background-color: #2ba972;
+.status.active:hover{
+    opacity: 0.8;
 }
 .status.disabled {
     color: #59719d;
     background-color: rgba(89, 113, 157, 0.2);
-}
-.status.disabled:before {
-    background-color: #59719d;
 }
 
 .gridView {
@@ -680,4 +672,10 @@
     display: inline-block;
 }
 
+#member-detail-modal{
+    display: none;
+    max-width: 650px;
+    height: 730px;
+    padding: 40px 80px 0 80px;
+}
 

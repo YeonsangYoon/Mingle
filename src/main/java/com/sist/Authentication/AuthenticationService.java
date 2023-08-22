@@ -13,5 +13,7 @@ public interface AuthenticationService {
     public int updateMember(MemberVO member);
 
     // 회원 탈퇴
-    public int withdrawMember(String user_id, String pwd);
+    public int withdrawMember(String user_id);
+    public int withdrawSelf(String user_id, String pwd);
+    public int withdrawByAdmin(String user_id);
 }
