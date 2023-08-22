@@ -11,7 +11,7 @@
                                 <h6>Study Space</h6>
                                 <h2>스터디 공간 대여</h2>
                                 <p>공간 대여 서비스 설명...</p>
-                                <a href="#" class="primary-btn">공간대여 바로가기<span class="arrow_right"></span></a>
+                                <a href="${pageContext.request.contextPath}/space/main.do" class="primary-btn">공간대여 바로가기<span class="arrow_right"></span></a>
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                                 <h6>Mentoring</h6>
                                 <h2>멘토링</h2>
                                 <p>멘토링 서비스 설명...</p>
-                                <a href="#" class="primary-btn">멘토링 바로가기<span class="arrow_right"></span></a>
+                                <a href="${pageContext.request.contextPath}/mento/mento_list.do" class="primary-btn">멘토링 바로가기<span class="arrow_right"></span></a>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                                 <h6>Recruit</h6>
                                 <h2>스터디 모집</h2>
                                 <p>스터디 모집 서비스 설명...</p>
-                                <a href="#" class="primary-btn">스터디 모집 바로가기<span class="arrow_right"></span></a>
+                                <a href="${pageContext.request.contextPath}/study/list.do" class="primary-btn">스터디 모집 바로가기<span class="arrow_right"></span></a>
                             </div>
                         </div>
                     </div>
