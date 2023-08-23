@@ -27,7 +27,7 @@ CNT_STAR
 public class MentoVO {
 	private int mento_no, cost, follow, sum_star, rev_cnt, cnt_star ;
 	private double avg_star;
-	private String user_id, job_cat, job, title, intro, image, career, dept ;
+	private String user_id, job_cat, job, title, intro, image, career, dept, user_name ;
 	private Date dbday;
 
 }

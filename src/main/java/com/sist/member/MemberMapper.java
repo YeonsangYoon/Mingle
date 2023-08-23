@@ -28,8 +28,9 @@ public interface MemberMapper {
             "   SELECT a.*, ROWNUM rn " +
             "   FROM " +
             "   ( " +
-            "       SELECT * " +
-            "       FROM MENTO_REG " +
+            "       SELECT MR.*, M.USER_NAME as USER_NAME" +
+            "       FROM MENTO_REG MR, MEMBER M " +
+            "       WHERE MR.USER_ID = M.USER_ID " +
             "       ORDER BY MENTO_NO " +
             "   ) a " +
             "   WHERE ROWNUM <= #{end} " +

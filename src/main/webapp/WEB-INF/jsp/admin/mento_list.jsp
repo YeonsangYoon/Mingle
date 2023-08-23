@@ -8,6 +8,7 @@
     </div>
     <div class="products-area-wrapper tableView">
         <div class="products-header">
+            <div class="product-cell">이름</div>
             <div class="product-cell">아이디</div>
             <div class="product-cell">직무</div>
             <div class="product-cell">재직기업</div>
@@ -15,6 +16,9 @@
             <div class="product-cell"></div>
         </div>
         <div class="products-row" v-for="(mento, index) in mento_list" v-on:click="selectMento(index)">
+            <div class="product-cell">
+                <span>{{mento.user_name}}</span>
+            </div>
             <div class="product-cell">
                 <span>{{mento.user_id}}</span>
             </div>
@@ -55,10 +59,10 @@
         <h3 class="text-center" style="margin-bottom: 10px;">멘토 상세 정보</h3>
         <div class="row">
             <div class="col-sm-3">
-                <p>아이디</p>
+                <p>이름 / 아이디</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMento.user_id}}</p>
+                <p>{{selectedMento.user_name}} / {{selectedMento.user_id}}</p>
             </div>
         </div>
         <div class="row">
@@ -85,12 +89,12 @@
                 <p>{{selectedMento.dept}}</p>
             </div>
         </div>
-        <div>
-            <h4>{{selectedMento.title}}</h4>
-            <h5>멘토 소개</h5>
-            <p>{{selectedMento.intro}}</p>
-            <h5>주요 경력</h5>
-            <pre>{{selectedMento.career}}</pre>
+        <div class="mentor-content">
+            <h3>{{selectedMento.title}}</h3>
+            <h4>멘토 소개</h4>
+            <div v-html="selectedMento.intro"></div>
+            <h4>주요 경력</h4>
+            <div v-html="selectedMento.career"></div>
         </div>
     </div>
 </div>

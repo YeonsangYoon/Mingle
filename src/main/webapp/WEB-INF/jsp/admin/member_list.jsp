@@ -32,7 +32,7 @@
                 <span>{{member.gender == 'm' ? '남자' : '여자'}}</span>
             </div>
             <div class="product-cell">
-                <span class="status active" v-on:click.stop="withdrawMember(index)">탈퇴</span>
+                <span class="status active" v-if="member.user_id != 'admin'" v-on:click.stop="withdrawMember(index)">탈퇴</span>
             </div>
         </div>
     </div>
