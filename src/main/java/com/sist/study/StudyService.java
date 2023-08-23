@@ -4,10 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface StudyService {
-	public List<StudyVO> studyListData(int start, int end);
-	public int studyTotalpage();
-	public List<Map<String, Object>> getTechListData(int start, int end);
+	public Map<String, Object> getStudyListData(Map<String, Object> params);
+	public List<Map<String, Object>> getTechListData(List<Integer> list);
 	public StudyVO studyDetailData(int study_id);
-	public List<StudyVO> studyFindData(Map map);
-
 }

@@ -7,43 +7,36 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class StudyDAO {
-
-	@Autowired
 	private StudyMapper mapper;
-	
-	// ½ºÅÍµğ ¸ñ·Ï
-	public List<StudyVO> studyListData(int start, int end)
-	{
-		return mapper.studyListData(start, end);
-	}
-	
-	// ÃÑ ÆäÀÌÁö
-	public int studyTotalpage()
-	{
-		return mapper.studyTotalpage();
+	@Autowired
+	public StudyDAO(StudyMapper mapper) {
+		this.mapper = mapper;
 	}
 
-	// ±â¼ú ¸ñ·Ï
-	public List<Map<String, Object>> getTechListData(int start, int end)
-	{
-		return mapper.getTechListData(start, end);
+	// ìŠ¤í„°ë”” ëª©ë¡
+	public List<StudyVO> getStudyListByParams(Map<String, Object> params){
+		return mapper.getStudyListByParams(params);
+	}
+
+	// ì´í˜ì´ì§€
+	public int getTotalPageByParams(Map<String, Object> params){
+		return mapper.getTotalPageByParams(params);
+	}
+
+	// ê¸°ìˆ  ëª©ë¡
+	public List<Map<String, Object>> getTechListData(List<Integer> list) {
+		return mapper.getTechListData(list);
 	}
 	
-	// »ó¼¼ ÆäÀÌÁö
+	// ìƒì„¸ í˜ì´ì§€
 	public StudyVO studyDetailData(int study_id)
 	{
 		return mapper.studyDetailData(study_id);
 	}
 	
-	// µî·Ï ÆäÀÌÁö
+	// ë“±ë¡ í˜ì´ì§€
 	public void studyInsert(StudyVO vo)
 	{
 		mapper.studyInsert(vo);
-	}
-	
-	// °Ë»ö ÆäÀÌÁö
-	public List<StudyVO> studyFindData(Map map)
-	{
-		return mapper.studyFindData(map);
 	}
 }

@@ -175,7 +175,7 @@
                 axios.get("/mingle/study/list_vue.do", {
                     params: { // 전송할 데이터
                         page: this.curpage,
-                        tech: this.tech_list[this.selectedTech],
+                        tech: (this.selectedTech !== -1) ? this.tech_list[this.selectedTech].toLowerCase() : '',
                         searchWord: this.searchWord.trim(),
                         wCheck : this.wCheck,
                         tCheck : this.tCheck,
@@ -183,11 +183,10 @@
                     }
                 }).then(response => {
                     console.log(response.data);
-                    this.curpage = response.data.curpage;
                     this.totalpage = response.data.totalpage;
                     this.study_list = response.data.list;
                     this.startpage = (Math.trunc((this.curpage - 1) / 5) * 5) + 1;
-                    this.endpage = (this.startpage + 4 > this.totalpage) ? this.totalpage : this.startpage + 4;
+                    this.endpage = Math.min(this.startpage + 4, this.totalpage);
                 })
             },
             range: function (start, end) {
@@ -212,6 +211,7 @@
                 this.send()
             },
             selectTech : function (index){
+                this.curpage = 1;
                 if(this.selectedTech === index){
                     this.selectedTech = -1;
                 }

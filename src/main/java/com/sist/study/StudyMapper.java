@@ -9,73 +9,42 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.web.bind.annotation.GetMapping;
 
 public interface StudyMapper {
-	// Ω∫≈Õµ ∏Ò∑œ
-	@Select("SELECT *" +
-			"FROM (SELECT /*+ INDEX(S PK_STUDY) */ " +
-			"          ROWNUM AS NUM, S.*, TO_CHAR(S.REGDATE, 'yyyy-MM-dd') as dbday, M.NICKNAME AS nickname" +
-			"      FROM STUDY S, MEMBER M " +
-			"      WHERE S.USER_ID = M.USER_ID) " +
-			"WHERE NUM BETWEEN #{start} AND #{end}")
-	public List<StudyVO> studyListData(@Param("start")int start, @Param("end")int end);
-	
-	// √— ∆‰¿Ã¡ˆ
-	@Select("SELECT CEIL(COUNT(*)/12.0) FROM study")
-	public int studyTotalpage();
+	// Ïä§ÌÑ∞Îîî Î™©Î°ù Í≤ÄÏÉâ(param : start, end, tech, searchWord, checks...)
+	public List<StudyVO> getStudyListByParams(Map<String, Object> params);
 
-	// ±‚º˙ ∏Ò∑œ
-	@Select("SELECT STUDY_ID ,TECH FROM STUDY_TECH WHERE STUDY_ID BETWEEN #{start} AND #{end}")
-	public List<Map<String, Object>> getTechListData(@Param("start")int start, @Param("end")int end);
-	
-	// ªÛºº ∆‰¿Ã¡ˆ
+	@Select("<script> " +
+			"	SELECT CEIL(COUNT(*)/12.0) FROM STUDY " +
+			"	<where> " +
+			"		<if test=\"tech != ''\"> " +
+			"			STUDY_ID IN (SELECT STUDY_ID FROM STUDY_TECH WHERE TECH = #{tech}) " +
+			"		</if> " +
+			"		<if test=\"searchWord != ''\"> " +
+			"		AND TITLE LIKE '%'||#{searchWord}||'%' " +
+			"		</if> " +
+			"	</where> " +
+			"</script>")
+	public int getTotalPageByParams(Map<String, Object> params);
+
+	//Í∏∞Ïà† Î™©Î°ù
+//	@Select("<script>" +
+//			"	SELECT STUDY_ID, TECH " +
+//			"	FROM STUDY_TECH " +
+//			"	WHERE STUDY_ID IN " +
+//			"	<foreach item=\"item\" collection=\"list\" open=\"(\" separator=\",\" close=\")\">" +
+//			"	#{item}" +
+//			"	</foreach>" +
+//			"</script>")
+	public List<Map<String, Object>> getTechListData(List<Integer> list);
+
+	// ÏÉÅÏÑ∏ ÌéòÏù¥ÏßÄ
 	@Select("SELECT study_id,title,content,onoff,recruit,contact_type,contact_link,period,deadline "
 			+ "FROM study "
 			+ "WHERE study_id=#{study_id}")
 	public StudyVO studyDetailData(int study_id);
-	/*
-	 * STUDY_IDd
-TITLEd
-CONTENTd
-REGDATEd
-HITd
-DEADLINEd
-ISCLOSEDd
-PERIODd
-RECRUIT d
-ONOFFd
-CONTACT_TYPEd
-CONTACT_LINKd
-USER_IDd
-MODIFYDATEd
-	 */
-	// µÓ∑œ ∆‰¿Ã¡ˆ
+
+	// Îì±Î°ù ÌéòÏù¥ÏßÄ
 	@Insert("INSERT INTO study VALUES((SELECT NVL(MAX(study_id)+1,1) FROM study),#{title},#{content},"
 	      + "SYSDATE,0,#{deadline},'O',#{period},#{recruit},#{onoff},#{contact_type},#{contact_link},#{user_id},SYSDATE)")
 	public void studyInsert(StudyVO vo);
-	
-	// ¥Ÿ¡ﬂ∞Àªˆ (µø¿˚ƒı∏Æ)
-	@Select({
-		"<script>"
-		+ "SELECT study_id,title,nickname,TO_CHAR(regdate,'YYYY-MM-DD') as dbday "
-		+ "FROM study"
-		+ "WHERE "
-		+ "<trim prefixOverrides=\"OR\">"
-			+ "<foreach collection=\"fsArr\" item=\"fd\">"
-				+ "<trim prefix=\"OR\">"
-					+ "<choose>"
-						+ "<when test=\"fd=='N'.toString()\">"
-						+ "nickname LIKE '%'||#{ss}||'%'"
-						+ "</when>"
-						+ "<when test=\"fd=='T'.toString()\">"
-						+ "title LIKE '%'||#{ss}||'%'"
-						+ "</when>"
-						+ "<when test=\"fd=='C'.toString()\">"
-						+ "content LIKE '%'||#{ss}||'%'"
-						+ "</when>"
-					+ "</choose>"
-				+ "</trim>"
-			+ "</foreach>"
-		+ "</trim>"
-		+ "</script>"
-	})
-	public List<StudyVO> studyFindData(Map map);
+
 }

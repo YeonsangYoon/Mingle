@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.study.StudyMapper">
+    <select id="getStudyListByParams" parameterType="java.util.Map" resultType="StudyVO">
+        SELECT * FROM
+        (
+            SELECT a.*, ROWNUM rn
+            FROM
+            (
+                SELECT
+                    STUDY_ID,
+                    TITLE,
+                    CONTENT,
+                    TO_CHAR(REGDATE, 'yyyy-MM-dd') AS DBDAY,
+                    HIT,
+                    DEADLINE,
+                    ISCLOSED,
+                    PERIOD,
+                    RECRUIT,
+                    ONOFF,
+                    CONTACT_TYPE,
+                    CONTACT_LINK,
+                    USER_ID,
+                    MODIFYDATE
+                FROM STUDY
+                <where>
+                    <if test="tech != ''">
+                        STUDY_ID IN (SELECT STUDY_ID FROM STUDY_TECH WHERE TECH = #{tech})
+                    </if>
+                    <if test="searchWord != ''">
+                        AND TITLE LIKE '%'||#{searchWord}||'%'
+                    </if>
+                </where>
+                ORDER BY DEADLINE DESC, REGDATE
+            ) a
+            WHERE ROWNUM &lt;= #{end}
+        )
+        WHERE rn > #{start}
+    </select>
+    <select id="getTechListData" parameterType="java.util.List" resultType="java.util.Map">
+        SELECT STUDY_ID, TECH
+        FROM STUDY_TECH
+        WHERE STUDY_ID IN
+            <foreach collection="list" open="(" separator="," close=")" item="item">
+                #{item}
+            </foreach>
+    </select>
+</mapper>
