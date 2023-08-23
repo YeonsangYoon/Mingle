@@ -10,14 +10,13 @@
 <body>
 
    <!-- Shop Details Section Begin -->
-    <section class="shop-details">
+    <section class="shop-details" id="spaceVueData">
         <div class="space__details__pic">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                       <div class="space__details__title">
-                         <h2>업스테어스</h2>
-                         <p>여행하듯 일하고 싶은 로컬크리에이터를 위한 공간</p>
+                         <h2>{{space_detail.title}} <span>{{space_detail.subject}}</span></h2>
                       </div>
                     </div>
                 </div>
@@ -26,27 +25,27 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="space__details__pic__item">
-                                    <img src="/mingle/img/spaceimg.jpg" alt="">
+                                    <img :src="space_detail.poster" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="space__details__pic__item">
-                                    <img src="/mingle/img/shop-details/product-big.png" alt="">
+                                    <img :src="images[0]" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="space__details__pic__item">
-                                    <img src="/mingle/img/spaceimg.jpg" alt="">
+                                    <img :src="images[1]" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-4" role="tabpanel">
                                 <div class="space__details__pic__item">
-                                    <img src="/mingle/img/spaceimg.jpg" alt="">
+                                    <img :src="images[2]" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-5" role="tabpanel">
                                 <div class="space__details__pic__item">
-                                    <img src="/mingle/img/spaceimg.jpg" alt="">
+                                    <img :src="images[3]" alt="">
                                 </div>
                             </div>
                         </div>
@@ -55,32 +54,27 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                    <div class="space__thumb__pic set-bg" data-setbg="/mingle/img/spaceimg.jpg" style="background-image: url(&quot;/mingle/img/spaceimg.jpg&quot;);">
-                                    </div>
+                                   <img :src="space_detail.poster" class="space__thumb__pic">
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <div class="space__thumb__pic set-bg" data-setbg="/mingle/img/shop-details/product-big.png" style="background-image: url(&quot;/mingle/img/shop-details/product-big.png&quot;);">
-                                    </div>
+                                   <img :src="images[0]" class="space__thumb__pic">
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <div class="space__thumb__pic set-bg" data-setbg="/mingle/img/spaceimg.jpg" style="background-image: url(&quot;/mingle/img/spaceimg.jpg&quot;);">
-                                    </div>
+                                   <img :src="images[1]" class="space__thumb__pic">
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    <div class="space__thumb__pic set-bg" data-setbg="/mingle/img/spaceimg.jpg" style="background-image: url(&quot;/mingle/img/spaceimg.jpg&quot;);">
-                                    </div>
+                                   <img :src="images[2]" class="space__thumb__pic">
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">
-                                    <div class="space__thumb__pic set-bg" data-setbg="/mingle/img/spaceimg.jpg" style="background-image: url(&quot;/mingle/img/spaceimg.jpg&quot;);">
-                                    </div>
+                                   <img :src="images[3]" class="space__thumb__pic">
                                 </a>
                             </li>
                         </ul>
@@ -89,7 +83,7 @@
         </div>
         <div class="space__details__content">
             <div class="container">
-                <div class="row d-flex justify-content-center">
+                <!-- <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="space__details__text">
                             <h4>Hooded thermal anorak</h4>
@@ -143,90 +137,61 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="space__details__tab">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#tabs-5" role="tab">공간소개
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-6" role="tab" aria-select=>공간소개
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">위치정보
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">위치정보
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">이용후기
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-8" role="tab">이용후기
                                     </a>
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                <div class="tab-pane active" id="tabs-6" role="tabpanel">
                                     <div class="space__details__tab__content">
                                         <div class="space__details__tab__content__item">
                                             <h5>공간 설명</h5>
-                                            <p>모임이 즐겁다-! 모임공간 모락(樂) 서울대입구점 입니다 :D
-											👉 여러 명이 접속해도 끊김 없는 GIGA WIFI
-											👉 스터디, 소모임, 회의, 과외, 면접, 인터뷰, 영상 촬영, 원데이클래스, 파티 등 단독 모임을 위한 복합 공간
-											👉 단독으로 사용 가능한 약 9평의 공간 및 편안한 휴식이 가능한 쇼파 구비
-											👉 화이트보드 / 55인치 TV / 노트북 / 프린터 / 조명 및 삼각대 / 블루투스 스피커 / 간단한 차, 커피 등 기본 제공
-											
-											※ 주차 : 본 건물 주차타워에 유료 주차(최초 1시간 3,000원 이후 시간 2,000원)
-											
-											* 소음 관련 문제로 24시 이후 야간 이용이 불가하오니 예약 시 참고 부탁드립니다
-											
-											※ 기타 문의사항은 유선 또는 카카오톡(@moraksn)으로 연락 바랍니다.
-											※ 인원이 확정되지 않은 경우, 확정된 인원으로 우선 예약 후 이용 당일 추가 이체해 주시면 됩니다.
-											※ 예약 시 이용 당일 2시간 전에 비밀번호 포함된 안내 문자가 카카오톡으로 발송됩니다.</p>
+                                            <pre>{{space_detail.description}}</pre>
                                         </div>
                                         <div class="space__details__tab__content__item">
                                             <h5>시설 안내</h5>
-                                            <p>Polyester is deemed lower quality due to its none natural quality’s. Made
-                                                from synthetic materials, not natural like wool. Polyester suits become
-                                                creased easily and are known for not being breathable. Polyester suits
-                                                tend to have a shine to them compared to wool and cotton suits, this can
-                                                make the suit look cheap. The texture of velvet is luxurious and
-                                                breathable. Velvet is a great choice for dinner party jacket and can be
-                                            worn all year round.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="tabs-6" role="tabpanel">
-                                    <div class="space__details__tab__content">
-                                        <div class="space__details__tab__content__item">
-                                            <h5>다음 지도 API</h5>
-										    <section class="detailinfo_button pt-0" id="js_vcd_section_shuttle_info" style="display: block;">  
-			                                  <div class="container">
-												  <div class="js-rpri-container-twice-btns">
-												      <div class="dc-flex justify-content-between">
-												        <button class="btn btn-outline-grey-4 w-50 mr-1" data-bt="0647492139">
-													  <div class="dc-flex justify-content-center align-items-center"><i class=fa-fa-phone></i>
-													     <div class="text-16 color-grey-4 ml-1">전화걸기</div>
-													  </div>
-													  </button><button class="btn btn-outline-grey-4 w-50 text-16 color-grey-4 ml-1" data-bi="IN80">길찾기</button></div>
-												  </div>
-											  </div>
-										    </section>                                            
-
-                                        </div>
-                                        <div class="space__details__tab__content__item">
-                                            <h5>Material used</h5>
-                                            <p>Polyester is deemed lower quality due to its none natural quality’s. Made
-                                                from synthetic materials, not natural like wool. Polyester suits become
-                                                creased easily and are known for not being breathable. Polyester suits
-                                                tend to have a shine to them compared to wool and cotton suits, this can
-                                                make the suit look cheap. The texture of velvet is luxurious and
-                                                breathable. Velvet is a great choice for dinner party jacket and can be
-                                            worn all year round.</p>
+                                            <pre v-for="a in fcst_guides">{{a}}</pre>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-7" role="tabpanel">
                                     <div class="space__details__tab__content">
                                         <div class="space__details__tab__content__item">
+                                            <h5>다음 지도 API</h5>
+										    <section class="detailinfo_button pt-0" style="display: block;">  
+												      <div class="dc-flex justify-content-between">
+												        <button class="btn btn-outline-grey-4 w-50 mr-1" data-bt="0647492139">
+													  <div class="dc-flex justify-content-center align-items-center"><i class=fa-fa-phone></i>
+													     <div class="text-16 color-grey-4 ml-1">전화걸기</div>
+													  </div>
+													  </button><button class="btn btn-outline-grey-4 w-50 text-16 color-grey-4 ml-1" data-bi="IN80">길찾기</button></div>
+										    </section>                                            
+
+                                        </div>
+                                        <div class="space__details__tab__content__item" >
+                                            <pre v-for="a in fcst_guides">{{a}}</pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-8" role="tabpanel">
+                                    <div class="space__details__tab__content">
+                                        <div class="space__details__tab__content__item">
                                             <h5>이용자 이름</h5>
-                                            <p>후기후기후기</p>
+                                            <pre>후기후기후기</pre>
                                         </div>
                                     </div>
                                 </div>
@@ -269,7 +234,32 @@
         </div>
     </section>
     <!-- Related Section End -->
-
+<script>
+ new Vue({
+	 el:'#spaceVueData',
+	 data:{
+		 space_detail:{},
+		 images:[],
+		 space_id:${param.space_id},
+		 fcst_guides:[]
+	 },
+	 mounted:function(){
+		 axios.get("/mingle/space/detail_vue.do",{
+			 params:{
+				 space_id:this.space_id
+			 }
+		 }).then(res=>{
+			 console.log(res.data)
+			 this.space_detail=res.data.space_detail
+			 this.images=res.data.images
+	         this.fcst_guides = JSON.parse(res.data.space_detail.fcst_guides)
+	         console.log(this.fcst_guides)
+		 }).catch(error=>{
+			 console.log(error.res)
+		 })
+	 }
+ })
+</script>
 </body>
 </html>
 

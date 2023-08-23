@@ -29,8 +29,18 @@ public class SpaceServiceImpl implements SpaceService{
 	}
 
 	@Override
-	public SpaceVO spaceDetailData(int space_id) {
+	public List<SpaceVO> spaceDetailData(int space_id) {
 		return dao.spaceDetailData(space_id);
+	}
+
+	@Override
+	public void spaceZzimInsert(Map map) {
+		dao.spaceZzimInsert(map);
+	}
+
+	@Override
+	public void spaceZzimCancel(Map map) {
+		dao.spaceZzimCancel(map);
 	}
 
 	

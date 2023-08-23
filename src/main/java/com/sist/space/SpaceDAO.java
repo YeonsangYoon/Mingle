@@ -19,9 +19,17 @@ public class SpaceDAO {
 		return mapper.spaceTotalpage(category);
 	}
 	
-	public SpaceVO spaceDetailData(int space_id)
+	public List<SpaceVO> spaceDetailData(int space_id)
 	{
 		return mapper.spaceDetailData(space_id);
 	}
 	
+	public void spaceZzimInsert(Map map)
+	{
+		mapper.spaceZzimInsert(map);
+	}
+ 	public void spaceZzimCancel(Map map)
+ 	{
+ 		mapper.spaceZzimCancel(map);
+ 	}
 }

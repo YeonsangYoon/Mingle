@@ -18,10 +18,10 @@
 </section>
 <!-- Breadcrumb Section End -->
 <!-- Shop Section Begin -->
-<section class="shop spad">
+<section class="shop slpad">
     <h2 class="text-center">어떤 공간을 찾고 있나요?</h2>
     <div class="container container-area">
-        <div class="row" style="justify-content: space-around;">
+        <div class="row space_category">
             <div class="text-center">
                 <button class="btn btn-sm" @click="spaceCategoryData('all')">
                     <img src="../img/spaceIcon/private_office.svg">
@@ -85,7 +85,7 @@
                 <div class="space__item">
 
                     <div class="space__item__pic">
-                        <a :href="'../space/detail.do?sno='+vo.space_id"><img :src="vo.poster"></a>
+                        <a :href="'../space/detail.do?space_id='+vo.space_id"><img :src="vo.poster"></a>
                         <ul class="space__hover">
                             <li><a href="../space/list.do"><img src="/mingle/img/icon/heart.png" alt=""></a></li>
                         </ul>
@@ -93,7 +93,7 @@
 
                     <div class="space__item__text">
                         <ul>
-                            <li><a :href="'../space/detail.do?sno='+vo.space_id">{{vo.title}}</a></li>
+                            <li><a :href="'../space/detail.do?space_id='+vo.space_id">{{vo.title}}</a></li>
                             <li>서초동</li>
                             <li><b>{{vo.price|currency}}</b>원/시간</li>
                             <li>최대 <b>{{vo.max_guest}}</b>인</li>

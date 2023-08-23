@@ -1,13 +1,11 @@
 package com.sist.space;
 import java.util.*;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-/*
-private int space_id,avg_rate,cnt_rate,price,min_guest,max_guest,starttime,endtime,hit;
-private String title,subject,phone,address,latitude,longitude,region_code,description,fcst_guides,cautions;
- */
-import com.sist.space.*;
+
 public interface SpaceMapper {
 	/* --------------------- List ------------------------*/
 	public List<SpaceVO> spaceListByCategory(Map<String, Object> map);
@@ -17,10 +15,21 @@ public interface SpaceMapper {
 
 	
 	/* --------------------- Detail ------------------------*/
-	@Select("SELECT space_id,category,title,subject,phone,address,description,fcst_guides,cautions,price,min_guest,max_guest,starttime,endtime "
-			+ "FROM space_list WHERE space_id=#{space_id}")
-	public SpaceVO spaceDetailData(int space_id);
+	// 공간 전체정보 
+	@Select("SELECT * FROM space_list sl "
+	      + "JOIN space_images si ON sl.space_id = si.space_id "
+	      + "WHERE sl.space_id=#{space_id}")
+	public List<SpaceVO> spaceDetailData(int space_id);
 	
 	/* --------------------- Detail ------------------------*/
 	
+	// 좋아요 ZZIM_NO 	USER_ID 	SPACE_ID
+ 	@Insert("INSERT INTO space_zzim VALUES("
+ 		   +"sqz_no_seq.nextval,#{user_id},#{space_id})")
+	public void spaceZzimInsert(Map map);
+ 	@Delete("DELETE space_zzim WHERE space_id=#{space_id} AND user_id=#{user_id}")
+ 	public void spaceZzimCancel(Map map);
+ 	
+ 	
+ 	
 }

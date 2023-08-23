@@ -3,13 +3,14 @@ package com.sist.space;
 import java.util.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sist.commons.PageVO;
 
 @RestController
 public class SpaceRestController {
@@ -35,20 +36,30 @@ public class SpaceRestController {
 
 		return mapper.writeValueAsString(new JSONObject(json));
 	}
+	
+	@GetMapping(value = "space/detail_vue.do", produces = "text/plain;charset=UTF-8")
+	public String space_detail_vue(int space_id) throws Exception
+	{
+		List<SpaceVO> list=service.spaceDetailData(space_id);
+		List<String> images = new ArrayList<String>();
+		for(SpaceVO vo : list) {
+			images.add(vo.getImages());
+		}
+		
+		Map<String, Object> json = new HashMap<String, Object>();
+		json.put("space_detail", list.get(0));
+		json.put("images", images);
+		/*
+		 * {
+		 *  space : {  }
+		 *  images : [ ]
+		 * }
+		 */
+		ObjectMapper mapper=new ObjectMapper();
+		return mapper.writeValueAsString(json);
+	}
+	
+	
+	
 }
 
-/*
-{
-	"totalpage" : 123,
-	"list" : [
-	 	{
-	 		space_id : 141,
-	 		...
-	 	},
-	 	{
-
-	 	},
-	 	...
-	 ]
-}
- */
