@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6a1ffbe66e5a8ba9af15d82e0b41ceac"></script>
 
 </head>
 <body>
@@ -135,6 +136,8 @@
                                 <div class="space__details__tab__content">
                                     <div class="space__details__tab__content__item">
                                         <h5>다음 지도 API</h5>
+ 										<div id="map" style="width:100%;height:350px;"></div>
+
                                         <section class="detailinfo_button pt-0" style="display: block;">
                                             <div class="dc-flex justify-content-between">
                                                 <button class="btn btn-outline-grey-4 w-50 text-16 color-grey-4 ml-1">
@@ -235,8 +238,13 @@
                 this.rList=res.data.rList
                 this.cnt_rate=res.data.rList.length
                 this.averageR()
-                console.log(this.cnt_rate)
-                console.log(res.data)
+                if (window.kakao && window.kakao.maps) {
+			      setTimeout(() => { this.initMap() }, 1000)
+			    }
+			   else
+				{
+				   this.addScript();
+				}
             }).catch(error => {
                 console.log(error.res)
             })
@@ -251,7 +259,37 @@
                 avg = sum / this.cnt_rate;
                 this.avg_rate = avg.toFixed(1);
                 return avg;
-        	}
+        	},
+        	initMap:function(){
+        		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        	    mapOption = { 
+        	        center: new kakao.maps.LatLng(this.space_detail.latitude, this.space_detail.longitude), // 지도의 중심좌표
+        	        level: 3 // 지도의 확대 레벨
+        	    };
+
+        	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+        	// 마커가 표시될 위치입니다 
+        	var markerPosition = new kakao.maps.LatLng(this.space_detail.latitude, this.space_detail.longitude); 
+
+        	// 마커를 생성합니다
+        	var marker = new kakao.maps.Marker({
+        	    position: markerPosition
+        	});
+
+        	// 마커가 지도 위에 표시되도록 설정합니다
+        	marker.setMap(map);
+
+        	// 마커가 드래그 가능하도록 설정합니다 
+        	marker.setDraggable(true);   
+ 		   },
+ 		   addScript:function(){
+ 			   const script=document.createElement("script")
+ 			   /* global kakao */
+ 			   script.onload=()=>kakao.maps.load(this.initMap)
+ 			   script.src='https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=6a1ffbe66e5a8ba9af15d82e0b41ceac&libraries=services'
+ 			   document.head.appendChild(script)
+ 		   }
         }
     })
 </script>
