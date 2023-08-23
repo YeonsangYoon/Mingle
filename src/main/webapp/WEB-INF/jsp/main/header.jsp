@@ -62,7 +62,7 @@
                                 </ul>
                             </li>
                             <li><a href="#">Q&A</a></li>
-                            <li><a href="#">공지사항</a></li>
+                            <li><a href="${pageContext.request.contextPath}/notice/list.do">공지사항</a></li>
                         </ul>
                     </nav>
                 </div>

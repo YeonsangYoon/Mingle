@@ -13,7 +13,8 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             "/mingle/mento/*",
             "/mingle/space/*",
             "/mingle/study/*",
-            "/mingle/auth/*"
+            "/mingle/auth/*",
+            "/mingle/notice/*"
     };
 
     private static final String[] authUrlsCanAccessAnyone = {
