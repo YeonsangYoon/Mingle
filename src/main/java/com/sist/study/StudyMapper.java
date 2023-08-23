@@ -2,6 +2,7 @@ package com.sist.study;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Select;
@@ -30,17 +31,40 @@ public interface StudyMapper {
 			+ "FROM study "
 			+ "WHERE study_id=#{study_id}")
 	public StudyVO studyDetailData(int study_id);
+	/*
+	 * STUDY_IDd
+TITLEd
+CONTENTd
+REGDATEd
+HITd
+DEADLINEd
+ISCLOSEDd
+PERIODd
+RECRUIT d
+ONOFFd
+CONTACT_TYPEd
+CONTACT_LINKd
+USER_IDd
+MODIFYDATEd
+	 */
+	// 등록 페이지
+	@Insert("INSERT INTO study VALUES((SELECT NVL(MAX(study_id)+1,1) FROM study),#{title},#{content},"
+	      + "SYSDATE,0,#{deadline},'O',#{period},#{recruit},#{onoff},#{contact_type},#{contact_link},#{user_id},SYSDATE)")
+	public void studyInsert(StudyVO vo);
 	
 	// 다중검색 (동적쿼리)
 	@Select({
 		"<script>"
-		+ "SELECT study_id,title,hit,deadline,TO_CHAR(regdate,'yyyy-MM-dd') as dbday "
-		+ "FROM study "
+		+ "SELECT study_id,title,nickname,TO_CHAR(regdate,'YYYY-MM-DD') as dbday "
+		+ "FROM study"
 		+ "WHERE "
 		+ "<trim prefixOverrides=\"OR\">"
 			+ "<foreach collection=\"fsArr\" item=\"fd\">"
 				+ "<trim prefix=\"OR\">"
 					+ "<choose>"
+						+ "<when test=\"fd=='N'.toString()\">"
+						+ "nickname LIKE '%'||#{ss}||'%'"
+						+ "</when>"
 						+ "<when test=\"fd=='T'.toString()\">"
 						+ "title LIKE '%'||#{ss}||'%'"
 						+ "</when>"

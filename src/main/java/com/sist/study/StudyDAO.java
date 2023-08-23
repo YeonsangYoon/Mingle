@@ -35,6 +35,12 @@ public class StudyDAO {
 		return mapper.studyDetailData(study_id);
 	}
 	
+	// 등록 페이지
+	public void studyInsert(StudyVO vo)
+	{
+		mapper.studyInsert(vo);
+	}
+	
 	// 검색 페이지
 	public List<StudyVO> studyFindData(Map map)
 	{

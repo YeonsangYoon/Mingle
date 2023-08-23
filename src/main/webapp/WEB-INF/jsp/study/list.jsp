@@ -23,26 +23,27 @@
         <!-- 검색바 -->
         <div class="row-study">
             <div class="study-search-bar">
+              <form method="post" action="../board/find.do" class="inline">
                 <label for="writer" class="pretty-checkbox">
-                    <input id="writer" type="checkbox" v-model="wCheck">
+                    <input id="writer" type="checkbox" name="fs" value="W" v-model="wCheck">
                     <span class="checkmark"></span>
                     <span>작성자</span>
                 </label>
                 <label for="title" class="pretty-checkbox">
-                    <input id="title" type="checkbox" v-model="tCheck">
+                    <input id="title" type="checkbox" name="fs" value="T" v-model="tCheck">
                     <span class="checkmark"></span>
                     <span>제목</span>
                 </label>
                 <label for="content" class="pretty-checkbox">
-                    <input id="content" type="checkbox" v-model="cCheck">
+                    <input id="content" type="checkbox" name="fs" value="C" v-model="cCheck">
                     <span class="checkmark"></span>
                     <span>내용</span>
                 </label>
                 <label for="searchBar">
                     <input id="searchBar" type="text" v-model="searchWord">
                 </label>
-
                 <button class="search-btn">검색</button>
+              
             </div>
         </div>
 

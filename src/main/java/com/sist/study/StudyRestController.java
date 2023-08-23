@@ -32,4 +32,18 @@ public class StudyRestController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		return objectMapper.writeValueAsString(new JSONObject(json));
 	}
+	
+	@RequestMapping(value = "study/find.do",produces = "text/plain;charset=UTF-8")
+	public String study_find(String[] fs, String ss) throws Exception
+	{
+	    // 검색한 데이터를 읽어온다(데이터베이스 연결)
+	    Map map=new HashMap();
+	    map.put("fsArr", fs);
+	    map.put("ss", ss);
+	    List<StudyVO> list=service.studyFindData(map);
+	    
+	    ObjectMapper mapper=new ObjectMapper();
+	    String json=mapper.writeValueAsString(list);
+	    return json;
+	}
 }

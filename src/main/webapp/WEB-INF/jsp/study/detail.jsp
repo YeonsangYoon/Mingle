@@ -32,32 +32,32 @@
         <div class="col-sm-6">
           <table class="table">
             <tr>
-		      <th width="20%">진행방식</th>
-		      <td width="80%">${vo.onoff}</td>
+		      <th width="25%">진행방식</th>
+		      <td width="75%">${vo.onoff}</td>
             </tr>
             <tr>
-		      <th width="20%">시작예정일</th>
-		      <td width="80%">${vo.deadline}</td>
+		      <th width="25%">시작예정일</th>
+		      <td width="75%">${vo.deadline}</td>
             </tr>
             <tr>
-		      <th width="20%">진행기간</th>
-		      <td width="80%">${vo.period}</td>
+		      <th width="25%">진행기간(개월)</th>
+		      <td width="75%">${vo.period}</td>
             </tr>
           </table>
         </div>
         <div class="col-sm-6">
           <table class="table">
             <tr>
-		      <th width="20%">모집인원</th>
-		      <td width="80%">${vo.recruit}명</td>
+		      <th width="25%">모집인원</th>
+		      <td width="75%">${vo.recruit}명</td>
             </tr>
             <tr>
-		      <th width="20%">기술스택</th>
-		      <td width="80%">${vo.techs}</td>
+		      <th width="25%">연락방법</th>
+		      <td width="75%">${vo.contact_type}</td>
             </tr>
             <tr>
-		      <th width="20%">연락방법</th>
-		      <td width="80%">${vo.contact_type}:&nbsp;<a href="${vo.contact_link}">${vo.contact_link}</a></td>
+		      <th width="25%">연락주소</th>
+		      <td width="75%"><a href="${vo.contact_link}">${vo.contact_link}</a></td>
             </tr>
           </table>
         </div>
@@ -81,10 +81,10 @@
 		      	<table class="table" v-for="re in reply_data">
 		      	  <tr>
 		      	    <td class="text-left">
-		      	      ◎<span style="color: blue;">{{re.name}}</span>&nbsp;{{re.dbday}}
+		      	      ◎<span style="color: blue;">{{re.nickname}}</span>&nbsp;{{re.dbday}}
 		      	    </td>
 		      	    <td class="text-right">
-		      	      <span v-if="re.id==study_detail.sessionId">
+		      	      <span v-if="re.user_id==study_detail.sessionId">
 		      	        <input type="button" class="btn btn-xs btn-danger" value="수정" @click="replyUpdateForm(re.no)" :id="'up'+re.no">
 		      	        <input type="button" class="btn btn-xs btn-info" value="삭제" @click="replyDelete(re.no)">
 		      	      </span>
@@ -116,8 +116,115 @@
       
      </div>
 	</section>
-	
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script>
+		new Vue({
+			el:'#sdetail',
+			data:{
+				study_id:${study_id},
+				study_detail:{},
+				reply_data:[],
+				msg:'',
+				no:0
+			},
+			mounted:function(){
+				axios.get('../study/study_detail_vue.do',{
+					params:{
+						study_id:this.study_id
+					}
+				}).then(res=>{
+					console.log(res.data)
+					this.study_detail=res.data
+				}).catch(error=>{
+					console.log(error.res)
+				})
+				
+				axios.get('../study/reply_list_vue.do',{
+					params:{
+						study_id:this.study_id
+					}
+				}).then(res=>{
+					console.log(res.data)
+					this.reply_data=res.data
+				}).catch(error=>{
+					console.log(error.res)
+				})
+			},
+			methods:{
+				replyWrite:function(){
+					if(this.msg.trim()==='')
+					{
+						this.$refs.msg.focus()
+						return
+					}
+					axios.post('../study/reply_insert_vue.do',null,{
+						params:{
+							study_id:this.study_id,
+							msg:this.msg
+						}
+					}).then(res=>{
+						console.log(res.data)
+						this.reply_data=res.data
+						this.msg=''
+					}).catch(error=>{
+						console.log(error.res)
+					})
+				},
+				replyDelete:function(no){
+					axios.get('../study/reply_delete_vue.do',{
+						params:{
+							no:no,
+							study_id:this.study_id
+						}
+					}).then(res=>{
+						console.log(res.data)
+						this.reply_data=res.data
+					}).catch(error=>{
+						console.log(error.res)
+					})
+				},
+				replyUpdateForm:function(no){
+					$('.updates').hide()
+					if(this.no==0)
+					{
+						$('#reply'+no).show()
+						$('#up'+no).val("취소")
+						this.no=1
+					}
+					else
+					{
+						$('#reply'+no).hide()
+						$('#up'+no).val("수정")
+						this.no=0
+					}
+				},
+				replyUpdate:function(no){
+					let msg=$('#msg'+no).val()
+					if(msg==='')
+					{
+						$('#msg'+no).focus()
+						return
+					}
+					alert('msg='+msg)
+					
+					axios.post('../study/reply_update_vue.do',null,{
+						params:{
+							no:no,
+							msg:msg,
+							study_id:this.study_id // data:{}안의 변수만 this를 붙인다
+						}
+					}).then(res=>{
+						console.log(res.data)
+						this.reply_data=res.data // updated => 변경된 데이터값으로 출력
+						$('#reply'+no).hide()
+						$('#up'+no).val("수정")
+						this.no=0
+					}).catch(error=>{
+						console.log(error.res)
+					})
+				}
+			}
+		})
 	</script>
 </body>
 </html>
