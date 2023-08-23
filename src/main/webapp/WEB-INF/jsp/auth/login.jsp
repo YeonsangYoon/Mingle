@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div id="login-modal" class="modal">
+<div id="login-modal" class="modal" style="height: 600px;">
     <div class="login-content">
         <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg" alt="logo">
         <h2 class="title">Login</h2>

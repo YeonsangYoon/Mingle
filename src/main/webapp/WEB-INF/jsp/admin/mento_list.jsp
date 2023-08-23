@@ -1,38 +1,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="app-content" id="member-list-area">
+<div class="app-content" id="mento-list-area">
     <div class="app-content-header">
-        <h1 class="app-content-headerText">회원 등록 현황</h1>
+        <h1 class="app-content-headerText">멘토 등록 현황</h1>
     </div>
     <div class="app-content-actions">
         <input class="search-bar" placeholder="Search..." type="text">
     </div>
     <div class="products-area-wrapper tableView">
         <div class="products-header">
-            <div class="product-cell">아이디</div>
-            <div class="product-cell">가입일</div>
             <div class="product-cell">이름</div>
-            <div class="product-cell">닉네임</div>
-            <div class="product-cell">성별</div>
+            <div class="product-cell">아이디</div>
+            <div class="product-cell">직무</div>
+            <div class="product-cell">재직기업</div>
+            <div class="product-cell">부서</div>
             <div class="product-cell"></div>
         </div>
-        <div class="products-row" v-for="(member, index) in member_list" v-on:click="selectMember(index)">
+        <div class="products-row" v-for="(mento, index) in mento_list" v-on:click="selectMento(index)">
             <div class="product-cell">
-                <span>{{member.user_id}}</span>
+                <span>{{mento.user_name}}</span>
             </div>
             <div class="product-cell">
-                <span>{{member.dbday}}</span>
+                <span>{{mento.user_id}}</span>
             </div>
             <div class="product-cell">
-                <span>{{member.user_name}}</span>
+                <span>{{mento.job_cat}}</span>
             </div>
             <div class="product-cell">
-                <span>{{member.nickname}}</span>
+                <span>{{mento.job}}</span>
             </div>
             <div class="product-cell">
-                <span>{{member.gender == 'm' ? '남자' : '여자'}}</span>
+                <span>{{mento.dept}}</span>
             </div>
             <div class="product-cell">
-                <span class="status active" v-if="member.user_id != 'admin'" v-on:click.stop="withdrawMember(index)">탈퇴</span>
+                <span class="status active" style="margin: 0 auto;" v-on:click.stop="deleteMento(index)">삭제</span>
             </div>
         </div>
     </div>
@@ -55,111 +55,70 @@
             </li>
         </ul>
     </div>
-    <div id="member-detail-modal" class="modal info-content">
-        <h3 class="text-center" style="margin-bottom: 10px;">회원정보카드</h3>
+    <div id="mento-detail-modal" class="modal info-content">
+        <h3 class="text-center" style="margin-bottom: 10px;">멘토 상세 정보</h3>
         <div class="row">
             <div class="col-sm-3">
-                <p>아이디</p>
+                <p>이름 / 아이디</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMember.user_id}}</p>
+                <p>{{selectedMento.user_name}} / {{selectedMento.user_id}}</p>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-3">
-                <p>가입일</p>
+                <p>직무</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMember.dbday}}</p>
+                <p>{{selectedMento.job_cat}}</p>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-3">
-                <p>이름</p>
+                <p>재직기업</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMember.user_name}}</p>
+                <p>{{selectedMento.job}}</p>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-3">
-                <p>닉네임</p>
+                <p>부서</p>
             </div>
             <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMember.nickname}}</p>
+                <p>{{selectedMento.dept}}</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <p>성별</p>
-            </div>
-            <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMember.gender=='m' ? '남자' : '여자'}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <p>전화번호</p>
-            </div>
-            <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMember.phone}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <p>이메일</p>
-            </div>
-            <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMember.email}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <p>생년 월일</p>
-            </div>
-            <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMember.birthday}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <p>주소</p>
-            </div>
-            <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMember.address}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <p>상세 주소</p>
-            </div>
-            <div class="offset-sm-1 col-sm-8">
-                <p>{{selectedMember.detail_address}}</p>
-            </div>
+        <div class="mentor-content">
+            <h3>{{selectedMento.title}}</h3>
+            <h4>멘토 소개</h4>
+            <div v-html="selectedMento.intro"></div>
+            <h4>주요 경력</h4>
+            <div v-html="selectedMento.career"></div>
         </div>
     </div>
 </div>
 <script>
     new Vue({
-        el : '#member-list-area',
+        el : '#mento-list-area',
         data : {
-            member_list : [],
+            mento_list : [],
             curpage : ${curpage},
             totalpage : 0,
             page_list : [],
-            selectedMember : {}
+            selectedMento : {}
         },
         mounted : function(){
-            this.requestMemberData();
+            this.requestMentoData();
         },
         methods : {
-            requestMemberData : function(){
-                axios.get('/mingle/admin/member_list.do',{
+            requestMentoData : function(){
+                axios.get('/mingle/admin/mento_list.do',{
                     params : {
                         page : this.curpage
                     }
                 }).then(response => {
-                    this.member_list = response.data.list;
+                    this.mento_list = response.data.list;
                     this.totalpage = response.data.totalpage;
                     let start = Math.trunc((this.curpage-1) / 5) * 5 + 1;
                     let end = (this.totalpage > start + 4) ? start + 4 : this.totalpage;
@@ -174,7 +133,7 @@
                     return;
                 }
                 this.curpage = page;
-                this.requestMemberData();
+                this.requestMentoData();
             },
             next : function (){
                 if(this.curpage === this.totalpage){
@@ -182,7 +141,7 @@
                 }
                 this.curpage = this.page_list[this.page_list.length-1] + 1;
                 this.curpage = (this.curpage > this.totalpage) ? this.totalpage : this.curpage;
-                this.requestMemberData();
+                this.requestMentoData();
             },
             prev : function () {
                 if (this.curpage === 1) {
@@ -190,25 +149,26 @@
                 }
                 this.curpage = this.page_list[0] - 1;
                 this.curpage = (this.curpage < 1) ? 1 : this.curpage;
-                this.requestMemberData();
+                this.requestMentoData();
             },
-            selectMember : function(index){
-                this.selectedMember = this.member_list[index];
-                $('#member-detail-modal').modal();
+            selectMento : function(index){
+                this.selectedMento = this.mento_list[index];
+                $('#mento-detail-modal').modal();
             },
-            withdrawMember : function(index){
-                let user_id = this.member_list[index].user_id;
-                if(confirm('정말 ' + user_id + '님을 탈퇴시키겠습니까?')){
-                    axios.post('/mingle/admin/withdraw.do', null, {
-                        params : {
-                            user_id : user_id
+            deleteMento : function (index){
+                let user_id = this.mento_list[index].user_id;
+                let mento_no = this.mento_list[index].mento_no;
+                if(confirm('정말 ' + user_id + '님이 등록한 멘토 정보를 삭제하시겠습니까?')){
+                    axios.post('/mingle/admin/deleteMento.do', null, {
+                        params: {
+                            mento_no : mento_no
                         }
                     }).then(response => {
                         if(response.data === 'OK'){
-                            location.href = '/mingle/admin/admin.do?page='+this.curpage;
+                            location.href = "/mingle/admin/mento.do?page=" + this.curpage;
                         }
                         else{
-                            alert("회원탈퇴에 실패했습니다.");
+                            alert('멘토 삭제에 실패했습니다');
                         }
                     })
                 }

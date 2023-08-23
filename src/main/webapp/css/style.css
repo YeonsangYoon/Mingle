@@ -1472,6 +1472,10 @@ ol {
 .product__pagination {
 	padding-top: 25px;
 	text-align: center;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none
 }
 
 .product__pagination ul{

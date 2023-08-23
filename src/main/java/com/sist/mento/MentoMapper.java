@@ -3,6 +3,8 @@ package com.sist.mento;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -44,9 +46,19 @@ public interface MentoMapper {
 	@Update("UPDATE mento_reg SET INTRO = #{intro}, CAREER = #{career} WHERE mento_no=#{mento_no}")
 	public void mentoEditUpdate(Map map);
 	
-	
-	
-	
-	
+	/* 멘토 삭제 관련 */
+	@Delete("DELETE MENTO_TIME WHERE MENTO_NO = #{mento_no}")
+	public void deleteMentoTimeByMentoNo(@Param("mento_no")int mento_no);
 
+	@Delete("DELETE MENTO_COUNSEL WHERE MENTO_NO = #{mento_no}")
+	public void deleteMentoCounselByMentoNo(@Param("mento_no")int mento_no);
+
+	@Delete("DELETE MENTO_REVIEW WHERE MENTO_NO = #{mento_no}")
+	public void deleteMentoReviewByMentoNo(@Param("mento_no")int mento_no);
+
+	@Delete("DELETE MENTO_FOLLOW WHERE MENTO_NO = #{mento_no}")
+	public void deleteMentoFollowByMentoNo(@Param("mento_no")int mento_no);
+
+	@Delete("DELETE MENTO_REG WHERE MENTO_NO = #{mento_no}")
+	public int deleteMentoByMentoNo(@Param("mento_no")int mento_no);
 }
