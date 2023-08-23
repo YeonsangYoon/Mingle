@@ -23,8 +23,8 @@ public interface SpaceMapper {
 	
 	/* --------------------- Detail ------------------------*/
 	
-	// 좋아요 ZZIM_NO 	USER_ID 	SPACE_ID
- 	@Insert("INSERT INTO space_zzim VALUES("
+	// 좋아요 
+	@Insert("INSERT INTO space_zzim VALUES("
  		   +"sqz_no_seq.nextval,#{user_id},#{space_id})")
 	public void spaceZzimInsert(Map map);
  	@Delete("DELETE space_zzim WHERE space_id=#{space_id} AND user_id=#{user_id}")
