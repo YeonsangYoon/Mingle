@@ -15,15 +15,22 @@
 	background: white;
 	margin:5px;
 }
-.mento_list_box_title{
-	padding: 10px 10px;
+.mento_list_box_job{
+	padding: 3px 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 26px;
-    font-weight: 600;
-	
+    font-size: 25px;
+    font-weight: 400;
 }
+.mento_list_box_title {
+	padding: 3px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 20px;
+}
+
 .mento_list_info{
     display: flex;
     justify-content: space-around;
@@ -101,6 +108,9 @@
 }
 .mentoregist > input:focus{
 	outline: 2px solid red;
+}
+.mImage{
+	padding-top: 30px
 }
 
 

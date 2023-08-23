@@ -28,7 +28,7 @@
      <!-- Breadcrumb Section End -->
 
 <!-- Checkout Section Begin -->
-    <section class="checkout spad">
+    <section class="checkout spad mento-regist">
     
     	<c:if test="${sessionScope.id==null}">
 	    	<script>
@@ -39,7 +39,7 @@
         </c:if>
         
         <div class="container">
-                <form action="#">
+                <form @submit="submitForm">
                     <div class="row">
                     	<h4> 안녕하세요 
                     	<span style="color: orange; font-weight: 800">${sessionScope.nickname}</span> 님<br>
@@ -48,44 +48,47 @@
                             <div> <hr> </div>
                             
                             <div class="mentoregist">
-                            	<span>사용자 ID :</span>
-                                <input type="text" value=${sessionScope.id} readonly>
+                            	<span>사용자 ID</span>
+                                <input type="text" value="${sessionScope.id}" readonly v-model="user_id" name="user_id" ref="user_id">
                             </div>
                             
                             <div class="mentoregist">
-                                <span>직무 카테고리 :</span>
-                                <select style="height: 25px; width:300px; font-size: 17px">
+                                <span>직무 카테고리</span>
+                                <select style="height: 60px; width:348px; font-size: 17px" v-model="job_cat" ref="job_cat" name="job_cat">
 									<option value="all">전체</option>
 									<option value="dev">IT개발/데이터</option>          	
 									<option value="finance">회사/재무/금융</option>          	
 									<option value="official">공사/공기업</option>   	
 									<option value="art">디자인/예술 </option>   	
+									<option value="market">마케팅/MD </option>   	
+									<option value="trans">유통/무역/구매 </option> 
 					          	</select>
+									  	
                             </div>
                             
                             <div class="mentoregist">
                             	<span>현재 직업</span>
-                               <input type="text" placeholder="현재 직업을 입력해 주세요" >
+                               <input type="text" placeholder="현재 직업을 입력해 주세요" v-model="job" ref="job" name="job">
                             </div>
                             <div class="mentoregist">
                             	<span>멘토링 제목</span>
-                                <input type="text" placeholder="등록할 멘토링 제목을 입력해주세요" >
+                                <input type="text" placeholder="등록할 멘토링 제목을 입력해주세요" v-model="title" ref="title" name="title" >
                             </div>
                             <div class="mentoregist">
                             	<span>멘토링 내용</span>
-                                <input type="textarea" placeholder="간단한 자기소개부터 멘토링에 대한 설명을 해주세요" >
+                                <input type="textarea" placeholder="간단한 자기소개부터 멘토링에 대한 설명을 해주세요" v-model="intro" ref="intro" name="intro">
                             </div>
                             <div class="mentoregist">
                             	<span>경력 사항</span>
-                                <input type="textarea" placeholder="등록할 멘토링 제목을 입력해주세요" >
+                                <input type="textarea" placeholder="경력사항을 작성해주세요" v-model="career" ref="career" name="career" >
                             </div>
                             <div class="mentoregist">
                             	<span>부서</span>
-                                <input type="textarea" placeholder="속하신 부서를 적어주세요" >
+                                <input type="textarea" placeholder="속하신 부서를 적어주세요" v-model="dept" ref="dept" name="dept">
                             </div>
                             <div class="mentoregist">
                                  <span>시간당 희망금액</span>
-                                 <input type="number" value="1000" min="1000" max="15000" step="2000">
+                                 <input type="number" value="1000" min="1000" max="15000" step="2000" v-model="cost" name="cost">
                             </div>
 	                                
                             
@@ -96,14 +99,21 @@
 	                                개인정보 활용동의, 수익에 대한 약관 동의
 	                            </p>
                                 <label>
-                                    <input type="checkbox" name="color" value="agree"> 동의하기
+                                    <input type="checkbox"  value="agree"> 동의하기
                                 </label>
                             </div>
+                            
+                            <div colspan="2" class="text-center">
+					           <input type="submit" value="멘토등록" 
+					             class="btn btn-success btn-sm" id="joinBtn">
+					           <input type=button value="취소"
+					             class="btn btn-info btn-sm" onclick="javascript:history.back()">
+					        </div>
                             
                         </div>
                         
                         
-                        <div class="col-lg-4 col-md-6">
+                        <!-- <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4 class="order__title">상담 희망 요일과, 시간대를 선택해 주세요</h4>
                                 <label for="birthday">상담 희망 날짜</label>
@@ -144,13 +154,53 @@
                                 </div>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
-                        </div>
+                        </div> -->
+                        
+                        
+                        
                     </div>
                 </form>
                 
         </div>
     </section>
     <!-- Checkout Section End -->
+    <script>
+    new Vue({
+    	el:'.mento-regist',
+    	data:{
+    		user_id:'${sessionScope.id}',
+    		job_cat:'',
+    		career:'',
+    		job:'',
+    		cost:'',
+    		title:'',
+    		intro:'',
+    		dept:'',
+    		image:''
+    		
+    	},
+    	methods:{
+    		submitForm:function(){
+    			
+    		   let form=new FormData();
+ 			   form.append("user_id",this.user_id);
+ 			   form.append("job_cat",this.job_cat);
+ 			   form.append("career",this.career);
+ 			   form.append("job",this.job);
+ 			   form.append("cost",this.cost);
+ 			   form.append("title",this.title);
+ 			   form.append("intro",this.intro);
+ 			   form.append("dept",this.dept);
+ 			   
+    		   axios.post('../mento/regist_ok_vue.do',form).then(response=>{
+ 				   console.log(response.data)
+ 			   }).catch(error=>{
+ 				   console.log(error.response);
+ 			   })
+    		}
+    	}
+    })
+    </script>
 
 
 </body>

@@ -13,7 +13,7 @@
  				WHERE ${column} LIKE '%'||#{fd}||'%'
  			</if>
  			<if test="column=='all'">
- 				WHERE job LIKE '%'||#{fd}||'%'
+ 				WHERE title LIKE '%'||#{fd}||'%'
  			</if>
  			
  		ORDER BY mento_no ASC))

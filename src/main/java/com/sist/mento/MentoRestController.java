@@ -9,6 +9,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -92,6 +93,16 @@ public class MentoRestController {
 		return json;
 		
 	}
+	
+	@PostMapping(value="mento/regist_ok_vue.do",produces = "text/plain;charset=UTF-8")
+	   public String mento_regist(MentoVO vo) throws Exception{
+		   dao.mentoRegist(vo);
+		   
+		   String result="성공 한듯";
+		   return result;
+	   }
+	
+	
 	
 	//문자 제거
 	@GetMapping(value="mento/mento_edit_data.do", produces="text/plain;charset=UTF-8")

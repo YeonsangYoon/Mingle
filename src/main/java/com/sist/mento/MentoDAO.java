@@ -31,7 +31,7 @@ public class MentoDAO {
 		mapper.mentoEditUpdate(map);
 	}
 	
-	/* 멘토 삭제 관련 (멘토 삭제 방법 : 아래의 메소드를 순서대로 호출) */
+	
 	public void deleteMentoTimeByMentoNo(int mento_no){
 		mapper.deleteMentoTimeByMentoNo(mento_no);
 	}
@@ -46,5 +46,12 @@ public class MentoDAO {
 	}
 	public int deleteMentoByMentoNo(int mento_no){
 		return mapper.deleteMentoByMentoNo(mento_no);
+	}
+	
+	public void mentoRegist(MentoVO vo) {
+		System.out.println(vo.getCareer());
+		System.out.println(vo.getIntro());
+		System.out.println(vo.getUser_id());
+		mapper.mentoRegist(vo);
 	}
 }

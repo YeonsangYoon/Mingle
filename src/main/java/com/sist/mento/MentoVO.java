@@ -21,6 +21,7 @@ FOLLOW
 SUM_STAR
 REV_CNT
 CNT_STAR
+dept
  */
 @Getter
 @Setter

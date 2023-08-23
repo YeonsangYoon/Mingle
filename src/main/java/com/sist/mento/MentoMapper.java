@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -46,7 +47,7 @@ public interface MentoMapper {
 	@Update("UPDATE mento_reg SET INTRO = #{intro}, CAREER = #{career} WHERE mento_no=#{mento_no}")
 	public void mentoEditUpdate(Map map);
 	
-	/* 멘토 삭제 관련 */
+	/* 硫섑넗 �궘�젣 愿��젴 */
 	@Delete("DELETE MENTO_TIME WHERE MENTO_NO = #{mento_no}")
 	public void deleteMentoTimeByMentoNo(@Param("mento_no")int mento_no);
 
@@ -61,4 +62,19 @@ public interface MentoMapper {
 
 	@Delete("DELETE MENTO_REG WHERE MENTO_NO = #{mento_no}")
 	public int deleteMentoByMentoNo(@Param("mento_no")int mento_no);
+	
+	@Insert("INSERT INTO mento_reg VALUES("
+			+ "(SELECT NVL(MAX(mento_no)+1,1) FROM mento_reg),"
+			+ "#{user_id},"
+			+ "#{job_cat},"
+			+ "#{job},"
+			+ "#{cost},"
+			+ "#{title},"
+			+ "#{intro},"
+			+ "sysdate,"
+			+ "null,0,0,0,0,"
+			+ "#{career},"
+			+ "#{dept}"
+			+ ")")
+	public void mentoRegist(MentoVO vo);
 }

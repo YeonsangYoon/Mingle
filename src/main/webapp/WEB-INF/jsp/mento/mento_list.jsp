@@ -39,33 +39,32 @@
             	
             	<!-- 멘토 리스트 Start-->
             	<div class="col-sm-4 text-center" v-for="vo in mento_list" >
-            		
             		<!-- 상세보기 -->
             	  <div class="mento_list_box "  >
             		<div class="mento_list_box_top boxhover" v-on:click="mentoDetail(vo.mento_no)">
-            			<div style="height: 100px;"> 
-            				<h3 class="mento_list_box_title">{{vo.job}}</h3>
-            				<h3 class="mento_list_box_title" style="font-size: 20px !important">{{vo.intro}}</h3>
+            			<div style="height: 80px;"> 
+            				<div class="mento_list_box_job">{{vo.title}}</div>
+            				<div class="mento_list_box_title" v-html="vo.job"></div>
             			</div>
             			<div class="mento_list_info" style="height:100px;">
             				<div style="width: 140px;" >
-	            				<div style="margin-top: 5px">
-	            					<span class="mento_list_info_detail_title">직무</span>
-	            					<span class="mento_list_info_detail_content">{{vo.job_cat}}</span> 
+	            				<div style="margin-top: 10px">
+	            					<div class="mento_list_info_detail_title">직무</div>
+	            					<div class="mento_list_info_detail_content">{{vo.job_cat}}</div> 
 	            				</div>
-	            				<div tyle="margin-top: 5px" >
+	            				<div tyle="margin-top: 10px" >
 	            					<span class="mento_list_info_detail_title">부서</span>
 	            					<span class="mento_list_info_detail_content">{{vo.dept}}</span> 
 	            				</div>
-	            				<div tyle="margin-top: 5px" >
+	            				<div tyle="margin-top: 10px" >
 	            					<div class="mento_list_info_detail_title">경력</div>
-	            					<div class="mento_list_info_detail_content">{{vo.career}}</div> 
+	            					<div class="mento_list_info_detail_content" v-html="">{{vo.career}}</div> 
 	            				</div>
 		            		</div>
+		            		
 		            		<div style="width: 100px; height:100px;">
-		            			<div>
-		            				<img src="${pageContext.request.contextPath}/img/blog/blog-1.jpg" alt="">
-		            				{{vo.image}}
+		            			<div class=mImage>
+		            				<img :src="vo.image" alt="">
 		            			</div>
 		            		</div>
             			</div>
@@ -73,9 +72,10 @@
             		
             		<div class="mento_list_box_top" style="height:70px; padding: 16px 0px">
 	            		<div class="mento_list_info">
-	            			<div class="follow">
-	            				팔로우 &nbsp; {{vo.follow}}
+	            			<div class="follow" >
+	            				팔로잉 &nbsp; {{vo.follow}}
 	            			</div>
+	            			
 	            			<div class="star">
 	            				별점 &nbsp; {{vo.avg_star}}</div>
 	            		</div>
@@ -120,7 +120,7 @@
            <td colspan="2">
             <h3>{{mento_detail.title}}&nbsp;<span style="color:orange">{{mento_detail.follow}}</span></h3>
             <br>
-            <h5>{{mento_detail.intro}}</h5>
+            <h5 v-html="mento_detail.intro"></h5>
            </td>
           </tr>
           <tr>
@@ -141,7 +141,7 @@
           </tr>
           <tr>
             <td width="25%">커리어</td>
-            <td width="75%">{{mento_detail.career}}</td>
+            <td width="75%" v-html="mento_detail.career"></td>
           </tr>
           <tr>
             <td colspan=2 class="text-center">
@@ -171,13 +171,13 @@
    			startPage:0,
    			endPage:0,
    			
-   			isShow:false
 			
     	},
     	mounted:function(){
     		this.setData();
     		/* this.mentoEdit(); */
     	},
+    	
     	methods:{
     		setData:function(){
     			axios.get("/mingle/mento/mento_list_vue.do",{
@@ -251,6 +251,7 @@
 			mentoContact:function(){
 				
 			}
+			
     	}
     })
     
