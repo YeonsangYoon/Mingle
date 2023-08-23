@@ -112,6 +112,16 @@
     gap: 10px;
     margin-bottom: 50px
 }
+.LanguageBar_languages__243rH .active{
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    background-color: #9f84f1;
+    border: 1px solid #704DE4;
+}
+.LanguageBar_languages__243rH .active span{
+    color: white;
+}
+
 
 .LanguageBar_languageIcon__2PTl1 {
     display: flex;
