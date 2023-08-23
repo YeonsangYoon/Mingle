@@ -32,6 +32,10 @@ public class SpaceServiceImpl implements SpaceService{
 	public List<SpaceVO> spaceDetailData(int space_id) {
 		return dao.spaceDetailData(space_id);
 	}
+	@Override
+	public List<ReviewVO> spaceReviewData(int space_id) {
+		return dao.spaceReviewData(space_id);
+	}
 
 	@Override
 	public void spaceZzimInsert(Map map) {
@@ -42,6 +46,7 @@ public class SpaceServiceImpl implements SpaceService{
 	public void spaceZzimCancel(Map map) {
 		dao.spaceZzimCancel(map);
 	}
+
 
 	
 }

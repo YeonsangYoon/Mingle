@@ -24,6 +24,11 @@ public class SpaceDAO {
 		return mapper.spaceDetailData(space_id);
 	}
 	
+	public List<ReviewVO> spaceReviewData(int space_id)
+	{
+		return mapper.spaceReviewData(space_id);
+	}
+	
 	public void spaceZzimInsert(Map map)
 	{
 		mapper.spaceZzimInsert(map);

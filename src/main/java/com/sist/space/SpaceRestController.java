@@ -46,9 +46,12 @@ public class SpaceRestController {
 			images.add(vo.getImages());
 		}
 		
+		List<ReviewVO> rList=service.spaceReviewData(space_id);
+		
 		Map<String, Object> json = new HashMap<String, Object>();
 		json.put("space_detail", list.get(0));
 		json.put("images", images);
+		json.put("rList", rList);
 		/*
 		 * {
 		 *  space : {  }

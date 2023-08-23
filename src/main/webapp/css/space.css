@@ -393,7 +393,7 @@
 }
 
 .space__details__tab {
-	padding-top: 60px;
+	padding: 60px 50px 0px 50px;
 }
 
 .space__details__tab .nav-tabs {
@@ -440,6 +440,34 @@
 .space__details__tab__content__item {
 	margin-bottom: 30px;
 }
+.space__details__tab__content__item pre{
+	white-space: pre-wrap!important;
+}
+
+.space__details__tab__content__review {
+	margin-bottom: 30px;
+	border-bottom: 1px solid #ebebeb;
+}
+
+.space__details__tab__content__review .guest_name{
+    margin-top: 3px;
+    margin-right: 117px;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 400;
+}
+
+.space__details__tab__content__review .content {
+    color: #656565;
+    white-space: pre-wrap;
+    font-family: 'Pretendard';
+    font-size: 16px;
+}
+
+.space__details__tab__content__review .regdate {
+   font-size: 12px; 
+   color: #b2b2b2;
+}
 
 .space__details__tab__content__item:last-child {
 	margin-bottom: 0;
@@ -460,6 +488,10 @@
     font-weight: 400;
     line-height: 25px;
     margin: 0 0 15px 0;
+}
+
+.space__details__tab__content__item span{
+	color:#704DE4;	
 }
 
 /*------ photo swipe related  --------*/

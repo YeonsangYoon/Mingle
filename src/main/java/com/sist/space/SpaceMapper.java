@@ -21,6 +21,10 @@ public interface SpaceMapper {
 	      + "WHERE sl.space_id=#{space_id}")
 	public List<SpaceVO> spaceDetailData(int space_id);
 	
+	@Select("SELECT sr.*, TO_CHAR(sr.REGDATE, 'yyyy-MM-dd') AS dbday, nickname "
+		  + "FROM space_review sr, MEMBER m WHERE space_id=#{user_id} AND sr.USER_ID = m.USER_ID")
+	public List<ReviewVO> spaceReviewData(int space_id);
+	
 	/* --------------------- Detail ------------------------*/
 	
 	// 좋아요 
@@ -29,6 +33,7 @@ public interface SpaceMapper {
 	public void spaceZzimInsert(Map map);
  	@Delete("DELETE space_zzim WHERE space_id=#{space_id} AND user_id=#{user_id}")
  	public void spaceZzimCancel(Map map);
+ 	
  	
  	
  	
