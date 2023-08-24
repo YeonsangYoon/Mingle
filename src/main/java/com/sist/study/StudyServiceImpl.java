@@ -9,6 +9,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 @Service
 @Primary
 public class StudyServiceImpl implements StudyService{
@@ -62,6 +64,11 @@ public class StudyServiceImpl implements StudyService{
 			boolean cCheck = Boolean.parseBoolean((String)params.get("cCheck"));
 			params.put("cCheck", cCheck);
 		}
+		if(!(Boolean)params.get("wCheck") && !(Boolean)params.get("tCheck") && !(Boolean)params.get("cCheck")){
+			params.put("wCheck", true);
+			params.put("tCheck", true);
+			params.put("cCheck", true);
+		}
 	}
 
 	@Override
@@ -86,7 +93,12 @@ public class StudyServiceImpl implements StudyService{
 					String tech_name = (String)tech.get("TECH");
 
 					if(study_id == vo.getStudy_id()){
-						vo.getTechs().add(tech_name);
+						if(tech_name.equals(params.get("tech"))){
+							vo.getTechs().add(0, tech_name);
+						}
+						else{
+							vo.getTechs().add(tech_name);
+						}
 					}
 				}
 			}
@@ -104,7 +116,9 @@ public class StudyServiceImpl implements StudyService{
 	}
 
 	@Override
+	@Transactional
 	public StudyVO studyDetailData(int study_id) {
+		dao.increaseStudyHit(study_id);
 		return dao.studyDetailData(study_id);
 	}
 }

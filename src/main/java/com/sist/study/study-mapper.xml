@@ -13,7 +13,7 @@
                     STUDY_ID,
                     TITLE,
                     CONTENT,
-                    TO_CHAR(REGDATE, 'yyyy-MM-dd') AS DBDAY,
+                    TO_CHAR(STUDY.REGDATE, 'yyyy-MM-dd') AS DBDAY,
                     HIT,
                     DEADLINE,
                     ISCLOSED,
@@ -22,18 +22,31 @@
                     ONOFF,
                     CONTACT_TYPE,
                     CONTACT_LINK,
-                    USER_ID,
-                    MODIFYDATE
-                FROM STUDY
-                <where>
+                    STUDY.USER_ID,
+                    MODIFYDATE,
+                    NICKNAME
+                FROM STUDY, MEMBER
+                WHERE
+                    MEMBER.USER_ID = STUDY.USER_ID
                     <if test="tech != ''">
-                        STUDY_ID IN (SELECT STUDY_ID FROM STUDY_TECH WHERE TECH = #{tech})
+                        AND STUDY_ID IN (SELECT STUDY_ID FROM STUDY_TECH WHERE TECH = #{tech})
                     </if>
                     <if test="searchWord != ''">
-                        AND TITLE LIKE '%'||#{searchWord}||'%'
+                        AND(
+                        <trim prefixOverrides="OR">
+                            <if test="wCheck">
+                                OR NICKNAME LIKE '%'||#{searchWord}||'%'
+                            </if>
+                            <if test="tCheck">
+                                OR TITLE LIKE '%'||#{searchWord}||'%'
+                            </if>
+                            <if test="cCheck">
+                                OR CONTENT LIKE '%'||#{searchWord}||'%'
+                            </if>
+                        </trim>
+                        )
                     </if>
-                </where>
-                ORDER BY DEADLINE DESC, REGDATE
+                ORDER BY DEADLINE DESC, STUDY.REGDATE
             ) a
             WHERE ROWNUM &lt;= #{end}
         )
@@ -46,5 +59,70 @@
             <foreach collection="list" open="(" separator="," close=")" item="item">
                 #{item}
             </foreach>
+    </select>
+    <select id="getTotalPageByParams" parameterType="java.util.Map" resultType="int">
+        SELECT CEIL(COUNT(*)/12.0) FROM STUDY, MEMBER
+        WHERE
+            MEMBER.USER_ID = STUDY.USER_ID
+            <if test="tech != ''">
+                AND STUDY_ID IN (SELECT STUDY_ID FROM STUDY_TECH WHERE TECH = #{tech})
+            </if>
+            <if test="searchWord != ''">
+                AND(
+                    <trim prefixOverrides="OR">
+                        <if test="wCheck">
+                            OR NICKNAME LIKE '%'||#{searchWord}||'%'
+                        </if>
+                        <if test="tCheck">
+                            OR TITLE LIKE '%'||#{searchWord}||'%'
+                        </if>
+                        <if test="cCheck">
+                            OR CONTENT LIKE '%'||#{searchWord}||'%'
+                        </if>
+                    </trim>
+                )
+            </if>
+    </select>
+    <resultMap id="StudyVOMap" type="StudyVO">
+        <id property="study_id" column="study_id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="dbday" column="dbday"/>
+        <result property="hit" column="hit"/>
+        <result property="deadline" column="deadline"/>
+        <result property="isclosed" column="isclosed"/>
+        <result property="period" column="period"/>
+        <result property="recruit" column="recruit"/>
+        <result property="onoff" column="onoff"/>
+        <result property="contact_type" column="contact_type"/>
+        <result property="contact_link" column="contact_link"/>
+        <result property="user_id" column="user_id"/>
+        <result property="nickname" column="nickname"/>
+        <collection property="techs" ofType="String">
+            <result column="tech"/>
+        </collection>
+    </resultMap>
+    <select id="studyDetailData" resultMap="StudyVOMap" parameterType="int">
+        SELECT
+            STUDY.STUDY_ID,
+            TITLE,
+            CONTENT,
+            TO_CHAR(STUDY.REGDATE, 'yyyy-MM-dd') AS DBDAY,
+            HIT,
+            DEADLINE,
+            ISCLOSED,
+            PERIOD,
+            RECRUIT,
+            ONOFF,
+            CONTACT_TYPE,
+            CONTACT_LINK,
+            STUDY.USER_ID,
+            NICKNAME,
+            TECH
+        FROM STUDY, MEMBER, STUDY_TECH
+        WHERE
+            STUDY.STUDY_ID = STUDY_TECH.STUDY_ID
+            AND STUDY.USER_ID = MEMBER.USER_ID
+            AND STUDY.STUDY_ID = #{study_id}
     </select>
 </mapper>
