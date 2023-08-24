@@ -22,7 +22,7 @@
     <section class="blog spad container-mento">
     	
     	<!-- Search Section Begin -->
-    	<div class="text-center" style="display:flex; justify-content: center;" v-model="column">
+    	<div class="text-center" style="display:flex; justify-content: center; padding-bottom: 50px " v-model="column">
           	<select style="display:inline;" v-model="column">
 				<option value="all">전체</option>          	
 				<option value="title">제목</option>          	
@@ -33,62 +33,59 @@
           	<input type="button" value="검색" class="btn btn-sm btn-primary" @click="find()">
         </div>
         <!-- Search Section End -->
-        
-        <div class="container">
-            <div class="row">
-            	
-            	<!-- 멘토 리스트 Start-->
-            	<div class="col-sm-4 text-center" v-for="vo in mento_list" >
-            		<!-- 상세보기 -->
-            	  <div class="mento_list_box "  >
-            		<div class="mento_list_box_top boxhover" v-on:click="mentoDetail(vo.mento_no)">
-            			<div style="height: 80px;"> 
-            				<div class="mento_list_box_job">{{vo.title}}</div>
-            				<div class="mento_list_box_title" v-html="vo.job"></div>
-            			</div>
-            			<div class="mento_list_info" style="height:100px;">
-            				<div style="width: 140px;" >
-	            				<div style="margin-top: 10px">
-	            					<div class="mento_list_info_detail_title">직무</div>
-	            					<div class="mento_list_info_detail_content">{{vo.job_cat}}</div> 
-	            				</div>
-	            				<div tyle="margin-top: 10px" >
-	            					<span class="mento_list_info_detail_title">부서</span>
-	            					<span class="mento_list_info_detail_content">{{vo.dept}}</span> 
-	            				</div>
-	            				<div tyle="margin-top: 10px" >
-	            					<div class="mento_list_info_detail_title">경력</div>
-	            					<div class="mento_list_info_detail_content" v-html="">{{vo.career}}</div> 
-	            				</div>
-		            		</div>
-		            		
-		            		<div style="width: 100px; height:100px;">
-		            			<div class=mImage>
-		            				<img :src="vo.image" alt="">
-		            			</div>
-		            		</div>
-            			</div>
-            		</div>
-            		
-            		<div class="mento_list_box_top" style="height:70px; padding: 16px 0px">
-	            		<div class="mento_list_info">
-	            			<div class="follow" >
-	            				팔로잉 &nbsp; {{vo.follow}}
-	            			</div>
-	            			
-	            			<div class="star">
-	            				별점 &nbsp; {{vo.avg_star}}</div>
-	            		</div>
-            		</div>
-            		
-            	  </div>
-            	</div>
-            	<!-- 멘토 리스트 End-->
-            		
-           	  </div>
-           	</div>
-               
-        <!-- PageNation -->
+	<div class="container">
+		<div class="row">
+
+			<!-- 멘토 리스트 Start-->
+			<div class="col-sm-4" v-for="vo in mento_list">
+				<div class="card open-mentoring-card " style="display: block;">
+					<div v-on:click="mentoDetail(vo.mento_no)" class="boxhover">
+						<div class="thumbnail">
+							<img :src=vo.image>
+						</div>
+	
+						<div class="card-content card-content-padding">
+							<div class="open_mentoring_card__jobtype">{{vo.job_cat}}</div>
+	
+	
+							<div class="content-body" type="external">
+								<div class="mentee-question">{{vo.job}}</div>
+								<div class="oversize">{{vo.title}}</div> 
+							</div>
+	
+							<div>
+								<div style="display:flex">
+									<span class="mento_list_info_detail_title" style="display: inline-block;">부서</span> 
+									<span class="mento_list_info_detail_content" style="display: inline-block;">{{vo.dept}}</span>
+								</div>
+								<div style="display:flex">
+									<div class="mento_list_info_detail_title" style="display: inline-block;">경력</div>
+									<div class="mento_list_info_detail_content oversize" style="display: inline-block;" v-html="vo.career"></div>
+										<!-- v-html="vo.career" 넣어줘야함 -->
+								</div>
+							</div>
+	
+						</div>
+					</div>
+					<div class="mento_list_box_top" style="height: 70px; padding: 16px 0px">
+						<div class="card-footer text-center">
+							<div class="follow mento_list_info">팔로잉 &nbsp; {{vo.follow}}</div>
+	
+							<div class="star mento_list_info">별점 &nbsp; {{vo.avg_star}}
+							</div>
+						</div>
+					</div>
+				</div>
+				
+
+			</div>
+
+			<!-- 멘토 리스트 End-->
+
+		</div>
+	</div>
+
+	<!-- PageNation -->
         <div class="col-lg-12 inline">
 	        <div class="product__pagination">
 	            <ul style="display:inline-flex;">
@@ -105,7 +102,7 @@
 	        </div>
     	</div>
         
-     <div id="Detailmodal" class="modal">
+     <div id="Detailmodal" class="modal modal-my">
      <div class="modalinner">
         <table class="table">
           <tr>

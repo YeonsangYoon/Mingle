@@ -1,45 +1,109 @@
 @charset "UTF-8";
-.boxhover:hover{
-	cursor:pointer;
-}
-.mento_list_box{
-	border: 1px solid black;
-    margin: 20px 20px;
-    padding: 15px 15px;
-    border-radius: 12px;
-    box-shadow: 10px 10px 20px 0px;
-    background: #ededed
-}
-.mento_list_box_top{
-	border-radius: 10px;
-	background: white;
-	margin:5px;
-}
-.mento_list_box_job{
-	padding: 3px 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 25px;
-    font-weight: 400;
-}
-.mento_list_box_title {
-	padding: 3px 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 20px;
+
+.open_mentoring_card__jobtype {
+    font-size: 11px;
+    line-height: 1rem;
+    margin-bottom: 2px;
+    font-weight: 600
 }
 
-.mento_list_info{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    align-content: center;
- 	
+.open-mentoring-card {
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important
 }
-.mento_list_info > div > div{
-    display:flex;
+
+.open-mentoring-card .thumbnail img {
+    width: 100%
+}
+
+.open-mentoring-card .card-content {
+    padding: 12px
+}
+
+.open-mentoring-card .card-content .content-body {
+    color: #484848;
+    height: 4em
+}
+
+.open-mentoring-card .card-content .content-body .mentee-question {
+	
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    line-height: 1.25;
+    font-weight: 700;
+    word-break: break-all;
+   /*  max-height: 2.0em; */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical
+}
+
+@media all and (min-width: 1000px) {
+    .open-mentoring-card .card-content .content-body .mentee-question {
+        /* min-height:2.5em */
+    }
+}
+
+.open-mentoring-card .card-content .content-body .mentor-answer {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 10px;
+    overflow-wrap: break-word;
+    color: #484848;
+    max-height: 5.68em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical
+}
+
+.open-mentoring-card .card-content .mentor-profile {
+    margin-top: 1.5rem
+}
+
+.open-mentoring-card .card-content .mentor-info-wrapper {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 80%
+}
+
+.open-mentoring-card .card-content .mentor-info-wrapper .mentor-image {
+    margin-right: 10px
+}
+
+.open-mentoring-card .card-content .mentor-info-wrapper .mentor-image img {
+    max-width: 35px
+}
+
+.open-mentoring-card .card-content .mentor-info-wrapper .mentor-info {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: #484848;
+    width: 90%
+}
+
+.open-mentoring-card .card-content .mentor-info-wrapper .mentor-info .job {
+    font-size: 11px;
+    line-height: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.open-mentoring-card .card-footer .created-at {
+    font-size: 11px;
+    line-height: 1rem
+}
+
+/* --------------------- */
+
+.boxhover:hover{
+	cursor:pointer;
 }
 .mento_list_info_detail_title{
 	width:50px;
@@ -48,7 +112,8 @@
 }
 .mento_list_info_detail_content{
 	text-align:left;
-	width:90px;
+	width:250px;
+	height:28px;
 	overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -80,9 +145,16 @@
     font-size: 17px;
 }
 
+/* --------  Detail Modal 관련 ----------- */
+.modal-my{
+    height: 80% !important; 
+    max-width: 100% !important;
+    width: 35% !important;
+} 
+
 .modalinner{
 	overflow-y: scroll;
-	height:550px;
+	height:96%;
 	
 }
 .mentoregist{
@@ -112,10 +184,19 @@
 .mImage{
 	padding-top: 30px
 }
+.mento_list_info{
+	display: inline;
+}
+.oversize{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 
 
-/* --------------------- */
+
+
 
 
 

@@ -104,10 +104,9 @@
                             </div>
                             
                             <div colspan="2" class="text-center">
-					           <input type="submit" value="멘토등록" 
-					             class="btn btn-success btn-sm" id="joinBtn">
-					           <input type=button value="취소"
-					             class="btn btn-info btn-sm" onclick="javascript:history.back()">
+                           	   <span class="status active" v-if="member.user_id != 'admin'" v-on:click.stop="withdrawMember(index)">탈퇴</span>
+					           <input type="button" value="멘토등록" class="btn btn-success btn-sm" @click="submitForm()">
+					           <input type=button value="취소" class="btn btn-info btn-sm" onclick="javascript:history.back()">
 					        </div>
                             
                         </div>
