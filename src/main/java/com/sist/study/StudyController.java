@@ -1,5 +1,7 @@
  package com.sist.study;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +21,9 @@ public class StudyController {
 	private StudyDAO dao;
 	
 	@GetMapping("study/list.do")
-	public String study_list()
+	public String study_list(Model model)
 	{
+		model.addAttribute("today", new SimpleDateFormat("yyy-MM-dd").format(new Date()));
 		return "study/list";
 	}
 	
@@ -43,5 +46,12 @@ public class StudyController {
 	{
 		dao.studyInsert(vo);
 		return "redirect:../study/list.do";
+	}
+	
+	@GetMapping("study/delete.do")
+	public String study_delete(int study_id, Model model)
+	{
+		model.addAttribute("study_id", study_id);
+		return "study/delete";
 	}
 }

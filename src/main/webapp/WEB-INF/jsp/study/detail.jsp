@@ -63,11 +63,11 @@
                     </tr>
                     <tr>
                         <th width="25%">연락방법</th>
-                        <td width="75%">${vo.contact_type}</td>
+                        <td width="75%">${vo.contact_type}<a style="margin-left: 10px; font-size: 12px;" href="${vo.contact_link}" title="${vo.contact_link}">링크 바로가기</a></td>
                     </tr>
                     <tr>
-                        <th width="25%">연락주소</th>
-                        <td width="75%"><a href="${vo.contact_link}" title="${vo.contact_link}">링크 바로가기</a></td>
+                        <th width="25%">작성자</th>
+                        <td width="75%">${vo.nickname }</td>
                     </tr>
                 </table>
             </div>
@@ -82,6 +82,18 @@
                 </tr>
             </table>
         </div>
+        
+		<div class="container">
+			<table class="table">
+				<tr>
+				   <td colspan="4" class="text-center">
+				    <a :href="'../study/update.do?study_id='+study_id" class="btn btn-xs btn-success">수정</a>
+				    <a :href="'../study/delete.do?study_id='+study_id" class="btn btn-xs btn-danger">삭제</a>
+				    <a href="../study/list.do" class="btn btn-xs btn-info">목록</a>
+				   </td>
+				</tr>
+			</table>
+		</div>
 
         <!-- 댓글(미완성) -->
         <div style="height: 20px"></div>
@@ -129,7 +141,7 @@
     new Vue({
         el: '#sdetail',
         data: {
-            study_id:${vo.study_id},
+            study_id:${study_id},
             study_detail: {},
             reply_data: [],
             msg: '',

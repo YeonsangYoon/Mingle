@@ -17,7 +17,7 @@ public interface ReplyMapper {
 	public List<ReplyVO> replyListData(int study_id);
 	
 	@Insert("INSERT INTO study_reply VALUES("
-			+ "sr_no_seq.nextval,#{study_id},#{user_id},#{nickname},#{msg},SYSDATE")
+			+ "sr_no_seq.nextval,#{study_id},#{user_id},#{nickname},#{msg},SYSDATE)")
 	public void replyInsert(ReplyVO vo);
 	
 	@Delete("DELETE FROM study_reply WHERE no=#{no}")
