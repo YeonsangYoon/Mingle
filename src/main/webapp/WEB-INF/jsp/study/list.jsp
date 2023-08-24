@@ -19,7 +19,6 @@
 </section>
 <section class="study" id="vue-area">
     <div class="container">
-
         <!-- 검색바 -->
         <div class="row-study">
             <div class="study-search-bar">
@@ -43,117 +42,113 @@
                 </label>
                 <button class="search-btn" @click="doSearch()">검색</button>
             </div>
+        </div>
 
-            <!-- 기술분야 탭 -->
-            <div class="row-study">
-                <div class="css-goiz5j" id="headlessui-popover-panel-3" tabindex="-1" data-headlessui-state="open">
-                    <ul class="Category_categories__F4wF5">
-                        <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">기술 스택</li>
-                    </ul>
-                    <ul class="LanguageBar_languages__243rH">
-                        <li v-for="(tech, index) in tech_list"
-                            class="LanguageBar_languageIcon__2PTl1 LanguageBar_full__2eorP" :key="index"
-                            :class="{'active': index == selectedTech}" v-on:click="selectTech(index)">
-                            <img class="LanguageBar_logo__rGfFz"
-                                 :src="'${pageContext.request.contextPath}/img/language/'+ tech.toLowerCase() +'.svg'"
-                                 alt="JavaScript">
-                            <span class="LanguageBar_languageName__2dSeC">{{tech}}</span>
-                        </li>
-                    </ul>
-                    <div class="SelectedLanguage_selectedWrapper__3dpZm">
-                        <ul class="SelectedLanguage_selectedLanguages__3r4F4"></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 소제목 및 정렬순 -->
-            <div class="row-study">
-                <div class="shop__product">
-                    <ul class="Category_categories__F4wF5">
-                        <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">스터디 목록</li>
-                    </ul>
-                    <div>
-                        <div class="shop__product__option__right" style="text-align: right">
-                            <div class="nice-select" tabindex="0">
-                                <span class="current">정렬순서</span>
-                                <ul class="list">
-                                    <li data-value="" class="option selected">최신순</li>
-                                    <li data-value="" class="option">인기순</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 스터디 글 -->
-            <div class="row-study">
-                <ul class="studyList_studyList__3xoys">
-                    <div v-for="vo in study_list">
-                        <a class="studyItem_studyItem__1Iipn"
-                           :href="'../study/detail.do?study_id='+vo.study_id">
-                            <li>
-                                <c:if test="${today==vo.dbday }">
-                                    <img src="../img/new_new.png" style="display:inline-block; width:40px;">
-                                </c:if>
-                                <div class="studyItem_schedule__3oAnA">
-                                    <p class="studyItem_scheduleTitle__1KN_9">마감일 |</p>
-                                    <p>{{vo.deadline}}</p>
-                                </div>
-
-                                <h1 class="studyItem_title__2B_2o">{{vo.title}}</h1>
-
-                                <ul class="studyItem_content__1mJ9M">
-                                    <li class="studyItem_language__20yqw" v-for="(tech, index) in vo.techs" v-if="index < 5">
-                                        <img class="studyItem_languageImage__1AfGa" title="java"
-                                             :src="'../img/language/'+tech+'.svg'" alt="language">
-                                    </li>
-                                </ul>
-                                <div class="study_info">
-                                    <span>{{vo.nickname}}</span>
-                                    <span style="float: right">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path
-                                        d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"/></svg>
-                                {{vo.hit}}
-                            </span>
-                                </div>
-                                <c:if test="${!like }">
-                                    <img class="studyItem_bookmark__2YtKX" src="../img/bookmark-off.png"
-                                         @click="like(${vo.user_id })" alt="bookmark">
-                                </c:if>
-                            </li>
-                        </a>
-                    </div>
+        <!-- 기술분야 탭 -->
+        <div class="row-study">
+            <div class="css-goiz5j" id="headlessui-popover-panel-3" tabindex="-1" data-headlessui-state="open">
+                <ul class="Category_categories__F4wF5">
+                    <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">기술 스택</li>
                 </ul>
+                <ul class="LanguageBar_languages__243rH">
+                    <li v-for="(tech, index) in tech_list"
+                        class="LanguageBar_languageIcon__2PTl1 LanguageBar_full__2eorP" :key="index"
+                        :class="{'active': index == selectedTech}" v-on:click="selectTech(index)">
+                        <img class="LanguageBar_logo__rGfFz"
+                             :src="'${pageContext.request.contextPath}/img/language/'+ tech.toLowerCase() +'.svg'"
+                             alt="JavaScript">
+                        <span class="LanguageBar_languageName__2dSeC">{{tech}}</span>
+                    </li>
+                </ul>
+                <div class="SelectedLanguage_selectedWrapper__3dpZm">
+                    <ul class="SelectedLanguage_selectedLanguages__3r4F4"></ul>
+                </div>
+            </div>
+        </div>
 
-                <!-- 페이징 -->
-                <div class="row-study" v-if="page_list.length > 0">
-                    <div class="text-center">
-                        <div class="product__pagination">
-                            <ul>
-                                <li>
-                                    <span v-on:click="selectpage(1)"><i class="fa fa-angle-double-left"></i></span>
-                                </li>
-                                <li>
-                                    <span v-on:click="prev()"><i class="fa fa-angle-left"></i></span>
-                                </li>
-                                <li v-for="i in page_list">
-                                    <span :key="i" :class="{'active' : i==curpage}"
-                                          v-on:click="selectpage(i)">{{i}}</span>
-                                </li>
-                                <li>
-                                    <span @click="next()"><i class="fa fa-angle-right"></i></span>
-                                </li>
-                                <li>
-                                    <span v-on:click="selectpage(totalpage)"><i
-                                            class="fa fa-angle-double-right"></i></span>
-                                </li>
+        <!-- 소제목 및 정렬순 -->
+        <div class="row-study">
+            <div class="shop__product">
+                <ul class="Category_categories__F4wF5">
+                    <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">스터디 목록</li>
+                </ul>
+                <div>
+                    <div class="shop__product__option__right" style="text-align: right">
+                        <div class="nice-select" tabindex="0">
+                            <span class="current">정렬순서</span>
+                            <ul class="list">
+                                <li data-value="" class="option selected">최신순</li>
+                                <li data-value="" class="option">인기순</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+            <!-- 스터디 글 -->
+        <div class="row-study">
+            <ul class="studyList_studyList__3xoys">
+                <a v-for="vo in study_list" class="studyItem_studyItem__1Iipn" :href="'../study/detail.do?study_id='+vo.study_id">
+                    <li>
+                        <span v-if="vo.isclosed == 'O'" class="open-badge">모집중</span>
+                        <span v-if="vo.isclosed == 'C'" class="close-badge">모집완료</span>
+                        <img class="studyItem_bookmark__2YtKX" src="../img/bookmark-off.png" @click="like(${vo.user_id })" alt="bookmark">
+                        <div class="studyItem_schedule__3oAnA">
+                            <p class="studyItem_scheduleTitle__1KN_9">마감일 |</p>
+                            <p>{{vo.deadline}}</p>
+                        </div>
+
+                        <h1 class="studyItem_title__2B_2o">{{vo.title}}</h1>
+
+                        <ul class="studyItem_content__1mJ9M">
+                            <li class="studyItem_language__20yqw" v-for="(tech, index) in vo.techs"
+                                v-if="index < 5">
+                                <img class="studyItem_languageImage__1AfGa" title="java"
+                                     :src="'../img/language/'+tech+'.svg'" alt="language">
+                            </li>
+                        </ul>
+                        <div class="study_info">
+                            <span>{{vo.nickname}}</span>
+                            <span style="float: right">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                                    <path d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"/>
+                                </svg>
+                                {{vo.hit}}
+                            </span>
+                        </div>
+                    </li>
+                </a>
+            </ul>
+        </div>
+
+        <!-- 페이징 -->
+        <div class="row-study" v-if="page_list.length > 0">
+            <div class="text-center">
+                <div class="product__pagination">
+                    <ul>
+                        <li>
+                            <span v-on:click="selectpage(1)"><i class="fa fa-angle-double-left"></i></span>
+                        </li>
+                        <li>
+                            <span v-on:click="prev()"><i class="fa fa-angle-left"></i></span>
+                        </li>
+                        <li v-for="i in page_list">
+                                    <span :key="i" :class="{'active' : i==curpage}"
+                                          v-on:click="selectpage(i)">{{i}}</span>
+                        </li>
+                        <li>
+                            <span @click="next()"><i class="fa fa-angle-right"></i></span>
+                        </li>
+                        <li>
+                                    <span v-on:click="selectpage(totalpage)"><i
+                                            class="fa fa-angle-double-right"></i></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script>
