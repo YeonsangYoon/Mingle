@@ -33,6 +33,9 @@ public class StudyDAO {
 	{
 		return mapper.studyDetailData(study_id);
 	}
+	public void increaseStudyHit(int study_id){
+		mapper.increaseStudyHit(study_id);
+	}
 	
 	// 등록 페이지
 	public void studyInsert(StudyVO vo)

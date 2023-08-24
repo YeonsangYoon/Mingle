@@ -35,7 +35,7 @@
   	<tiles:insertAttribute name="content"/>
   	<tiles:insertAttribute name="footer"/>
     <tiles:insertAttribute name="login"/>
-    
+
     <!-- Js Plugins -->
     <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
