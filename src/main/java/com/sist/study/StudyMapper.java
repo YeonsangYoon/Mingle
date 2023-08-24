@@ -36,10 +36,10 @@ public interface StudyMapper {
 
 	/* 댓글 관련 */
 	// 댓글 목록
-	@Select("SELECT S.*, TO_CHAR(REGDATE, 'yyyy-MM-dd') AS DBDAY, (SELECT NICKNAME FROM STUDY_REPLY SR WHERE SR.STUDY_ID = S.PARENT_ID) AS PARENT_NICKNAME " +
+	@Select("SELECT S.*, TO_CHAR(S.REGDATE, 'yyyy-MM-dd') AS DBDAY, (SELECT NICKNAME FROM STUDY_REPLY SR WHERE SR.STUDY_ID = S.PARENT_ID) AS PARENT_NICKNAME " +
 			"FROM STUDY_REPLY S " +
 			"WHERE S.STUDY_ID = #{study_id} " +
-			"ORDER BY GROUP_ID DESC, STUDY_REPLY.REGDATE")
+			"ORDER BY GROUP_ID DESC, S.REGDATE")
 	public List<ReplyVO> getReplyList(int study_id);
 
 	// 삽입

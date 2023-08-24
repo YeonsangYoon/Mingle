@@ -44,7 +44,7 @@
                     <tr>
                         <th>기술스택</th>
                         <td>
-                            <ul class="studyItem_content__1mJ9M" style="margin: 0">
+                            <ul class="studyItem_content__1mJ9M" style="margin: 0; flex-wrap: wrap">
                                 <c:forEach var="tech" items="${vo.techs}">
                                     <li class="studyItem_language__20yqw">
                                         <img class="studyItem_languageImage__1AfGa" title="java"
