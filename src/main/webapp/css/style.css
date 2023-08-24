@@ -93,12 +93,6 @@ textarea:focus {
 	outline: none;
 }
 
-a:focus {
-	text-decoration: none;
-	outline: none;
-	color: #ffffff;
-}
-
 ul,
 ol {
 	padding: 0;

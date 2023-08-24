@@ -119,10 +119,11 @@
             STUDY.USER_ID,
             NICKNAME,
             TECH
-        FROM STUDY, MEMBER, STUDY_TECH
-        WHERE
-            STUDY.STUDY_ID = STUDY_TECH.STUDY_ID
-            AND STUDY.USER_ID = MEMBER.USER_ID
-            AND STUDY.STUDY_ID = #{study_id}
+        FROM STUDY
+        LEFT JOIN MEMBER
+        ON STUDY.USER_ID = MEMBER.USER_ID
+        LEFT JOIN STUDY_TECH
+        ON STUDY.STUDY_ID = STUDY_TECH.STUDY_ID
+        WHERE STUDY.STUDY_ID = #{study_id}
     </select>
 </mapper>

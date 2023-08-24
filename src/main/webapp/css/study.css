@@ -519,3 +519,44 @@
     color: rgb(255, 255, 255);
     font-size: 15px;
 }
+
+/* 스터디 상세보기  */
+.study-detail-info th{
+    width: 30%;
+}
+.study-detail-info td{
+    width: 70%;
+}
+.study-link{
+    margin-right: 8px;
+}
+.study-content{
+    margin-top: 30px;
+    min-height: 500px;
+}
+.study-content-area{
+
+}
+.study-content-header{
+    border-bottom: 3px solid #d0d0d0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.study-content-area h1{
+    font-size: 40px;
+}
+.study-content-area h2{
+    font-size: 30px;
+}
+.study-content-area :is(h1, h2, h3, h4, h5, h6, h7){
+    margin-bottom: 15px;
+}
+.study-content-area ul,
+.study-content-area ol{
+    padding-left: 25px;
+}
+.study-content-area p{
+    color: black;
+}
+
