@@ -36,16 +36,36 @@ public interface StudyMapper {
 
 	/* 댓글 관련 */
 	// 댓글 목록
-	@Select("SELECT S.*, TO_CHAR(S.REGDATE, 'yyyy-MM-dd') AS DBDAY, (SELECT NICKNAME FROM STUDY_REPLY SR WHERE SR.STUDY_ID = S.PARENT_ID) AS PARENT_NICKNAME " +
+	@Select("SELECT S.*, " +
+			"	TO_CHAR(S.REGDATE, 'yyyy-MM-dd HH24:MM') AS DBDAY, " +
+			"	(SELECT SR.NICKNAME FROM STUDY_REPLY SR WHERE SR.REPLY_ID = S.PARENT_ID) AS PARENT_NICKNAME " +
 			"FROM STUDY_REPLY S " +
 			"WHERE S.STUDY_ID = #{study_id} " +
-			"ORDER BY GROUP_ID DESC, S.REGDATE")
+			"ORDER BY GROUP_ID, PARENT_ID, REPLY_ID	")
 	public List<ReplyVO> getReplyList(int study_id);
 
 	// 삽입
-	@Insert("INSERT INTO STUDY_REPLY (REPLY_ID, STUDY_ID, USER_ID, NICKNAME, MSG, GROUP_ID, PARENT_ID) VALUES( " +
-			"	STUDY_REPLY_SEQ.nextval, #{study_id}, #{user_id}, #{nickname}, #{msg}, #{group_id}, #{parent_id})")
+	@Insert("INSERT INTO STUDY_REPLY VALUES( " +
+			"	STUDY_REPLY_SEQ.nextval, " +
+			"#{study_id}, " +
+			"#{user_id}, " +
+			"#{nickname}, " +
+			"#{msg}, " +
+			"SYSDATE, " +
+			"(SELECT GROUP_ID FROM STUDY_REPLY WHERE REPLY_ID = #{parent_id}), " +
+			"#{parent_id})")
 	public int insertStudyReply(ReplyVO vo);
+
+	@Insert("INSERT INTO STUDY_REPLY VALUES (" +
+			"	STUDY_REPLY_SEQ.nextval, " +
+			"#{study_id}, " +
+			"#{user_id}, " +
+			"#{nickname}, " +
+			"#{msg}, " +
+			"SYSDATE, " +
+			"STUDY_REPLY_SEQ.currval, " +
+			"STUDY_REPLY_SEQ.currval)")
+	public int insertStudyRootReply(ReplyVO vo);
 
 	// 수정
 	@Update("UPDATE STUDY_REPLY SET " +

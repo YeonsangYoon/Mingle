@@ -126,13 +126,24 @@ public class StudyServiceImpl implements StudyService{
 	// 댓글 목록
 	@Override
 	public List<ReplyVO> getReplyList(int study_id) {
-		return dao.getReplyList(study_id);
+		List<ReplyVO> list = dao.getReplyList(study_id);
+		// 아이디 보호
+		for(ReplyVO vo : list){
+			String user_id = vo.getUser_id();
+			vo.setUser_id(user_id.substring(0, 4) + user_id.substring(4).replaceAll(".", "*"));
+		}
+		return list;
 	}
 
 	// 삽입
 	@Override
 	public int insertStudyReply(ReplyVO vo) {
 		return dao.insertStudyReply(vo);
+	}
+
+	@Override
+	public int insertStudyRootReply(ReplyVO vo) {
+		return dao.insertStudyRootReply(vo);
 	}
 
 	// 수정

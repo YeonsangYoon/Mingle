@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 부제목 -->
 <section class="breadcrumb-option">
     <div class="container">
@@ -23,7 +24,7 @@
     <div class="container" id="sdetail">
         <div class="row">
             <div class="offset-1 col-sm-10">
-                <h2 style="margin-bottom: 20px; padding-left: 10px;">${vo.title}</h2>
+                <h2 style="margin-bottom: 20px;">${vo.title}</h2>
                 <h5 style="margin-bottom: 30px; padding-left: 10px;">
                     ${vo.nickname} | ${vo.dbday}
                     <a class="study-link float-right" href="javascript:history.back()">목록</a>
@@ -85,31 +86,32 @@
         </div>
         <!-- 댓글(미완성) -->
         <div class="row">
-            <div class="offset-1 col-sm-10">
-                <div class="study-reply-input-area">
-                    <textarea class="study-reply-input"></textarea>
+            <div class="offset-1 col-sm-10" id="reply-area" data-sid="${vo.study_id}">
+                <div class="study-reply-header-area">
+                    <h3>댓글</h3>
                 </div>
+                <c:if test="${sessionScope.id != null}">
+                    <div class="study-reply-input-area">
+                        <textarea id="root-reply-ta" class="study-reply-input" placeholder="댓글을 입력하세요."></textarea>
+                        <button onclick="registerRootReply()">등록</button>
+                    </div>
+                </c:if>
                 <div class="study-reply-list-area">
-                    <div class="study-reply-block">
-                        <div class="reply-writer">작성자닉네임</div>
-                        <div class="reply-regdate">2023-08-02 23:37</div>
-                        <pre>경제학 전공중인데 웹개발 지식이 전무해도 수강에 문제가 없을까요 ?</pre>
-                    </div>
-                    <div class="study-reply-block">
-                        <div class="reply-writer">작성자닉네임</div>
-                        <div class="reply-regdate">2023-08-02 23:37</div>
-                        <pre>경제학 전공중인데 웹개발 지식이 전무해도 수강에 문제가 없을까요 ?</pre>
-                    </div>
-                    <div class="study-reply-block">
-                        <div class="reply-writer">작성자닉네임</div>
-                        <div class="reply-regdate">2023-08-02 23:37</div>
-                        <pre>경제학 전공중인데 웹개발 지식이 전무해도 수강에 문제가 없을까요 ?</pre>
-                    </div>
-                    <div class="study-reply-block">
-                        <div class="reply-writer">작성자닉네임</div>
-                        <div class="reply-regdate">2023-08-02 23:37</div>
-                        <pre>경제학 전공중인데 웹개발 지식이 전무해도 수강에 문제가 없을까요 ?</pre>
-                    </div>
+                    <c:forEach items="${rlist}" var="reply">
+                        <div class="study-reply-block ${reply.reply_id==reply.group_id ? '' : 'sub-reply'}" data-rid="${reply.reply_id}">
+                            <div class="reply-writer">${reply.nickname} (${reply.user_id})</div>
+                            <div class="reply-regdate">${reply.dbday}</div>
+                            <span class="mention-badge">@${reply.parent_nickname}</span>
+                            <pre>${reply.msg}</pre>
+                            <c:if test="${sessionScope.id != null}">
+                            <span class="reply-open">댓글 쓰기</span>
+                            <div class="study-reply-input-area d-none mt-3">
+                                <textarea class="study-reply-input"></textarea>
+                                <button onclick="registerReply(this)">등록</button>
+                            </div>
+                            </c:if>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
