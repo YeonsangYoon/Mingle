@@ -38,8 +38,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="${pageContext.request.contextPath}/main/main.do"><img src="${pageContext.request.contextPath}/img/logo.png" alt=""></a>
+                    <div>
+                        <a href="${pageContext.request.contextPath}/main/main.do"><img src="${pageContext.request.contextPath}/img/mingle.png" alt=""></a>
                     </div>
                 </div>
                 
