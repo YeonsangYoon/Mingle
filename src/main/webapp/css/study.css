@@ -167,14 +167,18 @@
 .studyItem_studyItem__1Iipn {
     display: flex;
     flex-direction: column;
-    padding: 20px 25px 0;
-    width: 250px;
-    height: 290px;
+    padding: 30px 25px 0;
+    width: 262px;
+    height: 300px;
     background: #fff;
     border: 2px solid #d1d1d1;
     border-radius: 30px;
     position: relative;
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.studyItem_studyItem__1Iipn:hover {
+    transform: scale(1.02);
 }
 
 .study a {
@@ -406,7 +410,7 @@
     width: 28px;
     height: 28px;
     position: absolute;
-    top: 40px;
+    top: 30px;
     right: 20px;
 }
 
@@ -499,5 +503,60 @@
     display: inline-block;
     line-height: 20px;
     height: 20px;
+}
+
+.open-badge{
+    padding: 5px 7px;
+    border-radius: 16px;
+    background-color: #866cff;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+.close-badge{
+    padding: 5px 7px;
+    border-radius: 16px;
+    background-color: rgb(206, 212, 218);
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+
+/* 스터디 상세보기  */
+.study-detail-info th{
+    width: 30%;
+}
+.study-detail-info td{
+    width: 70%;
+}
+.study-link{
+    margin-right: 8px;
+}
+.study-content{
+    margin-top: 30px;
+    min-height: 500px;
+}
+.study-content-area{
+
+}
+.study-content-header{
+    border-bottom: 3px solid #d0d0d0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.study-content-area h1{
+    font-size: 40px;
+}
+.study-content-area h2{
+    font-size: 30px;
+}
+.study-content-area :is(h1, h2, h3, h4, h5, h6, h7){
+    margin-bottom: 15px;
+}
+.study-content-area ul,
+.study-content-area ol{
+    padding-left: 25px;
+}
+.study-content-area p{
+    color: black;
 }
 

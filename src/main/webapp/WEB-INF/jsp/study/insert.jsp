@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,14 @@
             </div>
         </div>
     </section>
+
+    	<c:if test="${sessionScope.id==null}">
+	    	<script>
+			    alert("로그인 후 진행해주세요.");
+			    window.location.href = '/mingle/main/main.do';
+			</script>
+        	<i>로그인 후 진행해 주세요!</i> 
+        </c:if>
 
 	<!-- 프로그램 정보 기입란 -->
 	<section class="shop spad">
@@ -59,11 +68,11 @@
 						    <select name="period">
 						      <option value="전체">전체</option>
 						      <option value="기간미정">기간미정</option>
-						      <option value="1달">1</option>
-						      <option value="2달">2</option>
-						      <option value="3달">3</option>
-						      <option value="4달">4</option>
-						      <option value="5달">5</option>
+						      <option value="1개월">1개월</option>
+						      <option value="2개월">2개월</option>
+						      <option value="3개월">3개월</option>
+						      <option value="4개월">4개월</option>
+						      <option value="5개월">5개월</option>
 						      <option value="장기">장기(6개월 이상)</option>
 						      
 						    </select>
@@ -81,15 +90,15 @@
 						    <select name="recruit">
 						      <option>전체</option>
 						      <option value="0">인원미정</option>
-						      <option value="1">1</option>
-						      <option value="2">2</option>
-						      <option value="3">3</option>
-						      <option value="4">4</option>
-						      <option value="5">5</option>
-						      <option value="6">6</option>
-						      <option value="7">7</option>
-						      <option value="8">8</option>
-						      <option value="9">9</option>
+						      <option value="1">1명</option>
+						      <option value="2">2명</option>
+						      <option value="3">3명</option>
+						      <option value="4">4명</option>
+						      <option value="5">5명</option>
+						      <option value="6">6명</option>
+						      <option value="7">7명</option>
+						      <option value="8">8명</option>
+						      <option value="9">9명</option>
 						      <option value="10">10명 이상</option>
 						    </select>
 						 </div>
@@ -100,7 +109,7 @@
 	 				<td width="80%">
 						 <div class="aa">
 						    <select>
-						    	<!-- 달력 -->
+						    	<!-- 기술스택 -->
 						    </select>
 						 </div>
 	 				</td>

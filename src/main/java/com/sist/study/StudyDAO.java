@@ -18,7 +18,7 @@ public class StudyDAO {
 		return mapper.getStudyListByParams(params);
 	}
 
-	// 총페이지
+	// 총 페이지
 	public int getTotalPageByParams(Map<String, Object> params){
 		return mapper.getTotalPageByParams(params);
 	}
@@ -41,5 +41,22 @@ public class StudyDAO {
 	public void studyInsert(StudyVO vo)
 	{
 		mapper.studyInsert(vo);
+	}
+	
+	// 삭제 페이지
+	public String studyDelete(int study_id, String pwd)
+	{
+		   String result="";
+		   String db_pwd=mapper.getPassword(study_id);
+		   if(db_pwd.equals(pwd))
+		   {
+			   result="yes";
+			   mapper.studyDelete(study_id);
+		   }
+		   else
+		   {
+			   result="no";
+		   }
+		   return result;
 	}
 }

@@ -27,4 +27,10 @@ public interface StudyMapper {
 	      + "SYSDATE,0,#{deadline},'O',#{period},#{recruit},#{onoff},#{contact_type},#{contact_link},#{user_id},SYSDATE)")
 	public void studyInsert(StudyVO vo);
 
+	// 삭제 페이지
+	@Select("SELECT pwd FROM member WHERE study_id=#{study_id}")
+	public String getPassword(int study_id);
+	
+	@Delete("DELETE FROM study WHERE study_id=#{study_id}")
+	public void studyDelete(int study_id);
 }
