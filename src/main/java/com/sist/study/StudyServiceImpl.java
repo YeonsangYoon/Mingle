@@ -121,4 +121,25 @@ public class StudyServiceImpl implements StudyService{
 		dao.increaseStudyHit(study_id);
 		return dao.studyDetailData(study_id);
 	}
+
+	/* 댓글 관련 */
+	// 댓글 목록
+	@Override
+	public List<ReplyVO> getReplyList(int study_id) {
+		return dao.getReplyList(study_id);
+	}
+
+	// 삽입
+	@Override
+	public int insertStudyReply(ReplyVO vo) {
+		return dao.insertStudyReply(vo);
+	}
+
+	// 수정
+	@Override
+	public int updateReply(int reply_id, String msg) {
+		return dao.updateReply(reply_id, msg);
+	}
+
+	// 삭제
 }

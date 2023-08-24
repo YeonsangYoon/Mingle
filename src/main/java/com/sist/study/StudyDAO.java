@@ -59,4 +59,20 @@ public class StudyDAO {
 		   }
 		   return result;
 	}
+
+	/* 댓글 관련 */
+	// 댓글 목록
+	public List<ReplyVO> getReplyList(int study_id){
+		return mapper.getReplyList(study_id);
+	}
+
+	// 삽입
+	public int insertStudyReply(ReplyVO vo){
+		return mapper.insertStudyReply(vo);
+	}
+
+	// 수정
+	public int updateReply(int reply_id, String msg){
+		return mapper.updateReply(reply_id, msg);
+	}
 }

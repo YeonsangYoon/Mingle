@@ -549,8 +549,11 @@
 .study-content-area h2{
     font-size: 30px;
 }
-.study-content-area :is(h1, h2, h3, h4, h5, h6, h7){
+.study-content-area :is(h1, h2, h3, h4, h5, h6){
     margin-bottom: 15px;
+}
+.study-content-area :is(h3, h4, h5, h6, p, ul, ol, li){
+    font-size: 1.2rem;
 }
 .study-content-area ul,
 .study-content-area ol{
@@ -558,5 +561,36 @@
 }
 .study-content-area p{
     color: black;
+}
+/* 상세보기 댓글 */
+.study-reply-input{
+    font-family: inherit;
+    padding: 1rem 1rem 1.5rem;
+    outline: none;
+    border: 2px solid #e1e1e1;
+    border-radius: 16px;
+    width: 100%;
+    min-height: 100px;
+    margin-bottom: 10px;
+    resize: none;
+}
+.study-reply-list-area{
+    margin: 50px 0;
+}
+.study-reply-list-area :is(h5,h6,span,p){
+    margin-bottom: 8px;
+}
+.study-reply-block{
+    border-bottom: 1px dotted #e1e1e1;
+    margin-bottom: 20px;
+}
+.study-reply-block .reply-writer{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+.study-reply-block .reply-regdate{
+    color: #a6a6a6;
+    margin-bottom: 10px;
 }
 
