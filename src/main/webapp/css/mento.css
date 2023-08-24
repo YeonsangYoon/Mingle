@@ -146,10 +146,11 @@
 }
 
 /* --------  Detail Modal 관련 ----------- */
+
 .modal-my{
     height: 80% !important; 
     max-width: 100% !important;
-    width: 35% !important;
+    width: 45% !important;
 } 
 
 .modalinner{
@@ -163,6 +164,7 @@
     font-weight: bold;
 }
 .mentoregist > span{
+	vertical-align:middle;
 	text-align:right;
 	margin-right:20px;
 	display:inline-block;
@@ -181,6 +183,9 @@
 .mentoregist > input:focus{
 	outline: 2px solid red;
 }
+.mentoregist > select:focus{
+	outline: 2px solid red;
+}
 .mImage{
 	padding-top: 30px
 }
@@ -192,6 +197,83 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.detail-modal-font{
+	color: #7700f3;
+    font-weight: bold;
+}
+
+/* --------  button 관련 ----------- */
+
+.button-mento{
+	padding-top: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: bold;
+    color: blueviolet;
+    
+    border-radius: 10px;
+    border-color:blueviolet;
+	border-width : 2px ;
+	border-style : solid ;
+	border-radius: 10px
+    
+}
+.button-mento:hover{
+	padding-top: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background:blueviolet;
+    
+    border-radius: 10px;
+    border-color:blueviolet;
+	border-width : 2px ;
+	border-style : solid ;
+	border-radius: 10px
+}
+
+.button-cancle{
+	padding-top: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    
+    border-radius: 10px;
+    border-color:red;
+	border-width : 2px ;
+	border-style : solid ;
+	border-radius: 10px
+}
+
+.button-cancle:hover{
+	padding-top: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background:red;
+    
+    border-radius: 10px;
+    border-color:red;
+	border-width : 2px ;
+	border-style : solid ;
+	border-radius: 10px
+}
+
 
 
 

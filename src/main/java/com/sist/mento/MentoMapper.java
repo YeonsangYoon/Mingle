@@ -77,4 +77,8 @@ public interface MentoMapper {
 			+ "#{dept}"
 			+ ")")
 	public void mentoRegist(MentoVO vo);
+	
+	@Select("SELECT COUNT(*) FROM mento_reg "
+			+ "WHERE user_id=#{user_id}")
+	public int regist_usercheck(String user_id);
 }

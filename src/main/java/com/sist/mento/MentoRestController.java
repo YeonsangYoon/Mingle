@@ -95,12 +95,28 @@ public class MentoRestController {
 	}
 	
 	@PostMapping(value="mento/regist_ok_vue.do",produces = "text/plain;charset=UTF-8")
-	   public String mento_regist(MentoVO vo) throws Exception{
+	public String mento_regist(MentoVO vo) throws Exception{
 		   dao.mentoRegist(vo);
 		   
 		   String result="성공 한듯";
 		   return result;
-	   }
+	}
+	
+	@PostMapping(value="member/regist_usercheck.do",produces = "text/plain;charset=UTF-8")
+	public String regist_usercheck(String user_id) throws Exception{
+		String result="";
+		int count=dao.regist_usercheck(user_id);
+		
+		if(count!=0) {
+			result="no";
+		}else {
+			result=user_id;
+		}
+		
+		return result;
+		
+	}
+	
 	
 	
 	

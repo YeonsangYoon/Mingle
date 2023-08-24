@@ -107,37 +107,37 @@
         <table class="table">
           <tr>
            <td class="text-center" >
-            <img src="${pageContext.request.contextPath}/img/blog/blog-2.jpg" style="width: 100%">
+            <img :src=mento_detail.image style="width: 100%">
            </td>
           </tr>
         </table>
         
         <table class="table">
           <tr>
-           <td colspan="2">
+           <td colspan="2" class="detail-modal-font">
             <h3>{{mento_detail.title}}&nbsp;<span style="color:orange">{{mento_detail.follow}}</span></h3>
             <br>
             <h5 v-html="mento_detail.intro"></h5>
            </td>
           </tr>
           <tr>
-            <td width="25%">현 재직 기업</td>
+            <td width="25%" class="detail-modal-font">현 재직 기업</td>
             <td width="75%">{{mento_detail.job}}</td>
           </tr>
           <tr>
-            <td width="25%">담당 부서</td>
+            <td width="25%" class="detail-modal-font">담당 부서</td>
             <td width="75%">{{mento_detail.dept}}</td>
           </tr>
           <tr>
-            <td width="25%">재직 직군</td>
+            <td width="25%" class="detail-modal-font">재직 직군</td>
             <td width="75%">{{mento_detail.job_cat}}</td>
           </tr>
           <tr>
-            <td width="30%">시간당 멘토링 비용</td>
+            <td width="30%" class="detail-modal-font">시간당 멘토링 비용</td>
             <td width="70%">{{mento_detail.cost}}</td>
           </tr>
           <tr>
-            <td width="25%">커리어</td>
+            <td width="25%" class="detail-modal-font">커리어</td>
             <td width="75%" v-html="mento_detail.career"></td>
           </tr>
           <tr>

@@ -54,4 +54,8 @@ public class MentoDAO {
 		System.out.println(vo.getUser_id());
 		mapper.mentoRegist(vo);
 	}
+	
+	public int regist_usercheck(String id) {
+		return mapper.regist_usercheck(id);
+	}
 }

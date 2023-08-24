@@ -39,7 +39,6 @@
         </c:if>
         
         <div class="container">
-                <form @submit="submitForm">
                     <div class="row">
                     	<h4> 안녕하세요 
                     	<span style="color: orange; font-weight: 800">${sessionScope.nickname}</span> 님<br>
@@ -50,18 +49,18 @@
                             <div class="mentoregist">
                             	<span>사용자 ID</span>
                                 <input type="text" value="${sessionScope.id}" readonly v-model="user_id" name="user_id" ref="user_id">
+                                <span style="color:red;">{{isok}}</span> 
                             </div>
                             
                             <div class="mentoregist">
                                 <span>직무 카테고리</span>
                                 <select style="height: 60px; width:348px; font-size: 17px" v-model="job_cat" ref="job_cat" name="job_cat">
-									<option value="all">전체</option>
-									<option value="dev">IT개발/데이터</option>          	
-									<option value="finance">회사/재무/금융</option>          	
-									<option value="official">공사/공기업</option>   	
-									<option value="art">디자인/예술 </option>   	
-									<option value="market">마케팅/MD </option>   	
-									<option value="trans">유통/무역/구매 </option> 
+									<option value="IT개발/데이터" >IT개발/데이터</option>          	
+									<option value="회사/재무/금융" selected>회사/재무/금융</option>          	
+									<option value="공사/공기업">공사/공기업</option>   	
+									<option value="디자인/예술">디자인/예술 </option>   	
+									<option value="마케팅/MD">마케팅/MD </option>   	
+									<option value="유통/무역/구매">유통/무역/구매 </option> 
 					          	</select>
 									  	
                             </div>
@@ -75,8 +74,9 @@
                                 <input type="text" placeholder="등록할 멘토링 제목을 입력해주세요" v-model="title" ref="title" name="title" >
                             </div>
                             <div class="mentoregist">
-                            	<span>멘토링 내용</span>
-                                <input type="textarea" placeholder="간단한 자기소개부터 멘토링에 대한 설명을 해주세요" v-model="intro" ref="intro" name="intro">
+                            	<span style="vertical-align: top;">멘토링 내용</span>
+                            	<textarea rows="10" cols="30" placeholder="간단한 자기소개부터 멘토링에 대한 설명을 해주세요" v-model="intro" ref="intro" name="intro">
+                            	</textarea>
                             </div>
                             <div class="mentoregist">
                             	<span>경력 사항</span>
@@ -87,32 +87,28 @@
                                 <input type="textarea" placeholder="속하신 부서를 적어주세요" v-model="dept" ref="dept" name="dept">
                             </div>
                             <div class="mentoregist">
-                                 <span>시간당 희망금액</span>
-                                 <input type="number" value="1000" min="1000" max="15000" step="2000" v-model="cost" name="cost">
+                                 <span>시간당 희망금액<br>(15,000이하)</span>
+                                 <input type="number" value="1000" min="1000" max="15000" step="2000" v-model="cost" name="cost" ref="cost">
                             </div>
-	                                
                             
-                            
-                            
-                            <div>
-	                            <p>
+                            <div style="margin-bottom: 50px">
+	                            <div style="text-align: center;">
 	                                개인정보 활용동의, 수익에 대한 약관 동의
-	                            </p>
-                                <label>
-                                    <input type="checkbox"  value="agree"> 동의하기
+	                            </div>
+                                <label class="text-center" style="display: block">
+                                    <input type="checkbox"  value="agree" ref="agree" v-model="agree" > 동의하기
                                 </label>
                             </div>
                             
-                            <div colspan="2" class="text-center">
-                           	   <span class="status active" v-if="member.user_id != 'admin'" v-on:click.stop="withdrawMember(index)">탈퇴</span>
-					           <input type="button" value="멘토등록" class="btn btn-success btn-sm" @click="submitForm()">
-					           <input type=button value="취소" class="btn btn-info btn-sm" onclick="javascript:history.back()">
+                            <div class="text-center">
+					           <span class="button-mento boxhover" v-on:click="submitForm()">등록하기</span>
+					           <span class="button-cancle boxhover" v-on:click="back()">취소</span>
 					        </div>
                             
                         </div>
                         
                         
-                        <!-- <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4 class="order__title">상담 희망 요일과, 시간대를 선택해 주세요</h4>
                                 <label for="birthday">상담 희망 날짜</label>
@@ -153,12 +149,9 @@
                                 </div>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
-                        </div> -->
-                        
-                        
+                        </div> 
                         
                     </div>
-                </form>
                 
         </div>
     </section>
@@ -175,28 +168,97 @@
     		title:'',
     		intro:'',
     		dept:'',
-    		image:''
+    		image:'',
+    		agree:'',
+    		isok:''
     		
+    	},
+    	mounted : function(){
+    		this.idCheck();
     	},
     	methods:{
     		submitForm:function(){
+    			if(this.job_cat===''){
+    				this.$refs.job_cat.focus();
+    				return;
+    			}
+    			if(this.career===''){
+    				this.$refs.career.focus();
+    				return;
+    			}
+    			if(this.job===''){
+    				this.$refs.job.focus();
+    				return;
+    			}
+    			if(this.title===''){
+    				this.$refs.title.focus();
+    				return;
+    			}
+    			if(this.intro===''){
+    				this.$refs.intro.focus();
+    				return;
+    			}
+    			if(this.dept===''){
+    				this.$refs.dept.focus();
+    				return;
+    			}
+    			if(this.agree===''){
+    				this.$refs.agree.focus();
+    				alert("약관에 동의해 주세요");
+    				return;
+    			}
+    			if(this.cost<1000 || this.cost>15000){
+    				this.$refs.cost.focus();
+    				alert("시간당 금액은 1,000 ~ 15,000 사이만 가능합니다.");
+    				return;
+    			}
+    			this.idCheck();
     			
-    		   let form=new FormData();
- 			   form.append("user_id",this.user_id);
- 			   form.append("job_cat",this.job_cat);
- 			   form.append("career",this.career);
- 			   form.append("job",this.job);
- 			   form.append("cost",this.cost);
- 			   form.append("title",this.title);
- 			   form.append("intro",this.intro);
- 			   form.append("dept",this.dept);
- 			   
-    		   axios.post('../mento/regist_ok_vue.do',form).then(response=>{
- 				   console.log(response.data)
- 			   }).catch(error=>{
- 				   console.log(error.response);
- 			   })
-    		}
+    		   axios.post('../mento/regist_ok_vue.do',null,{
+    			   params:{
+    				   	user_id:this.user_id,
+    		    		job_cat:this.job_cat,
+    		    		career:this.career,
+    		    		job:this.job,
+    		    		cost:this.cost,
+    		    		title:this.title,
+    		    		intro:this.intro,
+    		    		dept:this.dept,
+    		    		image:this.image
+    			   }
+    		   }).then(response => {
+    			   console.log(response.data)
+    			   location.href="../mento/mento_list.do"
+    		   })
+ 			  
+    		},
+    		back:function(){
+    			location.href="../mento/mento_list.do"
+    		},
+    		idCheck:function(){
+    			if(this.user_id==='admin'){
+ 					alert("관리자계정으로 접근합니다.")
+ 					this.isok="관리자 계정입니다."
+ 					return;
+ 				}
+ 				if(this.user_id!==''){
+ 					axios.post("/mingle/member/regist_usercheck.do",null,{
+ 						params:{
+ 							user_id:this.user_id
+ 						}
+ 					}).then(res=>{
+ 						if(res.data=='no'){
+ 							alert("이미 멘토로 등록된 사용자입니다.");
+ 							this.isok="등록된 계정입니다."
+ 							location.href="../mento/mento_list.do"
+ 						}
+ 						else{
+ 							this.isok="등록 가능합니다."
+ 						}
+ 					})
+ 				}
+ 				
+ 			}
     	}
     })
     </script>
