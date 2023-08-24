@@ -80,13 +80,38 @@
         <div class="row">
             <div class="offset-1 col-sm-10 study-content">
                 <h3 class="study-content-header">스터디 소개</h3>
-                <div class="study-content-area">
-                    ${vo.content}
-                </div>
+                <div class="study-content-area">${vo.content}</div>
             </div>
         </div>
         <!-- 댓글(미완성) -->
         <div class="row">
+            <div class="offset-1 col-sm-10">
+                <div class="study-reply-input-area">
+                    <textarea class="study-reply-input"></textarea>
+                </div>
+                <div class="study-reply-list-area">
+                    <div class="study-reply-block">
+                        <div class="reply-writer">작성자닉네임</div>
+                        <div class="reply-regdate">2023-08-02 23:37</div>
+                        <pre>경제학 전공중인데 웹개발 지식이 전무해도 수강에 문제가 없을까요 ?</pre>
+                    </div>
+                    <div class="study-reply-block">
+                        <div class="reply-writer">작성자닉네임</div>
+                        <div class="reply-regdate">2023-08-02 23:37</div>
+                        <pre>경제학 전공중인데 웹개발 지식이 전무해도 수강에 문제가 없을까요 ?</pre>
+                    </div>
+                    <div class="study-reply-block">
+                        <div class="reply-writer">작성자닉네임</div>
+                        <div class="reply-regdate">2023-08-02 23:37</div>
+                        <pre>경제학 전공중인데 웹개발 지식이 전무해도 수강에 문제가 없을까요 ?</pre>
+                    </div>
+                    <div class="study-reply-block">
+                        <div class="reply-writer">작성자닉네임</div>
+                        <div class="reply-regdate">2023-08-02 23:37</div>
+                        <pre>경제학 전공중인데 웹개발 지식이 전무해도 수강에 문제가 없을까요 ?</pre>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

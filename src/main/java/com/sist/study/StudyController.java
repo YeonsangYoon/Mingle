@@ -30,7 +30,9 @@ public class StudyController {
 	@GetMapping("study/detail.do")
 	public String study_detail(int study_id, Model model)
 	{
-		StudyVO vo=service.studyDetailData(study_id);
+		StudyVO vo = service.studyDetailData(study_id);
+		List<ReplyVO> rlist = service.getReplyList(study_id);
+		model.addAttribute("rlist", rlist);
 		model.addAttribute("vo", vo);
 		return "study/detail";
 	}

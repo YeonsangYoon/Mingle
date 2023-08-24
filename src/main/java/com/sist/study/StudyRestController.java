@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class StudyRestController {
 	private StudyService service;
 	private ObjectMapper objectMapper;
-	@Autowired
-	private StudyDAO dao;
-	
+
 	@Autowired
 	public StudyRestController(StudyService service) {
 		this.service = service;
@@ -31,11 +29,16 @@ public class StudyRestController {
 		Map<String, Object> json = service.getStudyListData(params);
 		return objectMapper.writeValueAsString(json);
 	}
-	
-	   @GetMapping(value="study/delete_ok_vue.do",produces = "text/plain;charset=UTF-8")
-	   public String databoard_delete(int study_id,String pwd)
-	   {
-		   String result=dao.studyDelete(study_id, pwd);
-		   return result;
-	   }
+
+	@PostMapping(value = "study/replyinsert.do", produces = "application/json;charset=UTF-8")
+	public String insertReply(ReplyVO reply){
+		int result = service.insertStudyReply(reply);
+		return (result == 1) ? "OK" : "NO";
+	}
+
+	@PostMapping(value = "study/replyupdate.do", produces = "application/json;charset=UTF-8")
+	public String updateReply(int reply_id, String msg){
+		int result = service.updateReply(reply_id, msg);
+		return (result == 1) ? "OK" : "NO";
+	}
 }

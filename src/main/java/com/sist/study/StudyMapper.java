@@ -33,4 +33,23 @@ public interface StudyMapper {
 	
 	@Delete("DELETE FROM study WHERE study_id=#{study_id}")
 	public void studyDelete(int study_id);
+
+	/* 댓글 관련 */
+	// 댓글 목록
+	@Select("SELECT S.*, TO_CHAR(REGDATE, 'yyyy-MM-dd') AS DBDAY, (SELECT NICKNAME FROM STUDY_REPLY SR WHERE SR.STUDY_ID = S.PARENT_ID) AS PARENT_NICKNAME " +
+			"FROM STUDY_REPLY S " +
+			"WHERE S.STUDY_ID = #{study_id} " +
+			"ORDER BY GROUP_ID DESC, STUDY_REPLY.REGDATE")
+	public List<ReplyVO> getReplyList(int study_id);
+
+	// 삽입
+	@Insert("INSERT INTO STUDY_REPLY (REPLY_ID, STUDY_ID, USER_ID, NICKNAME, MSG, GROUP_ID, PARENT_ID) VALUES( " +
+			"	STUDY_REPLY_SEQ.nextval, #{study_id}, #{user_id}, #{nickname}, #{msg}, #{group_id}, #{parent_id})")
+	public int insertStudyReply(ReplyVO vo);
+
+	// 수정
+	@Update("UPDATE STUDY_REPLY SET " +
+			"	MSG = #{msg} " +
+			"WHERE REPLY_ID = #{reply_id}")
+	public int updateReply(@Param("reply_id")int reply_id, @Param("msg")String msg);
 }
