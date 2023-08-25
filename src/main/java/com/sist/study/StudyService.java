@@ -13,6 +13,7 @@ public interface StudyService {
 	public List<ReplyVO> getReplyList(int string_id);
 	// 삽입
 	public int insertStudyReply(ReplyVO vo);
+	public int insertStudyRootReply(ReplyVO vo);
 	// 수정
 	public int updateReply(int reply_id, String msg);
 	// 삭제

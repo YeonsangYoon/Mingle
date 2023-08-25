@@ -70,6 +70,9 @@ public class StudyDAO {
 	public int insertStudyReply(ReplyVO vo){
 		return mapper.insertStudyReply(vo);
 	}
+	public int insertStudyRootReply(ReplyVO vo){
+		return mapper.insertStudyRootReply(vo);
+	}
 
 	// 수정
 	public int updateReply(int reply_id, String msg){
