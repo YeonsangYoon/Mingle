@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>Insert title here</title>
+
 </head>
 <body>
 
@@ -36,7 +37,9 @@
 	<!-- 프로그램 정보 기입란 -->
 	<section class="shop spad">
 	<div class="container" id="insert-all">
-	
+       <ul class="Category_categories__F4wF5">
+          <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">스터디 글 작성</li>
+       </ul>
 	 <div class="insertpage">
  	  <form method="post" action="insert_ok.do">
 	 	<div class="row">
@@ -45,8 +48,8 @@
 	 			  <tr>
 	 				<th width="20%">진행방식</th>
 	 				<td width="80%">
-						 <div class="select-dropdown">
-						    <select name="onoff">
+						 <div>
+						    <select name="onoff" class="iselect">
 						      <option value="전체">전체</option>
 						      <option value="온라인">온라인</option>
 						      <option value="오프라인">오프라인</option>
@@ -56,16 +59,10 @@
 	 				</td>
 	 			  </tr>
 	 			  <tr>
-	 				<th width="20%">모집마감일</th>
-	 				<td width="80%">
-							<input type="date" name="deadline">
-	 				</td>
-	 			  </tr>
-	 			  <tr>
 	 				<th width="20%">진행기간</th>
 	 				<td width="80%">
-						 <div class="select-dropdown">
-						    <select name="period">
+						 <div>
+						    <select name="period" class="iselect">
 						      <option value="전체">전체</option>
 						      <option value="기간미정">기간미정</option>
 						      <option value="1개월">1개월</option>
@@ -74,8 +71,53 @@
 						      <option value="4개월">4개월</option>
 						      <option value="5개월">5개월</option>
 						      <option value="장기">장기(6개월 이상)</option>
-						      
 						    </select>
+						 </div>
+	 				</td>
+	 			  </tr>
+	 			  <tr>
+	 				<th width="20%">기술스택</th>
+	 				<td width="80%">
+	 					<div class="ui form">
+						 <div class="inline field">
+						    <select name="tech" class="label ui selection fluid dropdown iselect" multiple="">
+						      <option name="lang" value="전체">전체</option>
+						      <option name="lang" value="JavaScript">JavaScript</option>
+						      <option name="lang" value="TypeScript">TypeScript</option>
+						      <option name="lang" value="React">React</option>
+						      <option name="lang" value="Vue">Vue</option>
+						      <option name="lang" value="Svelte">Svelte</option>
+						      <option name="lang" value="Nextjs">Nextjs</option>
+						      <option name="lang" value="Nodejs">Nodejs</option>
+						      <option name="lang" value="Java">Java</option>
+						      <option name="lang" value="Spring">Spring</option>
+						      <option name="lang" value="Go">Go</option>
+						      <option name="lang" value="Nestjs">Nestjs</option>
+						      <option name="lang" value="Kotlin">Kotlin</option>
+						      <option name="lang" value="Express">Express</option>
+						      <option name="lang" value="MySQL">MySQL</option>
+						      <option name="lang" value="MongoDB">MongoDB</option>
+						      <option name="lang" value="Python">Python</option>
+						      <option name="lang" value="Django">Django</option>
+						      <option name="lang" value="php">php</option>
+						      <option name="lang" value="GraphQL">GraphQL</option>
+						      <option name="lang" value="Firebase">Firebase</option>
+						      <option name="lang" value="Flutter">Flutter</option>
+						      <option name="lang" value="Swift">Swift</option>
+						      <option name="lang" value="ReactNative">ReactNative</option>
+						      <option name="lang" value="Unity">Unity</option>
+						      <option name="lang" value="AWS">AWS</option>
+						      <option name="lang" value="Kubernetes">Kubernetes</option>
+						      <option name="lang" value="Docker">Docker</option>
+						      <option name="lang" value="Git">Git</option>
+						      <option name="lang" value="Figma">Figma</option>
+						      <option name="lang" value="Zeplin">Zeplin</option>
+						      <option name="lang" value="Jest">Jest</option>
+						    </select>
+						 	</div>
+						   <div class="ui button" id="uibutton" style="position:absolute; right: 32px; top:0px;">
+						    전체 취소
+						   </div>
 						 </div>
 	 				</td>
 	 			  </tr>
@@ -86,8 +128,8 @@
 	 			  <tr>
 	 				<th width="20%">모집인원</th>
 	 				<td width="80%">
-						 <div class="select-dropdown">
-						    <select name="recruit">
+						 <div>
+						    <select name="recruit" class="iselect">
 						      <option>전체</option>
 						      <option value="0">인원미정</option>
 						      <option value="1">1명</option>
@@ -105,20 +147,16 @@
 	 				</td>
 	 			  </tr>
 	 			  <tr>
-	 				<th width="20%">기술스택</th>
+	 				<th width="20%">모집마감일</th>
 	 				<td width="80%">
-						 <div class="aa">
-						    <select>
-						    	<!-- 기술스택 -->
-						    </select>
-						 </div>
+						<input type="date" name="deadline" class="iselect">
 	 				</td>
 	 			  </tr>
 	 			  <tr>
 	 				<th width="20%">연락방법</th>
 	 				<td width="80%">
-						 <div class="select-dropdown">
-						    <select name="contact_type">
+						 <div>
+						    <select name="contact_type" class="iselect">
 						      <option value="전체">전체</option>
 						      <option value="카카오 오픈채팅">카카오 오픈채팅</option>
 						      <option value="구글폼">구글폼</option>
@@ -126,13 +164,13 @@
 						    </select>
 						 </div>
 	 				</td>
+	 			  </tr>
 	 			  <tr>
 	 			  	<th width="20%">연락주소</th>
 	 				<td width="80%">
-						 <input type="text" name="contact_link" size="40" class="input-sm">
+						 <input type="text" name="contact_link" size="40" class="input-sm iselect">
 						 <input type="hidden" name="user_id" value="${sessionScope.id}"> 
 	 				</td>
-	 			  </tr>
 	 			  </tr>
 	 			</table>
 	 		</div>
@@ -141,13 +179,13 @@
 	 			<tr>
 					<th width="20%">제목</th>
 			        <td width=80%>
-			        	<input type=text name=title size=90 class="input-sm">
+			        	<input type=text name=title size=90 class="input-sm iselect">
 			        </td>	 			
 	 			</tr>
 	 			<tr>
 					<th width="20%">내용</th>
 			        <td width=80%>
-           				<textarea rows="10" cols="94" name="content"></textarea>
+           				<textarea rows="10" cols="94" name="content" class="icontent"></textarea>
 			        </td>
 	 			</tr>
 	 			<tr>
