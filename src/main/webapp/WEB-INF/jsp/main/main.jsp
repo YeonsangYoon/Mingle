@@ -54,6 +54,7 @@
     <script src="${pageContext.request.contextPath}/js/admin.js"></script>
 	<script src="${pageContext.request.contextPath}/js/mento.js"></script>
 	<script src="${pageContext.request.contextPath}/js/tmp.js"></script>
+	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	
