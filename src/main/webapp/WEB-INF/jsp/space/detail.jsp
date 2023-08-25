@@ -6,7 +6,12 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6a1ffbe66e5a8ba9af15d82e0b41ceac"></script>
-
+<style type="text/css">
+#map{
+	width:100%;
+	height:350px;
+}
+</style>
 </head>
 <body>
 
@@ -47,63 +52,8 @@
     </div>
     <div class="space__details__content">
         <div class="container">
-            <!-- <div class="row d-flex justify-content-center">
-                <div class="col-lg-8">
-                    <div class="space__details__text">
-                        <h4>Hooded thermal anorak</h4>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                            <span> - 5 Reviews</span>
-                        </div>
-                        <h3>$270.00 <span>70.00</span></h3>
-                        <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
-                            cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
-                        with placket.</p>
-                        <div class="space__details__option">
-                            <div class="space__details__option__size">
-                                <span>Size:</span>
-                                <label for="xxl">xxl
-                                    <input type="radio" id="xxl">
-                                </label>
-                                <label class="active" for="xl">xl
-                                    <input type="radio" id="xl">
-                                </label>
-                                <label for="l">l
-                                    <input type="radio" id="l">
-                                </label>
-                                <label for="sm">s
-                                    <input type="radio" id="sm">
-                                </label>
-                            </div>
-                        </div>
-                        <div class="space__details__cart__option">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
-                            </div>
-                            <a href="../space/booking.do" class="primary-btn">바로 예약하기</a>
-                        </div>
-                        <div class="space__details__btns__option">
-                            <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
-                        </div>
-                        <div class="space__details__last__option">
-                            <h5><span>Guaranteed Safe Checkout</span></h5>
-                            <ul>
-                                <li><span>SKU:</span> 3812912</li>
-                                <li><span>Categories:</span> Clothes</li>
-                                <li><span>Tag:</span> Clothes, Skin, Body</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-11">
                     <div class="space__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
@@ -135,19 +85,10 @@
                             <div class="tab-pane" id="tabs-7" role="tabpanel">
                                 <div class="space__details__tab__content">
                                     <div class="space__details__tab__content__item">
-                                        <h5>다음 지도 API</h5>
- 										<div id="map" style="width:100%;height:350px;"></div>
+                                        <h5>{{space_detail.title}}</h5>
+                                        <p>{{space_detail.address}}</p>
+ 										<div id="map" style="width:100%;height:350px"></div>
 
-                                        <section class="detailinfo_button pt-0" style="display: block;">
-                                            <div class="dc-flex justify-content-between">
-                                                <button class="btn btn-outline-grey-4 w-50 text-16 color-grey-4 ml-1">
-                                                  전화걸기
-                                                </button>
-                                                <button class="btn btn-outline-grey-4 w-50 text-16 color-grey-4 ml-1">
-                                                  길찾기
-                                                </button>
-                                            </div>
-                                        </section>
 
                                     </div>
                                     <div class="space__details__tab__content__item">
@@ -162,18 +103,113 @@
                                         <h5>이용 후기 <span>{{cnt_rate}}</span>개 / 평균 평점 <span>{{avg_rate}}</span></h5>
                                     </div>
                                     <div class="space__details__tab__content__review" v-for="r in rList">
-                                        <strong class="guest_name">{{r.nickname}} <span>{{r.ratings}}점</span></strong>
+                                        <strong class="guest_name">{{r.nickname}} 
+                                         <span>
+								            <i v-for="star in r.ratings" class="fa fa-star"></i><i v-for="star in 5 - r.ratings" class="fa fa-star-o"></i>
+								         </span>
+                                        </strong>
                                         <pre class="content">{{r.content}}</pre>
                                         <span class="regdate">{{r.dbday}}</span>
+                                    </div>
+                                    <div class="space__details__tab__content__review" v-if="cnt_rate==0">
+                                      <p>아직 리뷰가 없어요. 첫 리뷰의 주인공이 되어보세요!</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div style="height:20px"></div>
+                    <div class="alignBtn">
+			        <button @click="popCalendar" class="reserve-button">예약하기</button>
+			        <!-- <button @click="javascript:history.back()" class="reserveReverse-button">목록으로</button> -->
+			        <a href="../space/booking.do" class="reserveReverse-button">예약JSP</a>
+			    </div>
                 </div>
             </div>
         </div>
     </div>
+     <div id="bookinfo" class="modal modal-calendar">
+       <div class="modalinner">
+        <h4 class="text-center" style="padding-top:10px;"> 예약 날짜와 시간을 선택하세요!</h4>
+        <div id="cal-area">
+			<table class="Calendar">
+			        <thead>
+			            <tr>
+			                <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+			                <td colspan="5">
+			                    <span id="calYear"></span>년
+			                    <span id="calMonth"></span>월
+			                </td>
+			                <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+			            </tr>
+			            <tr>
+			                <td>일</td>
+			                <td>월</td>
+			                <td>화</td>
+			                <td>수</td>
+			                <td>목</td>
+			                <td>금</td>
+			                <td>토</td>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        </tbody>
+			</table>
+			<table class="table">
+			  <tbody>
+			          <tr>
+			            <th>오전</th>
+			            <td>12:00</td>
+			            <td>1:00</td>
+			            <td>2:00</td>
+			            <td>3:00</td>
+			            <td>4:00</td>
+			            <td>5:00</td>
+			            <td>6:00</td>
+			            <td>7:00</td>
+			            <td>8:00</td>
+			            <td>9:00</td>
+			            <td>10:00</td>
+			            <td>11:00</td>
+			          </tr>
+			          <tr>
+			            <th>오후</th>
+			            <td>12:00</td>
+			            <td>1:00</td>
+			            <td>2:00</td>
+			            <td>3:00</td>
+			            <td>4:00</td>
+			            <td>5:00</td>
+			            <td>6:00</td>
+			            <td>7:00</td>
+			            <td>8:00</td>
+			            <td>9:00</td>
+			            <td>10:00</td>
+			            <td>11:00</td>
+			          </tr>
+			          <tr>
+			            <!-- <td>
+			             <button class="reserve-button">예약하기</button>
+			            </td> -->
+			          </tr>
+			        </tbody>
+			        <tbody style="display:none">
+			         <tr>
+			           <td>인원선택</td>
+			           <td>예상 금액: 0,000원</td>
+			         </tr>
+			         <tr>
+			           <td>
+			             <button class="reserve-button">예약하기</button>
+			           </td>
+			         </tr>
+			        </tbody>
+			</table>
+		</div>       
+       
+       </div>
+     </div>
+    
 </section>
 <!-- Shop Details Section End -->
 
@@ -219,7 +255,7 @@
             active_image: 0,
             rList:[],
             cnt_rate:'',
-            avg_rate:''
+            avg_rate:0
         },
         mounted: function () {
             axios.get("/mingle/space/detail_vue.do", {
@@ -239,7 +275,7 @@
                 this.cnt_rate=res.data.rList.length
                 this.averageR()
                 if (window.kakao && window.kakao.maps) {
-			      setTimeout(() => { this.initMap() }, 1000)
+			      setTimeout(() => { this.initMap() }, 1500)
 			    }
 			   else
 				{
@@ -253,11 +289,14 @@
         	averageR:function(){
         		let sum = 0;
         		let avg = 0;
-                for (let i = 0; i < this.cnt_rate; i++) {
-                    sum += this.rList[i].ratings
-                }
-                avg = sum / this.cnt_rate;
-                this.avg_rate = avg.toFixed(1);
+        		if(this.cnt_rate!=0)
+        	    {
+	                for (let i = 0; i < this.cnt_rate; i++) {
+	                    sum += this.rList[i].ratings
+	                }
+	                avg = sum / this.cnt_rate;
+	                this.avg_rate = avg.toFixed(1);
+        	    }
                 return avg;
         	},
         	initMap:function(){
@@ -289,7 +328,10 @@
  			   script.onload=()=>kakao.maps.load(this.initMap)
  			   script.src='https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=6a1ffbe66e5a8ba9af15d82e0b41ceac&libraries=services'
  			   document.head.appendChild(script)
- 		   }
+ 		   },
+ 		  popCalendar:function(){
+ 			  $('#bookinfo').modal();
+ 		  }
         }
     })
 </script>

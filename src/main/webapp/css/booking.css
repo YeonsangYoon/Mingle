@@ -3,6 +3,9 @@
 .pc-mobile-header-container {
     padding-top: 0;
     font-family: 'Pretendard', sans-serif;
+    background-color:#f1f4f9;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .p-0 {
@@ -26,6 +29,7 @@
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 7px 18px -6px rgba(65,78,118,.1);
+    padding: 10px 10px 20px 20px;
 }
 
 .mx-n15px {
@@ -93,14 +97,6 @@
     background: #fff;
 }
 
-.nav {
-    display: flex;
-    flex-wrap: wrap;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-}
-
 .w-100 {
     width: 100% !important;
 }
@@ -109,11 +105,10 @@
     height: auto !important;
 }
 
-.cm-lg-rounded .carmore-section, .cm-lg-rounded .modal .filter-section, .modal .cm-lg-rounded .filter-section {
+.cm-lg-rounded .bk-detail-section, .cm-lg-rounded .modal .filter-section, .modal .cm-lg-rounded .filter-section {
     background: #fff;
 }
-.carmore-section, .modal .filter-section {
-    background: #fafafa;
+.bk-detail-section, .modal .filter-section {
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-bottom: .5rem;
@@ -134,7 +129,7 @@
     justify-content: space-between !important;
 }
 
-.carmore-section h3, .modal .filter-section h3, .carmore-section .section-title, .modal .filter-section .section-title {
+.bk-detail-section h3, .modal .filter-section h3, .bk-detail-section .section-title, .modal .filter-section .section-title {
     margin-top: .5rem;
     margin-bottom: .5rem;
     color: #494949;
@@ -149,6 +144,7 @@
 .mt-0, .my-0 {
     margin-top: 0 !important;
 }
+
 
 
 
@@ -253,9 +249,20 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
     border-radius: 10px;
 }
 
-.btn-block, #address_search_more_show_btn {
-    display: block;
-    width: 100%;
+.btn-block {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .6125rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
 }
 
 .btn-lg, .btn-group-lg>.btn, .btn-group-lg>.membership-grade-status-benefit-btn, .btn-group-lg>#address_search_more_show_btn {
@@ -271,7 +278,7 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
     border-color: #0d6ffc;
 }
 
-.btn, .membership-grade-status-benefit-btn, #address_search_more_show_btn {
+.btn {
     display: inline-block;
     font-weight: 400;
     color: #424346;
@@ -299,7 +306,7 @@ button, [type=button], [type=reset], [type=submit] {
 }
 
 
-.rent-period-item {
+.booking-period-item {
     -ms-flex: 1 1 40%;
     flex: 1 1 40%;
 }
@@ -312,14 +319,20 @@ button, [type=button], [type=reset], [type=submit] {
 
 .nav-classic .nav-link.active {
     color: #007bff;
-    border-bottom-color: #007bff;
     font-weight: bold;
+    font-size: 20px;
+    display: inline-block; /* 인라인 요소를 블록 요소로 변환 */
+    position: relative; /* 부모 요소를 기준으로 위치 지정 */
 }
 
-.nav-classic .nav-link.active {
-    color: #007bff;
-    border-bottom-color: #007bff;
-    font-weight: bold;
+.nav-classic .nav-link.active::after {
+    content: ''; /* 가상 요소 생성 */
+    position: absolute; /* 위치 설정 */
+    left: 0; /* 왼쪽 정렬 */
+    width: 100%; /* 가로 길이를 100%로 설정 */
+    height: 2px; /* 선의 높이 */
+    background-color: #007bff; /* 선의 색상 */
+    bottom: -3px; /* 아래로 3px만큼 위치 */
 }
 
 .nav-classic .nav-link {
@@ -399,12 +412,4 @@ button, [type=button], [type=reset], [type=submit] {
 [role=button] {
     cursor: pointer;
 }
-
-.dc-flex {
-    display: -ms-flexbox;
-    display: flex;
-}
-
-
-
 

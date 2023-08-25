@@ -454,7 +454,7 @@
     margin-right: 117px;
     font-size: 18px;
     line-height: 21px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .space__details__tab__content__review .content {
@@ -479,6 +479,8 @@
 	font-weight: 700;
 	margin-bottom: 12px;
 }
+
+
 
 .space__details__tab__content__item pre {
 	margin-bottom: 0;
@@ -1004,3 +1006,134 @@
 	text-align: right;
 }
 /* -------- space filter  -------------- */
+
+.reserve-button {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #0d6ffc;
+    border: 2px solid #0d6ffc;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    font-weight:500;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.reserveReverse-button{
+    margin-left: 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid #0d6ffc;
+    color: #0d6ffc;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.alignBtn{
+	display: flex;
+    justify-content: center;
+}
+
+.s_mediumModal{
+	width:50%;
+	height:50%;
+}
+
+.hover-effect {
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.hover-effect:hover {
+    transform: translateY(-2px);
+}
+
+/* 스크롤바 숨김 */
+.modal-calendar{
+    height: 90% !important; 
+    max-width: 100% !important;
+    width: 40% !important;
+    font-family:pretendard;
+} 
+
+.modalinner::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.modalinner::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+/* Calendar */
+
+#cal-area{
+	margin:0px auto;
+	width:70%;
+}
+
+.Calendar {
+	text-align: center;
+	width:100%;
+	margin:30px 0px 20px 0px;
+}
+.Calendar td{
+	width:50px;
+	height:50px;
+}
+
+.Calendar>thead>tr:first-child>td {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.Calendar>thead>tr:last-child>td {
+	font-weight: 600;
+}
+
+.Calendar>tbody>tr>td>p {
+	height: 45px;
+	width: 45px;
+	border-radius: 45px;
+	transition-duration: .2s;
+	line-height: 45px;
+	margin: 2.5px;
+	display: block;
+	text-align: center;
+}
+
+.pastDay {
+	color: lightgray;
+}
+
+.today {
+	background-color: gray;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.futureDay {
+	background-color: #FFFFFF;
+	cursor: pointer;
+}
+
+.futureDay:hover {
+	background: #eee;
+}
+
+.futureDay.choiceDay, .today.choiceDay {
+	background: #0d6ffc;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+
+/* */
