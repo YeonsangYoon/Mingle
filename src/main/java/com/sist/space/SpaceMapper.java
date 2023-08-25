@@ -5,15 +5,14 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 public interface SpaceMapper {
 	/* --------------------- List ------------------------*/
 	public List<SpaceVO> spaceListByCategory(Map<String, Object> map);
 
 	public int spaceTotalpage(@Param("category") String category);
-	/* --------------------- List ------------------------*/
 
-	
 	/* --------------------- Detail ------------------------*/
 	// 공간 전체정보 
 	@Select("SELECT * FROM space_list sl "
@@ -25,8 +24,11 @@ public interface SpaceMapper {
 		  + "FROM space_review sr, MEMBER m WHERE space_id=#{user_id} AND sr.USER_ID = m.USER_ID")
 	public List<ReviewVO> spaceReviewData(int space_id);
 	
-	/* --------------------- Detail ------------------------*/
+	@Update("UPDATE space_list SET "
+		  + "hit=hit+1 WHERE space_id=#{space_id}")	
+	public void hitIncrement(int space_id);
 	
+	/* --------------------- Detail ------------------------*/
 	// 좋아요 
 	@Insert("INSERT INTO space_zzim VALUES("
  		   +"sqz_no_seq.nextval,#{user_id},#{space_id})")
@@ -34,7 +36,15 @@ public interface SpaceMapper {
  	@Delete("DELETE space_zzim WHERE space_id=#{space_id} AND user_id=#{user_id}")
  	public void spaceZzimCancel(Map map);
  	
+ 	/* --------------------- Review ------------------------*/
+ 	// 이용 이력 확인 (유저번호와 공간번호를 조합하여 List<bookingVO>예약번호를 조회한다) => 만일 예약 내역이 있는 경우, 예약번호 중 선택/ 없는 경우, 예약 후 리뷰를 남길 수 있다는 문구 출력
+ 	@Select("SELECT COUNT(*) FROM space_booking WHERE user_id=#{user_id} AND space_id=#{space_id}")
+ 	public int isReviewExisted(Map map);
  	
+ 	// 리뷰작성 => rv_id, ratings,regdate,user_id,space_id,content (+예약 한 건당 리뷰 한 번/추후 디벨롭)
+ 	@Insert("INSERT INTO space_review VALUES("
+ 		  + "sqr_no_seq.nextval,#{ratings},SYSDATE,#{user_id},#{space_id},#{content})")
+ 	public void createReview(ReviewVO vo);
  	
  	
 }

@@ -21,6 +21,7 @@ public class SpaceDAO {
 	
 	public List<SpaceVO> spaceDetailData(int space_id)
 	{
+		mapper.hitIncrement(space_id);
 		return mapper.spaceDetailData(space_id);
 	}
 	
