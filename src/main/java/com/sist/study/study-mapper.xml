@@ -24,7 +24,8 @@
                     CONTACT_LINK,
                     STUDY.USER_ID,
                     MODIFYDATE,
-                    NICKNAME
+                    NICKNAME,
+                    (SELECT COUNT(*) FROM STUDY_REPLY WHERE STUDY.STUDY_ID = STUDY_REPLY.STUDY_ID) AS REPLY_CNT
                 FROM STUDY, MEMBER
                 WHERE
                     MEMBER.USER_ID = STUDY.USER_ID

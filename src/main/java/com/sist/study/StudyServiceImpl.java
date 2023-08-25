@@ -127,12 +127,45 @@ public class StudyServiceImpl implements StudyService{
 	@Override
 	public List<ReplyVO> getReplyList(int study_id) {
 		List<ReplyVO> list = dao.getReplyList(study_id);
+		Map<Integer, ReplyVO> rMap = new HashMap<>();
+		Map<Integer, List<Integer>> adjlist = new HashMap<>();
+
 		// 아이디 보호
 		for(ReplyVO vo : list){
+			rMap.put(vo.getReply_id(), vo);
+			adjlist.put(vo.getReply_id(), new ArrayList<>());
 			String user_id = vo.getUser_id();
 			vo.setUser_id(user_id.substring(0, 4) + user_id.substring(4).replaceAll(".", "*"));
 		}
-		return list;
+
+		// 재정렬
+		List<Integer> roots = new ArrayList<>();
+		for(ReplyVO vo : list){
+			if(vo.getReply_id() == vo.getParent_id()){
+				roots.add(vo.getReply_id());
+			}
+			else{
+				adjlist.get(vo.getParent_id()).add(vo.getReply_id());
+			}
+		}
+
+		List<ReplyVO> retval = new ArrayList<>();
+		for(int root : roots){
+			List<Integer> ordered = new ArrayList<>();
+			dfs(root, ordered, adjlist);
+			for(int i : ordered){
+				retval.add(rMap.get(i));
+			}
+		}
+
+		return retval;
+	}
+
+	void dfs(int cur, List<Integer> ordered, Map<Integer, List<Integer>> adjlist){
+		ordered.add(cur);
+		for(int child : adjlist.get(cur)){
+			dfs(child, ordered, adjlist);
+		}
 	}
 
 	// 삽입
