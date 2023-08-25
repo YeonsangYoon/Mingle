@@ -250,7 +250,7 @@
  						if(res.data=='no'){
  							alert("이미 멘토로 등록된 사용자입니다.");
  							this.isok="등록된 계정입니다."
- 							location.href="../mento/mento_list.do"
+ 							/* location.href="../mento/mento_list.do" */
  						}
  						else{
  							this.isok="등록 가능합니다."

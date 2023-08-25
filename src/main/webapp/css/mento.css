@@ -127,11 +127,11 @@
     font-weight: 700;
     font-size: 17px;
 }
+/* .follow:hover{
+	background-color: white;
+} */
 .follow > a{
 	color: white;
-}
-.follow > a:hover{
-	color: yellow;
 }
 
 .star{
