@@ -332,10 +332,6 @@
     font-weight: bold;
 }
 
-/* li {
-    display: list-item;
-    text-align: -webkit-match-parent;
-} */
 
 .studyItem_positionList__1jzi_ {
     height: 22px;
@@ -444,14 +440,6 @@
 /*---------------------
   	insert
 -----------------------*/
-
-/* * {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  box-sizing: border-box;
-} */
-
 .insertpage {
   display: block;
 }
@@ -510,14 +498,14 @@
     border-radius: 16px;
     background-color: #866cff;
     color: rgb(255, 255, 255);
-    font-size: 15px;
+    font-size: 12px;
 }
 .close-badge{
     padding: 5px 7px;
     border-radius: 16px;
     background-color: rgb(206, 212, 218);
     color: rgb(255, 255, 255);
-    font-size: 15px;
+    font-size: 12px;
 }
 
 /* 스터디 상세보기  */
@@ -641,3 +629,19 @@
     display: inline-block;
 }
 
+.ui.dropdown {
+	max-width: 300px;
+  }
+  
+#uibutton {
+	  padding: 10px;
+  }
+  
+.iselect {
+	border: 1px solid rgba(34,36,38,.15);
+	height: 30px;
+}
+
+.icontent {
+	border: 1px solid rgba(34,36,38,.15);
+}
