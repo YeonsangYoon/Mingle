@@ -53,7 +53,8 @@ public interface StudyMapper {
 			"#{msg}, " +
 			"SYSDATE, " +
 			"(SELECT GROUP_ID FROM STUDY_REPLY WHERE REPLY_ID = #{parent_id}), " +
-			"#{parent_id})")
+			"#{parent_id}, " +
+			"(SELECT DEPT FROM STUDY_REPLY WHERE REPLY_ID = #{parent_id}) + 1)")
 	public int insertStudyReply(ReplyVO vo);
 
 	@Insert("INSERT INTO STUDY_REPLY VALUES (" +
@@ -64,7 +65,8 @@ public interface StudyMapper {
 			"#{msg}, " +
 			"SYSDATE, " +
 			"STUDY_REPLY_SEQ.currval, " +
-			"STUDY_REPLY_SEQ.currval)")
+			"STUDY_REPLY_SEQ.currval, " +
+			"0)")
 	public int insertStudyRootReply(ReplyVO vo);
 
 	// 수정

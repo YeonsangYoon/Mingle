@@ -642,12 +642,23 @@
     cursor:pointer;
 }
 .study-reply-block.sub-reply{
-    margin-left: 50px;
     padding-left: 20px;
     border-left: 1px solid #e1e1e1;
     border-bottom: none;
     margin-bottom: 40px;
     padding-bottom: 0;
+}
+.study-reply-block.sub-1{
+    margin-left: 50px;
+}
+.study-reply-block.sub-2{
+    margin-left: 100px;
+}
+.study-reply-block.sub-3{
+    margin-left: 150px;
+}
+.study-reply-block.sub-4{
+    margin-left: 200px;
 }
 .study-reply-block .study-reply-msg{
     font-size: 16px;
