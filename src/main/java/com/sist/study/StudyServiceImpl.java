@@ -114,6 +114,41 @@ public class StudyServiceImpl implements StudyService{
 
 	@Override
 	@Transactional
+	public void insertStudy(Map<String, Object> params, String[] tech) {
+		// 1. recruit 자료형을 String => int
+		params.put("recruit", Integer.parseInt((String)params.get("recruit")));
+
+		// 2. Study 하나 Insert
+		dao.studyInsert(params);
+		int study_id = dao.getMaxStudy_id();
+
+		// 3. Tech 여러개 Insert
+		for(String t : tech){
+			dao.studyTechInsert(study_id, t);
+		}
+	}
+
+	@Override
+	@Transactional
+	public int deleteStudy(int study_id, String user_id) {
+		// 1. user_id와 study_id 매칭 확인
+		if(!user_id.equals(dao.getUserIdByStudyId(study_id))){
+			return -1;
+		}
+		// 2. 댓글 삭제
+		dao.deleteStudyReplyByStudyId(study_id);
+		// 3. 파일 삭제
+		dao.deleteStudyFileByStudyId(study_id);
+		// 4. 좋아요 삭제
+		dao.deleteStudyLikeByStudyId(study_id);
+		// 5. 기술 스택 삭제
+		dao.deleteStudyTechByStudyId(study_id);
+		// 6. 스터디 삭제
+		return dao.deleteStudyByStudyId(study_id);
+	}
+
+	@Override
+	@Transactional
 	public StudyVO studyDetailData(int study_id) {
 		dao.increaseStudyHit(study_id);
 		return dao.studyDetailData(study_id);
