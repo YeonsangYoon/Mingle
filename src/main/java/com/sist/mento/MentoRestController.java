@@ -83,7 +83,7 @@ public class MentoRestController {
 		
 		/*
 		 * String addr=vo.getAddress(); 
-		 * addr=addr.substring(0,addr.indexOf("Áö¹ø"));
+		 * addr=addr.substring(0,addr.indexOf("ï¿½ï¿½ï¿½ï¿½"));
 		 * vo.setAddress(addr.trim());
 		 */
 		
@@ -98,7 +98,7 @@ public class MentoRestController {
 	public String mento_regist(MentoVO vo) throws Exception{
 		   dao.mentoRegist(vo);
 		   
-		   String result="¼º°ø ÇÑµí";
+		   String result="ï¿½ï¿½ï¿½ï¿½ ï¿½Ñµï¿½";
 		   return result;
 	}
 	
@@ -120,7 +120,7 @@ public class MentoRestController {
 	
 	
 	
-	//¹®ÀÚ Á¦°Å
+	//ê°’ ì£¼ìž…
 	@GetMapping(value="mento/mento_edit_data.do", produces="text/plain;charset=UTF-8")
 	public String mento_edit_data() throws Exception{
 		List<MentoVO> list=dao.mentoEdit();
@@ -165,9 +165,12 @@ public class MentoRestController {
 		
 		ObjectMapper mapper=new ObjectMapper();
 		
-		return "ÆíÁý Á¾·á";
+		return "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½";
 		
 	}
+	
+	
+	
 	
 	
 

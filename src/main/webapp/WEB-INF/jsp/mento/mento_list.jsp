@@ -141,10 +141,12 @@
             <td width="75%" v-html="mento_detail.career"></td>
           </tr>
           <tr>
-            <td colspan=2 class="text-center">
-            	<div class="follow">
-            		<a href="../mento/mento_contact.do">멘토링 신청</a>
-            	</div>
+            <td colspan=2 class="text-center follow">
+            	<a href="../mento/mento_contact.do">
+	            	<div>
+	            		멘토링 신청
+	            	</div>
+            	</a>
             </td>
           </tr>
         </table> 
@@ -173,6 +175,7 @@
     	mounted:function(){
     		this.setData();
     		/* this.mentoEdit(); */
+    		this.imageInput();
     	},
     	
     	methods:{
@@ -247,6 +250,15 @@
 			},
 			mentoContact:function(){
 				
+			},
+			imageInput(){
+				axios.get('/mingle/mento/image_input.do',{
+					
+				}).then(response=>{
+					
+				}).catch(error=>{
+					console.log(error.response)
+				})
 			}
 			
     	}
