@@ -76,7 +76,7 @@ function nextCalendar() {
 // input값이 한자리 숫자인 경우 앞에 '0' 붙혀주는 함수
 function leftPad(value) {
 	if (value < 10) {
-		value = "0" + value;
+		value = " " + value;
 		return value;
 	}
 	return value;

@@ -32,6 +32,10 @@ public class SpaceServiceImpl implements SpaceService{
 	public List<SpaceVO> spaceDetailData(int space_id) {
 		return dao.spaceDetailData(space_id);
 	}
+
+	public List<BookingVO> getBookingListByIdAndRegdate(int space_id, String regdate){
+		return dao.getBookingListByIdAndRegdate(space_id, regdate);
+	}
 	@Override
 	public List<ReviewVO> spaceReviewData(int space_id) {
 		return dao.spaceReviewData(space_id);

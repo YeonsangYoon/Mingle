@@ -24,6 +24,10 @@ public class SpaceDAO {
 		mapper.hitIncrement(space_id);
 		return mapper.spaceDetailData(space_id);
 	}
+
+	public List<BookingVO> getBookingListByIdAndRegdate(int space_id, String regdate){
+		return mapper.getBookingListByIdAndRegdate(space_id, regdate);
+	}
 	
 	public List<ReviewVO> spaceReviewData(int space_id)
 	{

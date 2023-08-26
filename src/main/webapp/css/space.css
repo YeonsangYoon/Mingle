@@ -1057,9 +1057,9 @@
 
 /* 스크롤바 숨김 */
 .modal-calendar{
-    height: 90% !important; 
-    max-width: 100% !important;
-    width: 40% !important;
+    width: 600px !important;
+	max-width: 600px !important;
+	min-height: 700px !important;
     font-family:pretendard;
 } 
 
@@ -1155,6 +1155,11 @@
 .time-select{
 	background-color: rgb(11, 208, 32);
 	color : white;
+}
+.time-unable{
+	background-color: #eaeaea;
+	color: white;
+	cursor: default;
 }
 
 . .quantity .pro-qty-2{

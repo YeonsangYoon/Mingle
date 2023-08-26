@@ -63,6 +63,12 @@ public class SpaceRestController {
 	}
 	
 	
-	
+	@GetMapping(value = "space/booking_data.do", produces = "application/json;charset=UTF-8")
+	public String getBookingData(int space_id, String year, String month, String date) throws JsonProcessingException {
+		String regdate = year + "-" + month + "-" + date;
+		ObjectMapper objectMapper = new ObjectMapper();
+		return objectMapper.writeValueAsString(service.getBookingListByIdAndRegdate(space_id, regdate));
+	}
+
 }
 
