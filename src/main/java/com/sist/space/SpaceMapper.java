@@ -40,7 +40,7 @@ public interface SpaceMapper {
     public boolean spaceIsFavorited(Map map);
     
     @Insert("INSERT INTO space_zzim VALUES("
-            + "sqz_no_seq.nextval,#{user_id},#{space_id})")
+            + "spz_id_seq.nextval,#{user_id},#{space_id})")
     public void spaceZzimInsert(Map map);
 
     @Delete("DELETE space_zzim WHERE space_id=#{space_id} AND user_id=#{user_id}")
@@ -54,7 +54,7 @@ public interface SpaceMapper {
 
     // 리뷰작성 => rv_id, ratings,regdate,user_id,space_id,content (+예약 한 건당 리뷰 한 번/추후 디벨롭)
     @Insert("INSERT INTO space_review VALUES("
-            + "sqr_no_seq.nextval,#{ratings},SYSDATE,#{user_id},#{space_id},#{content})")
+            + "spr_id_seq.nextval,#{ratings},SYSDATE,#{user_id},#{space_id},#{content})")
     public void createReview(ReviewVO vo);
 
 

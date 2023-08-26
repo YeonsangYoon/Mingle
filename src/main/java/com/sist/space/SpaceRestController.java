@@ -58,6 +58,8 @@ public class SpaceRestController {
 	public void space_zzim_cancel(int space_id, HttpSession session)
 	{
 		String user_id= (String)session.getAttribute("id");
+		if(user_id == null)
+			return;
 		Map<String,Object> map=new HashMap<>();
 		map.put("space_id", space_id);
 		map.put("user_id", user_id);
@@ -68,6 +70,8 @@ public class SpaceRestController {
 	public void space_zzim_Insert(int space_id, HttpSession session)
 	{
 		String user_id= (String)session.getAttribute("id");
+		if(user_id == null)
+			return;
 		Map<String,Object> map=new HashMap<>();
 		map.put("space_id", space_id);
 		map.put("user_id", user_id);

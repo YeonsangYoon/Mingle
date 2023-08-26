@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-option">
     <div class="container">
@@ -55,19 +56,18 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6" v-for="vo in space_list">
+            <div class="col-lg-3 col-md-6 col-sm-6" v-for="(vo, index) in space_list">
                 <div class="space__item">
 
                     <div class="space__item__pic">
                         <a :href="'../space/detail.do?space_id='+vo.space_id"><img :src="vo.poster"></a>
+                        <c:if test="${sessionScope.id !=null}">
                         <ul class="space__hover">
                           <li>
-                            <a href="#" @click="toggleFavorite(vo.space_id)">
-                              <i class="fa fa-heart-o" v-if="!vo.isFavorited"></i>
-                              <i class="fa fa-heart" v-else></i>
-                            </a>
+                              <i style="color: red;" class="fa" :class="{'fa-heart':space_list[index].isFavorited, 'fa-heart-o' : !space_list[index].isFavorited}" @click="toggleFavorite(index)"></i>
                           </li>
                         </ul>
+                        </c:if>
                     </div>
 
                     <div class="space__item__text">
@@ -164,28 +164,26 @@
                 this.curpage = this.endPage + 1
                 this.spaceCategoryData(this.category)
             },
-            toggleFavorite: function(space) {
-                if (space_list.isFavorited) {
+            toggleFavorite: function(index) {
+                if (this.space_list[index].isFavorited) {
                     axios.get("/mingle/space/zzimCancel_vue.do", {
                         params: {
-                            space_id: this.space_list.space_id,
-                            user_id: this.user_id
+                            space_id: this.space_list[index].space_id
                         }
                     })
                     .then(res => {
-                        this.space_list.isFavorited = false;
+                        this.space_list[index].isFavorited = false;
                     }).catch(error => {
                         console.log(error.res)
                     });
                 } else {
                     axios.get("/mingle/space/zzimInsert_vue.do", {
                         params: {
-                            space_id: this.space_list.space_id,
-                            user_id: this.user_id
+                            space_id: this.space_list[index].space_id
                         }
                     })
                     .then(res => {
-                        this.space_list.isFavorited = true;
+                        this.space_list[index].isFavorited = true;
                     }).catch(error => {
                         console.log(error.res)
                     });
