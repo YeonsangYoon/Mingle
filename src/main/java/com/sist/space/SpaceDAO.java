@@ -1,5 +1,7 @@
 package com.sist.space;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -34,12 +36,18 @@ public class SpaceDAO {
 		return mapper.spaceReviewData(space_id);
 	}
 	
-	public void spaceZzimInsert(Map map)
-	{
-		mapper.spaceZzimInsert(map);
-	}
- 	public void spaceZzimCancel(Map map)
- 	{
- 		mapper.spaceZzimCancel(map);
- 	}
+    public boolean spaceIsFavorited(Map map)
+    {
+    	return mapper.spaceIsFavorited(map);
+    }
+    
+    public void spaceZzimInsert(Map map)
+    {
+    	mapper.spaceZzimInsert(map);
+    }
+
+    public void spaceZzimCancel(Map map)
+    {
+    	mapper.spaceZzimCancel(map);
+    }
 }

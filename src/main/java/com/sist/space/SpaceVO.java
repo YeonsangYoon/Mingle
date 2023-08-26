@@ -11,5 +11,6 @@ public class SpaceVO {
 	private String title,subject,phone,address,latitude,longitude,region_code,description,fcst_guides,cautions,poster,category;
 	private int img_id;
 	private String images;
+	private Boolean isFavorited;
 
 }

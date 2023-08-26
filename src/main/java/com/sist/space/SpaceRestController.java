@@ -2,6 +2,8 @@ package com.sist.space;
 
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.json.simple.JSONArray;
@@ -20,13 +22,28 @@ public class SpaceRestController {
 	private SpaceService service;
 	
 	@GetMapping(value = "space/list_vue.do", produces = "text/plain;charset=UTF-8")
-	public String space_list_vue(int page, String category) throws JsonProcessingException {
+	public String space_list_vue(int page, String category,HttpSession session) throws JsonProcessingException {
 		Map<String, Object> listParam=new HashMap<>();
 		listParam.put("category", category);
 		listParam.put("start", (page - 1) * SPACE_COUNT_IN_PAGE + 1);
 		listParam.put("end", page * SPACE_COUNT_IN_PAGE);
 		List<SpaceVO> list=service.spaceListByCategory(listParam);
+		
+		String user_id= (String)session.getAttribute("id");
+		for (SpaceVO space : list) {
+            boolean isFavorited = false;
+            if (user_id!=null) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("user_id", user_id);  
+                map.put("space_id", space.getSpace_id());
 
+                isFavorited = service.spaceIsFavorited(map);
+            }
+
+            space.setIsFavorited(isFavorited);
+        }
+		
+		
 		int totalpage = service.spaceTotalpage(category);
 
 		ObjectMapper mapper=new ObjectMapper();
@@ -35,6 +52,26 @@ public class SpaceRestController {
 		json.put("list", list);
 
 		return mapper.writeValueAsString(new JSONObject(json));
+	}
+	
+	@GetMapping("space/zzimCancel_vue.do")
+	public void space_zzim_cancel(int space_id, HttpSession session)
+	{
+		String user_id= (String)session.getAttribute("id");
+		Map<String,Object> map=new HashMap<>();
+		map.put("space_id", space_id);
+		map.put("user_id", user_id);
+		service.spaceZzimCancel(map);
+	}
+	
+	@GetMapping("space/zzimInsert_vue.do")
+	public void space_zzim_Insert(int space_id, HttpSession session)
+	{
+		String user_id= (String)session.getAttribute("id");
+		Map<String,Object> map=new HashMap<>();
+		map.put("space_id", space_id);
+		map.put("user_id", user_id);
+		service.spaceZzimInsert(map);
 	}
 	
 	@GetMapping(value = "space/detail_vue.do", produces = "text/plain;charset=UTF-8")
@@ -62,7 +99,6 @@ public class SpaceRestController {
 		return mapper.writeValueAsString(json);
 	}
 	
-	
 	@GetMapping(value = "space/booking_data.do", produces = "application/json;charset=UTF-8")
 	public String getBookingData(int space_id, String year, String month, String date) throws JsonProcessingException {
 		String regdate = year + "-" + month + "-" + date;
@@ -70,5 +106,6 @@ public class SpaceRestController {
 		return objectMapper.writeValueAsString(service.getBookingListByIdAndRegdate(space_id, regdate));
 	}
 
+	
 }
 

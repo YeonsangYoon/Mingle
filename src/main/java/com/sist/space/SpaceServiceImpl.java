@@ -51,6 +51,13 @@ public class SpaceServiceImpl implements SpaceService{
 		dao.spaceZzimCancel(map);
 	}
 
+	@Override
+	public boolean spaceIsFavorited(Map map) {
+		
+		return dao.spaceIsFavorited(map);
+	}
+
+
 
 	
 }

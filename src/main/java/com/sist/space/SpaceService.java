@@ -11,7 +11,8 @@ public interface SpaceService {
 		public List<BookingVO> getBookingListByIdAndRegdate(int space_id, String regdate);
 
 		public List<ReviewVO> spaceReviewData(int space_id);
-		
+
+		public boolean spaceIsFavorited(Map map);
 		public void spaceZzimInsert(Map map);
 	 	public void spaceZzimCancel(Map map);
 }

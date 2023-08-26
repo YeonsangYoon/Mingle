@@ -55,46 +55,24 @@
         </div>
 
         <div class="row">
-            <%--            <div class="shop__space__option" style="display:contents">--%>
-            <%--                <div class="nice-select" tabindex="0" style="margin-right:20px;">--%>
-            <%--                    <span class="current">지역</span>--%>
-            <%--                    <ul class="list">--%>
-            <%--                        <li data-value="" class="option selected">최신순</li>--%>
-            <%--                        <li data-value="" class="option">인기순</li>--%>
-            <%--                    </ul>--%>
-            <%--                </div>--%>
-            <%--                <div class="nice-select" tabindex="0" style="margin-right:20px;">--%>
-            <%--                    <span class="current">카테고리</span>--%>
-            <%--                    <ul class="list">--%>
-            <%--                        <li data-value="" class="option selected">최신순</li>--%>
-            <%--                        <li data-value="" class="option">인기순</li>--%>
-            <%--                    </ul>--%>
-            <%--                </div>--%>
-            <%--                <div class="nice-select" tabindex="0" style="margin-right:20px;">--%>
-            <%--                    <span class="current">날짜</span>--%>
-            <%--                    <ul class="list">--%>
-            <%--                        <li><input type="text" id="datepicker_init_day" placeholder="예약할 날짜를 입력하세요."></li>--%>
-            <%--                    </ul>--%>
-            <%--                </div>--%>
-            <%--                <div class="space__sidebar__search">--%>
-            <%--                    <input type="text" placeholder="검색어를 입력하세요." size="25">--%>
-            <%--                    <button type="submit"><span class="icon_search"></span></button>--%>
-            <%--                </div>--%>
-            <%--            </div>--%>
             <div class="col-lg-3 col-md-6 col-sm-6" v-for="vo in space_list">
                 <div class="space__item">
 
                     <div class="space__item__pic">
                         <a :href="'../space/detail.do?space_id='+vo.space_id"><img :src="vo.poster"></a>
                         <ul class="space__hover">
-                            <li><a href="../space/list.do"><img src="/mingle/img/icon/heart.png" alt=""></a></li>
+                          <li>
+                            <a href="#" @click="toggleFavorite(vo.space_id)">
+                              <i class="fa fa-heart-o" v-if="!vo.isFavorited"></i>
+                              <i class="fa fa-heart" v-else></i>
+                            </a>
+                          </li>
                         </ul>
                     </div>
 
                     <div class="space__item__text">
                         <ul>
                             <li><a :href="'../space/detail.do?space_id='+vo.space_id">{{vo.title}}</a></li>
-                            <li>서초동</li>
                             <li><b>{{vo.price|currency}}</b>원/시간</li>
                             <li>최대 <b>{{vo.max_guest}}</b>인</li>
                         </ul>
@@ -132,7 +110,8 @@
             totalpage: 0,
             startPage: 0,
             endPage: 0,
-            category: 'all'
+            category: 'all',
+            user_id:'${sessionScope.id}'
         },
         filters: {
             currency: function (value) {
@@ -142,6 +121,7 @@
         },
         mounted: function () {
             this.spaceCategoryData(this.category)
+            console.log(this.user_id)
         },
         methods: {
             spaceCategoryData: function (category) {
@@ -183,6 +163,33 @@
             next: function () {
                 this.curpage = this.endPage + 1
                 this.spaceCategoryData(this.category)
+            },
+            toggleFavorite: function(space) {
+                if (space_list.isFavorited) {
+                    axios.get("/mingle/space/zzimCancel_vue.do", {
+                        params: {
+                            space_id: this.space_list.space_id,
+                            user_id: this.user_id
+                        }
+                    })
+                    .then(res => {
+                        this.space_list.isFavorited = false;
+                    }).catch(error => {
+                        console.log(error.res)
+                    });
+                } else {
+                    axios.get("/mingle/space/zzimInsert_vue.do", {
+                        params: {
+                            space_id: this.space_list.space_id,
+                            user_id: this.user_id
+                        }
+                    })
+                    .then(res => {
+                        this.space_list.isFavorited = true;
+                    }).catch(error => {
+                        console.log(error.res)
+                    });
+                }
             }
         }
     })
