@@ -6,7 +6,10 @@ import java.util.Map;
 public interface StudyService {
 	public Map<String, Object> getStudyListData(Map<String, Object> params);
 	public List<Map<String, Object>> getTechListData(List<Integer> list);
+
 	public StudyVO studyDetailData(int study_id);
+	public void insertStudy(Map<String, Object> params, String[] tech);
+	public int deleteStudy(int study_id, String user_id);
 
 	/* 댓글 관련 */
 	// 출력

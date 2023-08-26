@@ -38,26 +38,35 @@ public class StudyDAO {
 	}
 	
 	// 등록 페이지
-	public void studyInsert(StudyVO vo)
+	public void studyInsert(Map<String, Object> params)
 	{
-		mapper.studyInsert(vo);
+		mapper.studyInsert(params);
+	}
+	public void studyTechInsert(int study_id, String tech){
+		mapper.studyTechInsert(study_id, tech);
+	}
+	public int getMaxStudy_id(){
+		return mapper.getMaxStudy_id();
 	}
 	
-	// 삭제 페이지
-	public String studyDelete(int study_id, String pwd)
-	{
-		   String result="";
-		   String db_pwd=mapper.getPassword(study_id);
-		   if(db_pwd.equals(pwd))
-		   {
-			   result="yes";
-			   mapper.studyDelete(study_id);
-		   }
-		   else
-		   {
-			   result="no";
-		   }
-		   return result;
+	// 스터디 삭제
+	public String getUserIdByStudyId(int study_id){
+		return mapper.getUserIdByStudyId(study_id);
+	}
+	public void deleteStudyReplyByStudyId(int study_id){
+		mapper.deleteStudyReplyByStudyId(study_id);
+	}
+	public void deleteStudyFileByStudyId(int study_id){
+		mapper.deleteStudyFileByStudyId(study_id);
+	}
+	public void deleteStudyLikeByStudyId(int study_id){
+		mapper.deleteStudyLikeByStudyId(study_id);
+	}
+	public void deleteStudyTechByStudyId(int study_id){
+		mapper.deleteStudyTechByStudyId(study_id);
+	}
+	public int deleteStudyByStudyId(int study_id){
+		return mapper.deleteStudyByStudyId(study_id);
 	}
 
 	/* 댓글 관련 */

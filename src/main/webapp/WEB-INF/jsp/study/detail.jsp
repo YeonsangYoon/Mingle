@@ -28,7 +28,7 @@
                 <h5 style="margin-bottom: 30px; padding-left: 10px;">
                     ${vo.nickname} | ${vo.dbday}
                     <a class="study-link float-right" href="javascript:history.back()">목록</a>
-                    <a class="study-link float-right" href="#">삭제</a>
+                    <a class="study-link float-right" href="${pageContext.request.contextPath}/study/delete.do?study_id=${vo.study_id}">삭제</a>
                     <a class="study-link float-right" href="#">수정</a>
                 </h5>
             </div>

@@ -47,8 +47,8 @@
                         </trim>
                         )
                     </if>
-                ORDER BY DEADLINE DESC, STUDY.REGDATE
-            ) a
+                ORDER BY STUDY.REGDATE DESC, DEADLINE DESC
+        ) a
             WHERE ROWNUM &lt;= #{end}
         )
         WHERE rn > #{start}

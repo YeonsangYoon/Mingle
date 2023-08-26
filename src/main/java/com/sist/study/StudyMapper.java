@@ -23,16 +23,50 @@ public interface StudyMapper {
 	public void increaseStudyHit(int study_id);
 
 	// 등록 페이지
-	@Insert("INSERT INTO study VALUES((SELECT NVL(MAX(study_id)+1,1) FROM study),#{title},#{content},"
-	      + "SYSDATE,0,#{deadline},'O',#{period},#{recruit},#{onoff},#{contact_type},#{contact_link},#{user_id},SYSDATE)")
-	public void studyInsert(StudyVO vo);
+	@Insert("INSERT INTO study VALUES(" +
+			"	STUDY_SEQ.nextval, " +
+			"	#{title}, " +
+			"	#{content}, "
+	      + "	SYSDATE, " +
+			"	0, " +
+			"	#{deadline}, " +
+			"	'O'," +
+			"	#{period}, " +
+			"	#{recruit}, " +
+			"	#{onoff}, " +
+			"	#{contact_type}, " +
+			"	#{contact_link}, " +
+			"	#{user_id}, " +
+			"	SYSDATE) ")
+	public void studyInsert(Map<String, Object> params);
 
-	// 삭제 페이지
-	@Select("SELECT pwd FROM member WHERE study_id=#{study_id}")
-	public String getPassword(int study_id);
-	
-	@Delete("DELETE FROM study WHERE study_id=#{study_id}")
-	public void studyDelete(int study_id);
+	@Select("SELECT MAX(STUDY_ID) FROM STUDY")
+	public int getMaxStudy_id();
+
+	@Insert("INSERT INTO STUDY_TECH VALUES (" +
+			"	#{tech}, " +
+			"	#{study_id} " +
+			")")
+	public void studyTechInsert(@Param("study_id")int study_id, @Param("tech")String tech);
+
+	// 스터디 삭제 관련
+	@Select("SELECT USER_ID FROM STUDY WHERE STUDY_ID = #{study_id}")
+	public String getUserIdByStudyId(@Param("study_id")int study_id);
+
+	@Delete("DELETE FROM STUDY_REPLY WHERE STUDY_ID = #{study_id}")
+	public void deleteStudyReplyByStudyId(@Param("study_id")int study_id);
+
+	@Delete("DELETE FROM STUDY_FILE WHERE STUDY_ID = #{study_id}")
+	public void deleteStudyFileByStudyId(@Param("study_id")int study_id);
+
+	@Delete("DELETE FROM STUDY_LIKE WHERE STUDY_ID = #{study_id}")
+	public void deleteStudyLikeByStudyId(@Param("study_id")int study_id);
+
+	@Delete("DELETE FROM STUDY_TECH WHERE STUDY_ID = #{study_id}")
+	public void deleteStudyTechByStudyId(@Param("study_id")int study_id);
+
+	@Delete("DELETE FROM STUDY WHERE STUDY_ID = #{study_id}")
+	public int deleteStudyByStudyId(@Param("study_id")int study_id);
 
 	/* 댓글 관련 */
 	// 댓글 목록
