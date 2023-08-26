@@ -1135,5 +1135,37 @@
 	cursor: pointer;
 }
 
+.time_info_box{
+    position: relative;
+    display: inline-block;
+    width: 58px;
+    height: 35px;
+    background-color: #e0fed3;
+    border: 1px solid #caf9c0;
+    font-size: 13px;
+    line-height: 33px;
+    text-align: center;
+    color: #00c73c;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor:pointer;
+    padding:0px !important;
+}
+.time-select{
+	background-color: rgb(11, 208, 32);
+	color : white;
+}
+
+. .quantity .pro-qty-2{
+	width: 80px;
+}
+
+.quantity .pro-qty-2 .qtybtn {
+    font-size: 16px;
+    color: #888888;
+    width: 10px;
+    cursor: pointer;
+}
 
 /* */

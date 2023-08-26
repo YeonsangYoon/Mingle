@@ -130,9 +130,9 @@
     </div>
      <div id="bookinfo" class="modal modal-calendar">
        <div class="modalinner">
-        <h4 class="text-center" style="padding-top:10px;"> 예약 날짜와 시간을 선택하세요!</h4>
+        <h4 class="text-center" style="padding-top:10px;">예약 날짜를 선택하세요.</h4>
         <div id="cal-area">
-			<table class="Calendar">
+			<table class="Calendar" @click="selected_day">
 			        <thead>
 			            <tr>
 			                <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
@@ -155,57 +155,40 @@
 			        <tbody>
 			        </tbody>
 			</table>
-			<table class="table">
-			  <tbody>
-			          <tr>
-			            <th>오전</th>
-			            <td>12:00</td>
-			            <td>1:00</td>
-			            <td>2:00</td>
-			            <td>3:00</td>
-			            <td>4:00</td>
-			            <td>5:00</td>
-			            <td>6:00</td>
-			            <td>7:00</td>
-			            <td>8:00</td>
-			            <td>9:00</td>
-			            <td>10:00</td>
-			            <td>11:00</td>
-			          </tr>
-			          <tr>
-			            <th>오후</th>
-			            <td>12:00</td>
-			            <td>1:00</td>
-			            <td>2:00</td>
-			            <td>3:00</td>
-			            <td>4:00</td>
-			            <td>5:00</td>
-			            <td>6:00</td>
-			            <td>7:00</td>
-			            <td>8:00</td>
-			            <td>9:00</td>
-			            <td>10:00</td>
-			            <td>11:00</td>
-			          </tr>
-			          <tr>
-			            <!-- <td>
-			             <button class="reserve-button">예약하기</button>
-			            </td> -->
-			          </tr>
-			        </tbody>
-			        <tbody style="display:none">
-			         <tr>
-			           <td>인원선택</td>
-			           <td>예상 금액: 0,000원</td>
-			         </tr>
-			         <tr>
-			           <td>
-			             <button class="reserve-button">예약하기</button>
-			           </td>
-			         </tr>
-			        </tbody>
-			</table>
 		</div>       
+			
+          <h4 class="text-center" :class="{'d-none':selectedDate==0}" style="padding-top:10px;padding-bottom:10px;">{{selectedYear}}년 {{selectedMonth}}월 {{selectedDate}}일</h4>
+			<table class="table">
+			  <tbody :class="{'d-none':selectedDate==0}">
+			     <tr class="text-center">
+			       <th>시간</th>
+			       <td class="time_info_box" :class="{'time-select' : (selectedTime.length == 1 && selectedTime[0] == h) || (selectedTime.length == 2 && selectedTime[0] <= h && selectedTime[1] >= h) }" v-for="h,index in workingHours" @click="select_time(h)">{{h}}시</td>
+			     </tr>
+			  </tbody>
+			</table>
+			<table>
+			  <tbody :class="{'d-none':selectedTime.length<2}">
+			    <tr>
+			      <th>총 예약인원</th>
+			      <td class="quantity__item">
+                    <div class="quantity">
+                       <div class="pro-qty-2">
+                         <input type="text" :value="this.space_detail.min_guest" >
+                       </div>
+                    </div>
+                  </td>
+			    </tr>
+			    <tr>
+			    <tr>
+			      <td>예상 금액: 0,000원</td>
+			    </tr>
+			    <tr>
+			      <td>
+			       <button class="reserve-button">예약하기</button>
+			      </td>
+			    </tr>
+			  </tbody>
+			</table>
        
        </div>
      </div>
@@ -253,9 +236,15 @@
             fcst_guides: [],
             cautions: [],
             active_image: 0,
-            rList:[],
-            cnt_rate:'',
-            avg_rate:0
+            rList: [],
+            cnt_rate: '',
+            avg_rate: 0,
+            workingHours: [],
+            selectedTime : [],
+            selectedYear:0,
+            selectedMonth:0,
+            selectedDate:0,
+            quantity:0
         },
         mounted: function () {
             axios.get("/mingle/space/detail_vue.do", {
@@ -274,8 +263,10 @@
                 this.rList=res.data.rList
                 this.cnt_rate=res.data.rList.length
                 this.averageR()
+                this.workingHour()
+                console.log(this.workingHours)
                 if (window.kakao && window.kakao.maps) {
-			      setTimeout(() => { this.initMap() }, 1500)
+			      this.initMap()
 			    }
 			   else
 				{
@@ -286,52 +277,89 @@
             })
         },
         methods:{
-        	averageR:function(){
-        		let sum = 0;
-        		let avg = 0;
-        		if(this.cnt_rate!=0)
-        	    {
-	                for (let i = 0; i < this.cnt_rate; i++) {
-	                    sum += this.rList[i].ratings
-	                }
-	                avg = sum / this.cnt_rate;
-	                this.avg_rate = avg.toFixed(1);
-        	    }
-                return avg;
-        	},
-        	initMap:function(){
-        		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-        	    mapOption = { 
-        	        center: new kakao.maps.LatLng(this.space_detail.latitude, this.space_detail.longitude), // 지도의 중심좌표
-        	        level: 3 // 지도의 확대 레벨
-        	    };
-
-        	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-        	// 마커가 표시될 위치입니다 
-        	var markerPosition = new kakao.maps.LatLng(this.space_detail.latitude, this.space_detail.longitude); 
-
-        	// 마커를 생성합니다
-        	var marker = new kakao.maps.Marker({
-        	    position: markerPosition
-        	});
-
-        	// 마커가 지도 위에 표시되도록 설정합니다
-        	marker.setMap(map);
-
-        	// 마커가 드래그 가능하도록 설정합니다 
-        	marker.setDraggable(true);   
- 		   },
- 		   addScript:function(){
- 			   const script=document.createElement("script")
- 			   /* global kakao */
- 			   script.onload=()=>kakao.maps.load(this.initMap)
- 			   script.src='https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=6a1ffbe66e5a8ba9af15d82e0b41ceac&libraries=services'
- 			   document.head.appendChild(script)
- 		   },
- 		  popCalendar:function(){
- 			  $('#bookinfo').modal();
- 		  }
+		        	averageR:function(){
+		        		let sum = 0;
+		        		let avg = 0;
+		        		if(this.cnt_rate!=0)
+		        	    {
+			                for (let i = 0; i < this.cnt_rate; i++) {
+			                    sum += this.rList[i].ratings
+			                }
+			                avg = sum / this.cnt_rate;
+			                this.avg_rate = avg.toFixed(1);
+		        	    }
+		                return avg;
+		        	},
+		        	initMap:function(){
+		        		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		        	    mapOption = { 
+		        	        center: new kakao.maps.LatLng(this.space_detail.latitude, this.space_detail.longitude), // 지도의 중심좌표
+		        	        level: 3 // 지도의 확대 레벨
+		        	    };
+		
+		        	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		
+		        	// 마커가 표시될 위치입니다 
+		        	var markerPosition = new kakao.maps.LatLng(this.space_detail.latitude, this.space_detail.longitude); 
+		
+		        	// 마커를 생성합니다
+		        	var marker = new kakao.maps.Marker({
+		        	    position: markerPosition
+		        	});
+		
+		        	// 마커가 지도 위에 표시되도록 설정합니다
+		        	marker.setMap(map);
+		
+		        	// 마커가 드래그 가능하도록 설정합니다 
+		        	marker.setDraggable(true);   
+		 		   },
+		 		   addScript:function(){
+		 			   const script=document.createElement("script")
+		 			   /* global kakao */
+		 			   script.onload=()=>kakao.maps.load(this.initMap)
+		 			   script.src='https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=6a1ffbe66e5a8ba9af15d82e0b41ceac&libraries=services'
+		 			   document.head.appendChild(script)
+		 		   },
+		 		  popCalendar:function(){
+		 			  $('#bookinfo').modal();
+		 		  },
+		 		  workingHour: function () {
+		              let start = this.space_detail.starttime;
+		              let end = this.space_detail.endtime;
+		              let arr = [];
+		              for (let i = start; i < end; i++) {
+		                  arr.push(i); // 배열에 값을 추가
+		              }
+		                this.workingHours=arr;
+		                return arr;
+		         },
+		         select_time : function(time){
+		        	 let len = this.selectedTime.length;
+		        	 if(len == 0){
+		        		 this.selectedTime.push(time);
+		        	 }
+		        	 else if(len == 1){
+		        		 if(this.selectedTime[0] > time){
+		        			 this.selectedTime.unshift(time);
+		        		 }
+		        		 else{
+		        		 	this.selectedTime.push(time);
+		        		 }
+		        	 }
+		        	 else if(len == 2){
+		        		 this.selectedTime=[];
+		        		 this.selectedTime.push(time);
+		        	 }
+		         },
+		         selected_day:function(){
+		        	 const syear = document.querySelector('#calYear');
+		        	 const smonth = document.querySelector('#calMonth');
+		        	 const sdate = document.querySelector('.choiceDay');
+		        	 this.selectedYear = syear.innerText;
+		        	 this.selectedMonth = smonth.innerText;
+		        	 this.selectedDate = sdate.innerText;
+		         },
+		         
         }
     })
 </script>
