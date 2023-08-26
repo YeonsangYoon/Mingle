@@ -99,25 +99,29 @@
                 <div class="study-reply-list-area">
                     <c:forEach items="${rlist}" var="reply">
                         <div class="study-reply-block <c:choose><c:when test="${reply.dept == 1}">sub-reply sub-1</c:when><c:when test="${reply.dept == 2}">sub-reply sub-2</c:when><c:when test="${reply.dept == 3}">sub-reply sub-3</c:when><c:when test="${reply.dept == 4}">sub-reply sub-4</c:when></c:choose>" data-rid="${reply.reply_id}">
-                            <div class="reply-writer">${reply.nickname} (${reply.user_id})</div>
-                            <div class="reply-regdate">
-                                ${reply.dbday}
-                                <c:if test="${reply.nickname == sessionScope.nickname}">
-                                <span class="reply-edit-btn">수정</span>
-                                <span class="reply-delete-btn">삭제</span>
+                            <div class="study-reply-info-area">
+                                <div class="reply-writer">${reply.nickname} (${reply.user_id})</div>
+                                <div class="reply-regdate">
+                                    ${reply.dbday}
+                                    <c:if test="${sessionScope.id != null}">
+                                        <span class="reply-open">댓글</span>
+                                    </c:if>
+                                    <c:if test="${reply.nickname == sessionScope.nickname}">
+                                    <span class="reply-edit-btn" onclick="openReplyEdit(this)">수정</span>
+                                    <span class="reply-delete-btn" onclick="sendReplyDeleteRequest(this)">삭제</span>
+                                    </c:if>
+                                </div>
+                                <c:if test="${reply.reply_id != reply.parent_id}">
+                                <span class="mention-badge">@${reply.parent_nickname}</span>
                                 </c:if>
+                                <pre class="study-reply-msg">${reply.msg}</pre>
                             </div>
-                            <c:if test="${reply.reply_id != reply.parent_id}">
-                            <span class="mention-badge">@${reply.parent_nickname}</span>
-                            </c:if>
-                            <pre class="study-reply-msg">${reply.msg}</pre>
-                            <c:if test="${sessionScope.id != null}">
-                            <span class="reply-open">댓글 쓰기</span>
                             <div class="study-reply-input-area d-none mt-3">
                                 <textarea class="study-reply-input"></textarea>
-                                <button onclick="registerReply(this)">등록</button>
+                                <button class="reg" onclick="registerReply(this)">등록</button>
+                                <button class="edit d-none" onclick="sendReplyEditRequest(this)">수정</button>
+                                <button class="cancel d-none" onclick="cancelEditReply(this)">취소</button>
                             </div>
-                            </c:if>
                         </div>
                     </c:forEach>
                 </div>

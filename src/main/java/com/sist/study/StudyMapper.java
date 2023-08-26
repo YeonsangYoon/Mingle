@@ -74,4 +74,11 @@ public interface StudyMapper {
 			"	MSG = #{msg} " +
 			"WHERE REPLY_ID = #{reply_id}")
 	public int updateReply(@Param("reply_id")int reply_id, @Param("msg")String msg);
+
+	// 삭제 관련
+	@Select("SELECT REPLY_ID, PARENT_ID " +
+			"FROM STUDY_REPLY " +
+			"WHERE GROUP_ID = (SELECT GROUP_ID FROM STUDY_REPLY WHERE REPLY_ID = #{reply_id})")
+	public List<ReplyVO> getReplyBySameGroup(int reply_id);
+	public int deleteReplys(List<Integer> list);
 }

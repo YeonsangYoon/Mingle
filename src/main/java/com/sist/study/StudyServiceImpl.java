@@ -1,10 +1,7 @@
 package com.sist.study;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -186,4 +183,39 @@ public class StudyServiceImpl implements StudyService{
 	}
 
 	// 삭제
+	@Override
+	public int deleteReply(int reply_id){
+		List<ReplyVO> group = dao.getReplyBySameGroup(reply_id);
+
+		// 연결리스트 생성
+		Map<Integer, List<Integer>> adjlist = new HashMap<>();
+		for(ReplyVO vo : group){
+			int rid = vo.getReply_id();
+			int pid = vo.getParent_id();
+
+			if(rid == pid){
+				continue;
+			}
+			else if(!adjlist.containsKey(pid)){
+				adjlist.put(pid, new ArrayList<>());
+			}
+			adjlist.get(pid).add(rid);
+		}
+
+		List<Integer> deleteList = new ArrayList<>();
+		Queue<Integer> queue = new ArrayDeque<>();
+		queue.add(reply_id);
+
+		while(!queue.isEmpty()){
+			int cur = queue.poll();
+			deleteList.add(cur);
+			if(adjlist.containsKey(cur)){
+				for(int next : adjlist.get(cur)){
+					queue.add(next);
+				}
+			}
+		}
+
+		return dao.deleteReplys(deleteList);
+	}
 }

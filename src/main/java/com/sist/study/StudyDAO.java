@@ -78,4 +78,13 @@ public class StudyDAO {
 	public int updateReply(int reply_id, String msg){
 		return mapper.updateReply(reply_id, msg);
 	}
+
+	// 삭제관련
+	public List<ReplyVO> getReplyBySameGroup(int reply_id){
+		return mapper.getReplyBySameGroup(reply_id);
+	}
+
+	public int deleteReplys(List<Integer> replys){
+		return mapper.deleteReplys(replys);
+	}
 }

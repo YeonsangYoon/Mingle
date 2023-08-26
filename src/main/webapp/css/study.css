@@ -615,15 +615,6 @@
     margin-bottom: 20px;
     padding-bottom: 20px;
 }
-.study-reply-block .reply-open{
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
-    font-size: 13px;
-}
 .study-reply-block .reply-writer{
     font-size: 18px;
     font-weight: bold;
@@ -633,13 +624,24 @@
     color: #a6a6a6;
     margin-bottom: 5px;
 }
-.reply-edit-btn{
+.study-reply-block .reply-open{
+    display: inline-block;
+    cursor: pointer;
+    font-size: 13px;
     margin-left: 10px;
+    color: #007bff;
+}
+.reply-edit-btn{
     display: inline-block;
     cursor:pointer;
+    color: #007bff;
+    font-size: 13px;
 }
 .reply-delete-btn{
+    display: inline-block;
     cursor:pointer;
+    color: #007bff;
+    font-size: 13px;
 }
 .study-reply-block.sub-reply{
     padding-left: 20px;

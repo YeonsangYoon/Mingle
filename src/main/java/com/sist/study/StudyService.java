@@ -17,5 +17,5 @@ public interface StudyService {
 	// 수정
 	public int updateReply(int reply_id, String msg);
 	// 삭제
-
+	public int deleteReply(int reply_id);
 }

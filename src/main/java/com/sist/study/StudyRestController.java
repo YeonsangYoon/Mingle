@@ -66,4 +66,10 @@ public class StudyRestController {
 		int result = service.updateReply(reply_id, msg);
 		return (result == 1) ? "OK" : "NO";
 	}
+
+	@PostMapping(value = "study/replydelete.do")
+	public String deleteReply(int reply_id){
+		int result = service.deleteReply(reply_id);
+		return (result >= 1) ? "OK" : "NO";
+	}
 }
