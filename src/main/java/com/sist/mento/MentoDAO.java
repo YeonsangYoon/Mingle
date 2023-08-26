@@ -49,9 +49,6 @@ public class MentoDAO {
 	}
 	
 	public void mentoRegist(MentoVO vo) {
-		System.out.println(vo.getCareer());
-		System.out.println(vo.getIntro());
-		System.out.println(vo.getUser_id());
 		mapper.mentoRegist(vo);
 	}
 	

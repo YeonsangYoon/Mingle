@@ -23,6 +23,11 @@
     	
     	<!-- Search Section Begin -->
     	<div class="text-center" style="display:flex; justify-content: center; padding-bottom: 50px " v-model="column">
+          	<a :href="'../mento/mento_contact.do?mentono='+311">
+	           	<div>
+	           		멘토링 신청
+	           	</div>
+          	</a>
           	<select style="display:inline;" v-model="column">
 				<option value="all">전체</option>          	
 				<option value="title">제목</option>          	
@@ -59,18 +64,17 @@
 									<span class="mento_list_info_detail_content" style="display: inline-block;">{{vo.dept}}</span>
 								</div>
 								<div style="display:flex">
-									<div class="mento_list_info_detail_title" style="display: inline-block;">경력</div>
-									<div class="mento_list_info_detail_content oversize" style="display: inline-block;" v-html="vo.career"></div>
+									<span class="mento_list_info_detail_title" style="display: inline-block;">경력</span>
+									<span class="mento_list_info_detail_content oversize" style="display: inline-block;" v-html="vo.career"></span>
 										<!-- v-html="vo.career" 넣어줘야함 -->
 								</div>
 							</div>
 	
 						</div>
 					</div>
-					<div class="mento_list_box_top" style="height: 70px; padding: 16px 0px">
+					<div class="" >
 						<div class="card-footer text-center">
-							<div class="follow mento_list_info">팔로잉 &nbsp; {{vo.follow}}</div>
-	
+							<div class="follow mento_list_info">팔로워 &nbsp; {{vo.follow}}</div>
 							<div class="star mento_list_info">별점 &nbsp; {{vo.avg_star}}
 							</div>
 						</div>
@@ -115,7 +119,7 @@
         <table class="table">
           <tr>
            <td colspan="2" class="detail-modal-font">
-            <h3>{{mento_detail.title}}&nbsp;<span style="color:orange">{{mento_detail.follow}}</span></h3>
+            <h3>{{mento_detail.title}}&nbsp;<span style="color:#ff188d; font-size: 12px;" >팔로워 &nbsp; {{mento_detail.follow}}</span></h3>
             <br>
             <h5 v-html="mento_detail.intro"></h5>
            </td>
@@ -142,7 +146,7 @@
           </tr>
           <tr>
             <td colspan=2 class="text-center follow">
-            	<a href="../mento/mento_contact.do">
+            	<a :href="'../mento/mento_contact.do?mentono='+mento_detail.mento_no">
 	            	<div>
 	            		멘토링 신청
 	            	</div>
@@ -174,8 +178,8 @@
     	},
     	mounted:function(){
     		this.setData();
-    		/* this.mentoEdit(); */
-    		this.imageInput();
+    		/* this.mentoEdit(); 
+    		this.imageInput();*/
     	},
     	
     	methods:{

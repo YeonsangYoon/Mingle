@@ -1,6 +1,7 @@
 package com.sist.mento;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -9,11 +10,6 @@ public class MentoController {
 	@GetMapping("mento/mento_list.do")
 	public String mento_list() {
 		return "mento/mento_list";
-	}
-	
-	@GetMapping("mento/mento_contact.do")
-	public String mento_contact() {
-		return "mento/mento_contact";
 	}
 	
 	@GetMapping("mento/mento_regist.do")
@@ -30,6 +26,14 @@ public class MentoController {
 	public String mento_date() {
 		return "mento/mento_date";
 	}
+	
+	@GetMapping("mento/mento_contact.do")
+    public String mento_contact(int mentono,Model model)
+    {
+	   model.addAttribute("mento_no", mentono);
+	   System.out.println("mento_contact 수행");
+	   return "mento/mento_contact";
+    }
 	
 	
 	

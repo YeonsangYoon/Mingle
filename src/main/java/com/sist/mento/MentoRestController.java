@@ -8,6 +8,7 @@ import java.util.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -81,12 +82,6 @@ public class MentoRestController {
 	public String mento_detail(int mento_no) throws Exception{
 		MentoVO vo=dao.mentoDetailData(mento_no);
 		
-		/*
-		 * String addr=vo.getAddress(); 
-		 * addr=addr.substring(0,addr.indexOf("����"));
-		 * vo.setAddress(addr.trim());
-		 */
-		
 		ObjectMapper mapper=new ObjectMapper();
 		String json=mapper.writeValueAsString(vo);
 		
@@ -98,7 +93,7 @@ public class MentoRestController {
 	public String mento_regist(MentoVO vo) throws Exception{
 		   dao.mentoRegist(vo);
 		   
-		   String result="���� �ѵ�";
+		   String result="등록 성공!";
 		   return result;
 	}
 	
@@ -120,7 +115,10 @@ public class MentoRestController {
 	
 	
 	
-	//값 주입
+	
+	
+	
+	//태그 편집
 	@GetMapping(value="mento/mento_edit_data.do", produces="text/plain;charset=UTF-8")
 	public String mento_edit_data() throws Exception{
 		List<MentoVO> list=dao.mentoEdit();
@@ -165,7 +163,7 @@ public class MentoRestController {
 		
 		ObjectMapper mapper=new ObjectMapper();
 		
-		return "���� ����";
+		return "占쏙옙占쏙옙 占쏙옙占쏙옙";
 		
 	}
 	

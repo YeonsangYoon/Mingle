@@ -15,7 +15,8 @@
 }
 
 .open-mentoring-card .thumbnail img {
-    width: 100%
+    width: 100%;
+    height: 210px;
 }
 
 .open-mentoring-card .card-content {
@@ -113,7 +114,12 @@
 .mento_list_info_detail_content{
 	text-align:left;
 	width:250px;
-	height:25px;
+	height:20px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mento_list_info_detail_content > p{
 	overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -148,9 +154,9 @@
 /* --------  Detail Modal 관련 ----------- */
 
 .modal-my{
-    height: 80% !important; 
+    height: 90% !important; 
     max-width: 100% !important;
-    width: 45% !important;
+    width: 42% !important;
 } 
 
 .modalinner{
@@ -274,7 +280,8 @@
 	border-radius: 10px
 }
 
-/* --------  Calender 관련 ----------- */
+
+/* --------  ㅡMCalender 관련 ----------- */
 .MCalendar td {
     width: 50px;
     height: 50px;
@@ -283,10 +290,12 @@
 .MCalendar { 
     text-align: center;
     margin: 0 auto;
-    
 }
 
-.MCalendar>thead>tr:first-child>td { font-weight: bold; }
+
+.MCalendar>thead>tr:first-child>td { 
+	font-weight: bold; 
+}
 
 .MCalendar>thead>tr:last-child>td {
     background-color: gray;
