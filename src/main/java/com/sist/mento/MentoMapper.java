@@ -39,8 +39,6 @@ public interface MentoMapper {
 			+ "WHERE mento_no=#{mento_no}")
 	public MentoVO mentoDetailData(int mento_no);
 	
-	
-	
 	@Select("SELECT mento_no, intro, career FROM mento_reg ORDER BY MENTO_NO")
 	public List<MentoVO> mentoEdit();
 	
@@ -72,7 +70,7 @@ public interface MentoMapper {
 			+ "#{title},"
 			+ "#{intro},"
 			+ "sysdate,"
-			+ "null,0,0,0,0,"
+			+ "null,0,0,0,0," //이미지, 팔로워, 별점합, 댓글수, 별점참여자수
 			+ "#{career},"
 			+ "#{dept}"
 			+ ")")
@@ -81,4 +79,6 @@ public interface MentoMapper {
 	@Select("SELECT COUNT(*) FROM mento_reg "
 			+ "WHERE user_id=#{user_id}")
 	public int regist_usercheck(String user_id);
+
+	
 }

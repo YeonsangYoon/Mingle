@@ -113,7 +113,7 @@
 .mento_list_info_detail_content{
 	text-align:left;
 	width:250px;
-	height:28px;
+	height:25px;
 	overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -274,14 +274,39 @@
 	border-radius: 10px
 }
 
+/* --------  Calender 관련 ----------- */
+.MCalendar td {
+    width: 50px;
+    height: 50px;
+}
 
+.MCalendar { 
+    text-align: center;
+    margin: 0 auto;
+    
+}
 
+.MCalendar>thead>tr:first-child>td { font-weight: bold; }
 
+.MCalendar>thead>tr:last-child>td {
+    background-color: gray;
+    color: white;
+}        
 
+.MpastDay{ background-color: lightgray; }
 
+.Mtoday{            
+    background-color: #FFCA64;            
+    cursor: pointer;
+}
 
+.MfutureDay{            
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
 
-
-
-
-
+.MfutureDay.MchoiceDay, .Mtoday.MchoiceDay{            
+    background-color: #3E85EF;            
+    color: #fff;
+    cursor: pointer;
+}

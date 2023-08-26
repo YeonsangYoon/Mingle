@@ -13,10 +13,10 @@
  				WHERE ${column} LIKE '%'||#{fd}||'%'
  			</if>
  			<if test="column=='all'">
- 				WHERE title LIKE '%'||#{fd}||'%'
+ 				WHERE job LIKE '%'||#{fd}||'%' OR title LIKE '%'||#{fd}||'%' OR intro LIKE '%'||#{fd}||'%'
  			</if>
  			
- 		ORDER BY mento_no ASC))
+ 		ORDER BY mento_no desc))
  		WHERE num BETWEEN #{start} AND #{end}
  	</select>
  	

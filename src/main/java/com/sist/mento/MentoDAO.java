@@ -58,4 +58,6 @@ public class MentoDAO {
 	public int regist_usercheck(String id) {
 		return mapper.regist_usercheck(id);
 	}
+	
+	
 }
