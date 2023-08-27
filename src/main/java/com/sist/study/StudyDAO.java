@@ -70,8 +70,11 @@ public class StudyDAO {
 	}
 
 	// 스터디 수정
-	public void studyUpdate(Map<String, Object> params, int study_id) {
-		mapper.studyUpdate(params, study_id);
+	public void studyUpdate(Map<String, Object> params) {
+		mapper.studyUpdate(params);
+	}
+	public void deleteTechsByStudyId(int study_id){
+		mapper.deleteTechsByStudyId(study_id);
 	}
 	
 	/* 댓글 관련 */

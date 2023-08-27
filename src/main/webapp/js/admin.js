@@ -201,3 +201,7 @@ $('#edit-profile-button').click(function(){
 $('#withdraw-button').click(function (){
     $('#withdraw-modal input[type=password]').val('');
 })
+
+var quill = new Quill('#editor', {
+    theme: 'snow'
+});

@@ -7,7 +7,7 @@
                     <h4>공지사항</h4>
                     <div class="breadcrumb__links">
                         <a href="${pageContext.request.contextPath}/main/main.do">Home</a>
-                        <span>공지사항</span>
+                        <span>공지사항 rmfTmrl</span>
                     </div>
                 </div>
             </div>
@@ -17,12 +17,7 @@
 <div class="container">
     <div class="row">
         <div class="offset-2 col-sm-8">
-            <h3>[공지사항] ${notice.title}</h3>
-            <div id="editor">
-                <p>Hello World!</p>
-                <p>Some initial <strong>bold</strong> text</p>
-                <p><br></p>
-            </div>
+
         </div>
     </div>
 </div>

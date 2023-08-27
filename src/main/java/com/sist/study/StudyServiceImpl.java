@@ -148,14 +148,19 @@ public class StudyServiceImpl implements StudyService{
 	}
 
 	@Override
-	public void updateStudy(Map<String, Object> params, int study_id) {
-		// TODO Auto-generated method stub
-		
-		// 상세보기 불러오기
-		dao.studyDetailData(study_id);
-		
+	@Transactional
+	public void updateStudy(Map<String, Object> params, String[] tech) {
+		// 매개변수 조정
+		params.put("study_id", Integer.parseInt((String)params.get("study_id")));
+		params.put("recruit", Integer.parseInt((String)params.get("recruit")));
+
 		// 스터디 수정
-		dao.studyUpdate(params, study_id);
+		dao.studyUpdate(params);
+		// tech 수정 => 일단 다 지우고 새로 삽입
+		dao.deleteStudyTechByStudyId((Integer)params.get("study_id"));
+		for(String t : tech){
+			dao.studyTechInsert((Integer)params.get("study_id"), t);
+		}
 	}
 	
 	@Override

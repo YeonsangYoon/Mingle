@@ -193,6 +193,7 @@
                         </table>
                     </div>
                 </div>
+                <input type="hidden" name="study_id" value="${vo.study_id}">
             </form>
         </div>
     </div>

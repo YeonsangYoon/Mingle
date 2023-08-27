@@ -48,6 +48,9 @@ public interface StudyMapper {
 			"	#{study_id} " +
 			")")
 	public void studyTechInsert(@Param("study_id")int study_id, @Param("tech")String tech);
+	@Delete("DELETE FROM STUDY_TECH " +
+			"WHERE STUDY_ID = ${study_id}")
+	public void deleteTechsByStudyId(@Param("study_id")int study_id);
 
 	// 스터디 삭제 관련
 	@Select("SELECT USER_ID FROM STUDY WHERE STUDY_ID = #{study_id}")
@@ -72,17 +75,15 @@ public interface StudyMapper {
 	@Update("UPDATE study SET " +
 			"	title=#{title}, " +
 			"	content=#{content}, " +
-			"	hit=#{hit}, " +
 			"	deadline=#{deadline}, " +
-			"	isclosed=#{isclosed}," +
+//			"	isclosed=#{isclosed}," +
 			"	period=#{period}, " +
 			"	recruit=#{recruit}, " +
 			"	onoff=#{onoff}, " +
 			"	contact_type=#{contact_type}, " +
-			"	contact_link=#{contact_link}, " +
-			"	user_id=#{user_id}" +
-			"	WEHRE study_id=#{study_id}")
-	public void studyUpdate(Map<String, Object> params, int study_id);
+			"	contact_link=#{contact_link} " +
+			"WHERE study_id=#{study_id}")
+	public void studyUpdate(Map<String, Object> params);
 	
 	
 	/* 댓글 관련 */
