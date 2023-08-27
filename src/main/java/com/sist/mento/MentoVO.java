@@ -30,5 +30,5 @@ public class MentoVO {
 	private double avg_star;
 	private String user_id, job_cat, job, title, intro, image, career, dept, user_name ;
 	private Date dbday;
-
+	private boolean isFollowed;
 }

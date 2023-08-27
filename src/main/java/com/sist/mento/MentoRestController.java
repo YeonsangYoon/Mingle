@@ -1,9 +1,6 @@
 package com.sist.mento;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -16,37 +13,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sist.commons.*;
 
+import javax.servlet.http.HttpSession;
 
 
 @RestController
 public class MentoRestController {
+	private MentoService service;
+
 	@Autowired
-	private MentoDAO dao;
-	
+	public MentoRestController(MentoService service) {
+		this.service = service;
+	}
+
 	@GetMapping(value = "mento/mento_list_vue.do", produces = "text/plain;charset=UTF-8")
-	public String mento_list_vue(int page, String column, String fd) throws Exception{
-		
-		int rowSize=12;
-		int start=(rowSize*page)-(rowSize-1);
-		int end=rowSize*page;
-		
-		Map map=new HashMap();
-		map.put("start", start);
-		map.put("end", end);
-		map.put("column", column);
-		map.put("fd", fd);
-		
-		List<MentoVO> list=dao.MentoListData(map);
-		
-		for(MentoVO vo:list) {
-			double star = Math.round(((double)vo.getSum_star()/vo.getCnt_star())*10)/10.0;
-			vo.setAvg_star(star);
-		}
+	public String mento_list_vue(int page, String column, String fd, HttpSession session) throws Exception{
+		String user_id = (String)session.getAttribute("id");
+		List<MentoVO> list=service.MentoListData(page, column, fd, user_id);
 		ObjectMapper obj= new ObjectMapper();
-		String json = obj.writeValueAsString(list);
-		
-		return json;
-		
+		return obj.writeValueAsString(list);
 	}
 	
 	@GetMapping(value="mento/mento_page_vue.do", produces="text/plain;charset=UTF-8")
@@ -56,7 +40,7 @@ public class MentoRestController {
 		map.put("column", column);
 		map.put("fd", fd);
 		
-		int totalpage=dao.mentoTotalPage(map);
+		int totalpage=service.mentoTotalPage(map);
 		
 		final int BLOCK=5;
 		int startPage=((page-1)/BLOCK*BLOCK)+1;
@@ -80,7 +64,7 @@ public class MentoRestController {
 		
 	@GetMapping(value="mento/mento_detail_vue.do", produces="text/plain;charset=UTF-8")
 	public String mento_detail(int mento_no) throws Exception{
-		MentoVO vo=dao.mentoDetailData(mento_no);
+		MentoVO vo=service.mentoDetailData(mento_no);
 		
 		ObjectMapper mapper=new ObjectMapper();
 		String json=mapper.writeValueAsString(vo);
@@ -91,7 +75,7 @@ public class MentoRestController {
 	
 	@PostMapping(value="mento/regist_ok_vue.do",produces = "text/plain;charset=UTF-8")
 	public String mento_regist(MentoVO vo) throws Exception{
-		   dao.mentoRegist(vo);
+		   service.mentoRegist(vo);
 		   
 		   String result="등록 성공!";
 		   return result;
@@ -100,7 +84,7 @@ public class MentoRestController {
 	@PostMapping(value="member/regist_usercheck.do",produces = "text/plain;charset=UTF-8")
 	public String regist_usercheck(String user_id) throws Exception{
 		String result="";
-		int count=dao.regist_usercheck(user_id);
+		int count=service.regist_usercheck(user_id);
 		
 		if(count!=0) {
 			result="no";
@@ -121,7 +105,7 @@ public class MentoRestController {
 	//태그 편집
 	@GetMapping(value="mento/mento_edit_data.do", produces="text/plain;charset=UTF-8")
 	public String mento_edit_data() throws Exception{
-		List<MentoVO> list=dao.mentoEdit();
+		List<MentoVO> list=service.mentoEdit();
 		
 		for(MentoVO vo:list) {
 			Map map=new HashMap();
@@ -144,7 +128,7 @@ public class MentoRestController {
 			map.put("mento_no", mento_no);
 			map.put("career", career);
 			
-			dao.mentoEditUpdate(map);
+			service.mentoEditUpdate(map);
 			System.out.println("---------------");
 			
 		}
@@ -168,8 +152,19 @@ public class MentoRestController {
 	}
 	
 	
-	
-	
-	
+	// 멘토 팔로우 관련
+	@PostMapping("mento/follow.do")
+	public String followMentor(int mento_no, boolean isFollowed, HttpSession session){
+		String user_id = (String) session.getAttribute("id");
+		if(user_id == null)
+			return "NOID";
 
+		int followCount;
+		if(!isFollowed)
+			followCount = service.followMentor(mento_no, user_id);
+		else
+			followCount = service.unFollowMentor(mento_no, user_id);
+
+		return String.valueOf(followCount);
+	}
 }

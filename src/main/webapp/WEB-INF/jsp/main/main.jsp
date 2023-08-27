@@ -43,6 +43,7 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.nicescroll.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.nice-select.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.countdown.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.slicknav.js"></script>
     <script src="${pageContext.request.contextPath}/js/mixitup.min.js"></script>
@@ -55,7 +56,6 @@
     <script src="${pageContext.request.contextPath}/js/member.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin.js"></script>
 	<script src="${pageContext.request.contextPath}/js/mento.js"></script>
-	<script src="${pageContext.request.contextPath}/js/tmp.js"></script>
 	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
 	<script src="${pageContext.request.contextPath}/js/study.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>

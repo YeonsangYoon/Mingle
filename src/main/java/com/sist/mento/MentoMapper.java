@@ -80,5 +80,21 @@ public interface MentoMapper {
 			+ "WHERE user_id=#{user_id}")
 	public int regist_usercheck(String user_id);
 
-	
+
+	// 멘토 팔로우 관련
+	@Select("SELECT COUNT(*) FROM MENTO_FOLLOW WHERE MENTO_NO = #{mento_no}")
+	public int getFollowerCountByMentoNo(@Param("mento_no")int mento_no);
+
+	@Update("UPDATE MENTO_REG SET " +
+			"	FOLLOW = FOLLOW + #{val} " +
+			"WHERE MENTO_NO = #{mento_no}")
+	public void modifyMentoFollowerCount(@Param("mento_no")int mento_no, @Param("val")int val);
+
+	@Insert("INSERT INTO MENTO_FOLLOW VALUES(#{user_id}, #{mento_no})")
+	public void insertMentoFollow(@Param("user_id")String user_id, @Param("mento_no")int mento_no);
+
+	@Delete("DELETE FROM MENTO_FOLLOW WHERE MENTO_NO = #{mento_no} AND USER_ID = #{user_id}")
+	public void deleteMentoFollow(@Param("user_id")String user_id, @Param("mento_no")int mento_no);
+
+	public List<Integer> getfollowCheckListByUserId(Map<String, Object> params);
 }

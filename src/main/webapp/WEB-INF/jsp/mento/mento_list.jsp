@@ -42,7 +42,7 @@
 		<div class="row">
 
 			<!-- 멘토 리스트 Start-->
-			<div class="col-sm-4" v-for="vo in mento_list">
+			<div class="col-sm-4" v-for="(vo, index) in mento_list">
 				<div class="card open-mentoring-card " style="display: block;">
 					<div v-on:click="mentoDetail(vo.mento_no)" class="boxhover">
 						<div class="thumbnail">
@@ -74,7 +74,7 @@
 					</div>
 					<div class="" >
 						<div class="card-footer text-center">
-							<div class="follow mento_list_info">팔로워 &nbsp; {{vo.follow}}</div>
+							<div class="follow mento_list_info" :class="{'active' : mento_list[index].followed}" @click="followMento(index)">팔로워 &nbsp; {{vo.follow}}</div>
 							<div class="star mento_list_info">별점 &nbsp; {{vo.avg_star}}
 							</div>
 						</div>
@@ -263,8 +263,23 @@
 				}).catch(error=>{
 					console.log(error.response)
 				})
+			},
+			followMento : function (index){
+				axios.post('/mingle/mento/follow.do', null, {
+					params : {
+						mento_no : this.mento_list[index].mento_no,
+						isFollowed : this.mento_list[index].followed
+					}
+				}).then(response => {
+					if(response.data === 'NOID'){
+						alert('로그인이 필요한 서비스입니다.')
+					}
+					else{
+						this.mento_list[index].followed = !this.mento_list[index].followed;
+						this.mento_list[index].follow = parseInt(response.data);
+					}
+				})
 			}
-			
     	}
     })
     

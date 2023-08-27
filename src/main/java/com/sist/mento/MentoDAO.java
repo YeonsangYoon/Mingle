@@ -56,5 +56,24 @@ public class MentoDAO {
 		return mapper.regist_usercheck(id);
 	}
 	
-	
+	// ¸àÅä ÆÈ·Î¿ì °ü·Ã
+	public int getFollowerCountByMentoNo(int mento_no){
+		return mapper.getFollowerCountByMentoNo(mento_no);
+	}
+
+	public void modifyMentoFollowerCount(int mento_no, int val){
+		mapper.modifyMentoFollowerCount(mento_no, val);
+	}
+
+	public void insertMentoFollow(String user_id, int mento_no){
+		mapper.insertMentoFollow(user_id, mento_no);
+	}
+
+	public void deleteMentoFollow(String user_id, int mento_no){
+		mapper.deleteMentoFollow(user_id, mento_no);
+	}
+
+	public List<Integer> getfollowCheckListByUserId(Map<String, Object> params){
+		return mapper.getfollowCheckListByUserId(params);
+	}
 }

@@ -28,5 +28,12 @@
  		</if>
  	</select>
  	
- 	
+ 	<select id="getfollowCheckListByUserId" resultType="int" parameterType="java.util.Map">
+		SELECT MENTO_NO FROM MENTO_FOLLOW
+		WHERE USER_ID = #{user_id}
+		AND MENTO_NO IN
+		    <foreach collection="list" item="no" open="(" separator="," close=")">
+				#{no}
+			</foreach>
+	</select>
  </mapper>

@@ -126,22 +126,26 @@
 }
 .follow{
 	height: 40px;
-    background: #e53f4f;
     border-radius: 10px;
     padding: 8px;
-    color: white;
     font-weight: 700;
     font-size: 17px;
+    cursor: pointer;
+    color: #FFFFFF;
+    background-color:  #FF9999;
 }
-/* .follow:hover{
-	background-color: white;
-} */
+.follow.active{
+    background: #fc3838;
+    color: #FFFFFF;
+}
+.follow:hover{
+    opacity: 0.8;
+}
 .follow > a{
 	color: white;
 }
 
 .star{
-	
 	height: 40px;
     background: #fbbf4e;
     border-radius: 10px;
@@ -149,6 +153,7 @@
     color: black !important;
     font-weight: 700;
     font-size: 17px;
+    cursor: default;
 }
 
 /* --------  Detail Modal 관련 ----------- */
