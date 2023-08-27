@@ -76,7 +76,7 @@ public interface StudyMapper {
 			"	title=#{title}, " +
 			"	content=#{content}, " +
 			"	deadline=#{deadline}, " +
-//			"	isclosed=#{isclosed}," +
+			"	isclosed=#{isclosed}," +
 			"	period=#{period}, " +
 			"	recruit=#{recruit}, " +
 			"	onoff=#{onoff}, " +
@@ -84,7 +84,7 @@ public interface StudyMapper {
 			"	contact_link=#{contact_link} " +
 			"WHERE study_id=#{study_id}")
 	public void studyUpdate(Map<String, Object> params);
-	
+
 	
 	/* 댓글 관련 */
 	// 댓글 목록

@@ -116,6 +116,18 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <th width="20%">모집상태</th>
+                                <td width="80%">
+                                    <div>
+                                        <select name="isclosed" class="iselect">
+                                            <option value="전체" ${vo.isclosed == '전체' ? 'selected' : ''}>전체</option>
+                                            <option value="O" ${vo.isclosed == 'O' ? 'selected' : ''}>모집중</option>
+                                            <option value="C" ${vo.isclosed == 'C' ? 'selected' : ''}>모집완료</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                     <div class="col-sm-6">
