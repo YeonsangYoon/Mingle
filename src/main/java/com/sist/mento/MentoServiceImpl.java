@@ -36,7 +36,7 @@ public class MentoServiceImpl implements MentoService{
             vo.setAvg_star(star);
         }
 
-        // ÆÈ·Î¿ì ¿©ºÎ Ãß°¡
+        // ï¿½È·Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
         for(MentoVO vo : list)
             vo.setFollowed(false);
 
@@ -104,7 +104,7 @@ public class MentoServiceImpl implements MentoService{
         return dao.regist_usercheck(id);
     }
     
-    // ¸àÅä ÆÈ·Î¿ì °ü·Ã
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½È·Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½
     @Override
     @Transactional
     public int followMentor(int mento_no, String user_id) {
@@ -120,4 +120,10 @@ public class MentoServiceImpl implements MentoService{
         dao.modifyMentoFollowerCount(mento_no, -1);
         return dao.getFollowerCountByMentoNo(mento_no);
     }
+
+	@Override
+	public void mentoContact(ContactVO vo) {
+		dao.mentoContact(vo);
+		
+	}
 }

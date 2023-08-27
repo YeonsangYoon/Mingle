@@ -97,4 +97,21 @@ public interface MentoMapper {
 	public void deleteMentoFollow(@Param("user_id")String user_id, @Param("mento_no")int mento_no);
 
 	public List<Integer> getfollowCheckListByUserId(Map<String, Object> params);
+	
+	
+	@Insert("INSERT INTO mento_counsel("
+			+ "(SELECT NVL(MAX(counsel_no)+1,1) FROM mento_counsel),"
+			+ "sysdate,"
+			+ "#{user_id},"
+			+ "#{mento_no},"
+			+ "#{hope_year},"
+			+ "#{hope_month},"
+			+ "#{hope_date},"
+			+ "#{str_time},"
+			+ "#{end_time},"
+			+ "0,0,"
+			+ "#{content}"
+			+ ")")
+	public void mentoContact(ContactVO vo);
+	
 }

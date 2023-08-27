@@ -51,12 +51,15 @@ public class MentoDAO {
 	public void mentoRegist(MentoVO vo) {
 		mapper.mentoRegist(vo);
 	}
+	public void mentoContact(ContactVO vo) {
+		mapper.mentoContact(vo);
+	}
 	
 	public int regist_usercheck(String id) {
 		return mapper.regist_usercheck(id);
 	}
 	
-	// ¸àÅä ÆÈ·Î¿ì °ü·Ã
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½È·Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int getFollowerCountByMentoNo(int mento_no){
 		return mapper.getFollowerCountByMentoNo(mento_no);
 	}

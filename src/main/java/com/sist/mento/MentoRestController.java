@@ -96,7 +96,11 @@ public class MentoRestController {
 		
 	}
 	
-	
+	@PostMapping(value="mento/contact_ok.do",produces = "text/plain;charset=UTF-8")
+	public void mentoContact(ContactVO vo) throws Exception{
+		service.mentoContact(vo);
+		
+	}
 	
 	
 	

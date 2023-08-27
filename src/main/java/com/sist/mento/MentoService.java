@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface MentoService {
-    // dao => service·Î ÀÌÀü
+    // dao => serviceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public List<MentoVO> MentoListData(int page, String column, String fd, String user_id);
 
     public int mentoTotalPage(Map map);
@@ -23,8 +23,9 @@ public interface MentoService {
 
     public void mentoRegist(MentoVO vo);
     public int regist_usercheck(String id);
+    public void mentoContact(ContactVO vo);
 
-    // ¸àÅä °ü·Ã
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public int followMentor(int mento_no, String user_id);
     public int unFollowMentor(int mento_no, String user_id);
 }

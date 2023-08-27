@@ -21,11 +21,10 @@
 								커리어, 직무 고민에 대한 해답을 진짜 현직자에게 받아보세요.</p>
                         </div>
                         <div style="margin-top: 40px;">
-                        	
                             <div>
                                 <h4>1. 질문을 구체적으로 작성해 주세요.</h4>
                                 <div>예시) 영업 직무 취업을 목표로 3개월 계획을 세웠는데<br> 방향성이 맞는지 모르겠어요</div>
-                                <textarea rows="15" cols="50"></textarea>
+                                <textarea rows="15" cols="50" v-model="content" ref="content" name="content" ></textarea>
                             </div>
                         </div>
                     </div>
@@ -34,10 +33,8 @@
 				<div class="col-lg-6 col-md-6">
 					<span>Reservation</span>
 					<h2>희망 날짜를 선택해 주세요!</h2>
-					<h4 class="text-center" style="padding-top: 10px;">예약 날짜와 시간을
-						선택하세요!</h4>
-					<div id="cal-area">
-
+					<h4 class="text-center" style="padding-top: 10px;">예약 날짜와 시간을 선택하세요!</h4>
+					<div id="cal-area" >
 						<table class="Calendar MCalendar">
 							<thead>
 								<tr>
@@ -59,63 +56,60 @@
 							<tbody>
 							</tbody>
 						</table>
-
-						<table class="table">
-							<tbody>
-								<tr>
-									<th>오전</th>
-									<td>12:00</td>
-									<td>1:00</td>
-									<td>2:00</td>
-									<td>3:00</td>
-									<td>4:00</td>
-									<td>5:00</td>
-									<td>6:00</td>
-									<td>7:00</td>
-									<td>8:00</td>
-									<td>9:00</td>
-									<td>10:00</td>
-									<td>11:00</td>
-								</tr>
-								<tr>
-									<th>오후</th>
-									<td>12:00</td>
-									<td>1:00</td>
-									<td>2:00</td>
-									<td>3:00</td>
-									<td>4:00</td>
-									<td>5:00</td>
-									<td>6:00</td>
-									<td>7:00</td>
-									<td>8:00</td>
-									<td>9:00</td>
-									<td>10:00</td>
-									<td>11:00</td>
-								</tr>
-								<tr>
-									<td>
-										<button class="reserve-button">예약하기</button>
-									</td>
-								</tr>
-							</tbody>
-							<tbody style="display: none">
-								<tr>
-									<td>인원선택</td>
-									<td>예상 금액: 0,000원</td>
-								</tr>
-								<tr>
-									<td>
-										<button class="reserve-button">예약하기</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="" id="reserve-time">
+						<div>
+							<span> 시작시간 </span>
+							<select id="startTime" v-model="str_time">
+								<option>시간선택</option>
+								<option selected value=9>9시</option>
+								<option value=10>10시</option>
+								<option value=11>11시</option>
+								<option value=12>12시</option>
+								<option value=13>13시</option>
+								<option value=14>14시</option>
+								<option value=15>15시</option>
+								<option value=16>16시</option>
+								<option value=17>17시</option>
+								<option value=18>18시</option>
+								<option value=19>19시</option>
+								<option value=20>20시</option>
+								<option value=21>21시</option>
+								<option value=22>22시</option>
+								<option value=23>23시</option>
+								<option value=24>24시</option>
+							</select> &nbsp;
+						</div>
+						<div>
+							<span> 종료시간  </span>
+							<select ref="endTime" v-model="end_time">
+								<option>시간선택</option>
+								<option selected value=9>9시</option>
+								<option value=10>10시</option>
+								<option value=11>11시</option>
+								<option value=12>12시</option>
+								<option value=13>13시</option>
+								<option value=14>14시</option>
+								<option value=15>15시</option>
+								<option value=16>16시</option>
+								<option value=17>17시</option>
+								<option value=18>18시</option>
+								<option value=19>19시</option>
+								<option value=20>20시</option>
+								<option value=21>21시</option>
+								<option value=22>22시</option>
+								<option value=23>23시</option>
+								<option value=24>24시</option>
+							</select>
+						</div> 
 					</div>
+					 <div>
+			            <span> 선택한 날짜: </span>{{ selectedDate }}
+			        </div>
 				</div>
 
-					<div class="contact__form">
+					<div class="contact__form" >
 					<div class="col-lg-12">
-						<button type="submit" class="site-btn">Send Message</button>
+						<button class="site-btn" >신청하기</button>
 					</div>
 				</div>
             </div>
@@ -127,12 +121,45 @@
     new Vue({
     	el:'.mento-contact',
     	data:{
+    		mento_no:'',
+    		user_id:'${sessionScope.id}',
+    		content:'',
+    		str_time:'',
+    		end_time:'',
+    		selectedYear: 0,
+            selectedMonth: 0,
+            selectedDate: 0,
     		
     	},
     	mounted:function(){
-    		
+    		const urlParams = new URLSearchParams(window.location.search);
+            this.mento_no = urlParams.get('mentono');
     	},
     	methods:{
+    		sendData:function(){
+    			const syear = document.querySelector('#calYear');
+                const smonth = document.querySelector('#calMonth');
+                const sdate = document.querySelector('.choiceDay');
+                this.selectedYear = syear.innerText;
+                this.selectedMonth = smonth.innerText;
+                this.selectedDate = sdate.innerText;
+    			
+    			axios.post('../mento/contact_ok.do',null,{
+     			   params:{
+     				   	user_id:this.user_id,
+     				   	mento_no:this.mento_no,
+     				   	content:this.content,
+     				   	startTime:this.startTime,
+     				    endTime:this.endTime,
+     				    year : this.selectedYear,
+                        month : this.selectedMonth,
+                        date : this.selectedDate
+     			   }
+     		   }).then(response => {
+     			   console.log(response.data)
+     			   location.href="../mento/mento_list.do"
+     		   })
+    		}
     		
     	}
     })

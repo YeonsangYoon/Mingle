@@ -171,7 +171,6 @@
     		image:'',
     		agree:'',
     		isok:''
-    		
     	},
     	mounted : function(){
     		this.idCheck();
