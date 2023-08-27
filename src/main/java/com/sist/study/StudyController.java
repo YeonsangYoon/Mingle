@@ -70,8 +70,8 @@ public class StudyController {
 	}
 	
 	@PostMapping("study/update_ok.do")
-	public String study_update_ok(@RequestParam Map<String, Object> params, @RequestParam int study_id) {
+	public String study_update_ok(@RequestParam Map<String, Object> params, @RequestParam(value = "study_id", defaultValue = "study_id") int study_id) {
 		service.updateStudy(params, study_id);
-		return "study/detail";
+		return "redirect:/study/detail.do?study_id=" + study_id;
 	}
 }

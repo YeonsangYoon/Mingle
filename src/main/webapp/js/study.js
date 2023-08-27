@@ -131,18 +131,3 @@ function registerReply(t) {
             }
         })
 }
-
-/*
-function onoffUpdate(){
-	let onoff = document.getElementById("onoff")
-	result.onoff = onoff.options[onoff.selectedIndex].value
-}
-*/
-
-function onoffUpdate() {
-    let select = document.getElementById('onoff');
-    let option = select.options[select.selectedIndex];
-
-    document.getElementById('value').value = option.value;
-    document.getElementById('text').value = option.text;
-}
