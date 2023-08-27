@@ -28,8 +28,10 @@
                 <h5 style="margin-bottom: 30px; padding-left: 10px;">
                     ${vo.nickname} | ${vo.dbday}
                     <a class="study-link float-right" href="javascript:history.back()">목록</a>
-                    <a class="study-link float-right" href="${pageContext.request.contextPath}/study/delete.do?study_id=${vo.study_id}">삭제</a>
-                    <a class="study-link float-right" href="#">수정</a>
+                    <c:if test="${sessionScope.id==vo.user_id}">
+                    	<a class="study-link float-right" href="${pageContext.request.contextPath}/study/delete.do?study_id=${vo.study_id}">삭제</a>
+                    	<a class="study-link float-right" href="${pageContext.request.contextPath}/study/update.do?study_id=${vo.study_id}">수정</a>
+                	</c:if>
                 </h5>
             </div>
             <div class="offset-1 col-sm-5">
@@ -84,7 +86,7 @@
                 <div class="study-content-area">${vo.content}</div>
             </div>
         </div>
-        <!-- 댓글(미완성) -->
+        <!-- 댓글 -->
         <div class="row">
             <div class="offset-1 col-sm-10" id="reply-area" data-sid="${vo.study_id}">
                 <div class="study-reply-header-area">

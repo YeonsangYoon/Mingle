@@ -9,10 +9,10 @@ public interface StudyMapper {
 	// 스터디 목록 검색(param : start, end, tech, searchWord, checks...)
 	public List<StudyVO> getStudyListByParams(Map<String, Object> params);
 
-	// 총페이지
+	// 총 페이지
 	public int getTotalPageByParams(Map<String, Object> params);
 
-	//기술 목록
+	// 기술 목록
 	public List<Map<String, Object>> getTechListData(List<Integer> list);
 
 	// 상세 페이지
@@ -68,6 +68,23 @@ public interface StudyMapper {
 	@Delete("DELETE FROM STUDY WHERE STUDY_ID = #{study_id}")
 	public int deleteStudyByStudyId(@Param("study_id")int study_id);
 
+	// 스터디 수정
+	@Update("UPDATE study SET " +
+			"	title=#{title}, " +
+			"	content=#{content}, " +
+			"	hit=#{hit}, " +
+			"	deadline=#{deadline}, " +
+			"	isclosed=#{isclosed}," +
+			"	period=#{period}, " +
+			"	recruit=#{recruit}, " +
+			"	onoff=#{onoff}, " +
+			"	contact_type=#{contact_type}, " +
+			"	contact_link=#{contact_link}, " +
+			"	user_id=#{user_id}" +
+			"	WEHRE study_id=#{study_id}")
+	public void studyUpdate(Map<String, Object> params, int study_id);
+	
+	
 	/* 댓글 관련 */
 	// 댓글 목록
 	@Select("SELECT S.*, " +

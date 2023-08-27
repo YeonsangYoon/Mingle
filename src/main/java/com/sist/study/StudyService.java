@@ -10,6 +10,7 @@ public interface StudyService {
 	public StudyVO studyDetailData(int study_id);
 	public void insertStudy(Map<String, Object> params, String[] tech);
 	public int deleteStudy(int study_id, String user_id);
+	public void updateStudy(Map<String, Object> params, int study_id);
 
 	/* 댓글 관련 */
 	// 출력

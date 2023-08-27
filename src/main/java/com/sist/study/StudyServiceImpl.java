@@ -148,6 +148,17 @@ public class StudyServiceImpl implements StudyService{
 	}
 
 	@Override
+	public void updateStudy(Map<String, Object> params, int study_id) {
+		// TODO Auto-generated method stub
+		
+		// 상세보기 불러오기
+		dao.studyDetailData(study_id);
+		
+		// 스터디 수정
+		dao.studyUpdate(params, study_id);
+	}
+	
+	@Override
 	@Transactional
 	public StudyVO studyDetailData(int study_id) {
 		dao.increaseStudyHit(study_id);

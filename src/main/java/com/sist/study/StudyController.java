@@ -61,4 +61,17 @@ public class StudyController {
 		int result = service.deleteStudy(study_id, user_id);
 		return (result == 1) ? "redirect:/study/list.do" : "redirect:/study/detail.do?study_id="+study_id;
 	}
+	
+	@GetMapping("study/update.do")
+	public String study_update(int study_id, Model model) {
+		StudyVO vo=service.studyDetailData(study_id);
+		model.addAttribute("vo", vo);
+		return "study/update";
+	}
+	
+	@PostMapping("study/update_ok.do")
+	public String study_update_ok(@RequestParam Map<String, Object> params, @RequestParam int study_id) {
+		service.updateStudy(params, study_id);
+		return "study/detail";
+	}
 }

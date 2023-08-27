@@ -8,10 +8,10 @@ $('.ui.button').on('click', function () {
 
 $('.reply-open').click(function () {
     let ri = $(this).parent().parent().next();
-    if (ri.hasClass('d-none')) { // ¿­±â
+    if (ri.hasClass('d-none')) { // ï¿½ï¿½ï¿½ï¿½
         closeAllReply();
         ri.removeClass('d-none');
-    } else { // ´Ý±â
+    } else { // ï¿½Ý±ï¿½
         ri.addClass('d-none');
     }
 })
@@ -60,7 +60,7 @@ function sendReplyEditRequest(t) {
             if (result === 'OK') {
                 location.reload();
             } else {
-                alert('´ñ±Û ¼öÁ¤¿¡ ½ÇÆÐÇß½À´Ï´Ù');
+                alert('ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½');
             }
         })
 }
@@ -75,7 +75,7 @@ function sendReplyDeleteRequest(t) {
             if (result === 'OK') {
                 location.reload();
             } else {
-                alert('´ñ±Û »èÁ¦¿¡ ½ÇÆÐÇß½À´Ï´Ù.');
+                alert('ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.');
             }
         })
 }
@@ -98,9 +98,9 @@ function registerRootReply() {
             if (result === 'OK') {
                 location.reload();
             } else if (result === 'NOID') {
-                alert('·Î±×ÀÎ ÇØÁÖ¼¼¿ä');
+                alert('ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½');
             } else {
-                alert('´ñ±Û µî·Ï¿¡ ½ÇÆÐÇß½À´Ï´Ù');
+                alert('ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½');
             }
         })
 }
@@ -125,9 +125,24 @@ function registerReply(t) {
             if (result === 'OK') {
                 location.reload();
             } else if (result === 'NOID') {
-                alert('·Î±×ÀÎ ÇØÁÖ¼¼¿ä');
+                alert('ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½');
             } else {
-                alert('´ñ±Û µî·Ï¿¡ ½ÇÆÐÇß½À´Ï´Ù')
+                alert('ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½')
             }
         })
+}
+
+/*
+function onoffUpdate(){
+	let onoff = document.getElementById("onoff")
+	result.onoff = onoff.options[onoff.selectedIndex].value
+}
+*/
+
+function onoffUpdate() {
+    let select = document.getElementById('onoff');
+    let option = select.options[select.selectedIndex];
+
+    document.getElementById('value').value = option.value;
+    document.getElementById('text').value = option.text;
 }
