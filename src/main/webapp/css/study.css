@@ -111,13 +111,15 @@
     gap: 10px;
     margin-bottom: 50px
 }
-.LanguageBar_languages__243rH .active{
+
+.LanguageBar_languages__243rH .active {
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
     background-color: #9f84f1;
     border: 1px solid #704DE4;
 }
-.LanguageBar_languages__243rH .active span{
+
+.LanguageBar_languages__243rH .active span {
     color: white;
 }
 
@@ -176,6 +178,7 @@
     cursor: pointer;
     transition: transform 0.3s ease;
 }
+
 .studyItem_studyItem__1Iipn:hover {
     transform: scale(1.02);
 }
@@ -192,10 +195,10 @@
 }
 
 .study-search-bar {
-	text-align: right;
+    text-align: right;
 }
 
-.study-search-bar input[type=text]{
+.study-search-bar input[type=text] {
     height: 35px;
     line-height: 44px;
     width: 200px;
@@ -419,7 +422,8 @@
     padding: 0 20px;
     list-style: none;
 }
-.studyList_studyList__3xoys:hover{
+
+.studyList_studyList__3xoys:hover {
     text-decoration: none;
 }
 
@@ -443,58 +447,61 @@
   	insert
 -----------------------*/
 .insertpage {
-  display: block;
+    display: block;
 }
 
 .select-dropdown {
-  position: relative;
-  background-color: #e6e6e6;
-  width: auto;
-  float: left;
-  max-width: 100%;
-  border-radius: 2px;
-  & select {
-    font-family: "helvetica neue", helvetica;
-    font-size: 1rem;
-    font-weight: 200;
+    position: relative;
+    background-color: #e6e6e6;
+    width: auto;
+    float: left;
     max-width: 100%;
-    padding: 8px 24px 8px 10px;
-    border: none;
-    background-color: transparent;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    &:active,
-    &:focus {
-      outline: none;
-      box-shadow: none;
+    border-radius: 2px;
+
+    & select {
+        font-family: "helvetica neue", helvetica;
+        font-size: 1rem;
+        font-weight: 200;
+        max-width: 100%;
+        padding: 8px 24px 8px 10px;
+        border: none;
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &:active,
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
     }
-  }
-  
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 50%;
-    margin-top: -2px;
-    right: 8px;
-    width: 0; 
-    height: 0; 
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #aaa;
-  }
+
+    &:after {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        margin-top: -2px;
+        right: 8px;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #aaa;
+    }
 }
 
-.study_info{
+.study_info {
     color: black;
 }
 
-.study_info span{
+.study_info span {
     display: inline-block;
     line-height: 20px;
     height: 20px;
 }
-.study_info .nickname{
+
+.study_info .nickname {
     color: black;
     bottom: 30px;
     left: 25px;
@@ -503,7 +510,8 @@
     line-height: 20px;
     height: 20px;
 }
-.study_info .hit-comment{
+
+.study_info .hit-comment {
     color: black;
     bottom: 30px;
     right: 25px;
@@ -514,21 +522,23 @@
 }
 
 
-.open-badge{
+.open-badge {
     padding: 5px 7px;
     border-radius: 16px;
     background-color: #866cff;
     color: rgb(255, 255, 255);
     font-size: 12px;
 }
-.deadline-bage{
+
+.deadline-bage {
     padding: 5px 7px;
     border-radius: 16px;
     border: 1px solid red;
     color: red;
     font-size: 12px;
 }
-.close-badge{
+
+.close-badge {
     padding: 5px 7px;
     border-radius: 16px;
     background-color: rgb(206, 212, 218);
@@ -537,57 +547,71 @@
 }
 
 /* 스터디 상세보기  */
-.study-detail-info tr{
+.study-detail-info tr {
     height: 60px;
 }
-.study-detail-info th{
+
+.study-detail-info th {
     width: 30%;
     vertical-align: middle;
 }
-.study-detail-info td{
+
+.study-detail-info td {
     width: 70%;
     vertical-align: middle;
 }
-.study-link{
+
+.study-link {
     margin-right: 8px;
 }
-.study-content{
+
+.study-content {
     margin-top: 30px;
     min-height: 500px;
 }
-.study-content-area{
+
+.study-content-area {
     margin-bottom: 60px;
 }
-.study-content-header{
+
+.study-content-header {
     border-bottom: 3px solid #d0d0d0;
     padding-bottom: 20px;
     margin-bottom: 20px;
     width: 100%;
 }
-.study-content-area h1{
+
+.study-content-area h1 {
     font-size: 40px;
 }
-.study-content-area h2{
+
+.study-content-area h2 {
     font-size: 30px;
 }
-.study-content-area :is(h1, h2, h3, h4, h5, h6){
+
+.study-content-area :is(h1, h2, h3, h4, h5, h6) {
     margin-bottom: 15px;
 }
-.study-content-area :is(h3, h4, h5, h6, p, ul, ol, li){
+
+.study-content-area :is(h3, h4, h5, h6, p, ul, ol, li) {
     font-size: 1.2rem;
 }
+
 .study-content-area ul,
-.study-content-area ol{
+.study-content-area ol {
     padding-left: 25px;
 }
-.study-content-area p{
+
+.study-content-area p {
     color: black;
 }
+
 /* 상세보기 댓글 */
-.study-reply-header-area{
+.study-reply-header-area {
     margin-bottom: 20px;
 }
-.study-reply-input{
+
+.study-reply-input {
     font-family: inherit;
     padding: 1rem 1rem 1.5rem;
     outline: none;
@@ -598,10 +622,12 @@
     margin-bottom: 10px;
     resize: none;
 }
-.study-reply-input-area{
+
+.study-reply-input-area {
     text-align: right;
 }
-.study-reply-input-area button{
+
+.study-reply-input-area button {
     background-color: #704DE4;
     color: white;
     margin-right: 5px;
@@ -611,71 +637,87 @@
     font-size: 16px;
     display: inline-block;
 }
-.study-reply-input-area button:hover{
+
+.study-reply-input-area button:hover {
     opacity: 0.8;
 }
-.study-reply-list-area{
+
+.study-reply-list-area {
 }
-.study-reply-list-area :is(h5,h6,p){
+
+.study-reply-list-area :is(h5,h6,p) {
     margin-bottom: 8px;
 }
-.study-reply-block{
+
+.study-reply-block {
     border-bottom: 1px solid #e1e1e1;
     margin-bottom: 20px;
     padding-bottom: 20px;
 }
-.study-reply-block .reply-writer{
+
+.study-reply-block .reply-writer {
     font-size: 18px;
     font-weight: bold;
     color: black;
 }
-.study-reply-block .reply-regdate{
+
+.study-reply-block .reply-regdate {
     color: #a6a6a6;
     margin-bottom: 5px;
 }
-.study-reply-block .reply-open{
+
+.study-reply-block .reply-open {
     display: inline-block;
     cursor: pointer;
     font-size: 13px;
     margin-left: 10px;
     color: #007bff;
 }
-.reply-edit-btn{
+
+.reply-edit-btn {
     display: inline-block;
-    cursor:pointer;
+    cursor: pointer;
     color: #007bff;
     font-size: 13px;
 }
-.reply-delete-btn{
+
+.reply-delete-btn {
     display: inline-block;
-    cursor:pointer;
+    cursor: pointer;
     color: #007bff;
     font-size: 13px;
 }
-.study-reply-block.sub-reply{
+
+.study-reply-block.sub-reply {
     padding-left: 20px;
     border-left: 1px solid #e1e1e1;
     border-bottom: none;
     margin-bottom: 40px;
     padding-bottom: 0;
 }
-.study-reply-block.sub-1{
+
+.study-reply-block.sub-1 {
     margin-left: 50px;
 }
-.study-reply-block.sub-2{
+
+.study-reply-block.sub-2 {
     margin-left: 100px;
 }
-.study-reply-block.sub-3{
+
+.study-reply-block.sub-3 {
     margin-left: 150px;
 }
-.study-reply-block.sub-4{
+
+.study-reply-block.sub-4 {
     margin-left: 200px;
 }
-.study-reply-block .study-reply-msg{
+
+.study-reply-block .study-reply-msg {
     font-size: 16px;
     font-family: 'Pretendard', sans-serif;
 }
-.study-reply-block .mention-badge{
+
+.study-reply-block .mention-badge {
     background-color: #e1e1e1;
     padding: 2px;
     border-radius: 3px;
@@ -684,24 +726,21 @@
     display: inline-block;
 }
 
-.ui.dropdown {
-	max-width: 300px;
-  }
-  
 #uibutton {
-	  padding: 10px;
-  }
-  
+    padding: 10px;
+}
+
 .iselect {
-	border: 1px solid rgba(34,36,38,.15);
-	height: 40px;
-	padding-left: 10px;
+    border: 1px solid rgba(34, 36, 38, .15);
+    height: 40px;
+    padding-left: 10px;
 }
 
 .icontent {
-	border: 1px solid rgba(34,36,38,.15);
+    border: 1px solid rgba(34, 36, 38, .15);
 }
-.html-smart-editor{
+
+.html-smart-editor {
     min-height: 500px;
     max-height: 500px;
     overflow-y: scroll;
@@ -709,14 +748,14 @@
 
 /* list toggle  */
 
-  .toggle-container {
+.toggle-container {
     display: inline-block;
     padding: 8px 16px;
     border-radius: 20px;
     cursor: pointer;
-  }
+}
 
-  .toggle-switch {
+.toggle-switch {
     position: relative;
     display: inline-block;
     width: 40px;
@@ -725,9 +764,9 @@
     border-radius: 50px;
     transition: background-color 0.3s ease;
     margin-top: 10px;
-  }
+}
 
-  .toggle-switch:before {
+.toggle-switch:before {
     content: '';
     position: absolute;
     top: 50%;
@@ -738,20 +777,36 @@
     background-color: #fff;
     border-radius: 50%;
     transition: transform 0.3s ease;
-  }
+}
 
-  .toggle-container.active .toggle-switch {
+.toggle-container.active .toggle-switch {
     background-color: #704DE4;
-  }
+}
 
-  .toggle-container.active .toggle-switch:before {
+.toggle-container.active .toggle-switch:before {
     transform: translate(20px, -50%);
-  }
+}
 
-  /* 추가된 스타일 */
-  .toggle-text {
+/* 추가된 스타일 */
+.toggle-text {
     margin-left: 10px;
     margin-bottom: 10px;
     vertical-align: middle;
     display: inline-block;
-  }
+}
+
+.study-edit-header{
+    height: 50px;
+    font-size: 20px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+#uibutton{
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    right: 20px;
+    color: #999999;
+    cursor: pointer;
+}

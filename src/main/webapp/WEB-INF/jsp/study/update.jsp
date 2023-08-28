@@ -185,7 +185,7 @@
                         <table class="table">
                             <tr>
                                 <td>
-                                   <input style="height: 50px; font-size: 20px; padding-left: 10px;" type=text
+                                   <input class="study-edit-header" type=text
                                    		name=title size=90 class="input-sm iselect" value="${vo.title }" required>
                                 </td>
                             </tr>

@@ -1,7 +1,7 @@
 $('.label.ui.dropdown')
     .dropdown();
 
-$('.ui.button').on('click', function () {
+$('#uibutton').on('click', function () {
     $('.ui.dropdown')
         .dropdown('restore defaults')
 })

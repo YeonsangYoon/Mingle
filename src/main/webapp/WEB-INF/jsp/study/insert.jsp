@@ -116,10 +116,7 @@
                                                 <option name="lang" value="jest">Jest</option>
                                             </select>
                                         </div>
-                                        <div class="ui button" id="uibutton"
-                                             style="position:absolute; right: 32px; top:0px;">
-                                            전체 취소
-                                        </div>
+                                        <i class="fa fa-times" id="uibutton"></i>
                                     </div>
                                 </td>
                             </tr>
@@ -151,7 +148,7 @@
                             <tr>
                                 <th width="20%">모집마감일</th>
                                 <td width="80%">
-                                    <input type="date" name="deadline" class="iselect text-center">
+                                    <input type="date" name="deadline" class="iselect">
                                 </td>
                             </tr>
                             <tr>
@@ -180,7 +177,7 @@
                         <table class="table">
                             <tr>
                                 <td>
-                                    <input style="height: 50px; font-size: 20px; padding-left: 10px;" type=text name=title size=90 class="input-sm iselect" placeholder="제목을 입력하세요" required>
+                                    <input class="study-edit-header" type=text name=title size=90 class="input-sm iselect" placeholder="제목을 입력하세요" required>
                                 </td>
                             </tr>
                             <tr>
