@@ -34,7 +34,7 @@
             <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">스터디 글 수정</li>
         </ul>
         <div class="updatepage">
-            <form method="post" action="update_ok.do">
+            <form method="post" action="update_ok.do" onsubmit="fillContent()">
                 <div class="row">
                     <div class="col-sm-6">
                         <table class="table">

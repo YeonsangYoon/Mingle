@@ -89,7 +89,7 @@ public interface StudyMapper {
 	/* 댓글 관련 */
 	// 댓글 목록
 	@Select("SELECT S.*, " +
-			"	TO_CHAR(S.REGDATE, 'yyyy-MM-dd HH24:MM') AS DBDAY, " +
+			"	TO_CHAR(S.REGDATE, 'yyyy-MM-dd HH24:MI') AS DBDAY, " +
 			"	(SELECT SR.NICKNAME FROM STUDY_REPLY SR WHERE SR.REPLY_ID = S.PARENT_ID) AS PARENT_NICKNAME " +
 			"FROM STUDY_REPLY S " +
 			"WHERE S.STUDY_ID = #{study_id} " +
@@ -133,4 +133,7 @@ public interface StudyMapper {
 			"WHERE GROUP_ID = (SELECT GROUP_ID FROM STUDY_REPLY WHERE REPLY_ID = #{reply_id})")
 	public List<ReplyVO> getReplyBySameGroup(int reply_id);
 	public int deleteReplys(List<Integer> list);
+
+	// 멘토링
+	public List<StudyVO> getFourDeadlineStudy();
 }

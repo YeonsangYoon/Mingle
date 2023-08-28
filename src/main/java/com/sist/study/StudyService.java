@@ -22,4 +22,7 @@ public interface StudyService {
 	public int updateReply(int reply_id, String msg);
 	// 삭제
 	public int deleteReply(int reply_id);
+
+	// 마감 임박 관련
+	public List<StudyVO> getFourDeadlineStudy();
 }

@@ -1,16 +1,13 @@
 package com.sist.notice;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 public interface NoticeMapper {
     @Select("SELECT * FROM " +
             "( " +
-            "   SELECT /*+ INDEX(N PK_NOTICE_ID) */ " +
+            "   SELECT /*+ INDEX_DESC(N PK_NOTICE_ID) */ " +
             "       NOTICE_ID, TITLE, CONTENT, HIT, TO_CHAR(REGDATE, 'yyyy-MM-dd HH24:mm') AS REGDATE, ROWNUM AS NUM" +
             "   FROM NOTICE N " +
             "   WHERE ROWNUM <= #{end} " +
@@ -39,4 +36,13 @@ public interface NoticeMapper {
             "   SYSDATE" +
             ")")
     public int insertNotice(NoticeVO vo);
+
+    @Delete("DELETE FROM NOTICE WHERE NOTICE_ID = #{notice_id}")
+    public void deleteNotice(int notice_id);
+
+    @Update("UPDATE NOTICE SET " +
+            "   TITLE = #{title}, " +
+            "   CONTENT = #{content} " +
+            "WHERE NOTICE_ID = #{notice_id}")
+    public void updateNotice(NoticeVO vo);
 }

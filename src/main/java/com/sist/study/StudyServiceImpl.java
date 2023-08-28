@@ -269,4 +269,10 @@ public class StudyServiceImpl implements StudyService{
 
 		return dao.deleteReplys(deleteList);
 	}
+
+	// 마감 임박 관련
+	public List<StudyVO> getFourDeadlineStudy(){
+		List<StudyVO> list = dao.getFourDeadlineStudy();
+		return list.subList(0, 4);
+	}
 }

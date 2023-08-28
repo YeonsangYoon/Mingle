@@ -89,6 +89,9 @@ public class MentoDAO {
 	public void mentoUpdate(MentoVO vo) {
 		mapper.mentoUpdate(vo);
 	}
-	
-	
+
+	// 팔로우 많은 3명
+	public List<MentoVO> getMostFollowedMento(){
+		return mapper.getMostFollowedMento();
+	}
 }

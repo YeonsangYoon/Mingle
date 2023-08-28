@@ -32,4 +32,12 @@ public class NoticeDAO {
     public int insertNotice(NoticeVO vo){
         return mapper.insertNotice(vo);
     }
+
+    public void deleteNotice(int notice_id){
+        mapper.deleteNotice(notice_id);
+    }
+
+    public void updateNotice(NoticeVO vo){
+        mapper.updateNotice(vo);
+    }
 }

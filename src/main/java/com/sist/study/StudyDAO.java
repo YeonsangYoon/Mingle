@@ -104,4 +104,9 @@ public class StudyDAO {
 	public int deleteReplys(List<Integer> replys){
 		return mapper.deleteReplys(replys);
 	}
+
+	// 마감 임박 관련
+	public List<StudyVO> getFourDeadlineStudy(){
+		return mapper.getFourDeadlineStudy();
+	}
 }

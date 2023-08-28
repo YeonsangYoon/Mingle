@@ -35,7 +35,22 @@ public class NoticeServiceImpl implements NoticeService{
     }
 
     @Override
+    public NoticeVO getNoticeByNoticeId(int notice_id) {
+        return noticeDAO.getNoticeVO(notice_id);
+    }
+
+    @Override
     public int insertNewNotice(NoticeVO vo) {
         return noticeDAO.insertNotice(vo);
+    }
+
+    @Override
+    public void deleteNotice(int notice_id) {
+        noticeDAO.deleteNotice(notice_id);
+    }
+
+    @Override
+    public void updateNotice(NoticeVO vo) {
+        noticeDAO.updateNotice(vo);
     }
 }

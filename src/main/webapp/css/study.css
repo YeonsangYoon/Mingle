@@ -22,7 +22,6 @@
     display: flex;
     font-weight: bold;
     font-size: 30px;
-    line-height: 126.5%;
     color: #848484;
     cursor: pointer;
     position: relative;
@@ -420,6 +419,9 @@
     padding: 0 20px;
     list-style: none;
 }
+.studyList_studyList__3xoys:hover{
+    text-decoration: none;
+}
 
 .studyList_bannerImg__368o- {
     width: 370px;
@@ -517,6 +519,13 @@
     border-radius: 16px;
     background-color: #866cff;
     color: rgb(255, 255, 255);
+    font-size: 12px;
+}
+.deadline-bage{
+    padding: 5px 7px;
+    border-radius: 16px;
+    border: 1px solid red;
+    color: red;
     font-size: 12px;
 }
 .close-badge{

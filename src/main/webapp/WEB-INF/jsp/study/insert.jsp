@@ -41,7 +41,7 @@
             <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">스터디 글 작성</li>
         </ul>
         <div class="insertpage">
-            <form method="post" action="insert_ok.do">
+            <form method="post" action="insert_ok.do" onsubmit="fillContent()">
                 <div class="row">
                     <div class="col-sm-6">
                         <table class="table">

@@ -98,6 +98,9 @@ ol {
 	padding: 0;
 	margin: 0;
 }
+a:hover{
+	text-decoration: none;
+}
 
 /*---------------------
   Helper CSS

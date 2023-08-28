@@ -145,8 +145,10 @@ public class MentoServiceImpl implements MentoService{
 		dao.deleteMentoCounselByMentoNo(mento_no);
 		dao.deleteMentoByMentoNo(mento_no);
 	}
-	
-	
-	
-	
+
+    // 팔로우 많은 3명
+    @Override
+    public List<MentoVO> getMostFollowedMento(){
+        return dao.getMostFollowedMento();
+    }
 }

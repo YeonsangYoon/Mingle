@@ -35,5 +35,7 @@ public interface MentoService {
     public MentoVO getMentoByID(String id);
     public void mentoUpdate(MentoVO vo);
     public void mentoDelete(int mento_no);
-    
+
+    // 팔로우 많은 3명
+    public List<MentoVO> getMostFollowedMento();
 }

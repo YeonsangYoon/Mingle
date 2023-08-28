@@ -132,5 +132,25 @@ public interface MentoMapper {
 	
 	@Delete("DELETEFROM mento_reg WHERE mento_no = #{mento_no}")
 	public void mentoDelete(int mento_no);
-	
+
+	// 팔로우 많은 3명 순
+	@Select("SELECT A.*, ROWNUM FROM (" +
+			"	SELECT " +
+			"		MENTO_NO, " +
+			"		MEMBER.USER_ID, " +
+			"		JOB_CAT, " +
+			"		JOB, " +
+			"		COST, " +
+			"		TITLE, " +
+			"		INTRO, " +
+			"		MENTO_REG.REGDATE, " +
+			"		FOLLOW, " +
+			"		CAREER, " +
+			"		DEPT," +
+			"		MEMBER.USER_NAME " +
+			"	FROM MENTO_REG, MEMBER " +
+			"	WHERE MENTO_REG.USER_ID = MEMBER.USER_ID " +
+			"	ORDER BY FOLLOW DESC) A " +
+			"WHERE 3 >= ROWNUM")
+	public List<MentoVO> getMostFollowedMento();
 }

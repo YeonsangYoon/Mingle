@@ -132,23 +132,9 @@ function registerReply(t) {
         })
 }
 
-// Select the target element to observe
-var target = document.querySelector('.ql-editor');
-
-// Create a new MutationObserver
-var observer = new MutationObserver(function (mutations) {
-    // Callback function to execute when mutations are observed
-    mutations.forEach(function (mutation) {
-        // Check if the content of the target element has changed
-        if (mutation.type === 'childList') {
-            document.getElementById('study-content-hidden').value = target.innerHTML;
-            console.log(target.innerHTML)
-        }
-    });
-});
-
-// Configuration of the observer
-var config = {childList: true, subtree: true};
-
-// Start observing the target element
-observer.observe(target, config);
+function fillContent(){
+    let content = $('#editor .ql-editor').html();
+    console.log(content + 'dd');
+    $('#study-content-hidden').val($("#editor .ql-editor").html());
+    return true;
+}

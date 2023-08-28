@@ -135,4 +135,33 @@
             #{item}
         </foreach>
     </delete>
+
+    <select id="getFourDeadlineStudy" resultMap="StudyVOMap">
+        SELECT
+            STUDY.STUDY_ID,
+            TITLE,
+            CONTENT,
+            TO_CHAR(STUDY.REGDATE, 'yyyy-MM-dd') AS DBDAY,
+            HIT,
+            DEADLINE,
+            ISCLOSED,
+            PERIOD,
+            RECRUIT,
+            ONOFF,
+            CONTACT_TYPE,
+            CONTACT_LINK,
+            STUDY.USER_ID,
+            NICKNAME,
+            TECH,
+            ROWNUM
+        FROM STUDY
+        LEFT JOIN MEMBER
+        ON STUDY.USER_ID = MEMBER.USER_ID
+        LEFT JOIN STUDY_TECH
+        ON STUDY.STUDY_ID = STUDY_TECH.STUDY_ID
+        WHERE
+            ISCLOSED = 'O'
+            AND DEADLINE >= TO_CHAR(SYSDATE, 'yyyy-MM-dd')
+        ORDER BY DEADLINE
+    </select>
 </mapper>
