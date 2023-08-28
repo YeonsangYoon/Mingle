@@ -691,3 +691,8 @@
 .icontent {
 	border: 1px solid rgba(34,36,38,.15);
 }
+.html-smart-editor{
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
+}

@@ -99,18 +99,17 @@ public interface MentoMapper {
 	public List<Integer> getfollowCheckListByUserId(Map<String, Object> params);
 	
 	
-	@Insert("INSERT INTO mento_counsel("
-			+ "(SELECT NVL(MAX(counsel_no)+1,1) FROM mento_counsel),"
-			+ "sysdate,"
+	@Insert("INSERT INTO mento_counsel VALUES("
+			+ "MENTO_COUNTSEL_SEQ.nextval,"
+			+ "SYSDATE,"
 			+ "#{user_id},"
 			+ "#{mento_no},"
-			+ "#{hope_year},"
-			+ "#{hope_month},"
-			+ "#{hope_date},"
 			+ "#{str_time},"
 			+ "#{end_time},"
-			+ "0,0,"
-			+ "#{content}"
+			+ "0, "
+			+ "0, "
+			+ "#{content},"
+			+ "#{hope_date}"
 			+ ")")
 	public void mentoContact(ContactVO vo);
 	

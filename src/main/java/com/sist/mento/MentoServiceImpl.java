@@ -124,6 +124,5 @@ public class MentoServiceImpl implements MentoService{
 	@Override
 	public void mentoContact(ContactVO vo) {
 		dao.mentoContact(vo);
-		
 	}
 }

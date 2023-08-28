@@ -31,7 +31,6 @@ public class MentoController {
     public String mento_contact(int mentono,Model model)
     {
 	   model.addAttribute("mento_no", mentono);
-	   System.out.println("mento_contact 수행");
 	   return "mento/mento_contact";
     }
 	
