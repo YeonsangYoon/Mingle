@@ -79,8 +79,8 @@
                                     </div>
                                     <div class="space__details__tab__content__item">
                                         <h5>시설 안내</h5>
-                                        <pre v-for="f,index in fcst_guides"><img
-                                                src="/mingle/img/spaceIcon/checked.svg"> {{f}}</pre>
+                                        <pre v-for="f,index in fcst_guides"><img 
+                                        src="/mingle/img/spaceIcon/checked.svg"> {{f}}</pre>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                                 <div class="space__details__tab__content">
                                     <div class="space__details__tab__content__item">
                                         <h5>{{space_detail.title}}</h5>
-                                        <p>{{space_detail.address}}</p>
+                                        <p>주소: {{space_detail.address}}</p>
                                         <div id="map" style="width:100%;height:350px"></div>
 
 
@@ -133,7 +133,7 @@
     </div>
     <div id="bookinfo" class="modal modal-calendar">
         <div>
-            <h4 class="text-center" style="padding-top:10px;">예약 날짜를 선택하세요.</h4>
+            <h4 class="text-left" style="padding: 30px 100px 0px">날짜 선택 <span class="selectedInfo" :class="{'d-none':selectedDate==0}">{{selectedYear}}년 {{selectedMonth}}월 {{selectedDate}}일 </span></h4>
             <div id="cal-area">
                 <table class="Calendar" @click="selected_day">
                     <thead>
@@ -160,37 +160,34 @@
                 </table>
             </div>
 
-            <h4 class="text-center" :class="{'d-none':selectedDate==0}" style="padding-top:10px;padding-bottom:10px;">
-                {{selectedYear}}년 {{selectedMonth}}월 {{selectedDate}}일</h4>
-                <div :class="{'d-none':selectedDate==0}">
+            <h4 class="text-left" :class="{'d-none':selectedDate==0}" style="padding: 10px 85px;;">
+                 시간 선택 <span class="selectedInfo" :class="{'d-none':selectedTime.length<2}">{{selectedTime[0]}}시~{{selectedTime[1]+1}}시</span></h4>
+                <div :class="{'d-none':selectedDate==0}" style="padding: 10px 80px;">
                     <div class="time_info_box"
                          :class="{'time-unable' : availableHours[index] == 0, 'time-select' : availableHours[index] == 1 }"
                          v-for="(h,index) in workingHours" @click="select_time(h)">{{h}}시
                     </div>
                 </div>
-            <table>
-                <tbody :class="{'d-none':selectedTime.length<2}">
-                <tr>
-                    <th>총 예약인원</th>
-                    <td class="quantity__item">
-                        <div class="quantity">
-                            <div class="pro-qty-2">
-                                <input type="number" :value="this.space_detail.min_guest" step="1">
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                <tr>
-                    <td>예상 금액: 0,000원</td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="reserve-button">예약하기</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+			<h4 class="text-left" :class="{'d-none':selectedTime.length<2}" style="padding: 10px 85px;">
+                 예약 인원 </h4>
+			<div :class="{'d-none':selectedTime.length<2}">
+			    <div class="text-center">
+			        <div class="input-group">
+			            <span class="input-group-btn">
+			                <button class="btn btn-default" type="button" @click="decreaseQuantity">-</button>
+			            </span>
+			            <input type="number" class="form-control" v-model="quantity" @change="updateTotalAmount">
+			            <span class="input-group-btn">
+			                <button class="btn btn-default" type="button" @click="increaseQuantity">+</button>
+			            </span>
+			        </div>
+			    </div>
+			</div>
+			<div :class="{'d-none':selectedTime.length<2}">
+			    <div class="text-center" style="margin-top:50px;">
+			        <button class="reserve-button" @click="bookingNow">{{ totalAmount | currency }}원 바로 예약하기</button>
+			    </div>
+			</div>
 
         </div>
     </div>
@@ -247,7 +244,14 @@
             selectedYear: 0,
             selectedMonth: 0,
             selectedDate: 0,
-            quantity: 0
+            quantity: 1,
+            totalAmount: 0
+        },
+        filters: {
+            currency: function (value) {
+                let num = new Number(value);
+                return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,")
+            }
         },
         mounted: function () {
             axios.get("/mingle/space/detail_vue.do", {
@@ -267,9 +271,9 @@
                 this.cnt_rate = res.data.rList.length
                 this.averageR()
                 this.workingHour()
-                console.log(this.workingHours)
+                this.quantity = this.space_detail.min_guest;
                 if (window.kakao && window.kakao.maps) {
-                    this.initMap()
+  			      setTimeout(() => { this.initMap() }, 1000)
                 } else {
                     this.addScript();
                 }
@@ -377,11 +381,19 @@
                     }
                     this.availableHours[this.workingHours.indexOf(this.selectedTime[0])] = 1;
                 }
+                if(this.selectedTime.length === 2)
+                {
+	               this.totalAmount = this.space_detail.price * (this.selectedTime[1] - this.selectedTime[0]+1) * this.quantity;
+	            } 
+                else 
+                {
+	               this.totalAmount = 0;
+	            }
             },
             selected_day: function () {
-                const syear = document.querySelector('#calYear');
-                const smonth = document.querySelector('#calMonth');
-                const sdate = document.querySelector('.choiceDay');
+                let syear = document.querySelector('#calYear');
+                let smonth = document.querySelector('#calMonth');
+                let sdate = document.querySelector('.choiceDay');
                 this.selectedYear = syear.innerText;
                 this.selectedMonth = smonth.innerText;
                 this.selectedDate = sdate.innerText;
@@ -406,6 +418,31 @@
                         }
                     }
                 })
+            },
+            decreaseQuantity: function () {
+                if (this.quantity > this.space_detail.min_guest) {
+                    this.quantity--;
+                    this.updateTotalAmount();
+                }
+            },
+            increaseQuantity: function () {
+                if (this.quantity < this.space_detail.max_guest) {
+                    this.quantity++;
+                    this.updateTotalAmount();
+                }
+            },
+            updateTotalAmount: function () {
+                if (this.selectedTime.length === 2) {
+                    const hoursCount = this.selectedTime[1] - this.selectedTime[0] + 1;
+                    this.totalAmount = this.space_detail.price * hoursCount * (2*this.quantity - this.space_detail.min_guest);
+                } else {
+                    this.totalAmount = 0;
+                }
+            },
+            bookingNow: function () {
+            	window.location.href = '/mingle/space/booking.do?no='+this.space_id+'&year='+this.selectedYear
+            			+'&month='+this.selectedMonth+'&date='+this.selectedDate+'&start='+this.selectedTime[0]+'&end='+this.selectedTime[1]
+            	        +'&person='+this.quantity+'&total='+this.totalAmount;
             }
         }
     })

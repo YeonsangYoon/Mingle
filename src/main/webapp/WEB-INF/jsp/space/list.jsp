@@ -64,7 +64,7 @@
                         <c:if test="${sessionScope.id !=null}">
                         <ul class="space__hover">
                           <li>
-                              <i style="color: red;" class="fa" :class="{'fa-heart':space_list[index].isFavorited, 'fa-heart-o' : !space_list[index].isFavorited}" @click="toggleFavorite(index)"></i>
+                              <i class="fa fa-2x" :class="{'fa-heart':space_list[index].isFavorited, 'fa-heart-o' : !space_list[index].isFavorited}" @click="toggleFavorite(index)"></i>
                           </li>
                         </ul>
                         </c:if>

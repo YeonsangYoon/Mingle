@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,11 +38,8 @@ public class SpaceRestController {
 
                 isFavorited = service.spaceIsFavorited(map);
             }
-
             space.setIsFavorited(isFavorited);
         }
-		
-		
 		int totalpage = service.spaceTotalpage(category);
 
 		ObjectMapper mapper=new ObjectMapper();

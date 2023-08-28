@@ -7,12 +7,16 @@ public interface SpaceService {
 		public int spaceTotalpage(String category);
 
 		public List<SpaceVO> spaceDetailData(int space_id);
-
 		public List<BookingVO> getBookingListByIdAndRegdate(int space_id, String regdate);
 
 		public List<ReviewVO> spaceReviewData(int space_id);
 
+		public SpaceVO spaceBookingData(int space_id);
+
 		public boolean spaceIsFavorited(Map map);
 		public void spaceZzimInsert(Map map);
 	 	public void spaceZzimCancel(Map map);
+	 	
+	    public void spaceBookingSubmit(Map map);
+
 }

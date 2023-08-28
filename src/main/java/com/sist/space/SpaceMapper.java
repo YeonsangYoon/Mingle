@@ -21,6 +21,10 @@ public interface SpaceMapper {
             + "WHERE sl.space_id=#{space_id}")
     public List<SpaceVO> spaceDetailData(int space_id);
 
+    @Select("SELECT * FROM space_list "
+            + "WHERE space_id=#{space_id}")
+    public SpaceVO spaceBookingData(int space_id);
+    
     @Select("SELECT sr.*, TO_CHAR(sr.REGDATE, 'yyyy-MM-dd') AS dbday, nickname "
             + "FROM space_review sr, MEMBER m WHERE space_id=#{user_id} AND sr.USER_ID = m.USER_ID")
     public List<ReviewVO> spaceReviewData(int space_id);
@@ -57,5 +61,20 @@ public interface SpaceMapper {
             + "spr_id_seq.nextval,#{ratings},SYSDATE,#{user_id},#{space_id},#{content})")
     public void createReview(ReviewVO vo);
 
-
+    // 예약내역 추가하기
+    /*
+    BK_ID
+BK_DATE
+STARTSAT
+ENDSAT
+PERSON
+PURPOSE
+REQUEST
+USER_ID
+SPACE_ID
+     */
+    @Insert("INSERT INTO space_booking VALUES("
+    	  + "spb_id.seq.nextval,#{bk_date},#{startsAt},#{endsAt},#{person},#{purpose},#{request},#{user_id},#{space_id})")
+    public void spaceBookingSubmit(Map map);
+    
 }

@@ -1,7 +1,5 @@
 package com.sist.space;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -26,7 +24,12 @@ public class SpaceDAO {
 		mapper.hitIncrement(space_id);
 		return mapper.spaceDetailData(space_id);
 	}
-
+	
+    public SpaceVO spaceBookingData(int space_id)
+    {
+    	return mapper.spaceBookingData(space_id);
+    }
+	
 	public List<BookingVO> getBookingListByIdAndRegdate(int space_id, String regdate){
 		return mapper.getBookingListByIdAndRegdate(space_id, regdate);
 	}
@@ -50,4 +53,10 @@ public class SpaceDAO {
     {
     	mapper.spaceZzimCancel(map);
     }
+    
+    public void spaceBookingSubmit(Map map)
+    {
+    	mapper.spaceBookingSubmit(map);
+    }
+
 }

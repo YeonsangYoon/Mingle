@@ -422,7 +422,7 @@
 }
 
 .space__details__tab .nav-tabs .nav-item .nav-link.active {
-	border-bottom: 2px solid #e53637;
+	border-bottom: 2px solid #0d6ffc;
 }
 
 .space__details__tab__content {
@@ -718,9 +718,16 @@
 
 .space__item__pic .space__hover {
 	text-align:right;
-	top: 0px;
-    right: 0px;
+	top: 5px;
+    right: 5px;
     position:absolute;
+}
+.space__item__pic .space__hover .fa-heart-o {
+	color:white;
+}
+
+.space__item__pic .space__hover .fa-heart {
+	color:red;
 }
 
 
@@ -1081,7 +1088,7 @@
 .Calendar {
 	text-align: center;
 	width:100%;
-	margin:30px 0px 20px 0px;
+	margin:20px 0px;
 }
 .Calendar td{
 	width:50px;
@@ -1113,7 +1120,7 @@
 }
 
 .today {
-	background-color: gray;
+	background-color: lightgray;
 	color: #fff;
 	font-weight: 600;
 	cursor: pointer;
@@ -1138,22 +1145,22 @@
 .time_info_box{
     position: relative;
     display: inline-block;
-    width: 58px;
+    width: 55px;
     height: 35px;
-    background-color: #e0fed3;
-    border: 1px solid #caf9c0;
+    background-color: aliceblue;
+    border: skyblue;
     font-size: 13px;
     line-height: 33px;
     text-align: center;
-    color: #00c73c;
+    color: #1E90FF;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    cursor:pointer;
-    padding:0px !important;
+    cursor: pointer;
+    padding: 0px !important;
 }
 .time-select{
-	background-color: rgb(11, 208, 32);
+	background-color: #0d6ffc;
 	color : white;
 }
 .time-unable{
@@ -1162,15 +1169,60 @@
 	cursor: default;
 }
 
-. .quantity .pro-qty-2{
-	width: 80px;
+.snumber {
+  padding: 10px;
+  width: 80px;
+	border: 1px solid transparent;
+	font-size: 20px;
+	font-weight: 500;
+  text-align: center;
+  -moz-appearance: textfield;
+	transition: outline .2s linear;
+	&:focus {
+		border: 1px solid darken(#729B79, 20%);
+		outline: 1px solid transparent;
+	}
+}
+.snumber::-webkit-outer-spin-button,
+.snumber::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.snumber::selection {
+	color: #fff;
+	background-color: darken(#729B79, 20%);
+}
+.snumber::-moz-selection {
+	color: #fff;
+	background-color: darken(#729B79, 20%);
+}
+.label {
+  position: relative;
+  padding: 0 30px;
+}
+.sarrow-left,
+.sarrow-right {
+  content: '';
+	width: 20px;
+	height: 20px;
+	border: 5px solid transparent;
+	cursor: pointer;
+    font-size: 30px;
+    font-weight: bold;
+}
+.sarrow-left {
+	left: 0;
+	transform: rotate(-135deg);
+}
+.sarrow-right {
+	right: 0;
+	transform: rotate(45deg);
 }
 
-.quantity .pro-qty-2 .qtybtn {
-    font-size: 16px;
-    color: #888888;
-    width: 10px;
-    cursor: pointer;
+.selectedInfo{
+    font-size: 18px;
+    font-weight: 500;
+    color: #1E90FF;
+    letter-spacing: -0.05em;
 }
-
 /* */
