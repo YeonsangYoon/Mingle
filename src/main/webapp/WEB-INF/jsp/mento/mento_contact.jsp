@@ -134,8 +134,6 @@
                     alert('종료 시간을 선택해주세요.');
                     return;
                 }
-                
-                
 
                 axios.post('../mento/contact_ok.do', null, {
                     params: {
@@ -156,7 +154,6 @@
             },
             range: function (start, end) {
                 const arr = [];
-                arr.push('선택해주세요');
                 for (let num = start; num <= end; num++) {
                     arr.push(num);
                 }

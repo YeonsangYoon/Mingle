@@ -62,6 +62,13 @@ public class MypageController {
     public String mypage_mento(HttpSession session, Model model) throws Exception{
     	
     	String id = (String)session.getAttribute("id");
+    	String validateMento = mentoService.validateMento(id);
+    	
+    	if(validateMento=="NOMENTO") {
+    		model.addAttribute("content_jsp", "mentonull.jsp");
+    		return "member/mypage";
+    	}
+    	
     	MentoVO mento = mentoService.getMentoByID(id);
     	
     	ObjectMapper obj=new ObjectMapper();
@@ -72,6 +79,7 @@ public class MypageController {
 
         return "member/mypage";
     }
+    
 
     @PostMapping("editinfo.do")
     public String mypage_editinfo(String pwd, HttpSession session, Model model){

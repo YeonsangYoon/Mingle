@@ -35,7 +35,17 @@ public interface MentoService {
     public MentoVO getMentoByID(String id);
     public void mentoUpdate(MentoVO vo);
     public void mentoDelete(int mento_no);
+    
+    public String validateMento(String id);
+    
+    //멘토링 리스트
+    public List<CounselVO> MentoringListData(int page, String column, String user_id);
+    public int mentoringTotalPage(Map map);
 
     // 팔로우 많은 3명
     public List<MentoVO> getMostFollowedMento();
+    
+    
+    
+    
 }

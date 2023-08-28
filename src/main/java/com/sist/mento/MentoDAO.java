@@ -80,6 +80,13 @@ public class MentoDAO {
 		return mapper.getfollowCheckListByUserId(params);
 	}
 	
+	public List<CounselVO> MentoringListData(Map map){
+		return mapper.MentoringListData(map);
+	}
+	public int mentoringTotalPage(Map map) {
+		return mapper.mentoringTotalPage(map);
+	}
+	
 	
 	// 멘토 정보 업데이트, 삭제관련
 	public MentoVO getMentoByID(String id) {

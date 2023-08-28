@@ -174,8 +174,7 @@
             curpage: 1,
             totalpage: 0,
             startPage: 0,
-            endPage: 0,
-
+            endPage: 0
 
         },
         mounted: function () {

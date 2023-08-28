@@ -33,6 +33,14 @@ public class MentoRestController {
 		return obj.writeValueAsString(list);
 	}
 	
+	@GetMapping(value = "mento/mentoring_list.do", produces = "text/plain;charset=UTF-8")
+	public String mentoring_list_vue(int page, String column, HttpSession session) throws Exception{
+		String user_id = (String)session.getAttribute("id");
+		List<CounselVO> list=service.MentoringListData(page, column, user_id);
+		ObjectMapper obj= new ObjectMapper();
+		return obj.writeValueAsString(list);
+	}
+	
 	@GetMapping(value="mento/mento_page_vue.do", produces="text/plain;charset=UTF-8")
 	public String mento_page(int page, String column, String fd) throws Exception{
 		

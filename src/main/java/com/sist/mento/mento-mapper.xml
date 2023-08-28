@@ -36,4 +36,28 @@
 				#{no}
 			</foreach>
 	</select>
+	
+	<select id="MentoringListData" resultType="CounselVO" parameterType="hashmap">
+ 		SELECT counsel_NO, regdate, uesr_id, mento_no, str_time, end_time, state, rep_state, content, hope_date, num
+ 		FROM (SELECT counsel_NO, regdate, uesr_id, mento_no, str_time, end_time, state, rep_state, content, hope_date, rownum as num
+ 		FROM (SELECT counsel_NO, regdate, uesr_id, mento_no, str_time, end_time, state, rep_state, content, hope_date 
+ 		FROM mento_counsel WHERE user_id = #{user_id}
+ 			<if test="column!='all'">
+ 				ORDER BY #{column} counsel_no))
+ 			</if>
+ 			<if test="column=='all'">
+ 				ORDER BY hope_date DESC))
+ 			</if>
+ 		WHERE num BETWEEN #{start} AND #{end}
+ 	</select>
+ 	
+ 	<select id="mentoringTotalPage" resultType="int" parameterType="hashmap">
+ 		SELECT CEIL(COUNT(*)/9.0)
+ 		FROM mento_counsel
+ 		<if test="column!='all'">
+ 				WHERE ${column} LIKE '%'||#{fd}||'%'
+ 		</if>
+ 	</select>
+	
+	
  </mapper>

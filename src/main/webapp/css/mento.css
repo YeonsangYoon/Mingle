@@ -402,3 +402,38 @@
   .Msite-btn:hover {
     background-color: #0056b3;
   }
+  
+  
+/*----mentonull 관련*/
+.mentonull{
+	margin:50px;
+	width: inherit;
+	text-align:center;
+ 	height: 127px;
+ 	border-radius: 20px;
+}
+
+.nullInfo{
+	font-size: 40px;
+	font-weight: bold;
+
+}
+
+.nullLink{
+	width: 400px;
+	font-size: 40px;
+	border: 4px solid #bc35ff;
+	border-radius: 50px;
+}
+
+.nullLink a {
+	color:#bc35ff;
+}
+  
+  
+  
+  
+  
+  
+  
+    

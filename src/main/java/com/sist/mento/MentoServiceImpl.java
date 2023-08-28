@@ -151,4 +151,43 @@ public class MentoServiceImpl implements MentoService{
     public List<MentoVO> getMostFollowedMento(){
         return dao.getMostFollowedMento();
     }
+    
+  //멘토 정보 수정 및 삭제
+  	@Override
+  	public String validateMento(String id) {
+  		MentoVO vo = dao.getMentoByID(id);
+  		String validateMento ="OKMento";
+  		if(vo == null) {
+  			validateMento ="NOMENTO";
+  		}
+  		return validateMento;
+  	}
+  	
+  	@Override
+	public List<CounselVO> MentoringListData(int page, String column, String user_id) {
+		
+		int rowSize=9;
+        int start=(rowSize*page)-(rowSize-1);
+        int end=rowSize*page;
+
+        Map<String, Object> map=new HashMap<>();
+        map.put("start", start);
+        map.put("end", end);
+        map.put("column", column);
+        map.put("user_id", user_id);
+
+        List<CounselVO> list = dao.MentoringListData(map);
+        
+		/*
+		 * for(CounselVO vo:list) { double star =
+		 * Math.round(((double)vo.getSum_star()/vo.getCnt_star())*10)/10.0;
+		 * vo.setAvg_star(star); }
+		 */
+        
+		return list;
+	}
+	
+	public int mentoringTotalPage(Map map) {
+        return dao.mentoringTotalPage(map);
+    }
 }

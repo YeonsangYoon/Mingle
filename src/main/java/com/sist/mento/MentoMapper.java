@@ -132,6 +132,9 @@ public interface MentoMapper {
 	
 	@Delete("DELETEFROM mento_reg WHERE mento_no = #{mento_no}")
 	public void mentoDelete(int mento_no);
+	
+	public List<CounselVO> MentoringListData(Map map);
+	public int mentoringTotalPage(Map map);
 
 	// 팔로우 많은 3명 순
 	@Select("SELECT A.*, ROWNUM FROM (" +

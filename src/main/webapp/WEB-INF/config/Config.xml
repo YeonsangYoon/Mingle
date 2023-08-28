@@ -8,6 +8,7 @@
     <typeAliases>
         <typeAlias type="com.sist.space.SpaceVO" alias="SpaceVO"/>
         <typeAlias type="com.sist.mento.MentoVO" alias="MentoVO"/>
+        <typeAlias type="com.sist.mento.CounselVO" alias="CounselVO"/>
         <typeAlias type="com.sist.study.StudyVO" alias="StudyVO"/>
     </typeAliases>
 
