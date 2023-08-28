@@ -16,25 +16,38 @@ public class AdminController {
         this.service = service;
     }
 
+    private int convertPage(String page){
+        try{
+            return Integer.parseInt(page);
+        } catch (NullPointerException | NumberFormatException e){
+            return 1;
+        }
+    }
+
     @GetMapping("admin.do")
     public String adminPage(String page, Model model){
-        try{
-            model.addAttribute("curpage", Integer.parseInt(page));
-        } catch(NullPointerException | NumberFormatException e){
-            model.addAttribute("curpage", 1);
-        }
+        model.addAttribute("curpage", convertPage(page));
         model.addAttribute("content_jsp", "member_list.jsp");
         return "admin/adminpage";
     }
 
     @GetMapping("mento.do")
-    public String adminMentoPage(String page, Model model){
-        try{
-            model.addAttribute("curpage", Integer.parseInt(page));
-        } catch (NullPointerException | NumberFormatException e){
-            model.addAttribute("curpage", 1);
-        }
+    public String adminMentoPage(String page, Model model) {
+        model.addAttribute("curpage", convertPage(page));
         model.addAttribute("content_jsp", "mento_list.jsp");
+        return "admin/adminpage";
+    }
+
+    @GetMapping("booking.do")
+    public String adminBookingPage(String page, Model model){
+        model.addAttribute("curpage", convertPage(page));
+        model.addAttribute("content_jsp", "booking_list.jsp");
+        return "admin/adminpage";
+    }
+    @GetMapping("mentoring.do")
+    public String adminMentoringPage(String page, Model model){
+        model.addAttribute("curpage", convertPage(page));
+        model.addAttribute("content_jsp", "mentoring_list.jsp");
         return "admin/adminpage";
     }
 }

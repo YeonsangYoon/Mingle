@@ -32,8 +32,7 @@ public class MentoRestController {
 		ObjectMapper obj= new ObjectMapper();
 		return obj.writeValueAsString(list);
 	}
-	
-	
+
 	@GetMapping(value="mento/mento_page_vue.do", produces="text/plain;charset=UTF-8")
 	public String mento_page(int page, String column, String fd) throws Exception{
 		
@@ -107,11 +106,7 @@ public class MentoRestController {
 		service.mentoContact(vo);
 		return "OK";
 	}
-	
-	
-	
-	
-	
+
 	//태그 편집
 	@GetMapping(value="mento/mento_edit_data.do", produces="text/plain;charset=UTF-8")
 	public String mento_edit_data() throws Exception{
@@ -160,8 +155,7 @@ public class MentoRestController {
 		return "占쏙옙占쏙옙 占쏙옙占쏙옙";
 		
 	}
-	
-	
+
 	// 멘토 팔로우 관련
 	@PostMapping("mento/follow.do")
 	public String followMentor(int mento_no, boolean isFollowed, HttpSession session){
@@ -179,13 +173,15 @@ public class MentoRestController {
 	}
 	
 	//멘토 수정 및 삭제 
-	@PostMapping("mento/update_mento.do")
-	public String mentoUpdate(MentoVO vo){
+	@PostMapping(value = "mento/update_mento.do", produces = "text/plain;charset=UTF-8")
+	public String mentoUpdate(MentoVO vo, HttpSession session){
+		String user_id = (String)session.getAttribute("id");
+		vo.setUser_id(user_id);
 		service.mentoUpdate(vo);
 		return "update 완료";
 	}
 	
-	@PostMapping("mento/delete_mento.do")
+	@PostMapping(value = "mento/delete_mento.do", produces = "text/plain;charset=UTF-8")
 	public String mentoDelete(int mento_no){
 		service.mentoDelete(mento_no);
 		return "Delete 완료";
@@ -252,8 +248,7 @@ public class MentoRestController {
 		map.put("user_id", user_id);
 		
 		int totalpage=service.mentomentoringTotalPage(map);
-		System.out.println(totalpage);
-		
+
 		final int BLOCK=5;
 		int startPage=((page-1)/BLOCK*BLOCK)+1;
 		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
@@ -271,8 +266,5 @@ public class MentoRestController {
 		ObjectMapper obj=new ObjectMapper();
 		String json= obj.writeValueAsString(vo);
 		return json;
-		
 	}
-	
-	
 }

@@ -718,3 +718,19 @@
     cursor: pointer;
     color: #007bff;
 }
+.mento-info{
+    margin: 0 auto;
+}
+.mento-info input{
+    padding-left: 10px;
+    line-height: 40px!important;
+    height: 40px!important;
+}
+.mento-info select{
+    height: 40px!important;
+    padding-left: 10px;
+    font-size: 17px;
+}
+.mento-info textarea{
+    padding: 10px;
+}

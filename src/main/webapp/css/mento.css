@@ -179,23 +179,21 @@
 	text-align:right;
 	margin-right:20px;
 	display:inline-block;
-	color:blueviolet;
 	width:150px;
 	font-size: 20px;
     font-weight: bold;
 }
 
 .mentoregist > input{
-	
 	width:500px;
 	height:60px;
 	font-size: 17px;
 }
 .mentoregist > input:focus{
-	outline: 2px solid red;
+    transform: scale(1.01);
 }
 .mentoregist > select:focus{
-	outline: 2px solid red;
+    transform: scale(1.01);
 }
 .mImage{
 	padding-top: 30px
