@@ -21,4 +21,5 @@ public interface SpaceService {
 
 	    public void createReview(ReviewVO vo);
 	    public void deleteReview(int review_id);
+	    public List<ReviewVO> spaceTop3RecentReview();
 }

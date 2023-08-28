@@ -68,4 +68,9 @@ public class SpaceDAO {
     	mapper.spaceBookingSubmit(map);
     }
 
+    public List<ReviewVO> spaceTop3RecentReview()
+    {
+    	return mapper.spaceTop3RecentReview();
+    }
+
 }

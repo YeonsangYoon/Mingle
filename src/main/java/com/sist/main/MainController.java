@@ -2,6 +2,8 @@ package com.sist.main;
 
 import com.sist.mento.MentoService;
 import com.sist.mento.MentoVO;
+import com.sist.space.ReviewVO;
+import com.sist.space.SpaceService;
 import com.sist.study.StudyService;
 import com.sist.study.StudyVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,13 @@ import java.util.List;
 public class MainController {
 	private StudyService studyService;
 	private MentoService mentoService;
+	private SpaceService spaceService;
+	
 	@Autowired
-	public MainController(StudyService studyService, MentoService mentoService) {
+	public MainController(StudyService studyService, MentoService mentoService,SpaceService spaceService) {
 		this.mentoService = mentoService;
 		this.studyService = studyService;
+		this.spaceService = spaceService;
 	}
 
 	@GetMapping("main/main.do")
@@ -36,7 +41,8 @@ public class MainController {
 			LocalDate date = LocalDate.parse(vo.getDeadline(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			dayDiff.add(ChronoUnit.DAYS.between(today, date));
 		}
-
+		List<ReviewVO> rList = spaceService.spaceTop3RecentReview();
+		model.addAttribute("rList", rList);
 		model.addAttribute("mList", mList);
 		model.addAttribute("sList", sList);
 		model.addAttribute("dayDiff", dayDiff);

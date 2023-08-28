@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class ReviewVO {
 	private int review_id, ratings, space_id;
-	private String content, dbday,user_id,nickname;
+	private String content, dbday,user_id, nickname;
 	private Date regdate;
+	private String poster, title;
+	private int price;
 }

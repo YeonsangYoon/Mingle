@@ -27,4 +27,19 @@
        WHERE category=#{category}
      </if>
    </select>
+   <select id="spaceTop3RecentReview" resultType="ReviewVO">
+     SELECT B.*, ROWNUM FROM (
+     	SELECT 
+		     REGDATE, 
+		     space_review.space_id as space_id, 
+		     ratings, 
+		     content, 
+		     space_list.poster as poster, 
+		     space_list.title as title, 
+		     space_list.price as price
+		FROM space_review,space_list 
+		WHERE space_review.space_id = space_list.space_id
+		ORDER BY REGDATE DESC) B 
+		WHERE 3 >= ROWNUM
+   </select>
  </mapper>

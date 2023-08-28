@@ -81,9 +81,9 @@ public class SpaceServiceImpl implements SpaceService{
 		dao.deleteReview(review_id);
 	}
 
-	
-
-
-
+	@Override
+	public List<ReviewVO> spaceTop3RecentReview() {
+		return dao.spaceTop3RecentReview();
+	}
 	
 }

@@ -150,3 +150,48 @@
         </c:forEach>
     </div>
 </div>
+<div class="container mt-5">
+    <ul class="Category_categories__F4wF5">
+        <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">
+            <img src="${pageContext.request.contextPath}/img/fire.png" alt="fire" style="width: 40px;">방금 올라온 공간 후기!
+        </li>
+    </ul>
+    <div class="row" style="padding: 0 20px;">
+        <c:forEach items="${rList}" var="vo">
+			 <div class="col-sm-4">
+			    <div class="card space-card">
+			        <div class="boxhover">
+			            <div style="border-radius: 10px;">
+			                <img src="${vo.poster}">
+			            </div>
+			            <div class="spaceContent">
+			                <div>
+			                    <div class="spacetitle">${vo.title}</div>
+			                    <div class="ft-14">
+			                      <c:forEach begin="1" end="5" varStatus="loop">
+								    <c:choose>
+								        <c:when test="${loop.index <= vo.ratings}">
+								            <i class="fa fa-star"></i>
+								        </c:when>
+								        <c:otherwise>
+								            <i class="fa fa-star-o"></i>
+								        </c:otherwise>
+								    </c:choose>
+								  </c:forEach>
+			                      <div>
+			                        ${vo.price }원/시간
+			                      </div>
+			                    </div>
+			                </div>
+			
+			                <div>
+			                    <p class="spacereview">${vo.content }
+			                    </p>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+        </c:forEach>
+    </div>
+</div>

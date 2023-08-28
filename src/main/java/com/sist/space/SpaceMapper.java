@@ -52,10 +52,6 @@ public interface SpaceMapper {
 
 
     /* --------------------- Review ------------------------*/
-    // 이용 이력 확인 (유저번호와 공간번호를 조합하여 List<bookingVO>예약번호를 조회한다) => 만일 예약 내역이 있는 경우, 예약번호 중 선택/ 없는 경우, 예약 후 리뷰를 남길 수 있다는 문구 출력
-    /*@Select("SELECT COUNT(*) FROM space_booking WHERE user_id=#{user_id} AND space_id=#{space_id}")
-    public int isReviewExisted(Map map);*/
-
     // 리뷰작성 => RATINGS REGDATE USER_ID SPACE_ID CONTENT REVIEW_ID (+예약 한 건당 리뷰 한 번/추후 디벨롭)
     @Insert("INSERT INTO space_review VALUES("
             + "#{ratings},SYSDATE,#{user_id},#{space_id},#{content},spr_id_seq.nextval)")
@@ -63,10 +59,14 @@ public interface SpaceMapper {
 
     @Delete("DELETE space_review WHERE REVIEW_ID=#{review_id}")
     public void deleteReview(int review_id);
+    
+    // 최근 리뷰순
+    public List<ReviewVO> spaceTop3RecentReview();
+    
     // 예약내역 추가하기
-
     @Insert("INSERT INTO space_booking VALUES("
     	  + "spb_id_seq.nextval,TO_DATE(#{bk_date}, 'yyyy-MM-dd'),#{startsAt},#{endsAt},#{person},#{purpose},#{bookingrequest},#{user_id},#{space_id},#{amount})")
     public void spaceBookingSubmit(Map map);
+    
     
 }
