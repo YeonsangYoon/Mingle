@@ -8,10 +8,10 @@ $('.ui.button').on('click', function () {
 
 $('.reply-open').click(function () {
     let ri = $(this).parent().parent().next();
-    if (ri.hasClass('d-none')) { // ����
+    if (ri.hasClass('d-none')) { // ????
         closeAllReply();
         ri.removeClass('d-none');
-    } else { // �ݱ�
+    } else { // ???
         ri.addClass('d-none');
     }
 })
@@ -60,7 +60,7 @@ function sendReplyEditRequest(t) {
             if (result === 'OK') {
                 location.reload();
             } else {
-                alert('��� ������ �����߽��ϴ�');
+                alert('댓글 수정에 실패했습니다');
             }
         })
 }
@@ -75,7 +75,7 @@ function sendReplyDeleteRequest(t) {
             if (result === 'OK') {
                 location.reload();
             } else {
-                alert('��� ������ �����߽��ϴ�.');
+                alert('댓글 삭제에 실패했습니다.');
             }
         })
 }
@@ -98,9 +98,9 @@ function registerRootReply() {
             if (result === 'OK') {
                 location.reload();
             } else if (result === 'NOID') {
-                alert('�α��� ���ּ���');
+                alert('?α??? ???????');
             } else {
-                alert('��� ��Ͽ� �����߽��ϴ�');
+                alert('댓글 등록에 실패했습니다');
             }
         })
 }
@@ -125,9 +125,30 @@ function registerReply(t) {
             if (result === 'OK') {
                 location.reload();
             } else if (result === 'NOID') {
-                alert('�α��� ���ּ���');
+                alert('로그인 해주세요');
             } else {
-                alert('��� ��Ͽ� �����߽��ϴ�')
+                alert('댓글 등록에 실패했습니다')
             }
         })
 }
+
+// Select the target element to observe
+var target = document.querySelector('.ql-editor');
+
+// Create a new MutationObserver
+var observer = new MutationObserver(function (mutations) {
+    // Callback function to execute when mutations are observed
+    mutations.forEach(function (mutation) {
+        // Check if the content of the target element has changed
+        if (mutation.type === 'childList') {
+            document.getElementById('study-content-hidden').value = target.innerHTML;
+            console.log(target.innerHTML)
+        }
+    });
+});
+
+// Configuration of the observer
+var config = {childList: true, subtree: true};
+
+// Start observing the target element
+observer.observe(target, config);

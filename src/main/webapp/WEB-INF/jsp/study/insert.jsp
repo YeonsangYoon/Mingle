@@ -187,7 +187,8 @@
                             <tr>
                                 <th width="20%">내용</th>
                                 <td width=80%>
-                                    <textarea rows="10" cols="94" name="content" class="icontent"></textarea>
+                                    <div id="editor" class="html-smart-editor">
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -200,6 +201,7 @@
                         </table>
                     </div>
                 </div>
+                <input type="hidden" name="content" id="study-content-hidden">
             </form>
         </div>
     </div>
