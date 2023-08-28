@@ -40,10 +40,16 @@
                     <span>공간대여</span>
                 </a>
             </li>
+            <li class="sidebar-list-item ${content_jsp=='mentoring.jsp' ? 'active' : ''}">
+                <a href="${pageContext.request.contextPath}/mypage/mentoring.do">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                    <span>멘토링 신청 내역</span>
+                </a>
+            </li>
             <li class="sidebar-list-item ${content_jsp=='mento.jsp' ? 'active' : ''}">
                 <a href="${pageContext.request.contextPath}/mypage/mento.do">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
-                    <span>멘토신청</span>
+                    <span>멘토 정보</span>
                 </a>
             </li>
             <li class="sidebar-list-item ${content_jsp=='study.jsp' ? 'active' : ''}">
@@ -52,6 +58,7 @@
                     <span>스터디 모집</span>
                 </a>
             </li>
+            
         </ul>
     </div>
     <jsp:include page="${content_jsp}"/>

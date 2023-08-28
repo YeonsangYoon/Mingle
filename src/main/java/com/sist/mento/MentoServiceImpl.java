@@ -125,4 +125,28 @@ public class MentoServiceImpl implements MentoService{
 	public void mentoContact(ContactVO vo) {
 		dao.mentoContact(vo);
 	}
+
+	//멘토 정보 수정 및 삭제
+	@Override
+	public MentoVO getMentoByID(String id) {
+		MentoVO vo = dao.getMentoByID(id);
+		return vo;
+	}
+
+	@Override
+	public void mentoUpdate(MentoVO vo) {
+		dao.mentoUpdate(vo);
+	}
+
+	@Override
+	@Transactional
+	public void mentoDelete(int mento_no) {
+		dao.deleteMentoFollowByMentoNo(mento_no);
+		dao.deleteMentoCounselByMentoNo(mento_no);
+		dao.deleteMentoByMentoNo(mento_no);
+	}
+	
+	
+	
+	
 }

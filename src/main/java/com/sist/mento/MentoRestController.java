@@ -176,4 +176,19 @@ public class MentoRestController {
 
 		return String.valueOf(followCount);
 	}
+	
+	//멘토 수정 및 삭제 
+	@PostMapping("mento/update_mento.do")
+	public String mentoUpdate(MentoVO vo){
+		service.mentoUpdate(vo);
+		return "update 완료";
+	}
+	
+	@PostMapping("mento/delete_mento.do")
+	public String mentoDelete(int mento_no){
+		service.mentoDelete(mento_no);
+		return "Delete 완료";
+	}
+	
+	
 }

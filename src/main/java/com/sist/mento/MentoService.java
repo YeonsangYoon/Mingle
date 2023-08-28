@@ -3,6 +3,8 @@ package com.sist.mento;
 import java.util.List;
 import java.util.Map;
 
+import com.sist.Authentication.MemberVO;
+
 public interface MentoService {
     // dao => service�� ����
     public List<MentoVO> MentoListData(int page, String column, String fd, String user_id);
@@ -28,4 +30,10 @@ public interface MentoService {
     // ���� ����
     public int followMentor(int mento_no, String user_id);
     public int unFollowMentor(int mento_no, String user_id);
+    
+    //멘토 정보 관련
+    public MentoVO getMentoByID(String id);
+    public void mentoUpdate(MentoVO vo);
+    public void mentoDelete(int mento_no);
+    
 }

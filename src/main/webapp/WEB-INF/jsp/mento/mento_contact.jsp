@@ -5,35 +5,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+<style>
+  
+</style>
 </head>
 <body>
 
 <section class="contact spad">
     <div class="container mento-contact">
-        <div class="row">
+        <div class="row text-center">
             <div class="col-lg-6 col-md-6">
-                <div class="">
+                <div class="mento-question">
                     <div class="">
                         <span>Mentoring</span>
-                        <h2>멘토에게 질문하기</h2>
+                        <h2 style="margin-bottom: 15px;">멘토에게 질문하기</h2>
                         <p><span
-                                style=" font-size:18px; color: orange; font-weight: 800">${sessionScope.nickname}</span>님
+                                style=" font-size:20px; color: orange; font-weight: 800">${sessionScope.nickname}</span>님
                             고민이 있나요?<br>
-                            커리어, 직무 고민에 대한 해답을 진짜 현직자에게 받아보세요.</p>
+                            고민에 대한 해답을 진짜 현직자에게 받아보세요.!</p>
                     </div>
                     <div style="margin-top: 40px;">
                         <div>
                             <h4>1. 질문을 구체적으로 작성해 주세요.</h4>
-                            <div>예시) 영업 직무 취업을 목표로 3개월 계획을 세웠는데<br> 방향성이 맞는지 모르겠어요</div>
-                            <textarea rows="15" cols="50" v-model="content" ref="content" name="content"></textarea>
+                            <textarea rows="15" cols="43" v-model="content" ref="content" name="content"
+                            placeholder="예시) 영업 직무 취업을 목표로 3개월 계획을 세웠는데 방향성이 맞는지 모르겠어요"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6">
-                <span>Reservation</span>
-                <h2>희망 날짜를 선택해 주세요!</h2>
+            <div class="col-lg-6 col-md-6 text-left">
+                <div class="text-center mento-question">
+	                <span>Reservation</span>
+	                <h2>희망 날짜를 선택해 주세요!</h2>
+                </div>
                 <h4 class="text-center" style="padding-top: 10px;">예약 날짜와 시간을 선택하세요!</h4>
                 <div id="cal-area">
                     <table class="Calendar">
@@ -55,10 +60,10 @@
                             <td>토</td>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody ref="date">
                         </tbody>
                     </table>
-                    <div class="" id="reserve-time">
+                    <div id="Mreserve-time" >
                         <div>
                             <span> 시작시간 </span>
                             <select v-model="str_time">
@@ -82,16 +87,16 @@
                         </div>
                         <div>
                             <span> 종료시간  </span>
-                            <select v-model="end_time">
+                            <select v-model="end_time" ref="end_time">
                                 <option v-for="num in range(str_time, 24)" :value="num">{{num}}시</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="contact__form">
+                <div class="contact__form text-center" style="margin-top: 30px">
                     <div class="col-lg-12">
-                        <button class="site-btn" @click="sendData()">신청하기</button>
+                        <button class="Msite-btn" @click="sendData()">신청하기</button>
                     </div>
                 </div>
             </div>
@@ -115,10 +120,22 @@
             sendData: function () {
                 const syear = document.querySelector('#calYear').innerText;
                 const smonth = document.querySelector('#calMonth').innerText;
-                const sdate = document.querySelector('.choiceDay').innerText;
-                let date = syear + '-' + smonth + '-' + sdate;
-
+                const sdateElement = document.querySelector('.choiceDay');
+                
                 // 유효성 검사
+                if (!sdateElement) {
+                    alert('멘토링 날짜를 선택해주세요.');
+                    return;
+                }
+                const sdate = sdateElement.innerText;
+                let date = syear + '-' + smonth + '-' + sdate;
+                
+                if (!this.end_time) {
+                    alert('종료 시간을 선택해주세요.');
+                    return;
+                }
+                
+                
 
                 axios.post('../mento/contact_ok.do', null, {
                     params: {
@@ -132,12 +149,14 @@
                     if (response.data === 'NOID') {
                         alert('로그인이 필요한 서비스입니다.')
                     } else {
+                    	alert("신청되었습니다!")
                         location.href = "/mingle/mento/mento_list.do"
                     }
                 })
             },
             range: function (start, end) {
                 const arr = [];
+                arr.push('선택해주세요');
                 for (let num = start; num <= end; num++) {
                     arr.push(num);
                 }

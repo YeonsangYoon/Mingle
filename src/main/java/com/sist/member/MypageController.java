@@ -1,7 +1,11 @@
 package com.sist.member;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sist.Authentication.AuthenticationService;
 import com.sist.Authentication.MemberVO;
+import com.sist.mento.MentoService;
+import com.sist.mento.MentoVO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,16 +13,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("mypage/")
 public class MypageController {
     private AuthenticationService authService;
+    private MentoService mentoService;
 
     @Autowired
-    public MypageController(AuthenticationService authService){
+    public MypageController(AuthenticationService authService, MentoService mentoService){
         this.authService = authService;
+        this.mentoService = mentoService;
     }
 
     @GetMapping("info.do")
@@ -43,10 +52,24 @@ public class MypageController {
         model.addAttribute("content_jsp", "study.jsp");
         return "member/mypage";
     }
+    @GetMapping("mentoring.do")
+    public String mypage_mentoring(Model model){
+        model.addAttribute("content_jsp", "mentoring.jsp");
+        return "member/mypage";
+    }
 
     @GetMapping("mento.do")
-    public String mypage_mento(Model model){
+    public String mypage_mento(HttpSession session, Model model) throws Exception{
+    	
+    	String id = (String)session.getAttribute("id");
+    	MentoVO mento = mentoService.getMentoByID(id);
+    	
+    	ObjectMapper obj=new ObjectMapper();
+		String json= obj.writeValueAsString(mento);
+    	
+		model.addAttribute("mento",json);
         model.addAttribute("content_jsp", "mento.jsp");
+
         return "member/mypage";
     }
 

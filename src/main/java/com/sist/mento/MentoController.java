@@ -17,9 +17,9 @@ public class MentoController {
 		return "mento/mento_regist";
 	}
 	
-	@GetMapping("mento/mento_info.do")
+	@GetMapping("mento/mento_mentoring.do")
 	public String mento_info() {
-		return "mento/mento_info";
+		return "mento/mento_mentoring";
 	}
 	
 	@GetMapping("mento/mento_date.do")

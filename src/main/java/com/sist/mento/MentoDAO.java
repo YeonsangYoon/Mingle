@@ -31,7 +31,7 @@ public class MentoDAO {
 		mapper.mentoEditUpdate(map);
 	}
 	
-	
+	//멘토 삭제관련
 	public void deleteMentoTimeByMentoNo(int mento_no){
 		mapper.deleteMentoTimeByMentoNo(mento_no);
 	}
@@ -59,7 +59,7 @@ public class MentoDAO {
 		return mapper.regist_usercheck(id);
 	}
 	
-	// ���� �ȷο� ����
+	// 멘토 팔로우 관련
 	public int getFollowerCountByMentoNo(int mento_no){
 		return mapper.getFollowerCountByMentoNo(mento_no);
 	}
@@ -79,4 +79,16 @@ public class MentoDAO {
 	public List<Integer> getfollowCheckListByUserId(Map<String, Object> params){
 		return mapper.getfollowCheckListByUserId(params);
 	}
+	
+	
+	// 멘토 정보 업데이트, 삭제관련
+	public MentoVO getMentoByID(String id) {
+		return mapper.getMentoByID(id);
+	}
+	
+	public void mentoUpdate(MentoVO vo) {
+		mapper.mentoUpdate(vo);
+	}
+	
+	
 }

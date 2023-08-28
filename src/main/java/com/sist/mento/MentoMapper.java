@@ -45,7 +45,7 @@ public interface MentoMapper {
 	@Update("UPDATE mento_reg SET INTRO = #{intro}, CAREER = #{career} WHERE mento_no=#{mento_no}")
 	public void mentoEditUpdate(Map map);
 	
-	/* 硫섑넗 �궘�젣 愿��젴 */
+	/* 멘토 삭제관련 스퀀스 */
 	@Delete("DELETE MENTO_TIME WHERE MENTO_NO = #{mento_no}")
 	public void deleteMentoTimeByMentoNo(@Param("mento_no")int mento_no);
 
@@ -112,5 +112,25 @@ public interface MentoMapper {
 			+ "#{hope_date}"
 			+ ")")
 	public void mentoContact(ContactVO vo);
+	
+	//멘토 정보 관련
+	@Select("SELECT MENTO_NO, USER_ID, JOB_CAT, JOB, COST, TITLE, INTRO, REGDATE, IMAGE, FOLLOW, sum_star, rev_cnt, cnt_star, career, dept "
+			+ "FROM mento_reg "
+			+ "WHERE user_id=#{id} ")
+	public MentoVO getMentoByID(String id);
+	
+	@Update("UPDATE mento_reg SET "
+			+ "job_cat = #{job_cat},"
+			+ "career = #{career},"
+			+ "job = #{job},"
+			+ "cost = #{cost},"
+			+ "title = #{title},"
+			+ "intro = #{intro},"
+			+ "dept = #{dept} "
+			+ "WHERE user_id = #{user_id}")
+	public void mentoUpdate(MentoVO vo);
+	
+	@Delete("DELETEFROM mento_reg WHERE mento_no = #{mento_no}")
+	public void mentoDelete(int mento_no);
 	
 }
