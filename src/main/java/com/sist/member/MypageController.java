@@ -72,9 +72,22 @@ public class MypageController {
     }
     
     @GetMapping("mento_mentoring.do")
-    public String mento_mentoring(Model model, HttpSession session){
-        String user_id = (String)session.getAttribute("id");
-        addIsMentor(user_id, model);
+    public String mento_mentoring(HttpSession session, Model model) throws Exception{
+    	
+    	String id = (String)session.getAttribute("id");
+    	boolean isMentor = mentoService.validateMento(id);
+    	
+    	if(!isMentor) {
+    		model.addAttribute("content_jsp", "mentonull.jsp");
+    		return "member/mypage";
+    	}
+    	
+    	MentoVO mento = mentoService.getMentoByID(id);
+    	
+    	ObjectMapper obj=new ObjectMapper();
+		String json= obj.writeValueAsString(mento);
+		model.addAttribute("isMentor", isMentor);
+		model.addAttribute("mento",json);
         model.addAttribute("content_jsp", "mento_mentoring.jsp");
         return "member/mypage";
     }

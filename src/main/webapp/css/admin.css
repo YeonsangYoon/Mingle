@@ -720,6 +720,7 @@
 }
 .mento-info{
     margin: 0 auto;
+    overflow-y: scroll;
 }
 .mento-info input{
     padding-left: 10px;

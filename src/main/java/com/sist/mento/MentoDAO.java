@@ -90,7 +90,7 @@ public class MentoDAO {
 		mapper.mentoUpdate(vo);
 	}
 	
-	// 멘토링 리스트
+	// 멘토링 리스트, 상태
 	public List<CounselVO> MentoringListData(Map map){
 		return mapper.MentoringListData(map);
 	}
@@ -103,6 +103,10 @@ public class MentoDAO {
 	}
 	public int mentomentoringTotalPage(Map map) {
 		return mapper.mentomentoringTotalPage(map);
+	}
+	
+	public void counselStateChange(int counsel_no, int val) {
+		mapper.counselStateChange(counsel_no, val);
 	}
 	
 

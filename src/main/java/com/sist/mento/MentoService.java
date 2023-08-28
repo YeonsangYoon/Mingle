@@ -42,8 +42,10 @@ public interface MentoService {
     public List<CounselVO> MentoringListData(int page, String column, String user_id);
     public int mentoringTotalPage(Map map);
     
-    public List<CounselVO> mentoMentoringListData(int page, String column, String user_id);
+    public List<CounselVO> mentoMentoringListData(int page, String column, int mento_no);
     public int mentomentoringTotalPage(Map map);
+    
+    public void counselStateChange(int counsel_no, int val);
 
     // 팔로우 많은 3명
     public List<MentoVO> getMostFollowedMento();

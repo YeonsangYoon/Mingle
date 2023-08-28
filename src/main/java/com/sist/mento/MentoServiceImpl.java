@@ -188,7 +188,7 @@ public class MentoServiceImpl implements MentoService{
     }
 	
 	@Override
-	public List<CounselVO> mentoMentoringListData(int page, String column, String user_id) {
+	public List<CounselVO> mentoMentoringListData(int page, String column, int mento_no) {
 		
 		int rowSize=9;
         int start=(rowSize*page)-(rowSize-1);
@@ -198,7 +198,7 @@ public class MentoServiceImpl implements MentoService{
         map.put("start", start);
         map.put("end", end);
         map.put("column", column);
-        map.put("user_id", user_id);
+        map.put("mento_no", mento_no);
 
         List<CounselVO> list = dao.mentoMentoringListData(map);
         
@@ -214,4 +214,11 @@ public class MentoServiceImpl implements MentoService{
 	public int mentomentoringTotalPage(Map map) {
         return dao.mentomentoringTotalPage(map);
     }
+	
+	@Override
+	public void counselStateChange(int counsel_no, int val) {
+		dao.counselStateChange(counsel_no, val);
+		
+	}
+	
 }

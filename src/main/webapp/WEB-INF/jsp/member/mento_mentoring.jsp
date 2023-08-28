@@ -20,9 +20,9 @@
         <!-- 헤더 -->
         <div class="products-header">
             <div class="product-cell image">
-                멘토 이미지
+                상담 번호
             </div>
-            <div class="product-cell category">멘토 아이디
+            <div class="product-cell category">멘티 아이디
 	            <button class="sort-button">
 	                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path fill="currentColor" d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"/></svg>
 	            </button>
@@ -58,10 +58,12 @@
             
             <div class="product-cell image">
                 <img :src="vo.image" alt="product">
-                <span>{{vo.content}}</span>
+                <span>{{vo.counsel_no}}.번</span>
             </div>
             
-            <div class="product-cell category"><span class="cell-label">멘토 번호:</span>{{vo.mento_no}}.번</div>
+            <div ></div>
+            
+            <div class="product-cell category"><span class="cell-label">멘티 아이디:</span>{{vo.user_id}}.번</div>
             <div class="product-cell sales"><span class="cell-label">시작시간:</span>{{vo.str_time}}시</div>
             <div class="product-cell stock"><span class="cell-label">종료시간:</span>{{vo.end_time}}시</div>
             <div class="product-cell price">
@@ -72,8 +74,14 @@
             <div class="product-cell status-cell">
             	<span class="cell-label">승인 여부:</span>
             	<div style="display: flex;" v-if="vo.state === 0">
-				    <span class="status approve" @click="approve()">승인</span>
-				    <span class="status active" @click="deny()">거절</span>
+				    <span class="status approve" @click="approve(vo.counsel_no)">수락</span>
+				    <span class="status active" @click="deny(vo.counsel_no)">거절</span>
+			    </div>
+			    <div style="display: flex;" v-else-if="vo.state === 1">
+				    <span class="status approve">확정됨</span>
+			    </div>
+			    <div style="display: flex;" v-else>
+			    	<span class="status disabled" >취소됨</span>
 			    </div>
             </div>
         </div>
@@ -114,6 +122,7 @@ new Vue({
         endPage: 0
 	},
 	mounted:function(){
+		this.mento = ${mento};
 		this.setData();
 	},
 	methods:{
@@ -121,7 +130,8 @@ new Vue({
             axios.get("/mingle/mento/mento_mentoring_list.do", {
                 params: {
                     column: this.column,
-                    page: this.curpage
+                    page: this.curpage,
+                    mento_no:this.mento.mento_no
                 }
             }).then(response => {
                 console.log(response.data)
@@ -130,7 +140,8 @@ new Vue({
             axios.get("/mingle/mento/mento_mentoring_page_vue.do", {
                 params: {
                     column: this.column,
-                    page: this.curpage
+                    page: this.curpage,
+                    mento_no:this.mento.mento_no
                 }
             }).then(response => {
                 console.log(response.data);
@@ -169,7 +180,7 @@ new Vue({
             this.curpage = 1;
             this.setData();
         },
-        mentoDetail: function (mento_no) {
+        mentoDetail: function (mento_no) { //추후 리뷰보기로 구현 - 모달
             $('#Detailmodal').modal();
 
             axios.get('/mingle/mento/mento_detail_vue.do', {
@@ -184,11 +195,27 @@ new Vue({
                 console.log(error.response)
             })
         },
-        approve:function(){
-        	
+        approve:function(counselno){
+        	axios.get("/mingle/mento/stateChange.do", {
+                params: {
+                	counsel_no:counselno,
+                	val:1
+                }
+            }).then(response => {
+                console.log(response.data)
+                location.reload();
+            })
         },
-        deny:function(){
-        	
+        deny:function(counselno){
+        	axios.get("/mingle/mento/stateChange.do", {
+                params: {
+                	counsel_no:counselno,
+                	val:2
+                }
+            }).then(response => {
+                console.log(response.data)
+                location.reload();
+            })
         }
 		
 	}

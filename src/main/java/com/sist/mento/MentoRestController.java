@@ -207,7 +207,6 @@ public class MentoRestController {
 		map.put("user_id", user_id);
 		
 		int totalpage=service.mentoringTotalPage(map);
-		System.out.println(totalpage);
 		
 		final int BLOCK=5;
 		int startPage=((page-1)/BLOCK*BLOCK)+1;
@@ -230,25 +229,23 @@ public class MentoRestController {
 	}
 	
 	@GetMapping(value = "mento/mento_mentoring_list.do", produces = "text/plain;charset=UTF-8")
-	public String mento_mentoring_list_vue(int page, String column, HttpSession session) throws Exception{
+	public String mento_mentoring_list_vue(int page, String column, int mento_no) throws Exception{
 		
-		String user_id = (String)session.getAttribute("id");
-		List<CounselVO> list=service.mentoMentoringListData(page, column, user_id);
+		List<CounselVO> list=service.mentoMentoringListData(page, column, mento_no);
 		ObjectMapper obj= new ObjectMapper();
 		return obj.writeValueAsString(list);
 	}
 	
 	@GetMapping(value="mento/mento_mentoring_page_vue.do", produces="text/plain;charset=UTF-8")
-	public String mento_mentoring_page(int page, String column, HttpSession session) throws Exception{
+	public String mento_mentoring_page(int page, String column, int mento_no) throws Exception{
 		
-		String user_id = (String)session.getAttribute("id");
 		
 		Map map=new HashMap();
 		map.put("column", column);
-		map.put("user_id", user_id);
+		map.put("mento_no", mento_no);
 		
 		int totalpage=service.mentomentoringTotalPage(map);
-
+		
 		final int BLOCK=5;
 		int startPage=((page-1)/BLOCK*BLOCK)+1;
 		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
@@ -266,5 +263,12 @@ public class MentoRestController {
 		ObjectMapper obj=new ObjectMapper();
 		String json= obj.writeValueAsString(vo);
 		return json;
+		
+	}
+	
+	@GetMapping(value = "mento/stateChange.do", produces = "text/plain;charset=UTF-8")
+	public String counselStateChange(int counsel_no, int val){
+		service.counselStateChange(counsel_no, val);
+		return "반영 완료!";
 	}
 }

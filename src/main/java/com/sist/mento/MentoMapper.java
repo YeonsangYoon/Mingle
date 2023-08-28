@@ -70,7 +70,8 @@ public interface MentoMapper {
 			+ "#{title},"
 			+ "#{intro},"
 			+ "sysdate,"
-			+ "null,0,0,0,0," //이미지, 팔로워, 별점합, 댓글수, 별점참여자수
+			+ "https://media.istockphoto.com/id/1401470512/ko/%EB%B2%A1%ED%84%B0/%EB%B8%94%EB%A3%A8-%EA%B5%90%EC%9C%A1-%EB%B0%8F-%EC%98%A8%EB%9D%BC%EC%9D%B8-%EC%88%98%EC%97%85-%EA%B0%9C%EB%85%90%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%ED%95%99%EA%B5%90-%EC%95%84%EC%9D%B4%EC%BD%98%EC%9C%BC%EB%A1%9C-%EB%8F%8C%EC%95%84%EA%B0%80%EB%8A%94-3d-%EB%AA%A8%EC%9D%8C.jpg?s=612x612&w=0&k=20&c=boDBwRFBK2Rb_0Z6mbWMcPB9EhfdnruvjGrr2OlVgqo=,"
+			+ "0,0,0,0," //이미지, 팔로워, 별점합, 댓글수, 별점참여자수
 			+ "#{career},"
 			+ "#{dept}"
 			+ ")")
@@ -137,6 +138,9 @@ public interface MentoMapper {
 	public int mentoringTotalPage(Map map);
 	public List<CounselVO> mentoMentoringListData(Map map);
 	public int mentomentoringTotalPage(Map map);
+	
+	@Update("UPDATE mento_counsel SET state = #{val} WHERE counsel_no=#{counsel_no}")
+	public void counselStateChange(@Param("counsel_no")int counsel_no, @Param("val")int val);
 
 	// 팔로우 많은 3명 순
 	@Select("SELECT A.*, ROWNUM FROM (" +
