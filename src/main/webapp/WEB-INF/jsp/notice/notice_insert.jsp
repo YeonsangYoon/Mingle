@@ -15,7 +15,7 @@
     </div>
 </section>
 <div class="container">
-    <form method="post" action="${pageContext.request.contextPath}/notice/insert.do">
+    <form method="post" action="${pageContext.request.contextPath}/notice/insert.do" onsubmit="fillContent()">
         <div class="row">
             <div class="offset-2 col-sm-8">
                 <input name="title" class="notice-title-input" type="text" placeholder="제목을 입력하세요" required>
