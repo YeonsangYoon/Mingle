@@ -1226,3 +1226,16 @@
     letter-spacing: -0.05em;
 }
 /* */
+.btn_review{
+	background-color: blue; */
+    padding: 5px 10px;
+    color:white;
+    border-radius: 5px;
+    background-color: #0d6ffc;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    float: right;
+}

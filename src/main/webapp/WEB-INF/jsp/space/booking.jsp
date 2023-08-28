@@ -3,32 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="startTime" value="${book.start}" />
 <c:set var="endTime" value="${book.end}" />
+<c:set var="end" value="${endTime +1}" />
 <c:set var="duration" value="${(endTime - startTime) + 1}" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6a1ffbe66e5a8ba9af15d82e0b41ceac"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(${vo.latitude}, ${vo.latitude}), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
-
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-// 마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(${vo.latitude}, ${vo.latitude}); 
-
-// 마커를 생성합니다
-var marker = new kakao.maps.Marker({
-    position: markerPosition
-});
-
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
-
-</script>
     <body>
         <div class="pc-mobile-header-container">
             <div class="container p-0">
+              <form id="book-form" method="post" action="/mingle/space/submitbook.do" >
                 <div class="row my-lg-5 reservation-row">
                     <div class="col-lg-7 cm-lg-rounded">
                             <section class="bk-detail-section">
@@ -36,7 +18,7 @@ marker.setMap(map);
                                     <div class="row">
                                         <div class="col-12 mb-20 text-center">
                                             <img src=${vo.poster } class="bookPoster">
-                                            <div class="ft-20 font-weight-bold color-grey-3 text-center">${vo.title}
+                                            <div class="ft-20 font-weight-bold color-grey-3 text-center" id="sname">${vo.title}
                                             </div>
                                             <hr class="mb-2">
                                             <div class="dc-flex justify-content-center">
@@ -46,7 +28,7 @@ marker.setMap(map);
                                                 </div>
                                                 <div class="booking-period-item text-center">
                                                     <div class="text-12 color-grey-5">체크아웃시간</div>
-                                                    <div class="dc-flex justify-content-center text-16-b color-grey-3 font-weight-bold">${book.month}월 ${book.date }일 ${book.end }시</div>
+                                                    <div class="dc-flex justify-content-center text-16-b color-grey-3 font-weight-bold">${book.month}월 ${book.date }일 ${end }시</div>
                                                 </div>
                                             </div>
                                             <hr class="mb-2">
@@ -105,7 +87,7 @@ marker.setMap(map);
 										            <p class="ml-1 text-14 color-grey-4 inblock">요청사항</p>
 										        </div>
 										        <div class="col-sm-8">
-										            <textarea id="bookrequest" name="bookrequest" placeholder="남기고 싶은 말을 적어주세요."></textarea>
+										            <textarea id="request" name="bookingrequest" placeholder="남기고 싶은 말을 적어주세요."></textarea>
 										        </div>
 										    </div>
 										</div>
@@ -119,8 +101,27 @@ marker.setMap(map);
                                          <div style="height:20px"></div>
                                          <div>
                                             <div class="map-wrap w-100" style="height: 164px;">
-                                              <div id="map" style="width:100%;height:350px;"></div>
+                                              <div id="map" style="width:100%;height:164px;"></div>
                                             </div>
+								  <script>
+								    // 카카오맵 API 초기화
+								    kakao.maps.load(function() {
+								      var container = document.getElementById('map');
+								      var options = {
+								        center: new kakao.maps.LatLng(${vo.latitude}, ${vo.longitude}), // 지도 중심 좌표
+								        level: 8 // 지도 확대 레벨
+								      };
+								      
+								      var map = new kakao.maps.Map(container, options);
+								    var markerPosition = new kakao.maps.LatLng(${vo.latitude}, ${vo.longitude});
+								      var marker = new kakao.maps.Marker({
+								        position: markerPosition
+								      });
+								      
+								      // 마커를 지도에 표시
+								      marker.setMap(map);
+								    });
+								  </script>
                                         </div>
                                         <div class="text-14 font-weight-bold color-grey-3 mt-3">주소</div>
                                         <div class="dc-flex justify-content-between mt-2">
@@ -166,7 +167,7 @@ marker.setMap(map);
                                        <div class="dc-flex justify-content-between align-items-center">
                                            <div class="text-14 color-grey-3">예약시간</div>
                                            <div class="text-14 text-right font-weight-bold">
-                                               <span> ${book.start }시 ~ ${book.end }시,  ${duration }시간</span>
+                                               <span> ${book.start }시 ~ ${end }시,  ${duration }시간</span>
                                            </div>
                                        </div>
                                        <div class="dc-flex justify-content-between align-items-center">
@@ -178,19 +179,29 @@ marker.setMap(map);
                                        </div>
                                        <div class="dc-flex justify-content-between align-items-center">
                                            <div class="text-14 color-grey-3 font-weight-bold color-blue">합계</div>
-                                           <div class="text-14 color-blue font-weight-bold">
-                                             <fmt:formatNumber value="${book.total }"/>원</div>
+                                           <div class="text-14 color-blue font-weight-bold" id="totalAmount">
+                                             <fmt:formatNumber value="${book.amount }"/>원</div>
                                        </div>
                                     </div>
-                                    <button class="reserve-button" style="width: 100% !important;">
+                                          <input type="button" value="바로 결제하기" onclick="requestPay(this)" class="requestToPay">
+<!--                                     <button class="reserve-button" style="width: 100% !important;">
                                         <div class="text-18 font-weight-bold text-white">
-                                            <span><a href="#">바로 결제하기</a></span>
+                                            <button>바로 결제하기</button>
                                         </div>
-                                    </button>
-                                </div>
+                                    </button>  -->
+                               </div>
                             </section>
                         </div>
                     </div>
                 </div>
+					<input type="hidden" name="year" value="${book.year }">
+					<input type="hidden" name="month" value="${book.month }">
+					<input type="hidden" name="date" value="${book.date }">
+					<input type="hidden" name="startsAt" value="${book.start }">
+					<input type="hidden" name="endsAt" value="${book.end }">
+					<input type="hidden" name="person" value="${book.person }">
+					<input type="hidden" name="space_id" value="${no }">
+					<input type="hidden" name="amount" value="${book.amount }">
+                  </form>
             </div>
         </div>

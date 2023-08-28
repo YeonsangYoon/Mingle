@@ -102,7 +102,8 @@
                             <div class="tab-pane" id="tabs-8" role="tabpanel">
                                 <div class="space__details__tab__content">
                                     <div class="space__details__tab__content__item">
-                                        <h5>이용 후기 <span>{{cnt_rate}}</span>개 / 평균 평점 <span>{{avg_rate}}</span></h5>
+                                        <h5 class="d-inline">이용 후기 <span>{{cnt_rate}}</span>개 / 평균 평점 <span>{{avg_rate}}</span></h5>
+                                        <a class="btn_review" style="di"> 후기 작성하기</a>
                                     </div>
                                     <div class="space__details__tab__content__review" v-for="r in rList">
                                         <strong class="guest_name">{{r.nickname}}
@@ -124,8 +125,7 @@
                     <div style="height:20px"></div>
                     <div class="alignBtn">
                         <button @click="popCalendar" class="reserve-button">예약하기</button>
-                        <!-- <button @click="javascript:history.back()" class="reserveReverse-button">목록으로</button> -->
-                        <a href="../space/booking.do" class="reserveReverse-button">예약JSP</a>
+                        <button @click="javascript:history.back()" class="reserveReverse-button">뒤로 가기</button>
                     </div>
                 </div>
             </div>
@@ -172,11 +172,11 @@
                  예약 인원 </h4>
 			<div :class="{'d-none':selectedTime.length<2}">
 			    <div class="text-center">
-			        <div class="input-group">
+			        <div class="input-group" style="width: 200px !important; margin-left: 150px;">
 			            <span class="input-group-btn">
 			                <button class="btn btn-default" type="button" @click="decreaseQuantity">-</button>
 			            </span>
-			            <input type="number" class="form-control" v-model="quantity" @change="updateTotalAmount">
+			            <input type="number" class="form-control text-center" v-model="quantity" @change="updateTotalAmount">
 			            <span class="input-group-btn">
 			                <button class="btn btn-default" type="button" @click="increaseQuantity">+</button>
 			            </span>
@@ -397,7 +397,7 @@
                 this.selectedYear = syear.innerText;
                 this.selectedMonth = smonth.innerText;
                 this.selectedDate = sdate.innerText;
-
+                console.log(this.selectedYear)
                 axios.get('/mingle/space/booking_data.do',{
                     params : {
                         space_id : this.space_id,
@@ -442,7 +442,7 @@
             bookingNow: function () {
             	window.location.href = '/mingle/space/booking.do?no='+this.space_id+'&year='+this.selectedYear
             			+'&month='+this.selectedMonth+'&date='+this.selectedDate+'&start='+this.selectedTime[0]+'&end='+this.selectedTime[1]
-            	        +'&person='+this.quantity+'&total='+this.totalAmount;
+            	        +'&person='+this.quantity+'&amount='+this.totalAmount;
             }
         }
     })

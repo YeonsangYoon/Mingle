@@ -54,7 +54,6 @@ public class SpaceServiceImpl implements SpaceService{
 
 	@Override
 	public boolean spaceIsFavorited(Map map) {
-		
 		return dao.spaceIsFavorited(map);
 	}
 
@@ -65,6 +64,10 @@ public class SpaceServiceImpl implements SpaceService{
 
 	@Override
 	public void spaceBookingSubmit(Map map) {
+		String year = (String)map.get("year");
+		String month = (String)map.get("month");
+		String date = (String)map.get("date");
+		map.put("bk_date", year + "-" + month + "-" + date);
 		dao.spaceBookingSubmit(map);
 	}
 
