@@ -6,11 +6,18 @@ $('.ui.button').on('click', function () {
         .dropdown('restore defaults')
 })
 
-$(function() {
+/*
+ $(function() {
     $('#toggle-event').change(function() {
     	$('#hidden-toggle').prop('checked', $(this).prop('checked'));
     })
  })
+*/
+
+ function toggleButton() {
+    const container = document.querySelector('.toggle-container');
+    container.classList.toggle('active');
+ }
 
 $('.reply-open').click(function () {
     let ri = $(this).parent().parent().next();

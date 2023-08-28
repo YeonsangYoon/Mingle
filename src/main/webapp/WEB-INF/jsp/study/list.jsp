@@ -81,10 +81,14 @@
 						<a href="javascript:pricelistdesc();">댓글순</a>
 						</p>
  -->						
- 
- 					<!-- 모집 토글 -->
 <!-- 					<input id="toggle-event" type="checkbox" data-toggle="toggle" data-size="sm">
 					<input id="hidden-toggle" type="checkbox" v-model="isClosed" @change="send"> -->
+					
+					<!-- 모집 토글 -->
+					<div class="toggle-container" @click="toggleButton()" onclick="toggleButton()">
+					  <div class="toggle-switch"></div>
+					  <span class="toggle-text">모집중만 보기</span>
+					</div>
 					
                 </div>
             </div>
@@ -175,6 +179,7 @@
             tCheck: false,
             cCheck: false,
             isClosed: false,
+            onOffToggle: false,
             selectedTech: -1,
             tech_list: ['JavaScript', 'TypeScript', 'React', 'Vue', 'Svelte', 'Nextjs', 'Nodejs', 'C', 'Java',
                 'Spring', 'Go', 'Nestjs', 'Kotlin', 'Express', 'MySQL', 'MongoDB', 'Python', 'Django',
@@ -195,7 +200,8 @@
                         wCheck: this.wCheck,
                         tCheck: this.tCheck,
                         cCheck: this.cCheck,
-                        isClosed: this.isClosed
+                        isClosed: this.isClosed,
+                        onOffToggle: this.onOffToggle
                     }
                 }).then(response => {
                     this.totalpage = response.data.totalpage;
@@ -287,6 +293,10 @@
             },
             moveDetail : function(study_id){
             	location.href = "/mingle/study/detail.do?study_id=" + study_id;
+            },
+            toggleButton:function(){
+				this.onOffToggle=!this.onOffToggle;
+				this.send()
             }
         }
     })
