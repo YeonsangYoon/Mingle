@@ -19,4 +19,6 @@ public interface SpaceService {
 	 	
 	    public void spaceBookingSubmit(Map map);
 
+	    public void createReview(ReviewVO vo);
+	    public void deleteReview(int review_id);
 }

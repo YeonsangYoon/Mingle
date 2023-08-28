@@ -56,23 +56,15 @@ public interface SpaceMapper {
     /*@Select("SELECT COUNT(*) FROM space_booking WHERE user_id=#{user_id} AND space_id=#{space_id}")
     public int isReviewExisted(Map map);*/
 
-    // 리뷰작성 => rv_id, ratings,regdate,user_id,space_id,content (+예약 한 건당 리뷰 한 번/추후 디벨롭)
+    // 리뷰작성 => RATINGS REGDATE USER_ID SPACE_ID CONTENT REVIEW_ID (+예약 한 건당 리뷰 한 번/추후 디벨롭)
     @Insert("INSERT INTO space_review VALUES("
-            + "spr_id_seq.nextval,#{ratings},SYSDATE,#{user_id},#{space_id},#{content})")
+            + "#{ratings},SYSDATE,#{user_id},#{space_id},#{content},spr_id_seq.nextval)")
     public void createReview(ReviewVO vo);
 
+    @Delete("DELETE space_review WHERE REVIEW_ID=#{review_id}")
+    public void deleteReview(int review_id);
     // 예약내역 추가하기
-    /*
-    BK_ID
-BK_DATE
-STARTSAT
-ENDSAT
-PERSON
-PURPOSE
-REQUEST
-USER_ID
-SPACE_ID
-     */
+
     @Insert("INSERT INTO space_booking VALUES("
     	  + "spb_id_seq.nextval,TO_DATE(#{bk_date}, 'yyyy-MM-dd'),#{startsAt},#{endsAt},#{person},#{purpose},#{bookingrequest},#{user_id},#{space_id},#{amount})")
     public void spaceBookingSubmit(Map map);

@@ -103,7 +103,7 @@
                                 <div class="space__details__tab__content">
                                     <div class="space__details__tab__content__item">
                                         <h5 class="d-inline">이용 후기 <span>{{cnt_rate}}</span>개 / 평균 평점 <span>{{avg_rate}}</span></h5>
-                                        <a class="btn_review" style="di"> 후기 작성하기</a>
+                                        <button class="btn_review" @click="modalReview">리뷰 쓰기</button>
                                     </div>
                                     <div class="space__details__tab__content__review" v-for="r in rList">
                                         <strong class="guest_name">{{r.nickname}}
@@ -130,6 +130,31 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="reviewform" class="modal modal-review">
+     <form class="mb-3" name="myform" id="myform" method="post" action="/mingle/space/submitreview.do">
+		<fieldset>
+			<span class="text-bold">별점을 선택해주세요</span>
+			<input type="radio" name="ratings" value="5" id="rate1"><label
+				for="rate1">★</label>
+			<input type="radio" name="ratings" value="4" id="rate2"><label
+				for="rate2">★</label>
+			<input type="radio" name="ratings" value="3" id="rate3"><label
+				for="rate3">★</label>
+			<input type="radio" name="ratings" value="2" id="rate4"><label
+				for="rate4">★</label>
+			<input type="radio" name="ratings" value="1" id="rate5"><label
+				for="rate5">★</label>
+			<input type="hidden" name="space_id" :value="space_id">
+		</fieldset>
+		<div class="mb-20">
+		  <textarea class="col-auto form-control" type="text" name="content" id="reviewContents"
+			 placeholder="여러분의 후기는 밍글의 소중한 자산입니다♡"></textarea>
+		</div>
+		<div class="text-center">
+		  <button class="reserve-button" >후기 등록</button>
+		</div>
+	</form>	
     </div>
     <div id="bookinfo" class="modal modal-calendar">
         <div>
@@ -326,6 +351,9 @@
             },
             popCalendar: function () {
                 $('#bookinfo').modal();
+            },
+            modalReview: function () {
+                $('#reviewform').modal();
             },
             workingHour: function () {
                 let start = this.space_detail.starttime;

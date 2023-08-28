@@ -71,6 +71,16 @@ public class SpaceServiceImpl implements SpaceService{
 		dao.spaceBookingSubmit(map);
 	}
 
+	@Override
+	public void createReview(ReviewVO vo) {
+		dao.createReview(vo);
+	}
+
+	@Override
+	public void deleteReview(int review_id) {
+		dao.deleteReview(review_id);
+	}
+
 	
 
 

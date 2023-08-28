@@ -39,6 +39,15 @@ public class SpaceDAO {
 		return mapper.spaceReviewData(space_id);
 	}
 	
+	public void createReview(ReviewVO vo)
+	{
+		mapper.createReview(vo);
+	}
+    public void deleteReview(int review_id)
+    {
+    	 mapper.deleteReview(review_id);
+    }
+	
     public boolean spaceIsFavorited(Map map)
     {
     	return mapper.spaceIsFavorited(map);
