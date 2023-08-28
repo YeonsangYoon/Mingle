@@ -11,6 +11,6 @@ import java.util.Date;
 @ToString
 public class BookingVO {
     private int bk_id, startsat, endsat, person, space_id;
-    private String purpose, request, user_id, regdate;
+    private String purpose, bookingrequest, user_id, regdate;
     private Date bk_date;
 }

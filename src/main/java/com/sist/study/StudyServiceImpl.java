@@ -66,12 +66,12 @@ public class StudyServiceImpl implements StudyService{
 			params.put("tCheck", true);
 			params.put("cCheck", true);
 		}
-		if(!params.containsKey("isClosed")) {
-			params.put("isClosed", false);
+		if(!params.containsKey("onOffToggle")) {
+			params.put("onOffToggle", false);
 		}
 		else {
-			boolean isClosed = Boolean.parseBoolean((String)params.get("isClosed"));
-			params.put("isClosed", isClosed);
+			boolean onOffToggle = Boolean.parseBoolean((String)params.get("onOffToggle"));
+			params.put("onOffToggle", onOffToggle);
 		}	
 	}
 

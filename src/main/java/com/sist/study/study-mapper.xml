@@ -29,7 +29,7 @@
                 FROM STUDY, MEMBER
                 WHERE
                     MEMBER.USER_ID = STUDY.USER_ID
-                    <if test="isClosed">
+                    <if test="onOffToggle">
 						AND ISCLOSED='O'
 					</if>
                     <if test="tech != ''">

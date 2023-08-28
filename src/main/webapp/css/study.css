@@ -705,3 +705,52 @@
     max-height: 500px;
     overflow-y: scroll;
 }
+
+/* list toggle  */
+
+  .toggle-container {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #888;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .toggle-switch:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+
+  .toggle-container.active .toggle-switch {
+    background-color: #704DE4;
+  }
+
+  .toggle-container.active .toggle-switch:before {
+    transform: translate(20px, -50%);
+  }
+
+  /* 추가된 스타일 */
+  .toggle-text {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    vertical-align: middle;
+    display: inline-block;
+  }

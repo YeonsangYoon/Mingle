@@ -74,7 +74,7 @@ USER_ID
 SPACE_ID
      */
     @Insert("INSERT INTO space_booking VALUES("
-    	  + "spb_id.seq.nextval,#{bk_date},#{startsAt},#{endsAt},#{person},#{purpose},#{request},#{user_id},#{space_id})")
+    	  + "spb_id_seq.nextval,TO_DATE(#{bk_date}, 'yyyy-MM-dd'),#{startsAt},#{endsAt},#{person},#{purpose},#{bookingrequest},#{user_id},#{space_id},#{amount})")
     public void spaceBookingSubmit(Map map);
     
 }
