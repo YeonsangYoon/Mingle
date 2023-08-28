@@ -97,9 +97,14 @@ public class MentoRestController {
 	}
 	
 	@PostMapping(value="mento/contact_ok.do",produces = "text/plain;charset=UTF-8")
-	public void mentoContact(ContactVO vo) throws Exception{
+	public String mentoContact(ContactVO vo, HttpSession session) throws Exception{
+		String user_id = (String)session.getAttribute("id");
+		if(user_id == null){
+			return "NOID";
+		}
+		vo.setUser_id(user_id);
 		service.mentoContact(vo);
-		
+		return "OK";
 	}
 	
 	
