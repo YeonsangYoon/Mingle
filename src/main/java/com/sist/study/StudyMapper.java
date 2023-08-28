@@ -85,6 +85,16 @@ public interface StudyMapper {
 			"WHERE study_id=#{study_id}")
 	public void studyUpdate(Map<String, Object> params);
 
+	  // 스터디 좋아요
+	  @Select("SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS isLiked FROM study_like WHERE user_id=#{user_id} AND study_id=#{study_id}")
+	  public boolean studyLiked(Map map);
+	  
+	  @Insert("INSERT INTO study_like VALUES("
+	          + "#{study_id},#{user_id})")
+	  public int studyLikeOn(@Param("study_id")int study_id, @Param("user_id")String user_id);
+
+	  @Delete("DELETE FROM study_like WHERE study_id=#{study_id} AND user_id=#{user_id}")
+	  public int studyLikeOff(@Param("study_id")int study_id, @Param("user_id")String user_id);
 	
 	/* 댓글 관련 */
 	// 댓글 목록

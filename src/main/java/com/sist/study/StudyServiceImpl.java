@@ -66,6 +66,13 @@ public class StudyServiceImpl implements StudyService{
 			params.put("tCheck", true);
 			params.put("cCheck", true);
 		}
+		if(!params.containsKey("isClosed")) {
+			params.put("isClosed", false);
+		}
+		else {
+			boolean isClosed = Boolean.parseBoolean((String)params.get("isClosed"));
+			params.put("isClosed", isClosed);
+		}	
 	}
 
 	@Override
@@ -100,6 +107,21 @@ public class StudyServiceImpl implements StudyService{
 				}
 			}
 		}
+		
+		for (StudyVO vo : list) {
+            boolean isLiked = false;
+            String user_id=(String) params.get("user_id");
+            if(user_id!=null)
+            {
+            	Map<String, Object> map = new HashMap<>();
+            	map.put("user_id", user_id);
+            	map.put("study_id", vo.getStudy_id());
+            	
+            	isLiked = dao.studyLiked(map);
+            	
+            	vo.setIsLiked(isLiked);
+            }
+        }
 
 		Map<String, Object> ret = new HashMap<>();
 		ret.put("totalpage", totalpage);
@@ -170,6 +192,23 @@ public class StudyServiceImpl implements StudyService{
 		return dao.studyDetailData(study_id);
 	}
 
+	
+	// 좋아요
+	@Override
+	public boolean studyLiked(Map map) {
+	return dao.studyLiked(map);
+	}
+	
+	@Override
+	public int studyLikeOn(int study_id, String user_id) {
+	return dao.studyLikeOn(study_id, user_id);
+	}
+	
+	@Override
+	public int studyLikeOff(int study_id, String user_id) {
+	return dao.studyLikeOff(study_id, user_id);
+	}
+	
 	/* 댓글 관련 */
 	// 댓글 목록
 	@Override

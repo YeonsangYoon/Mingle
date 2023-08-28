@@ -11,4 +11,5 @@ public class StudyVO {
 	private String user_id,title,content,nickname,dbday,deadline,period,onoff,contact_type,contact_link,isclosed;
 	private Date regdate;
 	private List<String> techs;
+	private Boolean isLiked;
 }

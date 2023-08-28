@@ -74,11 +74,18 @@
                 </ul>
                 <div>
                     <div class="shop__product__option__right" style="text-align: right">
-                        <select id="order-type" v-mode="order_type">
-                            <option value="recent">최신순</option>
-                            <option value="popular">인기순</option>
-                        </select>
-                    </div>
+<!--                     
+						<p>
+						<a href="javascript:recentlist();">최신순</a>|
+						<a href="javascript:pricelist();">인기순</a>|
+						<a href="javascript:pricelistdesc();">댓글순</a>
+						</p>
+ -->						
+ 
+ 					<!-- 모집 토글 -->
+<!-- 					<input id="toggle-event" type="checkbox" data-toggle="toggle" data-size="sm">
+					<input id="hidden-toggle" type="checkbox" v-model="isClosed" @change="send"> -->
+					
                 </div>
             </div>
         </div>
@@ -86,11 +93,18 @@
             <!-- 스터디 글 -->
         <div class="row-study">
             <ul class="studyList_studyList__3xoys">
-                <a v-for="vo in study_list" class="studyItem_studyItem__1Iipn" :href="'../study/detail.do?study_id='+vo.study_id">
+                <a v-for="vo, index in study_list" class="studyItem_studyItem__1Iipn" @click="moveDetail(vo.study_id)">
                     <li>
                         <span v-if="vo.isclosed == 'O'" class="open-badge">모집중</span>
                         <span v-if="vo.isclosed == 'C'" class="close-badge">모집완료</span>
-                        <img class="studyItem_bookmark__2YtKX" src="../img/bookmark-off.png" @click="like(${vo.user_id })" alt="bookmark">
+                        
+							<img class="studyItem_bookmark__2YtKX book_mark clicked"
+								alt="bookmark"
+								@click.stop="changeLiked(index, vo.user_id)"
+								:src="vo.isLiked ? '/mingle/img/bookmark-on.png' : '/mingle/img/bookmark-off.png'">
+
+<%--                         <img class="studyItem_bookmark__2YtKX" src="../img/bookmark-off.png" @click="like(${vo.user_id })" alt="bookmark"> --%>
+                        
                         <div class="studyItem_schedule__3oAnA">
                             <p class="studyItem_scheduleTitle__1KN_9">마감일 |</p>
                             <p>{{vo.deadline}}</p>
@@ -157,10 +171,10 @@
             totalpage: 0,
             page_list: [],
             searchWord: '',
-            order_type:'recent',
             wCheck: false,
             tCheck: false,
             cCheck: false,
+            isClosed: false,
             selectedTech: -1,
             tech_list: ['JavaScript', 'TypeScript', 'React', 'Vue', 'Svelte', 'Nextjs', 'Nodejs', 'C', 'Java',
                 'Spring', 'Go', 'Nestjs', 'Kotlin', 'Express', 'MySQL', 'MongoDB', 'Python', 'Django',
@@ -180,7 +194,8 @@
                         searchWord: this.searchWord.trim(),
                         wCheck: this.wCheck,
                         tCheck: this.tCheck,
-                        cCheck: this.cCheck
+                        cCheck: this.cCheck,
+                        isClosed: this.isClosed
                     }
                 }).then(response => {
                     this.totalpage = response.data.totalpage;
@@ -228,7 +243,53 @@
             doSearch: function (page) {
                 this.curpage = page;
                 this.send();
+            },
+            changeLiked: function(index, event) {
+                if (this.study_list[index].isLiked) {
+                    axios.get("/mingle/study/likeOff_vue.do", {
+                        params: {
+                            study_id: this.study_list[index].study_id
+                        }
+                    })
+                    .then(res => {
+                    	if(res.data === 'OK'){
+	                        this.study_list[index].isLiked = false
+                    	}
+                    	else if(res.data === 'NOID'){
+                    		alert('로그인이 필요한 서비스입니다');
+                    	}
+                    	else{
+                    		alert('좋아요 실패')
+                    	}
+                    }).catch(error => {
+                        console.log(error.res)
+                    })
+                } else {
+                    axios.get("/mingle/study/likeOn_vue.do", {
+                        params: {
+                            study_id: this.study_list[index].study_id
+                        }
+                    })
+                    .then(res => {
+                    	if(res.data === 'OK'){
+	                        this.study_list[index].isLiked = true;
+                    	}
+                    	else if(res.data === 'NOID'){
+                    		alert('로그인이 필요한 서비스입니다');
+                    	}
+                    	else{
+                    		alert('좋아요 실패')
+                    	}
+                    }).catch(error => {
+                        console.log(error.res)
+                    });
+                }
+            },
+            moveDetail : function(study_id){
+            	location.href = "/mingle/study/detail.do?study_id=" + study_id;
             }
         }
     })
+
+    
 </script>

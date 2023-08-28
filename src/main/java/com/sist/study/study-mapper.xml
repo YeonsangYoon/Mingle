@@ -29,6 +29,9 @@
                 FROM STUDY, MEMBER
                 WHERE
                     MEMBER.USER_ID = STUDY.USER_ID
+                    <if test="isClosed">
+						AND ISCLOSED='O'
+					</if>
                     <if test="tech != ''">
                         AND STUDY_ID IN (SELECT STUDY_ID FROM STUDY_TECH WHERE TECH = #{tech})
                     </if>

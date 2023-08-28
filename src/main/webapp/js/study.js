@@ -6,6 +6,12 @@ $('.ui.button').on('click', function () {
         .dropdown('restore defaults')
 })
 
+$(function() {
+    $('#toggle-event').change(function() {
+    	$('#hidden-toggle').prop('checked', $(this).prop('checked'));
+    })
+ })
+
 $('.reply-open').click(function () {
     let ri = $(this).parent().parent().next();
     if (ri.hasClass('d-none')) { // ????

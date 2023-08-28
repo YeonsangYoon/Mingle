@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sist.space.SpaceVO;
 import com.sist.study.*;
 
 import org.json.simple.JSONArray;
@@ -26,9 +27,32 @@ public class StudyRestController {
 	}
 
 	@RequestMapping(value = "study/list_vue.do", produces = "text/plain;charset=UTF-8")
-	public String study_list(@RequestParam Map<String, Object> params) throws JsonProcessingException {
+	public String study_list(@RequestParam Map<String, Object> params, HttpSession session) throws JsonProcessingException {
+		String user_id=(String) session.getAttribute("id");
+		params.put("user_id", user_id);
 		Map<String, Object> json = service.getStudyListData(params);
+		
 		return objectMapper.writeValueAsString(json);
+	}
+	
+	@GetMapping("study/likeOff_vue.do")
+	public String study_like_off(int study_id, HttpSession session)
+	{
+		String user_id=(String) session.getAttribute("id");
+		if(user_id == null)
+			return "NOID";
+		int result = service.studyLikeOff(study_id, user_id);
+		return result == 1 ? "OK" : "NO";
+	}
+	
+	@GetMapping("study/likeOn_vue.do")
+	public String study_like_on(int study_id, HttpSession session)
+	{
+		String user_id=(String) session.getAttribute("id");
+		if(user_id == null)
+			return "NOID";
+		int result = service.studyLikeOn(study_id, user_id);
+		return result == 1 ? "OK" : "NO";
 	}
 
 	@PostMapping(value = "study/replyinsert.do")

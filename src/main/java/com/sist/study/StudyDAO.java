@@ -77,6 +77,20 @@ public class StudyDAO {
 		mapper.deleteTechsByStudyId(study_id);
 	}
 	
+	//스터디 좋아요
+	public boolean studyLiked(Map map) {
+		return mapper.studyLiked(map);
+	}
+	
+	public int studyLikeOn(int study_id, String user_id) {
+		return mapper.studyLikeOn(study_id, user_id);
+	}
+	
+	public int studyLikeOff(int study_id, String user_id) {
+		return mapper.studyLikeOff(study_id, user_id);
+	}
+	
+	
 	/* 댓글 관련 */
 	// 댓글 목록
 	public List<ReplyVO> getReplyList(int study_id){
