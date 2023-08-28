@@ -151,7 +151,7 @@
                             <tr>
                                 <th width="20%">모집마감일</th>
                                 <td width="80%">
-                                    <input type="date" name="deadline" class="iselect">
+                                    <input type="date" name="deadline" class="iselect text-center">
                                 </td>
                             </tr>
                             <tr>
@@ -179,20 +179,18 @@
                     <div class="col-sm-12">
                         <table class="table">
                             <tr>
-                                <th width="20%">제목</th>
-                                <td width=80%>
-                                    <input type=text name=title size=90 class="input-sm iselect">
+                                <td>
+                                    <input style="height: 50px; font-size: 20px; padding-left: 10px;" type=text name=title size=90 class="input-sm iselect" placeholder="제목을 입력하세요" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th width="20%">내용</th>
-                                <td width=80%>
+                                <td>
                                     <div id="editor" class="html-smart-editor">
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="text-center">
+                                <td class="text-center">
                                     <input type=submit value="글쓰기" class="btn btn-sm btn-primary">
                                     <input type=button value="취소" class="btn btn-sm btn-danger"
                                            onclick="javascript:history.back()">

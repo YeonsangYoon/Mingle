@@ -184,19 +184,18 @@
                     <div class="col-sm-12">
                         <table class="table">
                             <tr>
-                                <th width="20%">제목</th>
-                                <td width=80%>
-                                    <input type=text name=title size=90 class="input-sm iselect" value="${vo.title }">
+                                <td>
+                                   <input style="height: 50px; font-size: 20px; padding-left: 10px;" type=text
+                                   		name=title size=90 class="input-sm iselect" value="${vo.title }" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th width="20%">내용</th>
-                                <td width=80%>
+                                <td>
                                     <div id="editor" class="html-smart-editor">${vo.content}</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="text-center">
+                                <td class="text-center">
                                     <input type=submit value="수정" class="btn btn-sm btn-primary">
                                     <input type=button value="취소" class="btn btn-sm btn-danger"
                                            onclick="javascript:history.back()">
