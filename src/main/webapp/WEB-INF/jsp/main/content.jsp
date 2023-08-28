@@ -3,7 +3,7 @@
          pageEncoding="UTF-8" %>
 <!-- Hero Section Begin -->
 <section class="hero">
-    <div class="hero__slider owl-carousel">
+    <div class="hero__slider owl-carousel mt-20">
         <div class="container">
             <div class="hero__items set-bg" data-setbg="${pageContext.request.contextPath}/img/home/study-space.png">
                 <div class="row">

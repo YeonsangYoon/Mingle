@@ -45,22 +45,14 @@ public class SpaceController {
 	public String space_booking(@RequestParam Map<String, Object> params, int no, Model model, HttpSession session)
 	{
 		String user_id=(String)session.getAttribute("id");
-		if (user_id == null) {
-            // 로그인이 되지 않은 상태일 때 처리
-            String alertMessage = "해당 서비스는 로그인 후에 이용하실 수 있습니다.";
-            model.addAttribute("alertMessage", alertMessage);
-            return "redirect:/login_require.do";
-        } else {
-            // 로그인된 상태일 때 처리
-            MemberVO mvo = authservice.getMemberByID(user_id);
-            SpaceVO svo = service.spaceBookingData(no);
-            model.addAttribute("book", params);
-            model.addAttribute("vo", svo);
-            model.addAttribute("no", no);
-            model.addAttribute("mvo", mvo);
-            model.addAttribute("user_id", user_id);
-            return "space/booking";
-        }
+		MemberVO mvo = authservice.getMemberByID(user_id);
+		SpaceVO svo = service.spaceBookingData(no);
+		model.addAttribute("book", params);
+		model.addAttribute("vo", svo);
+		model.addAttribute("no", no);
+		model.addAttribute("mvo", mvo);
+		model.addAttribute("user_id", user_id);
+		return "space/booking";
 	}
 	
 	@PostMapping("space/submitbook.do")
