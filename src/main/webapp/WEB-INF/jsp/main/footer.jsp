@@ -7,7 +7,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <img src="${pageContext.request.contextPath}/img/mingle.png" alt="">
+                            <img src="${pageContext.request.contextPath}/img/m-white.png" alt="">
                         </div>
                         <p style="letter-spacing: 0.65px">스터디룸 공간 대여부터 스터디 모집,<br>멘토링 신청까지 다양한 학습 관련 <br> 서비스를 한 번에 해결할 수 있는 <br>원스톱 학습 사이트</p>
                     </div>
