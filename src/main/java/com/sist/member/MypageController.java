@@ -57,6 +57,12 @@ public class MypageController {
         model.addAttribute("content_jsp", "mentoring.jsp");
         return "member/mypage";
     }
+    
+    @GetMapping("mento_mentoring.do")
+    public String mento_mentoring(Model model){
+        model.addAttribute("content_jsp", "mento_mentoring.jsp");
+        return "member/mypage";
+    }
 
     @GetMapping("mento.do")
     public String mypage_mento(HttpSession session, Model model) throws Exception{

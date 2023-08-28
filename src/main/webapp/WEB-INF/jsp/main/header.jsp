@@ -51,7 +51,6 @@
                             	<ul class="dropdown">
                             		<li><a href="${pageContext.request.contextPath}/mento/mento_list.do">멘토 리스트</a></li>
                             		<li><a href="${pageContext.request.contextPath}/mento/mento_regist.do">멘토 등록</a></li>
-                            		<li><a href="${pageContext.request.contextPath}/mento/mento_mentoring.do">멘토 관리페이지</a></li>
                             	</ul>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/study/list.do">스터디 모집</a>

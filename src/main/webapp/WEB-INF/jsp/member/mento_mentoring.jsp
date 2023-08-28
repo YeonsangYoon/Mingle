@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="app-content mentoring-list">
     <div class="app-content-header">
-        <h1 class="app-content-headerText">멘토링 신청 목록</h1>
+        <h1 class="app-content-headerText">멘토링 접수 내역</h1>
     </div>
     <div class="app-content-actions">
         <input class="search-bar" placeholder="Search..." type="text">
@@ -66,14 +66,15 @@
             <div class="product-cell stock"><span class="cell-label">종료시간:</span>{{vo.end_time}}시</div>
             <div class="product-cell price">
             	<span class="cell-label">후기</span>
-            	<span class="status disabled">후기작성</span>
+            	<span class="status disabled">후기보기</span>
             </div>
             
             <div class="product-cell status-cell">
-            	<span class="cell-label">승인 상태:</span>
-			    <span class="status disabled" v-if="vo.state === 0">대기상태</span>
-			    <span class="status approve" v-else-if="vo.state === 1">승인</span>
-			    <span class="status active" v-else>거절</span>
+            	<span class="cell-label">승인 여부:</span>
+            	<div style="display: flex;" v-if="vo.state === 0">
+				    <span class="status approve" @click="approve()">승인</span>
+				    <span class="status active" @click="deny()">거절</span>
+			    </div>
             </div>
         </div>
         <!-- 내용 끝 -->
@@ -117,7 +118,7 @@ new Vue({
 	},
 	methods:{
 		setData: function () {
-            axios.get("/mingle/mento/mentoring_list.do", {
+            axios.get("/mingle/mento/mento_mentoring_list.do", {
                 params: {
                     column: this.column,
                     page: this.curpage
@@ -126,7 +127,7 @@ new Vue({
                 console.log(response.data)
                 this.mentoring_list = response.data
             })
-            axios.get("/mingle/mento/mentoring_page_vue.do", {
+            axios.get("/mingle/mento/mento_mentoring_page_vue.do", {
                 params: {
                     column: this.column,
                     page: this.curpage
@@ -182,13 +183,15 @@ new Vue({
             }).catch(error => {
                 console.log(error.response)
             })
+        },
+        approve:function(){
+        	
+        },
+        deny:function(){
+        	
         }
 		
 	}
 })
 
 </script>
-
-
-
-

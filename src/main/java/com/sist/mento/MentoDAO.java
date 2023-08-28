@@ -80,13 +80,6 @@ public class MentoDAO {
 		return mapper.getfollowCheckListByUserId(params);
 	}
 	
-	public List<CounselVO> MentoringListData(Map map){
-		return mapper.MentoringListData(map);
-	}
-	public int mentoringTotalPage(Map map) {
-		return mapper.mentoringTotalPage(map);
-	}
-	
 	
 	// 멘토 정보 업데이트, 삭제관련
 	public MentoVO getMentoByID(String id) {
@@ -96,6 +89,22 @@ public class MentoDAO {
 	public void mentoUpdate(MentoVO vo) {
 		mapper.mentoUpdate(vo);
 	}
+	
+	// 멘토링 리스트
+	public List<CounselVO> MentoringListData(Map map){
+		return mapper.MentoringListData(map);
+	}
+	public int mentoringTotalPage(Map map) {
+		return mapper.mentoringTotalPage(map);
+	}
+	
+	public List<CounselVO> mentoMentoringListData(Map map){
+		return mapper.mentoMentoringListData(map);
+	}
+	public int mentomentoringTotalPage(Map map) {
+		return mapper.mentomentoringTotalPage(map);
+	}
+	
 
 	// 팔로우 많은 3명
 	public List<MentoVO> getMostFollowedMento(){

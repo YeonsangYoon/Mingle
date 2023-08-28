@@ -135,6 +135,8 @@ public interface MentoMapper {
 	
 	public List<CounselVO> MentoringListData(Map map);
 	public int mentoringTotalPage(Map map);
+	public List<CounselVO> mentoMentoringListData(Map map);
+	public int mentomentoringTotalPage(Map map);
 
 	// 팔로우 많은 3명 순
 	@Select("SELECT A.*, ROWNUM FROM (" +

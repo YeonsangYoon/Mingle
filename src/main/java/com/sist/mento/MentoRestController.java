@@ -33,13 +33,6 @@ public class MentoRestController {
 		return obj.writeValueAsString(list);
 	}
 	
-	@GetMapping(value = "mento/mentoring_list.do", produces = "text/plain;charset=UTF-8")
-	public String mentoring_list_vue(int page, String column, HttpSession session) throws Exception{
-		String user_id = (String)session.getAttribute("id");
-		List<CounselVO> list=service.MentoringListData(page, column, user_id);
-		ObjectMapper obj= new ObjectMapper();
-		return obj.writeValueAsString(list);
-	}
 	
 	@GetMapping(value="mento/mento_page_vue.do", produces="text/plain;charset=UTF-8")
 	public String mento_page(int page, String column, String fd) throws Exception{
@@ -196,6 +189,89 @@ public class MentoRestController {
 	public String mentoDelete(int mento_no){
 		service.mentoDelete(mento_no);
 		return "Delete 완료";
+	}
+	
+	// 멘토링 리스트 관련
+	@GetMapping(value = "mento/mentoring_list.do", produces = "text/plain;charset=UTF-8")
+	public String mentoring_list_vue(int page, String column, HttpSession session) throws Exception{
+		
+		String user_id = (String)session.getAttribute("id");
+		List<CounselVO> list=service.MentoringListData(page, column, user_id);
+		ObjectMapper obj= new ObjectMapper();
+		return obj.writeValueAsString(list);
+	}
+	
+	@GetMapping(value="mento/mentoring_page_vue.do", produces="text/plain;charset=UTF-8")
+	public String mentoring_page(int page, String column, HttpSession session) throws Exception{
+		
+		String user_id = (String)session.getAttribute("id");
+		
+		Map map=new HashMap();
+		map.put("column", column);
+		map.put("user_id", user_id);
+		
+		int totalpage=service.mentoringTotalPage(map);
+		System.out.println(totalpage);
+		
+		final int BLOCK=5;
+		int startPage=((page-1)/BLOCK*BLOCK)+1;
+		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
+		
+		if(endPage>totalpage) {
+			endPage=totalpage;
+		}
+		
+		PageVO vo=new PageVO();
+		vo.setCurpage(page);
+		vo.setTotalpage(totalpage);
+		vo.setStartPage(startPage);
+		vo.setEndPage(endPage);
+		
+		ObjectMapper obj=new ObjectMapper();
+		String json= obj.writeValueAsString(vo);
+		return json;
+		
+	}
+	
+	@GetMapping(value = "mento/mento_mentoring_list.do", produces = "text/plain;charset=UTF-8")
+	public String mento_mentoring_list_vue(int page, String column, HttpSession session) throws Exception{
+		
+		String user_id = (String)session.getAttribute("id");
+		List<CounselVO> list=service.mentoMentoringListData(page, column, user_id);
+		ObjectMapper obj= new ObjectMapper();
+		return obj.writeValueAsString(list);
+	}
+	
+	@GetMapping(value="mento/mento_mentoring_page_vue.do", produces="text/plain;charset=UTF-8")
+	public String mento_mentoring_page(int page, String column, HttpSession session) throws Exception{
+		
+		String user_id = (String)session.getAttribute("id");
+		
+		Map map=new HashMap();
+		map.put("column", column);
+		map.put("user_id", user_id);
+		
+		int totalpage=service.mentomentoringTotalPage(map);
+		System.out.println(totalpage);
+		
+		final int BLOCK=5;
+		int startPage=((page-1)/BLOCK*BLOCK)+1;
+		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
+		
+		if(endPage>totalpage) {
+			endPage=totalpage;
+		}
+		
+		PageVO vo=new PageVO();
+		vo.setCurpage(page);
+		vo.setTotalpage(totalpage);
+		vo.setStartPage(startPage);
+		vo.setEndPage(endPage);
+		
+		ObjectMapper obj=new ObjectMapper();
+		String json= obj.writeValueAsString(vo);
+		return json;
+		
 	}
 	
 	

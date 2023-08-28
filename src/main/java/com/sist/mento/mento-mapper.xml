@@ -21,7 +21,7 @@
  	</select>
  	
  	<select id="mentoTotalPage" resultType="int" parameterType="hashmap">
- 		SELECT CEIL(COUNT(*)/20.0)
+ 		SELECT CEIL(COUNT(*)/12.0)
  		FROM mento_reg
  		<if test="column!='all'">
  				WHERE ${column} LIKE '%'||#{fd}||'%'
@@ -38,10 +38,10 @@
 	</select>
 	
 	<select id="MentoringListData" resultType="CounselVO" parameterType="hashmap">
- 		SELECT counsel_NO, regdate, uesr_id, mento_no, str_time, end_time, state, rep_state, content, hope_date, num
- 		FROM (SELECT counsel_NO, regdate, uesr_id, mento_no, str_time, end_time, state, rep_state, content, hope_date, rownum as num
- 		FROM (SELECT counsel_NO, regdate, uesr_id, mento_no, str_time, end_time, state, rep_state, content, hope_date 
- 		FROM mento_counsel WHERE user_id = #{user_id}
+ 		SELECT counsel_NO, TO_CHAR(regdate, 'yyyy-MM-dd') , user_id, mento_no, str_time, end_time, state, rep_state, content, hope_date, image, num
+ 		FROM (SELECT counsel_NO, regdate, user_id, mento_no, str_time, end_time, state, rep_state, content, hope_date, image, rownum as num
+ 		FROM (SELECT counsel_NO, mc.regdate, mc.user_id, mc.mento_no, str_time, end_time, state, rep_state, content, hope_date, mr.image
+ 		FROM mento_counsel mc, mento_reg mr WHERE mc.user_id = #{user_id} AND  mc.mento_no = mr.mento_no 
  			<if test="column!='all'">
  				ORDER BY #{column} counsel_no))
  			</if>
@@ -54,9 +54,27 @@
  	<select id="mentoringTotalPage" resultType="int" parameterType="hashmap">
  		SELECT CEIL(COUNT(*)/9.0)
  		FROM mento_counsel
- 		<if test="column!='all'">
- 				WHERE ${column} LIKE '%'||#{fd}||'%'
- 		</if>
+ 		WHERE user_id=#{user_id}
+ 	</select>
+ 	
+ 	<select id="mentoMentoringListData" resultType="CounselVO" parameterType="hashmap">
+ 		SELECT counsel_NO, TO_CHAR(regdate, 'yyyy-MM-dd') , user_id, mento_no, str_time, end_time, state, rep_state, content, hope_date, image, num
+ 		FROM (SELECT counsel_NO, regdate, user_id, mento_no, str_time, end_time, state, rep_state, content, hope_date, image, rownum as num
+ 		FROM (SELECT counsel_NO, mc.regdate, mc.user_id, mc.mento_no, str_time, end_time, state, rep_state, content, hope_date, mr.image
+ 		FROM mento_counsel mc, mento_reg mr WHERE mc.mento_no = #{mento_no} AND  mc.mento_no = mr.mento_no 
+ 			<if test="column!='all'">
+ 				ORDER BY #{column} counsel_no))
+ 			</if>
+ 			<if test="column=='all'">
+ 				ORDER BY hope_date DESC))
+ 			</if>
+ 		WHERE num BETWEEN #{start} AND #{end}
+ 	</select>
+ 	
+ 	<select id="mentomentoringTotalPage" resultType="int" parameterType="hashmap">
+ 		SELECT CEIL(COUNT(*)/9.0)
+ 		FROM mento_counsel
+ 		WHERE mento_no=#{mento_no}
  	</select>
 	
 	
