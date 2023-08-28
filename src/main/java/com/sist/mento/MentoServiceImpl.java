@@ -154,13 +154,9 @@ public class MentoServiceImpl implements MentoService{
     
   //멘토 정보 수정 및 삭제
   	@Override
-  	public String validateMento(String id) {
+  	public boolean validateMento(String id) {
   		MentoVO vo = dao.getMentoByID(id);
-  		String validateMento ="OKMento";
-  		if(vo == null) {
-  			validateMento ="NOMENTO";
-  		}
-  		return validateMento;
+  		return vo != null;
   	}
   	
   	@Override

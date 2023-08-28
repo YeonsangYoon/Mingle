@@ -36,7 +36,7 @@ public interface MentoService {
     public void mentoUpdate(MentoVO vo);
     public void mentoDelete(int mento_no);
     
-    public String validateMento(String id);
+    public boolean validateMento(String id);
     
     //멘토링 리스트
     public List<CounselVO> MentoringListData(int page, String column, String user_id);
