@@ -31,7 +31,7 @@
             <option value="dept">부서명</option>
         </select>
         <input type="text" class="input-sm" size=20 ref="fd" v-model="fd"  @keyup.enter="find()" >
-        <input type="button" value="검색" class="btn btn-sm btn-primary" @click="find()" >
+        <input type="button" value="검색" class="btn_mento btn-sm btn-primary" @click="find()" >
     </div>
     <!-- Search Section End -->
     <div class="container">
