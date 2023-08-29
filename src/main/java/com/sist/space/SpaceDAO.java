@@ -73,4 +73,14 @@ public class SpaceDAO {
     	return mapper.spaceTop3RecentReview();
     }
 
+    public List<SpaceVO> listingNearby(int region_code)
+    {
+    	return mapper.listingNearby(region_code);
+    }
+    
+    public int substrRegionCode (int space_id)
+    {
+    	return mapper.substrRegionCode(space_id);
+    }
+
 }

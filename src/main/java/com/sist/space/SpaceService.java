@@ -8,7 +8,9 @@ public interface SpaceService {
 
 		public List<SpaceVO> spaceDetailData(int space_id);
 		public List<BookingVO> getBookingListByIdAndRegdate(int space_id, String regdate);
-
+		public List<SpaceVO> listingNearby(int region_code);
+	    public int substrRegionCode (int space_id);
+		 
 		public List<ReviewVO> spaceReviewData(int space_id);
 
 		public SpaceVO spaceBookingData(int space_id);

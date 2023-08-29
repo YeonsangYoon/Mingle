@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -233,23 +235,33 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                <div class="space__item">
-                    <div class="space__item__pic set-bg" data-setbg="/mingle/img/product/product-2.jpg">
-                        <ul class="space__hover">
-                            <li><a href="#"><img src="/mingle/img/icon/heart.png" alt=""></a></li>
-                        </ul>
-                    </div>
-                    <div class="space__item__text">
-                        <ul>
-                            <li><a :href="'../space/detail.do?sno='+vo.space_id">{{vo.title}}</a></li>
-                            <li>서초동</li>
-                            <li>{{vo.price|currency}}원/시간</li>
-                            <li>최대 {{vo.max_guest}}인</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <c:forEach var="vo" items="${list }" varStatus="s">
+          <c:if test="${s.index<4 }">
+	        <div class="col-lg-3 col-md-6 col-sm-6">
+	            <div class="space__item">
+	                <div class="space__item__pic">
+	                    <a href="'../space/detail.do?space_id='+vo.space_id"><img src="${vo.poster }"></a>
+	                    <c:if test="${sessionScope.id !=null}">
+	                    <ul class="space__hover">
+	                      <li>
+	                          <i class="fa fa-2x fa-heart-o"></i>
+	                      </li>
+	                    </ul>
+	                    </c:if>
+	                </div>
+	
+	                <div class="space__item__text">
+	                    <ul>
+	                        <li><a href="../space/detail.do?space_id="+${vo.space_id }>${vo.title}</a></li>
+	                        <li><img src="/mingle/img/location_mark.svg"> ${vo.address}</li>
+	                        <li><span class="br700"><fmt:formatNumber value="${vo.price }"/></span>원/시간</li>
+	                        <li>최대 <b>${vo.max_guest}</b>인</li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+          </c:if>
+        </c:forEach>
         </div>
     </div>
 </section>

@@ -38,6 +38,11 @@ public interface SpaceMapper {
     		"WHERE SPACE_ID=#{space_id} AND TO_CHAR(BK_DATE, 'yyyy-fmmm-dd') = #{regdate}")
     public List<BookingVO> getBookingListByIdAndRegdate(@Param("space_id")int space_id, @Param("regdate")String regdate);
     
+    public List<SpaceVO> listingNearby(int region_code);
+    
+    @Select("SELECT SUBSTR(region_code, 1, 5) FROM space_list WHERE space_id=#{space_list}")
+    public int substrRegionCode (int space_id);
+    
     /* --------------------- zzim ------------------------*/
     // 좋아요
     @Select("SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS isFavorited FROM space_zzim WHERE user_id=#{user_id} AND space_id=#{space_id}")

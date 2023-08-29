@@ -1,6 +1,7 @@
 package com.sist.space;
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -35,9 +36,17 @@ public class SpaceController {
 	}
 	
 	@GetMapping("space/detail.do")
-	public String space_detail()
+	public String space_detail(int space_id, Model model)
 	{
-		
+		int region_code=service.substrRegionCode(space_id);
+		List<SpaceVO> list=service.listingNearby(region_code);
+		for(SpaceVO vo:list)
+		{
+			String[] addrarr=vo.getAddress().split(" ");
+			String addr=addrarr[0]+' '+addrarr[1];
+			vo.setAddress(addr);
+		}
+		model.addAttribute("list",list);
 		return "space/detail";
 	}
 	
@@ -82,7 +91,7 @@ public class SpaceController {
 		service.createReview(vo);
 		return "redirect:/space/detail.do?space_id="+params.get("space_id");
 	}
-
+	
 
 	
 	

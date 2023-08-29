@@ -85,5 +85,15 @@ public class SpaceServiceImpl implements SpaceService{
 	public List<ReviewVO> spaceTop3RecentReview() {
 		return dao.spaceTop3RecentReview();
 	}
+
+	@Override
+	public List<SpaceVO> listingNearby(int region_code) {
+		return dao.listingNearby(region_code);
+	}
+
+	@Override
+	public int substrRegionCode(int space_id) {
+		return dao.substrRegionCode(space_id);
+	}
 	
 }

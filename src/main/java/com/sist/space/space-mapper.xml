@@ -42,4 +42,22 @@
 		ORDER BY REGDATE DESC) B 
 		WHERE 3 >= ROWNUM
    </select>
+   
+   <select id="listingNearby" resultType="SpaceVO" parameterType="int">
+    SELECT A.*, ROWNUM
+		FROM 
+			(SELECT 
+				title, 
+				address, 
+				poster, 
+				price, 
+				max_guest, 
+				region_code, 
+				(SELECT COUNT(*) FROM SPACE_REVIEW SR WHERE SR.SPACE_ID = SL.SPACE_ID) AS REV_COUNT
+			FROM SPACE_LIST SL
+			WHERE SUBSTR(SL.REGION_CODE, 1, 5) = #{region_code}
+			ORDER BY REV_COUNT DESC
+			) A
+		WHERE 4 >= ROWNUM
+   </select>
  </mapper>
