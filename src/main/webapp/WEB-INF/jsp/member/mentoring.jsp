@@ -104,15 +104,15 @@
      <form class="mb-3" name="myform" id="myform" method="post" action="/mingle/mento/submitreview.do">
 		<fieldset>
 			<span class="text-bold">별점을 선택해주세요</span>
-			<input type="radio" name="ratings" value="5" id="rate1"><label
+			<input type="radio" name="star" value="5" id="rate1"><label
 				for="rate1">★</label>
-			<input type="radio" name="ratings" value="4" id="rate2"><label
+			<input type="radio" name="star" value="4" id="rate2"><label
 				for="rate2">★</label>
-			<input type="radio" name="ratings" value="3" id="rate3"><label
+			<input type="radio" name="star" value="3" id="rate3"><label
 				for="rate3">★</label>
-			<input type="radio" name="ratings" value="2" id="rate4"><label
+			<input type="radio" name="star" value="2" id="rate4"><label
 				for="rate4">★</label>
-			<input type="radio" name="ratings" value="1" id="rate5"><label
+			<input type="radio" name="star" value="1" id="rate5"><label
 				for="rate5">★</label>
 			<input type="hidden" name="counsel_no" :value="mentoring_list[selectedMento].counsel_no">
 			<input type="hidden" name="mento_no" :value="mentoring_list[selectedMento].mento_no">
