@@ -105,11 +105,15 @@
                                         <h5 class="d-inline">이용 후기 <span>{{cnt_rate}}</span>개 / 평균 평점 <span>{{avg_rate}}</span></h5>
                                         <button class="btn_review" @click="modalReview">리뷰 쓰기</button>
                                     </div>
-                                    <div class="space__details__tab__content__review" v-for="r in rList">
+                                    <div class="space__details__tab__content__review" v-for="(r,index) in rList">
                                         <strong class="guest_name">{{r.nickname}}
-                                            <span>
+                                         <span>
 								            <i v-for="star in r.ratings" class="fa fa-star"></i><i
                                                     v-for="star in 5 - r.ratings" class="fa fa-star-o"></i>
+								         </span>
+								         <span v-if="r.user_id === user_id">
+								           <img src="/mingle/img/cancel.png" 
+								           style="float:right;margin-left:10px;cursor:pointer;" @click="deleteReview(index)">
 								         </span>
                                         </strong>
                                         <pre class="content">{{r.content}}</pre>
@@ -201,7 +205,7 @@
 			            <span class="input-group-btn">
 			                <button class="btn btn-default" type="button" @click="decreaseQuantity">-</button>
 			            </span>
-			            <input type="number" class="form-control text-center" v-model="quantity" @change="updateTotalAmount">
+			            <input type="number" class="form-control text-center inwon" v-model="quantity" @change="updateTotalAmount" :min="space_detail.min_guest" :max="space_detail.max_guest">
 			            <span class="input-group-btn">
 			                <button class="btn btn-default" type="button" @click="increaseQuantity">+</button>
 			            </span>
@@ -270,7 +274,8 @@
             selectedMonth: 0,
             selectedDate: 0,
             quantity: 1,
-            totalAmount: 0
+            totalAmount: 0,
+            user_id:'${sessionScope.id}'
         },
         filters: {
             currency: function (value) {
@@ -297,6 +302,7 @@
                 this.averageR()
                 this.workingHour()
                 this.quantity = this.space_detail.min_guest;
+                this.updateTotalAmount();
                 if (window.kakao && window.kakao.maps) {
   			      setTimeout(() => { this.initMap() }, 1000)
                 } else {
@@ -350,7 +356,7 @@
                 document.head.appendChild(script)
             },
             popCalendar: function () {
-                isLoginUser($('#bookinfo').modal());
+                $('#bookinfo').modal();
             },
             modalReview: function () {
                 $('#reviewform').modal();
@@ -411,12 +417,9 @@
                 }
                 if(this.selectedTime.length === 2)
                 {
-	               this.totalAmount = this.space_detail.price * (this.selectedTime[1] - this.selectedTime[0]+1) * this.quantity;
+                	this.updateTotalAmount();
 	            } 
-                else 
-                {
-	               this.totalAmount = 0;
-	            }
+                
             },
             selected_day: function () {
                 let syear = document.querySelector('#calYear');
@@ -425,7 +428,6 @@
                 this.selectedYear = syear.innerText;
                 this.selectedMonth = smonth.innerText;
                 this.selectedDate = sdate.innerText;
-                console.log(this.selectedYear)
                 axios.get('/mingle/space/booking_data.do',{
                     params : {
                         space_id : this.space_id,
@@ -462,7 +464,14 @@
             updateTotalAmount: function () {
                 if (this.selectedTime.length === 2) {
                     const hoursCount = this.selectedTime[1] - this.selectedTime[0] + 1;
-                    this.totalAmount = this.space_detail.price * hoursCount * (2*this.quantity - this.space_detail.min_guest);
+                    if(this.quantity === this.space_detail.min_guest)
+                	{
+	               		this.totalAmount = this.space_detail.price * (hoursCount) * this.quantity;
+                	}
+                	else
+                	{
+	               		this.totalAmount = (this.space_detail.price * hoursCount * this.quantity) + this.space_detail.price * hoursCount * (this.quantity - this.space_detail.min_guest);
+                	}
                 } else {
                     this.totalAmount = 0;
                 }
@@ -471,6 +480,20 @@
             	window.location.href = '/mingle/space/booking.do?no='+this.space_id+'&year='+this.selectedYear
             			+'&month='+this.selectedMonth+'&date='+this.selectedDate+'&start='+this.selectedTime[0]+'&end='+this.selectedTime[1]
             	        +'&person='+this.quantity+'&amount='+this.totalAmount;
+            },
+            deleteReview: function(index) {
+            	console.log(this.rList[index].review_id)
+            	axios.post('/mingle/space/deletereview.do',null,{
+            		params:{
+            			review_id:this.rList[index].review_id,
+            			space_id:this.space_id
+            		}
+            	}).then(res=>{
+            		console.log(res.data)
+            		location.reload();
+            	}).catch(error=>{
+            		console.log(error.res)
+            	})
             }
         }
     })

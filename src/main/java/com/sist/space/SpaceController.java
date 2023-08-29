@@ -83,15 +83,38 @@ public class SpaceController {
 		return "redirect:/space/detail.do?space_id="+params.get("space_id");
 	}
 
-	@PostMapping("space/deletereview.do")
-	public String space_delete_review(int space_id, int review_id, HttpSession session)
-	{
-		String user_id=(String)session.getAttribute("id");
-		ReviewVO vo=new ReviewVO();
-		vo.setUser_id(user_id);
-		service.deleteReview(review_id);
-		return "redirect:/space/detail.do?space_id="+space_id;
-	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

@@ -3,37 +3,7 @@
  */
  
  'use strict'
-const number = document.getElementById('snumber');
-const arrowLeft = document.getElementById('sarrowLeft');
-const arrowRight = document.getElementById('sarrowRight');
-let minNumber = 1;
-let maxNumber = 10;
-number.addEventListener('change', function () {
-	if (Number(number.value) < minNumber) {
-		number.value = minNumber;
-	} else if (Number(number.value) > maxNumber) {
-		number.value = maxNumber;
-	}
-});
-arrowLeft.addEventListener('click', function () {
-	if (number.value === '' || number.value === null || number.value === undefined) {
-		number.value = 0;
-	} else if (Number(number.value) <= minNumber) {
-		number.value = minNumber;
-	} else {
-		number.value = Number(number.value) - 1;
-	}
-});
-arrowRight.addEventListener('click', function () {
-	if (number.value === '' || number.value === null || number.value === undefined) {
-		number.value = 0;
-	} else if (Number(number.value) >= maxNumber) {
-		number.value = maxNumber;
-	} else {
-		number.value = Number(number.value) + 1;
-	}
-});
-
+	
 function requestPay(t) {
 	let price = $('#totalAmount').text().replace('원','');
 	price = price.replace(',','');

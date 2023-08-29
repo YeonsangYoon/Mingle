@@ -73,6 +73,7 @@
                     <div class="space__item__text">
                         <ul>
                             <li><a :href="'../space/detail.do?space_id='+vo.space_id">{{vo.title}}</a></li>
+                            <li><img src="/mingle/img/location_mark.svg"> {{addr[index]}}</li>
                             <li><b>{{vo.price|currency}}</b>원/시간</li>
                             <li>최대 <b>{{vo.max_guest}}</b>인</li>
                         </ul>
@@ -111,7 +112,8 @@
             startPage: 0,
             endPage: 0,
             category: 'all',
-            user_id:'${sessionScope.id}'
+            user_id:'${sessionScope.id}',
+            addr:[]
         },
         filters: {
             currency: function (value) {
@@ -121,7 +123,6 @@
         },
         mounted: function () {
             this.spaceCategoryData(this.category)
-            console.log(this.user_id)
         },
         methods: {
             spaceCategoryData: function (category) {
@@ -139,6 +140,7 @@
                         this.totalpage = res.data.totalpage;
                         this.startPage = Math.trunc((this.curpage - 1) / 10) * 10 + 1;
                         this.endPage = (this.startPage + 9 > this.totalpage) ? this.totalpage : this.startPage + 9;
+                        this.extractaddr();
                     }).catch(error => {
                     console.log(error.res)
                 })
@@ -188,6 +190,13 @@
                         console.log(error.res)
                     });
                 }
+            },
+            extractaddr: function(){
+            	this.addr = [];
+            	for(let i = 0; i < this.space_list.length ; i++){
+            		let arr = this.space_list[i].address.split(' ');
+            		this.addr.push(arr[0] + ' ' + arr[1]);
+            	}
             }
         }
     })

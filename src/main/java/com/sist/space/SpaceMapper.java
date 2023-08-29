@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 public interface SpaceMapper {
     /* --------------------- List ------------------------*/
     public List<SpaceVO> spaceListByCategory(Map<String, Object> map);
-
+ 
     public int spaceTotalpage(@Param("category") String category);
 
     /* --------------------- Detail ------------------------*/

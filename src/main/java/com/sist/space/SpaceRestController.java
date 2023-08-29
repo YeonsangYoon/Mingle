@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -106,6 +107,10 @@ public class SpaceRestController {
 		return objectMapper.writeValueAsString(service.getBookingListByIdAndRegdate(space_id, regdate));
 	}
 
-	
+	@PostMapping("space/deletereview.do")
+	public void space_delete_review(int space_id, int review_id)
+	{
+		service.deleteReview(review_id);
+	}
 }
 
