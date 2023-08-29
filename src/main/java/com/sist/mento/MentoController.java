@@ -33,10 +33,4 @@ public class MentoController {
 	   model.addAttribute("mento_no", mentono);
 	   return "mento/mento_contact";
     }
-	
-	
-	
-	
-	
-
 }

@@ -10,11 +10,20 @@ import javax.servlet.http.HttpSession;
 public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     private static final String[] whiteList = {
             "/mingle/main/main.do",
-            "/mingle/mento/*",
-            "/mingle/space/*",
-            "/mingle/study/*",
             "/mingle/auth/*",
-            "/mingle/notice/*"
+            "/mingle/notice/*",
+            "/mingle/space/main.do",
+            "/mingle/space/detail.do",
+            "/mingle/space/list_vue.do",
+            "/mingle/space/detail_vue.do",
+            "/mingle/study/list.do",
+            "/mingle/study/detail.do",
+            "/mingle/study/list_vue.do",
+            "/mingle/mento/mento_list.do",
+            "/mingle/mento/mento_regist.do",
+            "/mingle/mento/mento_list_vue.do",
+            "/mingle/mento/mento_page_vue.do",
+            "/mingle/mento/mento_detail_vue.do"
     };
 
     private static final String[] authUrlsCanAccessAnyone = {
@@ -22,7 +31,8 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             "/mingle/auth/dupIdCheck.do",
             "/mingle/auth/dupNicknameCheck.do",
             "/mingle/auth/withdraw.do",
-            "/mingle/auth/admin_require.do"
+            "/mingle/auth/admin_require.do",
+            "/mingle/auth/islogin.do"
     };
 
     @Override

@@ -372,6 +372,18 @@ function sendMemberRegisterRequest(){
         })
 }
 
+function isLoginUser(callback){
+    $.get('/mingle/auth/islogin.do')
+        .done(function(result){
+            if(result !== 'LOGIN'){
+                $('#login-modal').modal();
+            }
+            else{
+                callback();
+            }
+        })
+}
+
 function openZipCodeSearch() {
     new daum.Postcode({
         oncomplete: function(data) {

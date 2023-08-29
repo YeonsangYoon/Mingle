@@ -159,7 +159,7 @@
     <div class="row pl-4 pr-4">
         <c:forEach items="${rList}" var="vo">
 			 <div class="col-sm-4">
-			    <div class="card space-card" onclick="location.href=/mingle/space/detail.do?space_id=${vo.space_id}">
+			    <div class="card space-card" onclick="location.href='/mingle/space/detail.do?space_id=${vo.space_id}'">
 			        <div class="boxhover">
 			            <div style="border-radius: 10px;">
 			                <img src="${vo.poster}" style="width:100%; height: 250px;">

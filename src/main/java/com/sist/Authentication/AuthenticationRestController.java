@@ -2,6 +2,7 @@ package com.sist.Authentication;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -77,5 +78,11 @@ public class AuthenticationRestController {
         else{
             return "FAIL";
         }
+    }
+
+    @GetMapping("islogin.do")
+    public String isLoginUser(HttpSession session){
+        String user_id = (String)session.getAttribute("id");
+        return (user_id != null) ? "LOGIN" : "NOLOGIN";
     }
 }
