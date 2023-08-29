@@ -2,6 +2,7 @@ package com.sist.member;
 
 import com.sist.Authentication.MemberVO;
 import com.sist.mento.MentoVO;
+import com.sist.space.BookingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -31,5 +32,9 @@ public class MemberDAO {
 
     public int getMemberTotalPage(){
         return mapper.getMemberTotalPage();
+    }
+
+    public List<BookingVO> getSpaceBookingListByUserName(Map<String, Object> params){
+        return mapper.getSpaceBookingListByUserName(params);
     }
 }

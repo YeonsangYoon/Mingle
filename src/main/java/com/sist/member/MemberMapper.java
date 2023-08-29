@@ -2,6 +2,7 @@ package com.sist.member;
 
 import com.sist.Authentication.MemberVO;
 import com.sist.mento.MentoVO;
+import com.sist.space.BookingVO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -43,4 +44,19 @@ public interface MemberMapper {
 
     @Select("SELECT CEIL(COUNT(*)/12.0) FROM MEMBER")
     public int getMemberTotalPage();
+
+    @Select("SELECT * FROM " +
+            "(" +
+            "   SELECT a.*, ROWNUM rn " +
+            "   FROM " +
+            "   ( " +
+            "       SELECT * " +
+            "       FROM SPACE_BOOKING " +
+            "       WHERE USER_ID = #{user_id} " +
+            "       ORDER BY BK_ID " +
+            "   ) a" +
+            "   WHERE ROWNUM <= #{end} " +
+            ") " +
+            "WHERE rn > #{start}")
+    public List<BookingVO> getSpaceBookingListByUserName(Map<String, Object> params);
 }

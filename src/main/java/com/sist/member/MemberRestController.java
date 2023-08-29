@@ -5,12 +5,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sist.Authentication.AuthenticationService;
 import com.sist.Authentication.MemberVO;
 import com.sist.mento.MentoVO;
+import com.sist.space.BookingVO;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.awt.print.Book;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +51,13 @@ public class MemberRestController {
             return "OK";
         }
         return "FAIL";
+    }
+
+    @GetMapping(value = "mypage/booking_list.do", produces = "application/json;charset=UTF-8")
+    public String getBookingListByUserId(String page, HttpSession session){
+        String user_id = (String) session.getAttribute("#id");
+        List<BookingVO> list = memberService.getBookingListByUserId(page, user_id);
+        return "OK";
     }
 
     @GetMapping(value = "admin/member_list.do", produces = "application/json;charset=UTF-8")

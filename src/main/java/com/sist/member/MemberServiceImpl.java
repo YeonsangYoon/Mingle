@@ -3,12 +3,15 @@ package com.sist.member;
 import com.sist.Authentication.MemberVO;
 import com.sist.mento.MentoDAO;
 import com.sist.mento.MentoVO;
+import com.sist.space.BookingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Primary
@@ -40,6 +43,18 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public int getMemberTotalPage() {
         return memberDao.getMemberTotalPage();
+    }
+
+
+    public List<BookingVO> getBookingListByUserId(String page, String user_id){
+        Map<String, Object> params = new HashMap<>();
+        params.put("user_id", user_id);
+
+        int curpage = (page == null) ? 1 : Integer.parseInt(page);
+        params.put("start", (curpage-1) * 10);
+        params.put("end", curpage * 10);
+
+        return memberDao.getSpaceBookingListByUserName(params);
     }
 
     @Override
