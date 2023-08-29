@@ -37,4 +37,8 @@ public class MemberDAO {
     public List<BookingVO> getSpaceBookingListByUserName(Map<String, Object> params){
         return mapper.getSpaceBookingListByUserName(params);
     }
+
+    public int getSpaceBookingTotalCount(String user_id){
+        return mapper.getSpaceBookingTotalCount(user_id);
+    }
 }

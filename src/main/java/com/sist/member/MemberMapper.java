@@ -50,8 +50,8 @@ public interface MemberMapper {
             "   SELECT a.*, ROWNUM rn " +
             "   FROM " +
             "   ( " +
-            "       SELECT * " +
-            "       FROM SPACE_BOOKING " +
+            "       SELECT BK_ID, BK_DATE, STARTSAT, ENDSAT, PERSON, PURPOSE, BOOKINGREQUEST, USER_ID, SB.SPACE_ID, AMOUNT, TITLE, CATEGORY, POSTER" +
+            "       FROM SPACE_BOOKING SB, SPACE_LIST SL " +
             "       WHERE USER_ID = #{user_id} " +
             "       ORDER BY BK_ID " +
             "   ) a" +
@@ -59,4 +59,7 @@ public interface MemberMapper {
             ") " +
             "WHERE rn > #{start}")
     public List<BookingVO> getSpaceBookingListByUserName(Map<String, Object> params);
+
+    @Select("SELECT COUNT(*) FROM SPACE_BOOKING WHERE USER_ID = #{user_id}")
+    public int getSpaceBookingTotalCount(@Param("user_id")String user_id);
 }

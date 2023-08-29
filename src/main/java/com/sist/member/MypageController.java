@@ -6,6 +6,7 @@ import com.sist.Authentication.MemberVO;
 import com.sist.mento.MentoService;
 import com.sist.mento.MentoVO;
 
+import com.sist.space.BookingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -23,6 +25,7 @@ import javax.servlet.http.HttpSession;
 public class MypageController {
     private AuthenticationService authService;
     private MentoService mentoService;
+    private MemberService memberService;
     private ObjectMapper objectMapper;
 
     private void addIsMentor(String user_id, Model model){
@@ -30,9 +33,10 @@ public class MypageController {
     }
 
     @Autowired
-    public MypageController(AuthenticationService authService, MentoService mentoService){
+    public MypageController(AuthenticationService authService, MentoService mentoService, MemberService memberService){
         this.authService = authService;
         this.mentoService = mentoService;
+        this.memberService = memberService;
         objectMapper = new ObjectMapper();
     }
 
@@ -49,10 +53,19 @@ public class MypageController {
     }
 
     @GetMapping("space.do")
-    public String mypage_space(Model model, HttpSession session){
+    public String mypage_space(String page, Model model, HttpSession session){
         String user_id = (String)session.getAttribute("id");
         addIsMentor(user_id, model);
+
+        int curpage = (page==null) ? 1 : Integer.parseInt(page);
+        int totalpage = memberService.getSpaceBookingTotalPage(user_id);
+
         model.addAttribute("content_jsp", "space.jsp");
+        model.addAttribute("bList", memberService.getBookingListByUserId(page, user_id));
+        model.addAttribute("totalpage", totalpage);
+        model.addAttribute("curpage", curpage);
+        model.addAttribute("startpage", (curpage-1)/5*5+1);
+        model.addAttribute("endpage", Math.min(totalpage, (curpage-1)/5*5+5));
         return "member/mypage";
     }
 

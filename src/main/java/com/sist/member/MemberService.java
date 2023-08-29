@@ -18,4 +18,6 @@ public interface MemberService {
     public int deleteMentoByAdmin(int mento_no);
 
     public List<BookingVO> getBookingListByUserId(String page, String user_id);
+
+    public int getSpaceBookingTotalPage(String user_id);
 }

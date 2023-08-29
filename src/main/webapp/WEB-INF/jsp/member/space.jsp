@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="app-content">
     <div class="app-content-header">
         <h1 class="app-content-headerText">공간 대여 목록</h1>
@@ -16,29 +18,69 @@
     </div>
     <div class="products-area-wrapper tableView">
         <div class="products-header">
-            <div class="product-cell image">공간이름</div>
+            <div class="product-cell image" style="flex: 2">공간이름</div>
             <div class="product-cell category">카테고리</div>
             <div class="product-cell status-cell">예약일</div>
             <div class="product-cell sales">시간</div>
-            <div class="product-cell stock">인원</div>
-            <div class="product-cell price">총 금액<</div>
+            <div class="product-cell stock" style="flex: 0.5">인원</div>
+            <div class="product-cell price" style="flex: 0.5">총 금액</div>
         </div>
+        <c:forEach items="${bList}" var="vo">
         <div class="products-row">
-            <button class="cell-more-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-            </button>
-            <div class="product-cell image">
-                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="product">
-                <span>Ocean</span>
+            <div class="product-cell image" style="flex: 2">
+                <img src=${vo.poster} alt="product">
+                <span>${vo.title}</span>
             </div>
-            <div class="product-cell category"><span class="cell-label">카테고리</span>Furniture</div>
+            <div class="product-cell category">
+                <span class="cell-label">카테고리</span>
+                ${vo.category}
+            </div>
             <div class="product-cell status-cell">
                 <span class="cell-label">예약일</span>
-                <span class="status active">Active</span>
+                <fmt:formatDate value="${vo.bk_date}" pattern="yyyy.MM.dd"/>
             </div>
-            <div class="product-cell sales"><span class="cell-label">시간</span>11</div>
-            <div class="product-cell stock"><span class="cell-label">인원</span>36</div>
-            <div class="product-cell price"><span class="cell-label">총 금액</span>$560</div>
+            <div class="product-cell sales">
+                <span class="cell-label">시간</span>
+                ${vo.startsat}시 ~ ${vo.endsat}시
+            </div>
+            <div class="product-cell stock" style="flex: 0.5">
+                <span class="cell-label">인원</span>
+                ${vo.person}
+            </div>
+            <div class="product-cell price" style="flex: 0.5">
+                <span class="cell-label">총 금액</span>
+                <fmt:formatNumber value="${vo.amount }" pattern="#,###" />원
+            </div>
         </div>
+        </c:forEach>
+    </div>
+    <div class="product__pagination">
+        <ul>
+            <li>
+                <span onclick="movePage(1)"><i class="fa fa-angle-double-left"></i></span>
+            </li>
+            <li>
+                <span onclick="movePage(${startpage-1})"><i class="fa fa-angle-left"></i></span>
+            </li>
+            <c:forEach begin="${startpage}" end="${endpage}" var="i">
+            <li>
+                <span onclick="movePage(${i})">${i}</span>
+            </li>
+            </c:forEach>
+            <li>
+                <span onclick="movePage(${endpage + 1})"><i class="fa fa-angle-right"></i></span>
+            </li>
+            <li>
+                <span onclick="movePage(${totalpage})"><i class="fa fa-angle-double-right"></i></span>
+            </li>
+        </ul>
     </div>
 </div>
+<script>
+    function movePage(page){
+        if(page < 1 || page > ${totalpage}){
+            return;
+        }
+        location.href = '/mingle/mypage/space.do?page=' + page;
+    }
+</script>

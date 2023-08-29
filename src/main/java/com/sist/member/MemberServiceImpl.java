@@ -57,6 +57,11 @@ public class MemberServiceImpl implements MemberService{
         return memberDao.getSpaceBookingListByUserName(params);
     }
 
+    public int getSpaceBookingTotalPage(String user_id){
+        int count = memberDao.getSpaceBookingTotalCount(user_id);
+        return (int)(Math.ceil(count/10.0));
+    }
+
     @Override
     @Transactional
     public int deleteMentoByAdmin(int mento_no) {
