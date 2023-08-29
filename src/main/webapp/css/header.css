@@ -7,3 +7,15 @@
 .header .fa:before{
 	margin-right: 10px;
 }
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 500; /* 조절해보세요 */
+}
+
+.hero__slider {
+	padding-top: 120px;
+}
