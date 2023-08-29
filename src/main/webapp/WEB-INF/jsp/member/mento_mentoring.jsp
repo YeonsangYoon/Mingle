@@ -63,7 +63,7 @@
             
             <div ></div>
             
-            <div class="product-cell category"><span class="cell-label">멘티 아이디:</span>{{vo.user_id}}.번</div>
+            <div class="product-cell category"><span class="cell-label">멘티 아이디:</span>{{vo.user_id}}</div>
             <div class="product-cell sales"><span class="cell-label">시작시간:</span>{{vo.str_time}}시</div>
             <div class="product-cell stock"><span class="cell-label">종료시간:</span>{{vo.end_time}}시</div>
             <div class="product-cell price">

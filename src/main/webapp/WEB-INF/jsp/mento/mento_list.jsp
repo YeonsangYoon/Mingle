@@ -74,7 +74,7 @@
                             <div class="follow mento_list_info" :class="{'active' : mento_list[index].followed}"
                                  @click="followMento(index)">팔로워 &nbsp; {{vo.follow}}
                             </div>
-                            <div class="star mento_list_info">별점 &nbsp; {{vo.avg_star}}
+                            <div class="star mento_list_info">별점 &nbsp; {{vo.avg_star.toFixed(1)}}
                             </div>
                         </div>
                     </div>
