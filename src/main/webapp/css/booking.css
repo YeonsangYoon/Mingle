@@ -404,3 +404,9 @@
     font-weight: 700;
     font-size:18px;
 }
+
+.inwon::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}

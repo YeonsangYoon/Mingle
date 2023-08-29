@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- Hero Section Begin -->
 <section class="hero">
     <div class="hero__slider owl-carousel mt-20">
@@ -111,7 +112,7 @@
     <div class="row" style="padding: 0 20px;">
         <c:forEach items="${mList}" var="vo">
             <div class="col-sm-4">
-                <div class="card open-mentoring-card " style="display: block;">
+                <div class="card open-mentoring-card">
                     <div class="boxhover">
                         <div class="card-content card-content-padding">
                             <div class="open_mentoring_card__jobtype">${vo.job_cat}</div>
@@ -179,7 +180,7 @@
 								    </c:choose>
 								  </c:forEach>
 			                      <div>
-			                        ${vo.price }원/시간
+			                        <span class="br700"><fmt:formatNumber value="${vo.price }"/></span>원/시간
 			                      </div>
 			                    </div>
 			                </div>
