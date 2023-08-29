@@ -74,17 +74,8 @@
                 </ul>
                 <div>
                     <div class="shop__product__option__right" style="text-align: right">
-<!--                     
-						<p>
-						<a href="javascript:recentlist();">최신순</a>|
-						<a href="javascript:pricelist();">인기순</a>|
-						<a href="javascript:pricelistdesc();">댓글순</a>
-						</p>
- -->						
-<!-- 					<input id="toggle-event" type="checkbox" data-toggle="toggle" data-size="sm">
-					<input id="hidden-toggle" type="checkbox" v-model="isClosed" @change="send"> -->
 					
-					<!-- 모집 토글 -->
+					<!-- 모집중 토글 -->
 					<div class="toggle-container" @click="toggleButton()" onclick="toggleButton()">
 					  <div class="toggle-switch"></div>
 					  <span class="toggle-text">모집중만 보기</span>
@@ -300,6 +291,4 @@
             }
         }
     })
-
-    
 </script>
