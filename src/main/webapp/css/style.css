@@ -322,6 +322,7 @@ a:hover{
 .header__top {
 	background: #704DE4;
 	padding: 10px 0;
+	position: sticky;
 }
 
 .header__top__left p {
@@ -2062,7 +2063,6 @@ a:hover{
 -----------------------*/
 
 .breadcrumb-option {
-	background: #F1F4F9;
 	padding: 40px 0;
 }
 
