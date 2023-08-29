@@ -3,8 +3,10 @@ package com.sist.member;
 import com.sist.Authentication.MemberVO;
 import com.sist.mento.MentoVO;
 import com.sist.space.BookingVO;
+import com.sist.study.StudyVO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.security.core.parameters.P;
 
 import java.util.List;
 import java.util.Map;
@@ -63,4 +65,20 @@ public interface MemberMapper {
 
     @Select("SELECT COUNT(*) FROM SPACE_BOOKING WHERE USER_ID = #{user_id}")
     public int getSpaceBookingTotalCount(@Param("user_id")String user_id);
+
+    @Select("SELECT * FROM " +
+            "(" +
+            "   SELECT A.*, ROWNUM rn " +
+            "   FROM " +
+            "   (" +
+            "       SELECT *" +
+            "       FROM STUDY " +
+            "       WHERE USER_ID = #{user_id} " +
+            "   ) A " +
+            "   WHERE ROWNUM <= #{end} " +
+            ") " +
+            "WHERE rn > #{start}")
+    public List<StudyVO> getStudyListByUserId(@Param("user_id")String user_id, @Param("start")int start, @Param("end")int end);
+    @Select("SELECT COUNT(*) FROM STUDY WHERE USER_ID = #{user_id}")
+    public int getStudyTotalCountByUserId(@Param("user_id")String user_id);
 }

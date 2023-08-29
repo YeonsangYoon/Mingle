@@ -3,6 +3,7 @@ package com.sist.member;
 import com.sist.Authentication.MemberVO;
 import com.sist.mento.MentoVO;
 import com.sist.space.BookingVO;
+import com.sist.study.StudyVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -37,8 +38,14 @@ public class MemberDAO {
     public List<BookingVO> getSpaceBookingListByUserName(Map<String, Object> params){
         return mapper.getSpaceBookingListByUserName(params);
     }
-
     public int getSpaceBookingTotalCount(String user_id){
         return mapper.getSpaceBookingTotalCount(user_id);
+    }
+
+    public List<StudyVO> getStudyListByUserId(String user_id, int start, int end){
+        return mapper.getStudyListByUserId(user_id, start, end);
+    }
+    public int getStudyTotalCountByUserId(String user_id){
+        return mapper.getStudyTotalCountByUserId(user_id);
     }
 }

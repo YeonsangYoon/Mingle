@@ -4,6 +4,7 @@ import com.sist.Authentication.MemberVO;
 import com.sist.mento.MentoDAO;
 import com.sist.mento.MentoVO;
 import com.sist.space.BookingVO;
+import com.sist.study.StudyVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -70,5 +71,21 @@ public class MemberServiceImpl implements MemberService{
         mentoDao.deleteMentoReviewByMentoNo(mento_no);
         mentoDao.deleteMentoFollowByMentoNo(mento_no);
         return mentoDao.deleteMentoByMentoNo(mento_no);
+    }
+
+    @Override
+    public Map<String, Object> getStudyListByUserId(String page, String user_id) {
+        int curpage = 1;
+        try{
+            curpage = Integer.parseInt(page);
+        } catch (NullPointerException | NumberFormatException e){}
+
+        int totalpage = (int)(Math.ceil(memberDao.getStudyTotalCountByUserId(user_id) / 10.0));
+        List<StudyVO> list = memberDao.getStudyListByUserId(user_id, (curpage-1)*10, curpage*10);
+
+        Map<String, Object> ret = new HashMap<>();
+        ret.put("totalpage", totalpage);
+        ret.put("list", list);
+        return ret;
     }
 }

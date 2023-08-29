@@ -11,7 +11,7 @@
 
 (function ($) {
     const header = document.querySelector('.header');
-    const scrollThreshold = 80; // 일정 스크롤 양 (예: 200px)
+    const scrollThreshold = 130; // 일정 스크롤 양 (예: 200px)
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > scrollThreshold) {

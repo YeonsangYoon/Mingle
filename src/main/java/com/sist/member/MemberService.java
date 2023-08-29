@@ -20,4 +20,6 @@ public interface MemberService {
     public List<BookingVO> getBookingListByUserId(String page, String user_id);
 
     public int getSpaceBookingTotalPage(String user_id);
+
+    public Map<String, Object> getStudyListByUserId(String page, String user_id);
 }

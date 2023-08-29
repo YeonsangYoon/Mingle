@@ -6,6 +6,7 @@ import com.sist.Authentication.AuthenticationService;
 import com.sist.Authentication.MemberVO;
 import com.sist.mento.MentoVO;
 import com.sist.space.BookingVO;
+import com.sist.study.StudyVO;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
@@ -55,9 +56,16 @@ public class MemberRestController {
 
     @GetMapping(value = "mypage/booking_list.do", produces = "application/json;charset=UTF-8")
     public String getBookingListByUserId(String page, HttpSession session){
-        String user_id = (String) session.getAttribute("#id");
+        String user_id = (String) session.getAttribute("id");
         List<BookingVO> list = memberService.getBookingListByUserId(page, user_id);
         return "OK";
+    }
+
+    @GetMapping(value = "mypage/mystudy.do", produces = "application/json;charset=UTF-8")
+    public String getMyStudyData(String page, HttpSession session) throws JsonProcessingException {
+        String user_id = (String)session.getAttribute("id");
+        Map<String, Object> data = memberService.getStudyListByUserId(page, user_id);
+        return objectMapper.writeValueAsString(data);
     }
 
     @GetMapping(value = "admin/member_list.do", produces = "application/json;charset=UTF-8")
@@ -95,4 +103,5 @@ public class MemberRestController {
         int result = memberService.deleteMentoByAdmin(mento_no);
         return (result == 1) ? "OK" : "NO";
     }
+
 }

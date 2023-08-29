@@ -68,7 +68,14 @@
                    href="${pageContext.request.contextPath}/study/detail.do?study_id=${vo.study_id}"
                    style="width: 254px;">
                     <li>
-                        <span class="deadline-bage">마감 ${dayDiff[i.index]}일전</span>
+                        <span class="deadline-bage">
+                            <c:if test="${dayDiff[i.index] > 0}">
+                                마감 ${dayDiff[i.index]}일전
+                            </c:if>
+                            <c:if test="${dayDiff[i.index] == 0}">
+                                오늘 마감
+                            </c:if>
+                        </span>
                         <img class="studyItem_bookmark__2YtKX"
                              src="${pageContext.request.contextPath}/img/bookmark-off.png"
                              alt="bookmark">

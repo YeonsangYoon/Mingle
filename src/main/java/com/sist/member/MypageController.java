@@ -70,7 +70,12 @@ public class MypageController {
     }
 
     @GetMapping("study.do")
-    public String mypage_study(Model model, HttpSession session){
+    public String mypage_study(String page, Model model, HttpSession session){
+        try{
+            model.addAttribute("curpage", Integer.parseInt(page));
+        } catch (NullPointerException | NumberFormatException e){
+            model.addAttribute("curpage", 1);
+        }
         String user_id = (String)session.getAttribute("id");
         addIsMentor(user_id, model);
         model.addAttribute("content_jsp", "study.jsp");
