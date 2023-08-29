@@ -20,7 +20,7 @@
 <!-- Breadcrumb Section End -->
 
 <!-- Blog Section Begin -->
-<section class="blog spad container-mento">
+<section class="blog container-mento mt-3">
 
     <!-- Search Section Begin -->
     <div class="text-center" style="display:flex; justify-content: center; padding-bottom: 50px " v-model="column">

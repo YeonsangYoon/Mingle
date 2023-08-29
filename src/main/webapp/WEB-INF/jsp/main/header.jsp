@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div style="border-bottom: 2px solid #d7d7d7;">
+        <div style="border-bottom: 2px solid #f6f6f6;">
             <div class="container header2">
                 <div class="row">
                     <div class="col-lg-3 col-md-3">

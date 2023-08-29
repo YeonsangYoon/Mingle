@@ -157,6 +157,7 @@
 
 .modal{
 	overflow: visible;
+    z-index: 1000!important;
 }
 
 .login-require{

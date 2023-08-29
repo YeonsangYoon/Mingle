@@ -10,6 +10,18 @@
 'use strict';
 
 (function ($) {
+    const header = document.querySelector('.header');
+    const scrollThreshold = 80; // 일정 스크롤 양 (예: 200px)
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > scrollThreshold) {
+            header.style.position = 'fixed'; // 헤더를 fixed로 변경
+            header.style.top = '0';
+        } else {
+            header.style.position = 'relative'; // 헤더를 원래 상태로 복원
+            header.style.top = 'auto';
+        }
+    });
 
     /*------------------
         Preloader

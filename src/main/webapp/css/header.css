@@ -9,13 +9,16 @@
 }
 
 .header {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 500; /* 조절해보세요 */
+    z-index: 2; /* 조절해보세요 */
+    transition: top 0.3s ease, position 0.3s ease; /* 부드러운 변화를 위한 트랜지션 추가 */
 }
 
 .hero__slider {
-	padding-top: 120px;
+}
+
+.blocker{
+    z-index: 4!important;
 }

@@ -166,7 +166,7 @@
 }
 
 .sticky-pc-menu-top {
-    top: calc(64px + 2rem);
+    top: calc(64px + 5rem);
     transition: margin-top .3s,top .3s;
 }
 
