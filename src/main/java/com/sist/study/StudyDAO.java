@@ -123,4 +123,8 @@ public class StudyDAO {
 	public List<StudyVO> getFourDeadlineStudy(){
 		return mapper.getFourDeadlineStudy();
 	}
+
+	public List<Integer> getReplyListByUserId(String user_id){
+		return mapper.getReplyListByUserId(user_id);
+	}
 }

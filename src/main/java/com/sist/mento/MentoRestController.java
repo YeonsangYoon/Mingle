@@ -107,54 +107,42 @@ public class MentoRestController {
 		return "OK";
 	}
 
-	//태그 편집
-	@GetMapping(value="mento/mento_edit_data.do", produces="text/plain;charset=UTF-8")
-	public String mento_edit_data() throws Exception{
-		List<MentoVO> list=service.mentoEdit();
-		
-		for(MentoVO vo:list) {
-			Map map=new HashMap();
-			
-			String intro=vo.getIntro().replaceAll("(<p>)", "");
-			intro=intro.replaceAll("(</p>)", "");
-			intro=intro.replaceAll("(<br>)", "");
-			
-			String career=vo.getCareer().replaceAll("(<p>)", "");
-			career=career.replaceAll("(</p>)", "");
-			career=career.replaceAll("(<br>)", "");
-			
-			int mento_no=vo.getMento_no();
-			
-			System.out.println(vo.getMento_no());
-			System.out.println(intro);
-			
-			System.out.println("---------------");
-			map.put("intro", intro);
-			map.put("mento_no", mento_no);
-			map.put("career", career);
-			
-			service.mentoEditUpdate(map);
-			System.out.println("---------------");
-			
-		}
-		/*
-		 * 
-		 * mentoEdit:function(){
-				axios.get("http://localhost/mingle/mento/mento_edit_data.do",{
-    				params:{
-    				
-    				}
-    			}).then(response=>{
-    				console.log(response.data)
-    			})
-			}
-		 */
-		
-		ObjectMapper mapper=new ObjectMapper();
-		
-		return "占쏙옙占쏙옙 占쏙옙占쏙옙";
-		
-	}
+//	//태그 편집
+//	@GetMapping(value="mento/mento_edit_data.do", produces="text/plain;charset=UTF-8")
+//	public String mento_edit_data() throws Exception{
+//		List<MentoVO> list=service.mentoEdit();
+//
+//		for(MentoVO vo:list) {
+//			Map map=new HashMap();
+//
+//			String intro=vo.getIntro().replaceAll("(<p>)", "");
+//			intro=intro.replaceAll("(</p>)", "");
+//			intro=intro.replaceAll("(<br>)", "");
+//
+//			String career=vo.getCareer().replaceAll("(<p>)", "");
+//			career=career.replaceAll("(</p>)", "");
+//			career=career.replaceAll("(<br>)", "");
+//
+//			int mento_no=vo.getMento_no();
+//
+//			System.out.println(vo.getMento_no());
+//			System.out.println(intro);
+//
+//			System.out.println("---------------");
+//			map.put("intro", intro);
+//			map.put("mento_no", mento_no);
+//			map.put("career", career);
+//
+//			service.mentoEditUpdate(map);
+//			System.out.println("---------------");
+//
+//		}
+//
+//		ObjectMapper mapper=new ObjectMapper();
+//
+//		return "占쏙옙占쏙옙 占쏙옙占쏙옙";
+//
+//	}
 
 	// 멘토 팔로우 관련
 	@PostMapping("mento/follow.do")
@@ -173,15 +161,15 @@ public class MentoRestController {
 	}
 	
 	//멘토 수정 및 삭제 
-	@PostMapping(value = "mento/update_mento.do", produces = "text/plain;charset=UTF-8")
+	@PostMapping(value = "mento/update_mento.do", produces = "application/json;charset=UTF-8")
 	public String mentoUpdate(MentoVO vo, HttpSession session){
 		String user_id = (String)session.getAttribute("id");
 		vo.setUser_id(user_id);
 		service.mentoUpdate(vo);
-		return "update 완료";
+		return "Update 완료";
 	}
 	
-	@PostMapping(value = "mento/delete_mento.do", produces = "text/plain;charset=UTF-8")
+	@PostMapping(value = "mento/delete_mento.do", produces = "application/json;charset=UTF-8")
 	public String mentoDelete(int mento_no){
 		service.mentoDelete(mento_no);
 		return "Delete 완료";

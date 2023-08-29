@@ -53,6 +53,7 @@ public interface MemberMapper {
             "       SELECT BK_ID, BK_DATE, STARTSAT, ENDSAT, PERSON, PURPOSE, BOOKINGREQUEST, USER_ID, SB.SPACE_ID, AMOUNT, TITLE, CATEGORY, POSTER" +
             "       FROM SPACE_BOOKING SB, SPACE_LIST SL " +
             "       WHERE USER_ID = #{user_id} " +
+            "           AND SB.SPACE_ID = SL.SPACE_ID " +
             "       ORDER BY BK_ID " +
             "   ) a" +
             "   WHERE ROWNUM <= #{end} " +

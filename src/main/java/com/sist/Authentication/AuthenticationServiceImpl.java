@@ -1,5 +1,6 @@
 package com.sist.Authentication;
 
+import com.sist.study.StudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,12 +15,14 @@ import java.util.Map;
 @Primary
 public class AuthenticationServiceImpl implements AuthenticationService {
     private AuthenticationDAO dao;
+    private StudyService studyService;
     private BCryptPasswordEncoder pwdEncoder;
 
     @Autowired
-    AuthenticationServiceImpl(AuthenticationDAO dao, BCryptPasswordEncoder encoder){
+    AuthenticationServiceImpl(AuthenticationDAO dao, StudyService studyService, BCryptPasswordEncoder encoder){
         this.dao = dao;
         this.pwdEncoder = encoder;
+        this.studyService = studyService;
     }
 
     @Override
@@ -114,6 +117,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         dao.deleteStudyTech(user_id);
         dao.deleteStudyLike(user_id);
         dao.deleteStudyReply(user_id);
+
+        List<Integer> replyList = studyService.getReplyListByUserId(user_id);
+        for(int rid : replyList){
+            studyService.deleteReply(rid);
+        }
+
         dao.deleteStudy(user_id);
 
         // 공간 삭제

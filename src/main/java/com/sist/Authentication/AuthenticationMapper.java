@@ -59,8 +59,7 @@ public interface AuthenticationMapper {
     public void deleteStudyLike(@Param("user_id")String user_id); // 스터디 좋아요 삭제
 
     @Delete("DELETE STUDY_REPLY " +
-            "WHERE USER_ID = #{user_id} " +
-            "OR STUDY_ID IN (SELECT STUDY_ID FROM STUDY S WHERE S.USER_ID = #{user_id})")
+            "WHERE STUDY_ID IN (SELECT STUDY_ID FROM STUDY S WHERE S.USER_ID = #{user_id})")
     public void deleteStudyReply(@Param("user_id")String user_id); // 스터디 리뷰 삭제
 
     @Delete("DELETE STUDY WHERE USER_ID = #{user_id}")

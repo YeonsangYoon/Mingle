@@ -721,6 +721,8 @@
 .mento-info{
     margin: 0 auto;
     overflow-y: scroll;
+    width: 100%;
+    padding-left: 50px;
 }
 .mento-info input{
     padding-left: 10px;

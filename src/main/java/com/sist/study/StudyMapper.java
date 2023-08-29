@@ -146,4 +146,7 @@ public interface StudyMapper {
 
 	// 멘토링
 	public List<StudyVO> getFourDeadlineStudy();
+
+	@Select("SELECT REPLY_ID FROM STUDY_REPLY WHERE USER_ID = #{user_id}")
+	public List<Integer> getReplyListByUserId(@Param("user_id")String user_id);
 }

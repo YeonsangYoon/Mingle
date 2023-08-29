@@ -28,4 +28,6 @@ public interface StudyService {
 
 	// 마감 임박 관련
 	public List<StudyVO> getFourDeadlineStudy();
+
+	public List<Integer> getReplyListByUserId(String user_id);
 }

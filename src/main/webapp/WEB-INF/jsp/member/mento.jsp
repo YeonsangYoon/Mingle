@@ -109,7 +109,6 @@
                         image: this.mento.image
                     }
                 }).then(response => {
-                    console.log(response.data)
                     alert(response.data)
                     location.href = "../mento/mento_list.do"
                 })

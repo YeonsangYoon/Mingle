@@ -314,4 +314,9 @@ public class StudyServiceImpl implements StudyService{
 		List<StudyVO> list = dao.getFourDeadlineStudy();
 		return list.subList(0, 4);
 	}
+
+	@Override
+	public List<Integer> getReplyListByUserId(String user_id) {
+		return dao.getReplyListByUserId(user_id);
+	}
 }
