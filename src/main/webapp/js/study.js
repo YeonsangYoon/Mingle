@@ -3,7 +3,7 @@ $('.label.ui.dropdown')
 
 $('#uibutton').on('click', function () {
     $('.ui.dropdown')
-        .dropdown('restore defaults')
+        .dropdown('clear')
 })
 
 /*

@@ -160,8 +160,7 @@
                 <div class="space__details__tab__content__review" v-for="r in reply_list">
                     <strong class="guest_name">{{r.nickname}}
                         <span>
-                            <i v-for="star in r.star" class="fa fa-star"></i>
-							<i v-for="star in 5 - r.star" class="fa fa-star-o"></i>
+                            <i v-for="star in r.star" class="fa fa-star"></i><i v-for="star in 5 - r.star" class="fa fa-star-o"></i>
                         </span>
                     </strong>
                     <pre class="content">{{r.content}}</pre>

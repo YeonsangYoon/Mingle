@@ -109,10 +109,7 @@
                                                 <option name="lang" value="jest" ${fn:contains(vo.techs, 'jest') ? 'selected' : '' }>Jest</option>
                                             </select>
                                         </div>
-                                        <div class="ui button" id="uibutton"
-                                             style="position:absolute; right: 32px; top:0px;">
-                                            전체 취소
-                                        </div>
+                                        <i class="fa fa-times" id="uibutton"></i>
                                     </div>
                                 </td>
                             </tr>

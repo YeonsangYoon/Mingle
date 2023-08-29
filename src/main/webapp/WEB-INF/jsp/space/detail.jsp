@@ -368,7 +368,7 @@
                 document.head.appendChild(script)
             },
             popCalendar: function () {
-                $('#bookinfo').modal();
+                isLoginUser($('#bookinfo').modal());
             },
             modalReview: function () {
                 $('#reviewform').modal();

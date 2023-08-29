@@ -89,7 +89,7 @@
                 <p>{{selectedMento.dept}}</p>
             </div>
         </div>
-        <div class="mentor-content">
+        <div class="mentor-content mb-5">
             <h3>{{selectedMento.title}}</h3>
             <h4>멘토 소개</h4>
             <div v-html="selectedMento.intro"></div>
