@@ -66,7 +66,7 @@
             <div class="product-cell stock"><span class="cell-label">종료시간:</span>{{vo.end_time}}시</div>
             <div class="product-cell price">
             	<span class="cell-label">후기</span>
-            	<span class="status approve" v-if="vo.state === 1" >후기작성</span>
+            	<span class="status approve" v-if="vo.state === 1" @click="replyRegist(vo.counsel_no)">후기작성</span>
 			    <span class="status disabled" v-else>후기작성</span>
             </div>
             
@@ -182,6 +182,17 @@ new Vue({
 
             }).catch(error => {
                 console.log(error.response)
+            })
+        },
+        replyRegist:function(counselno){
+        	axios.get("/mingle/mento/stateChange.do", {
+                params: {
+                	counsel_no:counselno,
+                	val:1
+                }
+            }).then(response => {
+                console.log(response.data)
+                location.reload();
             })
         }
 		
