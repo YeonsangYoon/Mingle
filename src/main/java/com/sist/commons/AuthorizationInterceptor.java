@@ -23,7 +23,8 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             "/mingle/mento/mento_regist.do",
             "/mingle/mento/mento_list_vue.do",
             "/mingle/mento/mento_page_vue.do",
-            "/mingle/mento/mento_detail_vue.do"
+            "/mingle/mento/mento_detail_vue.do",
+            "/mingle/mento/follow.do"
     };
 
     private static final String[] authUrlsCanAccessAnyone = {

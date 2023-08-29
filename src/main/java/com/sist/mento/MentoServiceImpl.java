@@ -226,6 +226,7 @@ public class MentoServiceImpl implements MentoService{
 	@Transactional
 	public void mentoReview(ReviewVO vo) {
 		dao.mentoReview(vo);
+        dao.updateMentoStar(vo.getMento_no(), vo.getStar());
 		dao.rep_stateChange(vo);
 	}
 

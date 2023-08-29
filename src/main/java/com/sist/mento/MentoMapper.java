@@ -173,4 +173,11 @@ public interface MentoMapper {
 			"	ORDER BY FOLLOW DESC) A " +
 			"WHERE 3 >= ROWNUM")
 	public List<MentoVO> getMostFollowedMento();
+
+	@Update("UPDATE MENTO_REG SET " +
+			"	SUM_STAR = SUM_STAR + #{star}, " +
+			"	CNT_STAR = CNT_STAR + 1, " +
+			"	REV_CNT = REV_CNT + 1 " +
+			"WHERE MENTO_NO = #{mento_no}")
+	public void updateMentoStar(@Param("mento_no")int mento_no, @Param("star")int star);
 }

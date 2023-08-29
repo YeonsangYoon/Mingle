@@ -120,7 +120,9 @@ public class MentoDAO {
 	public List<ReviewVO> getReviewByMentoNo(int mento_no){
 		return mapper.getReviewByMentoNo(mento_no);
 	}
-	
+	public void updateMentoStar(int mento_no, int star){
+		mapper.updateMentoStar(mento_no, star);
+	}
 
 	// 팔로우 많은 3명
 	public List<MentoVO> getMostFollowedMento(){
