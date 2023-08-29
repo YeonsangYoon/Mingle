@@ -19,31 +19,6 @@
 </section>
 <section class="study" id="vue-area">
     <div class="container">
-        <!-- 검색바 -->
-        <div class="row-study">
-            <div class="study-search-bar">
-                <label for="writer" class="pretty-checkbox">
-                    <input id="writer" type="checkbox" name="fs" value="W" v-model="wCheck">
-                    <span class="checkmark"></span>
-                    <span>작성자</span>
-                </label>
-                <label for="title" class="pretty-checkbox">
-                    <input id="title" type="checkbox" name="fs" value="T" v-model="tCheck">
-                    <span class="checkmark"></span>
-                    <span>제목</span>
-                </label>
-                <label for="content" class="pretty-checkbox">
-                    <input id="content" type="checkbox" name="fs" value="C" v-model="cCheck">
-                    <span class="checkmark"></span>
-                    <span>내용</span>
-                </label>
-                <label for="searchBar">
-                    <input id="searchBar" type="text" v-model="searchWord">
-                </label>
-                <button class="search-btn" @click="doSearch()">검색</button>
-            </div>
-        </div>
-
         <!-- 기술분야 탭 -->
         <div class="row-study">
             <div class="css-goiz5j" id="headlessui-popover-panel-3" tabindex="-1" data-headlessui-state="open">
@@ -67,14 +42,35 @@
         </div>
 
         <!-- 소제목 및 정렬순 -->
-        <div class="row-study">
+        <div class="row-study" style="position: relative">
+            <div class="study-search-bar">
+                <label for="writer" class="pretty-checkbox">
+                    <input id="writer" type="checkbox" name="fs" value="W" v-model="wCheck">
+                    <span class="checkmark"></span>
+                    <span>작성자</span>
+                </label>
+                <label for="title" class="pretty-checkbox">
+                    <input id="title" type="checkbox" name="fs" value="T" v-model="tCheck">
+                    <span class="checkmark"></span>
+                    <span>제목</span>
+                </label>
+                <label for="content" class="pretty-checkbox">
+                    <input id="content" type="checkbox" name="fs" value="C" v-model="cCheck">
+                    <span class="checkmark"></span>
+                    <span>내용</span>
+                </label>
+                <label for="searchBar">
+                    <input id="searchBar" type="text" v-model="searchWord">
+                </label>
+                <button class="search-btn" @click="doSearch()">검색</button>
+            </div>
             <div class="shop__product">
                 <ul class="Category_categories__F4wF5">
                     <li class="Category_categoryItem__CfZqy Category_selectedCategory__3zAia">스터디 목록</li>
                 </ul>
                 <div>
                     <div class="shop__product__option__right" style="text-align: right">
-					
+
 					<!-- 모집중 토글 -->
 					<div class="toggle-container" @click="toggleButton()" onclick="toggleButton()">
 					  <div class="toggle-switch"></div>

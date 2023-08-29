@@ -196,6 +196,9 @@
 
 .study-search-bar {
     text-align: right;
+    position: absolute;
+    right: 10px;
+    top: -15px;
 }
 
 .study-search-bar input[type=text] {
