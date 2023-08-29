@@ -35,37 +35,39 @@
                 </div>
             </div>
         </div>
-        <div class="container header2">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div>
-                        <a href="${pageContext.request.contextPath}/main/main.do"><img src="${pageContext.request.contextPath}/img/mingle.png" alt=""></a>
+        <div style="border-bottom: 2px solid #d7d7d7;">
+            <div class="container header2">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        <div>
+                            <a href="${pageContext.request.contextPath}/main/main.do"><img src="${pageContext.request.contextPath}/img/mingle.png" alt=""></a>
+                        </div>
                     </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li><a href="${pageContext.request.contextPath}/space/main.do">스터디 공간</a></li>
+                                <li><a href="${pageContext.request.contextPath}/mento/mento_list.do">멘토링</a>
+                                    <ul class="dropdown">
+                                        <li><a href="${pageContext.request.contextPath}/mento/mento_list.do">멘토 리스트</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/mento/mento_regist.do">멘토 등록</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="${pageContext.request.contextPath}/study/list.do">스터디 모집</a>
+                                    <ul class="dropdown">
+                                        <li><a href="${pageContext.request.contextPath}/study/list.do">스터디 홈</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/study/insert.do">스터디 글 작성</a></li>
+                                        <li><a href="#">나의 스터디 글</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Q&A</a></li>
+                                <li><a href="${pageContext.request.contextPath}/notice/list.do">공지사항</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
                 </div>
-                
-                <div class="col-lg-6 col-md-6">
-                    <nav class="header__menu mobile-menu">
-                        <ul>
-                            <li><a href="${pageContext.request.contextPath}/space/main.do">스터디 공간</a></li>
-                            <li><a href="${pageContext.request.contextPath}/mento/mento_list.do">멘토링</a>
-                            	<ul class="dropdown">
-                            		<li><a href="${pageContext.request.contextPath}/mento/mento_list.do">멘토 리스트</a></li>
-                            		<li><a href="${pageContext.request.contextPath}/mento/mento_regist.do">멘토 등록</a></li>
-                            	</ul>
-                            </li>
-                            <li><a href="${pageContext.request.contextPath}/study/list.do">스터디 모집</a>
-                                <ul class="dropdown">
-                                    <li><a href="${pageContext.request.contextPath}/study/list.do">스터디 홈</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/study/insert.do">스터디 글 작성</a></li>
-                                    <li><a href="#">나의 스터디 글</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Q&A</a></li>
-                            <li><a href="${pageContext.request.contextPath}/notice/list.do">공지사항</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                
             </div>
         </div>
     </header>
