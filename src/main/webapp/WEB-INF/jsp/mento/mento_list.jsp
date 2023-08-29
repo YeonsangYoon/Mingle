@@ -30,8 +30,8 @@
             <option value="job">회사명</option>
             <option value="dept">부서명</option>
         </select>
-        <input type="text" class="msearchbar input-sm" size=20 ref="fd" v-model="fd">
-        <input type="button" value="검색" class="btn_mento btn-sm" @click="find()">
+        <input type="text" class="input-sm" size=20 ref="fd" v-model="fd"  @keyup.enter="find()" >
+        <input type="button" value="검색" class="btn btn-sm btn-primary" @click="find()" >
     </div>
     <!-- Search Section End -->
     <div class="container">
@@ -144,6 +144,21 @@
                     <td width="25%" class="detail-modal-font">커리어</td>
                     <td width="75%" v-html="mento_detail.career"></td>
                 </tr>
+                <tr>
+					<div class="space__details__tab__content">
+						<div class="space__details__tab__content__review" v-for="r in reply_list">
+							<strong class="guest_name">{{r.user_id}} 
+								<span>
+									<!-- <i v-for="star in r.star" class="fa fa-star"></i>
+									<i v-for="star in 5 - r.ratings" class="fa fa-star-o"></i> -->
+								</span>
+							</strong>
+							<pre class="content">{{r.content}}</pre>
+							<span class="regdate">{{r.regdate}}</span>
+						</div>
+					</div>
+				</tr>
+                
 			    <c:if test="${sessionScope.id != null}">
                 <tr>
                     <td colspan=2 class="text-center follow">
@@ -166,6 +181,7 @@
         el: '.container-mento',
         data: {
             mento_list: [],
+            reply_list:[],
             mento_detail: {},
             column: 'all',
             fd: '',
@@ -247,7 +263,8 @@
                     }
                 }).then(response => {
                     console.log(response.data)
-                    this.mento_detail = response.data
+                    this.mento_detail = response.data.vo;
+                    this.reply_list = response.date.list;
 
                 }).catch(error => {
                     console.log(error.response)

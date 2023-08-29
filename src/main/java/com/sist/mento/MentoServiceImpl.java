@@ -221,4 +221,19 @@ public class MentoServiceImpl implements MentoService{
 		
 	}
 	
+	//멘토링 리뷰
+	@Override
+	@Transactional
+	public void mentoReview(ReviewVO vo) {
+		dao.mentoReview(vo);
+		dao.rep_stateChange(vo);
+	}
+
+	@Override
+	public List<ReviewVO> getReviewByMentoNo(int mento_no) {
+		return dao.getReviewByMentoNo(mento_no);
+	}
+	
+	
+	
 }

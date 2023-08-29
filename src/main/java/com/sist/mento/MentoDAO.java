@@ -98,6 +98,7 @@ public class MentoDAO {
 		return mapper.mentoringTotalPage(map);
 	}
 	
+	
 	public List<CounselVO> mentoMentoringListData(Map map){
 		return mapper.mentoMentoringListData(map);
 	}
@@ -107,6 +108,17 @@ public class MentoDAO {
 	
 	public void counselStateChange(int counsel_no, int val) {
 		mapper.counselStateChange(counsel_no, val);
+	}
+	
+	//멘토링 리뷰
+	public void mentoReview(ReviewVO vo) {
+		mapper.mentoReview(vo);
+	}
+	public void rep_stateChange(ReviewVO vo) {
+		mapper.rep_stateChange(vo);
+	}
+	public List<ReviewVO> getReviewByMentoNo(int mento_no){
+		return mapper.getReviewByMentoNo(mento_no);
 	}
 	
 

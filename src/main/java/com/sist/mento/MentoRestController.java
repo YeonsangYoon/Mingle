@@ -65,12 +65,13 @@ public class MentoRestController {
 	@GetMapping(value="mento/mento_detail_vue.do", produces="text/plain;charset=UTF-8")
 	public String mento_detail(int mento_no) throws Exception{
 		MentoVO vo=service.mentoDetailData(mento_no);
-		
+		List<ReviewVO> list=service.getReviewByMentoNo(mento_no);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("vo", vo);
+		map.put("list", list);
 		ObjectMapper mapper=new ObjectMapper();
-		String json=mapper.writeValueAsString(vo);
 		
-		return json;
-		
+		return mapper.writeValueAsString(map);
 	}
 	
 	@PostMapping(value="mento/regist_ok_vue.do",produces = "text/plain;charset=UTF-8")

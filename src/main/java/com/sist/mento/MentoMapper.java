@@ -141,6 +141,17 @@ public interface MentoMapper {
 	
 	@Update("UPDATE mento_counsel SET state = #{val} WHERE counsel_no=#{counsel_no}")
 	public void counselStateChange(@Param("counsel_no")int counsel_no, @Param("val")int val);
+	
+	// 멘토링 리뷰
+	@Insert("INSERT INTO mento_review VALUES( mr_reviewno_seq.nextval, sysdate, #{star}, #{content}, #{user_id}, #{mento_no}, #{counsel_no})")
+	public void mentoReview(ReviewVO vo);
+	@Update("UPDATE mento_counsel SET rep_state = #{rep_state} WHERE counsel_no =#{counsel_no}")
+	public void rep_stateChange(ReviewVO vo);
+	
+	@Select("SELECT review_no, star, mento_no, counsel_no, TO_CHAR(regdate,'yyyy-MM-dd') as regdate, user_id, content "
+			+ "FROM mento_review "
+			+ "WHERE mento_no=#{mento_no} ")
+	public List<ReviewVO> getReviewByMentoNo(int mento_no);
 
 	// 팔로우 많은 3명 순
 	@Select("SELECT A.*, ROWNUM FROM (" +
