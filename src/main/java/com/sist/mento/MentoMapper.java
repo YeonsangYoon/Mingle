@@ -62,7 +62,7 @@ public interface MentoMapper {
 	public int deleteMentoByMentoNo(@Param("mento_no")int mento_no);
 	
 	@Insert("INSERT INTO mento_reg VALUES("
-			+ "(SELECT NVL(MAX(mento_no)+1,1) FROM mento_reg),"
+			+ "mr_mentono_seq.nextval,"
 			+ "#{user_id},"
 			+ "#{job_cat},"
 			+ "#{job},"
