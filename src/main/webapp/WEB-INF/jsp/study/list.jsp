@@ -91,7 +91,7 @@
                         
 							<img class="studyItem_bookmark__2YtKX book_mark clicked"
 								alt="bookmark"
-								@click.stop="changeLiked(index, vo.user_id)"
+								@click.stop="changeLiked(index)"
 								:src="vo.isLiked ? '/mingle/img/bookmark-on.png' : '/mingle/img/bookmark-off.png'">
 
 <%--                         <img class="studyItem_bookmark__2YtKX" src="../img/bookmark-off.png" @click="like(${vo.user_id })" alt="bookmark"> --%>
@@ -237,7 +237,7 @@
                 this.curpage = page;
                 this.send();
             },
-            changeLiked: function(index, event) {
+            changeLiked: function(index) {
                 if (this.study_list[index].isLiked) {
                     axios.get("/mingle/study/likeOff_vue.do", {
                         params: {
@@ -267,11 +267,8 @@
                     	if(res.data === 'OK'){
 	                        this.study_list[index].isLiked = true;
                     	}
-                    	else if(res.data === 'NOID'){
-                    		alert('로그인이 필요한 서비스입니다');
-                    	}
                     	else{
-                    		alert('좋아요 실패')
+                            $('#login-modal').modal();
                     	}
                     }).catch(error => {
                         console.log(error.res)
