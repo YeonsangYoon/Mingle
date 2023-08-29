@@ -148,9 +148,9 @@ public interface MentoMapper {
 	@Update("UPDATE mento_counsel SET rep_state = #{rep_state} WHERE counsel_no =#{counsel_no}")
 	public void rep_stateChange(ReviewVO vo);
 	
-	@Select("SELECT review_no, star, mento_no, counsel_no, TO_CHAR(regdate,'yyyy-MM-dd') as regdate, user_id, content "
-			+ "FROM mento_review "
-			+ "WHERE mento_no=#{mento_no} ")
+	@Select("SELECT review_no, star, mento_no, counsel_no, TO_CHAR(MR.regdate,'yyyy-MM-dd') as regdate, M.user_id, content, NICKNAME "
+			+ "FROM MENTO_REVIEW MR, MEMBER M "
+			+ "WHERE mento_no=#{mento_no} AND MR.USER_ID = M.USER_ID")
 	public List<ReviewVO> getReviewByMentoNo(int mento_no);
 
 	// 팔로우 많은 3명 순

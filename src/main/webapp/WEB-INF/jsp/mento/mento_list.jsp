@@ -144,21 +144,6 @@
                     <td width="25%" class="detail-modal-font">커리어</td>
                     <td width="75%" v-html="mento_detail.career"></td>
                 </tr>
-                <tr>
-					<div class="space__details__tab__content">
-						<div class="space__details__tab__content__review" v-for="r in reply_list">
-							<strong class="guest_name">{{r.user_id}} 
-								<span>
-									<!-- <i v-for="star in r.star" class="fa fa-star"></i>
-									<i v-for="star in 5 - r.ratings" class="fa fa-star-o"></i> -->
-								</span>
-							</strong>
-							<pre class="content">{{r.content}}</pre>
-							<span class="regdate">{{r.regdate}}</span>
-						</div>
-					</div>
-				</tr>
-                
 			    <c:if test="${sessionScope.id != null}">
                 <tr>
                     <td colspan=2 class="text-center follow">
@@ -171,6 +156,18 @@
                 </tr>
                 </c:if>
             </table>
+            <div class="space__details__tab__content">
+                <div class="space__details__tab__content__review" v-for="r in reply_list">
+                    <strong class="guest_name">{{r.nickname}}
+                        <span>
+                            <i v-for="star in r.star" class="fa fa-star"></i>
+							<i v-for="star in 5 - r.star" class="fa fa-star-o"></i>
+                        </span>
+                    </strong>
+                    <pre class="content">{{r.content}}</pre>
+                    <span class="regdate">{{r.regdate}}</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -264,7 +261,7 @@
                 }).then(response => {
                     console.log(response.data)
                     this.mento_detail = response.data.vo;
-                    this.reply_list = response.date.list;
+                    this.reply_list = response.data.list;
 
                 }).catch(error => {
                     console.log(error.response)
