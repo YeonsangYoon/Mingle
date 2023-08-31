@@ -269,6 +269,7 @@
                     	}
                     	else{
                             $('#login-modal').modal();
+                            alert("로그인이 필요한 서비스입니다");
                     	}
                     }).catch(error => {
                         console.log(error.res)

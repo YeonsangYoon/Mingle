@@ -105,7 +105,9 @@
                                 <div class="space__details__tab__content">
                                     <div class="space__details__tab__content__item">
                                         <h5 class="d-inline">이용 후기 <span>{{cnt_rate}}</span>개 / 평균 평점 <span>{{avg_rate}}</span></h5>
-                                        <button class="btn_review" @click="modalReview">리뷰 쓰기</button>
+                                        <c:if test="${sessionScope.id != null}">
+                                            <button class="btn_review" @click="modalReview">리뷰 쓰기</button>
+                                        </c:if>
                                     </div>
                                     <div class="space__details__tab__content__review" v-for="(r,index) in rList">
                                         <strong class="guest_name">{{r.nickname}}

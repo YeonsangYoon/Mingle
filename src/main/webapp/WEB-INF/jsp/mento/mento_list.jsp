@@ -204,7 +204,6 @@
                         page: this.curpage
                     }
                 }).then(response => {
-                    console.log(response.data)
                     this.mento_list = response.data
                 })
                 axios.get("/mingle/mento/mento_page_vue.do", {
@@ -214,7 +213,6 @@
                         page: this.curpage
                     }
                 }).then(response => {
-                    console.log(response.data);
                     this.page_list = response.data;
                     this.curpage = this.page_list.curpage
                     this.totalpage = this.page_list.totalpage

@@ -318,6 +318,25 @@ a:hover{
 .header {
 	background: #ffffff;
 }
+.header .fa {
+	color:white;
+	margin: 0px 5px;
+}
+
+.header .fa:before{
+	margin-right: 10px;
+}
+
+.header {
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 2; /* 조절해보세요 */
+	transition: top 0.3s ease, position 0.3s ease; /* 부드러운 변화를 위한 트랜지션 추가 */
+}
+.blocker{
+	z-index: 4!important;
+}
 
 .header__top {
 	background: #704DE4;

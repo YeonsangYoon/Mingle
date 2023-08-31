@@ -10,25 +10,16 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/elegant-icons.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/magnific-popup.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/nice-select.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/semantic.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mento.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/space.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/study.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/booking.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.min.css" type="text/css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" type="text/css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"  type="text/css"/>
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-
 <!-- jQuery Modal -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
@@ -44,12 +35,6 @@
     <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.nicescroll.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.nice-select.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.countdown.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.slicknav.js"></script>
-    <script src="${pageContext.request.contextPath}/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/semantic.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -57,7 +42,6 @@
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 	<!-- purchase JS -->
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-
     <!-- 사용자 정의 js -->
     <script src="${pageContext.request.contextPath}/js/main.js"></script>
     <script src="${pageContext.request.contextPath}/js/member.js"></script>
@@ -66,11 +50,6 @@
 	<script src="${pageContext.request.contextPath}/js/space.js"></script>
 	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
 	<script src="${pageContext.request.contextPath}/js/study.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    
-		
-    
     <!-- jQuery Modal -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </body>
