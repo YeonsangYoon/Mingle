@@ -312,7 +312,14 @@ public class StudyServiceImpl implements StudyService{
 	// 마감 임박 관련
 	public List<StudyVO> getFourDeadlineStudy(){
 		List<StudyVO> list = dao.getFourDeadlineStudy();
-		return list.subList(0, 4);
+		if(list.size()>4)
+		{
+			return list.subList(0,4);
+		}
+		else
+		{
+			return list;
+		}
 	}
 
 	@Override
