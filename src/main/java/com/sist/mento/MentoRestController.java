@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sist.commons.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
@@ -26,20 +29,47 @@ public class MentoRestController {
 	}
 
 	@GetMapping(value = "mento/mento_list_vue.do", produces = "text/plain;charset=UTF-8")
-	public String mento_list_vue(int page, String column, String fd, HttpSession session) throws Exception{
+	public String mento_list_vue(int page, String column, String fd, HttpSession session, HttpServletRequest request, HttpServletResponse reponse) throws Exception{
+		
+		
+		Cookie[] cookies=request.getCookies();
+	      List<MentoVO> ckList=new ArrayList<MentoVO>();
+	      if(cookies!=null) {
+	         for(int i=cookies.length-1;i>=0;i--) {
+	            String key=cookies[i].getName();
+	            if(key.startsWith("mento_")) {
+	               String data=cookies[i].getValue();
+	               MentoVO vo=new MentoVO();
+	               vo=service.mentoDetailData(Integer.parseInt(data));
+	               ckList.add(vo);
+	               if(ckList.size()==2) {
+	                  break;
+	               }
+	            }
+	         }
+	      }
+		
+	      
 		String user_id = (String)session.getAttribute("id");
 		List<MentoVO> list=service.MentoListData(page, column, fd, user_id);
 		ObjectMapper obj= new ObjectMapper();
-		return obj.writeValueAsString(list);
+		
+		Map map = new HashMap();
+		map.put("ckList", ckList);
+		map.put("list", list);
+		
+		return obj.writeValueAsString(map);
 	}
 
 	@GetMapping(value="mento/mento_page_vue.do", produces="text/plain;charset=UTF-8")
 	public String mento_page(int page, String column, String fd) throws Exception{
 		
+		
 		Map map=new HashMap();
 		map.put("column", column);
 		map.put("fd", fd);
 		
+	
 		int totalpage=service.mentoTotalPage(map);
 		
 		final int BLOCK=5;
@@ -63,7 +93,28 @@ public class MentoRestController {
 	}
 		
 	@GetMapping(value="mento/mento_detail_vue.do", produces="text/plain;charset=UTF-8")
-	public String mento_detail(int mento_no) throws Exception{
+	public String mento_detail(int mento_no, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+	      Cookie[] cookies=request.getCookies();
+	      if(cookies!=null) {
+	         for(int i=cookies.length-1;i>=0;i--) {
+	            String key=cookies[i].getName();
+	            if(key.equals("mento_"+mento_no)) {
+	               cookies[i].setMaxAge(0); // 쿠키를 삭제하기 위해 만료시간을 0으로 설정
+	                   cookies[i].setPath("/");
+	                   response.addCookie(cookies[i]);
+	                   break;
+	            }
+	         }
+	      }
+	      
+	      Cookie cookie=new Cookie("mento_"+mento_no, String.valueOf(mento_no));
+	      cookie.setPath("/");
+	      cookie.setMaxAge(60*60*24);
+	      response.addCookie(cookie);
+
+		
+		
 		MentoVO vo=service.mentoDetailData(mento_no);
 		List<ReviewVO> list=service.getReviewByMentoNo(mento_no);
 		Map<String, Object> map = new HashMap<String, Object>();

@@ -26,6 +26,9 @@
  		<if test="column!='all'">
  				WHERE ${column} LIKE '%'||#{fd}||'%'
  		</if>
+ 		<if test="column =='all'">
+ 				WHERE job LIKE '%'||#{fd}||'%' OR title LIKE '%'||#{fd}||'%' OR intro LIKE '%'||#{fd}||'%'
+ 		</if>
  	</select>
  	
  	<select id="getfollowCheckListByUserId" resultType="int" parameterType="java.util.Map">

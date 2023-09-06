@@ -34,9 +34,10 @@
         <input type="button" value="검색" class="btn_mento btn-sm btn-primary" @click="find()" >
     </div>
     <!-- Search Section End -->
-    <div class="container">
+    <div style="display: flex; justify-content: center;">
+    <div class="col-sm-6">
+    <div class="" style="max-width: 1170px; margin-right: 60px; margin-left: 60px;">
         <div class="row">
-
             <!-- 멘토 리스트 Start-->
             <div class="col-sm-4" v-for="(vo, index) in mento_list">
                 <div class="card open-mentoring-card " style="display: block;">
@@ -86,7 +87,54 @@
             <!-- 멘토 리스트 End-->
 
         </div>
+        
     </div>
+    </div>
+    <!-- 쿠키 출력 -->
+		<div class="col-sm-2">
+			<div class="cm-rounded bg-shadow bg-white sticky1 mx-n15px 
+			mx-lg-0 sticky-pc-menu-top sticky-element-inner-scroll">
+				<section class="mt-3 p-3">
+					<div class="sectiontitle text-center">
+						<div
+							class="mb-3 align-items-center justify-content-between text-16 ">
+							<span class="color-grey-2 font-weight-bold color-blue ft-20">최근 조회한 멘토</span>
+						</div>
+					</div>
+					<div class="container" v-for="(mvo, index) in mento_ckList" style="margin-bottom: 50px;">
+						<div class="pay-info-desc" style="display: flex;">
+							<div class="dc-flex justify-content-between align-items-center">
+								<div class="text-14 color-grey-3">제목</div>
+								<div class="text-14 text-right font-weight-bold">
+									<div class="oversize" style="width: 180px;">{{mvo.title}}</div>
+								</div>
+							</div>
+							<div class="dc-flex justify-content-between align-items-center">
+								<div class="text-14 color-grey-3">아이디</div>
+								<div class="text-14 text-right font-weight-bold">
+									<span>{{mvo.user_id}}</span>
+								</div>
+							</div>
+							<div class="dc-flex justify-content-between align-items-center">
+								<div class="text-14 color-grey-3">직군</div>
+								<div class="text-14 text-right font-weight-bold">
+									<span> {{mvo.job_cat}}</span>
+								</div>
+							</div>
+							<div class="dc-flex justify-content-between align-items-center">
+								<div class="text-14 color-grey-3">직업</div>
+								<div class="text-14 text-right font-weight-bold">
+									<span> {{mvo.job}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</section>
+			</div>
+		</div>
+		<!-- 쿠키 종료 -->
+	</div>
 
     <!-- PageNation -->
     <div class="col-lg-12 inline">
@@ -179,6 +227,7 @@
             mento_list: [],
             reply_list:[],
             mento_detail: {},
+            mento_ckList:[],
             column: 'all',
             fd: '',
 
@@ -204,7 +253,9 @@
                         page: this.curpage
                     }
                 }).then(response => {
-                    this.mento_list = response.data
+                	console.log(response.data)
+                	this.mento_ckList = response.data.ckList
+                    this.mento_list = response.data.list
                 })
                 axios.get("/mingle/mento/mento_page_vue.do", {
                     params: {
@@ -262,6 +313,17 @@
 
                 }).catch(error => {
                     console.log(error.response)
+                })
+                axios.get("/mingle/mento/mento_list_vue.do", {
+                    params: {
+                        column: this.column,
+                        fd: this.fd,
+                        page: this.curpage
+                    }
+                }).then(response => {
+                	console.log(response.data)
+                	this.mento_ckList = response.data.ckList
+                    this.mento_list = response.data.list
                 })
             },
             mentoContact: function () {
