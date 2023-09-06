@@ -12,21 +12,39 @@
 	                sl.space_id, sl.category, sl.poster, sl.title, sl.price, sl.max_guest, sl.address,
 	                (SELECT COUNT(*) FROM SPACE_review sr WHERE sr.space_id = sl.space_id) as cnt_rate
 	            FROM space_list sl
-	            <if test="category!='all'">
-	              WHERE sl.category=#{category}
-	            </if>
+	            <where>
+	                <if test="category!='all'">
+	                    AND sl.category=#{category}
+	                </if>
+	                <choose>
+	                    <when test="category=='all' and fd != ''">
+	                        AND ${column} LIKE '%'||#{fd}||'%'
+	                    </when>
+	                    <otherwise>
+	                        <if test="fd != ''">
+	                            AND ${column} LIKE '%'||#{fd}||'%'
+	                        </if>
+	                    </otherwise>
+	                </choose>
+	            </where>
 	            ORDER BY cnt_rate DESC
 	        )
 	    )
 	    WHERE num BETWEEN #{start} AND #{end}
 	</select>
 
-   <select id="spaceTotalpage" resultType="int" parameterType="String">
-     SELECT CEIL(COUNT(*)/12.0) FROM space_list
-     <if test="category!='all'">
-       WHERE category=#{category}
-     </if>
+   <select id="spaceTotalpage" resultType="int" parameterType="hashmap">
+    SELECT CEIL(COUNT(*)/12.0) FROM space_list
+    <where>
+        <if test="category!='all'">
+            AND category=#{category}
+        </if>
+        <if test="fd!=''">
+            AND ${column} LIKE '%'||#{fd}||'%'
+        </if>
+    </where>
    </select>
+   
    <select id="spaceTop3RecentReview" resultType="ReviewVO">
      SELECT B.*, ROWNUM FROM (
      	SELECT 

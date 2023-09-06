@@ -55,6 +55,21 @@
             </div>
         </div>
 
+        <div class="row-study" style="position: relative">
+            <div class="study-search-bar">
+                <select style="display:inline;height:35px;" value="전체" v-model="column">
+		            <option value="address">주소</option>
+		            <option value="title">업체명</option>
+		        </select>
+                <label for="searchBar">
+                    <input id="searchBar" type="text" ref="fd" v-model="fd" @keyup.enter="find()">
+                </label>
+                <button class="search-btn" @click="find()">검색</button>
+            </div>
+        </div>
+		<div style="height:30px"></div>
+		<hr>
+  
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6" v-for="(vo, index) in space_list">
                 <div class="space__item">
@@ -113,7 +128,9 @@
             endPage: 0,
             category: 'all',
             user_id:'${sessionScope.id}',
-            addr:[]
+            addr:[],
+            fd:'',
+            column:''
         },
         filters: {
             currency: function (value) {
@@ -131,7 +148,9 @@
                 axios.get("/mingle/space/list_vue.do", {
                     params: {
                         page: this.curpage,
-                        category: this.category
+                        category: this.category,
+                        fd: this.fd,
+                        column: this.column
                     }
                 })
                     .then(res => {
@@ -165,6 +184,10 @@
             next: function () {
                 this.curpage = this.endPage + 1
                 this.spaceCategoryData(this.category)
+            },
+            find: function() {
+            	this.curpage = 1;
+            	this.spaceCategoryData(this.category);
             },
             toggleFavorite: function(index) {
                 if (this.space_list[index].isFavorited) {

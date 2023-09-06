@@ -24,8 +24,8 @@ public class SpaceServiceImpl implements SpaceService{
 
 
 	@Override
-	public int spaceTotalpage(String category) {
-		return dao.spaceTotalpage(category);
+	public int spaceTotalpage(Map map) {
+		return dao.spaceTotalpage(map);
 	}
 
 	@Override

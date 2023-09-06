@@ -12,7 +12,7 @@ public interface SpaceMapper {
     /* --------------------- List ------------------------*/
     public List<SpaceVO> spaceListByCategory(Map<String, Object> map);
  
-    public int spaceTotalpage(@Param("category") String category);
+    public int spaceTotalpage(Map map);
 
     /* --------------------- Detail ------------------------*/
     // 공간 전체정보

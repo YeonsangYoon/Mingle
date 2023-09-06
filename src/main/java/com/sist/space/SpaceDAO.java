@@ -14,9 +14,9 @@ public class SpaceDAO {
 		return mapper.spaceListByCategory(map);
 	}
 
-	public int spaceTotalpage(String category)
+	public int spaceTotalpage(Map map)
 	{
-		return mapper.spaceTotalpage(category);
+		return mapper.spaceTotalpage(map);
 	}
 	
 	public List<SpaceVO> spaceDetailData(int space_id)

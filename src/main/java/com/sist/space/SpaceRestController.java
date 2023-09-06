@@ -22,11 +22,13 @@ public class SpaceRestController {
 	private SpaceService service;
 	
 	@GetMapping(value = "space/list_vue.do", produces = "text/plain;charset=UTF-8")
-	public String space_list_vue(int page, String category,HttpSession session) throws JsonProcessingException {
+	public String space_list_vue(int page, String category, String fd, String column, HttpSession session) throws JsonProcessingException {
 		Map<String, Object> listParam=new HashMap<>();
 		listParam.put("category", category);
 		listParam.put("start", (page - 1) * SPACE_COUNT_IN_PAGE + 1);
 		listParam.put("end", page * SPACE_COUNT_IN_PAGE);
+		listParam.put("fd", fd);
+		listParam.put("column", column);
 		List<SpaceVO> list=service.spaceListByCategory(listParam);
 		
 		String user_id= (String)session.getAttribute("id");
@@ -41,7 +43,12 @@ public class SpaceRestController {
             }
             space.setIsFavorited(isFavorited);
         }
-		int totalpage = service.spaceTotalpage(category);
+		
+		Map<String,Object> pageMap=new HashMap<>();
+		pageMap.put("category", category);
+		pageMap.put("fd", fd);
+		pageMap.put("column", column);
+		int totalpage = service.spaceTotalpage(pageMap);
 
 		ObjectMapper mapper=new ObjectMapper();
 		Map<String, Object> json = new HashMap<>();

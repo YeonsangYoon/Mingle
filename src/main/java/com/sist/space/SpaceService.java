@@ -4,7 +4,7 @@ import java.util.*;
 
 public interface SpaceService {
 		public List<SpaceVO> spaceListByCategory(Map<String, Object> map);
-		public int spaceTotalpage(String category);
+		public int spaceTotalpage(Map map);
 
 		public List<SpaceVO> spaceDetailData(int space_id);
 		public List<BookingVO> getBookingListByIdAndRegdate(int space_id, String regdate);
