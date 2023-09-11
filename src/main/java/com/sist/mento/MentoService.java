@@ -17,7 +17,6 @@ public interface MentoService {
     public void mentoEditUpdate(Map map);
 
 
-    public void deleteMentoTimeByMentoNo(int mento_no);
     public void deleteMentoCounselByMentoNo(int mento_no);
     public void deleteMentoReviewByMentoNo(int mento_no);
     public void deleteMentoFollowByMentoNo(int mento_no);

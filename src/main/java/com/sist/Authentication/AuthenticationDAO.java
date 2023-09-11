@@ -39,9 +39,6 @@ public class AuthenticationDAO {
 
     /* 회원 탈퇴 관련 */
     // 스터디 관련
-    public void deleteStudyFile(String user_id){
-        mapper.deleteStudyFile(user_id);
-    }
     public void deleteStudyTech(String user_id){
         mapper.deleteStudyTech(user_id);
     }
@@ -73,9 +70,6 @@ public class AuthenticationDAO {
     }
     public void deleteMentoReview(String user_id){
         mapper.deleteMentoReview(user_id);
-    }
-    public void deleteMentoTime(String user_id){
-        mapper.deleteMentoTime(user_id);
     }
     public void deleteMento(String user_id){
         mapper.deleteMento(user_id);

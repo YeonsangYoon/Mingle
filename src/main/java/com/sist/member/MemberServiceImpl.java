@@ -66,7 +66,6 @@ public class MemberServiceImpl implements MemberService{
     @Override
     @Transactional
     public int deleteMentoByAdmin(int mento_no) {
-        mentoDao.deleteMentoTimeByMentoNo(mento_no);
         mentoDao.deleteMentoCounselByMentoNo(mento_no);
         mentoDao.deleteMentoReviewByMentoNo(mento_no);
         mentoDao.deleteMentoFollowByMentoNo(mento_no);

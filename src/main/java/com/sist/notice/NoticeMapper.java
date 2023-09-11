@@ -7,7 +7,7 @@ import java.util.List;
 public interface NoticeMapper {
     @Select("SELECT * FROM " +
             "( " +
-            "   SELECT /*+ INDEX_DESC(N PK_NOTICE_ID) */ " +
+            "   SELECT /*+ INDEX_DESC(N NOTICE_NOTICE_ID_IDX) */ " +
             "       NOTICE_ID, TITLE, CONTENT, HIT, TO_CHAR(REGDATE, 'yyyy-MM-dd HH24:mm') AS REGDATE, ROWNUM AS NUM" +
             "   FROM NOTICE N " +
             "   WHERE ROWNUM <= #{end} " +

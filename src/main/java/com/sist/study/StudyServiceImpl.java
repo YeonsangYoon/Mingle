@@ -160,7 +160,6 @@ public class StudyServiceImpl implements StudyService{
 		// 2. 댓글 삭제
 		dao.deleteStudyReplyByStudyId(study_id);
 		// 3. 파일 삭제
-		dao.deleteStudyFileByStudyId(study_id);
 		// 4. 좋아요 삭제
 		dao.deleteStudyLikeByStudyId(study_id);
 		// 5. 기술 스택 삭제

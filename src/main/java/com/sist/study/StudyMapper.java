@@ -59,9 +59,6 @@ public interface StudyMapper {
 	@Delete("DELETE FROM STUDY_REPLY WHERE STUDY_ID = #{study_id}")
 	public void deleteStudyReplyByStudyId(@Param("study_id")int study_id);
 
-	@Delete("DELETE FROM STUDY_FILE WHERE STUDY_ID = #{study_id}")
-	public void deleteStudyFileByStudyId(@Param("study_id")int study_id);
-
 	@Delete("DELETE FROM STUDY_LIKE WHERE STUDY_ID = #{study_id}")
 	public void deleteStudyLikeByStudyId(@Param("study_id")int study_id);
 

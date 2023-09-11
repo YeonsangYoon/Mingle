@@ -46,9 +46,6 @@ public interface MentoMapper {
 	public void mentoEditUpdate(Map map);
 	
 	/* 멘토 삭제관련 스퀀스 */
-	@Delete("DELETE MENTO_TIME WHERE MENTO_NO = #{mento_no}")
-	public void deleteMentoTimeByMentoNo(@Param("mento_no")int mento_no);
-
 	@Delete("DELETE MENTO_COUNSEL WHERE MENTO_NO = #{mento_no}")
 	public void deleteMentoCounselByMentoNo(@Param("mento_no")int mento_no);
 
@@ -131,7 +128,7 @@ public interface MentoMapper {
 			+ "WHERE user_id = #{user_id}")
 	public void mentoUpdate(MentoVO vo);
 	
-	@Delete("DELETEFROM mento_reg WHERE mento_no = #{mento_no}")
+	@Delete("DELETE FROM mento_reg WHERE mento_no = #{mento_no}")
 	public void mentoDelete(int mento_no);
 	
 	public List<CounselVO> MentoringListData(Map map);

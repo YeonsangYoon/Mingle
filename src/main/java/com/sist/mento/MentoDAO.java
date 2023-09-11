@@ -32,9 +32,6 @@ public class MentoDAO {
 	}
 	
 	//멘토 삭제관련
-	public void deleteMentoTimeByMentoNo(int mento_no){
-		mapper.deleteMentoTimeByMentoNo(mento_no);
-	}
 	public void deleteMentoCounselByMentoNo(int mento_no){
 		mapper.deleteMentoCounselByMentoNo(mento_no);
 	}

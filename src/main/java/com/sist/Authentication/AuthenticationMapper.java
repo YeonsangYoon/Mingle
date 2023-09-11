@@ -46,9 +46,6 @@ public interface AuthenticationMapper {
 
     /* 회원 탈퇴 구현 */
     // 스터디 관련
-    @Delete("DELETE STUDY_FILE " +
-            "WHERE STUDY_ID IN (SELECT STUDY_ID FROM STUDY WHERE USER_ID = #{user_id})")
-    public void deleteStudyFile(@Param("user_id")String user_id); // 스터디 파일 삭제
     @Delete("DELETE STUDY_TECH " +
             "WHERE STUDY_ID IN (SELECT STUDY_ID FROM STUDY WHERE USER_ID = #{user_id})")
     public void deleteStudyTech(@Param("user_id")String user_id); // 스터디 기술스택 삭제
@@ -90,10 +87,6 @@ public interface AuthenticationMapper {
             "WHERE USER_ID = #{user_id} " +
             "OR MENTO_NO = (SELECT MENTO_NO FROM MENTO_REG M WHERE M.USER_ID = #{user_id})")
     public void deleteMentoReview(@Param("user_id")String user_id); // 멘토 리뷰 삭제
-
-    @Delete("DELETE MENTO_TIME " +
-            "WHERE MENTO_NO = (SELECT MENTO_NO FROM MENTO_REG M WHERE M.USER_ID = #{user_id})")
-    public void deleteMentoTime(@Param("user_id")String user_id); // 멘토링 시간 삭제
 
     @Delete("DELETE MENTO_REG WHERE USER_ID = #{user_id}")
     public void deleteMento(@Param("user_id")String user_id); // 멘토 삭제

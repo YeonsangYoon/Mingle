@@ -113,7 +113,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Transactional
     public int withdrawMember(String user_id){ // 탈퇴 로직
         // 스터디 삭제
-        dao.deleteStudyFile(user_id);
         dao.deleteStudyTech(user_id);
         dao.deleteStudyLike(user_id);
         dao.deleteStudyReply(user_id);
@@ -134,7 +133,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         dao.deleteMentoFollow(user_id);
         dao.deleteMentoCounsel(user_id);
         dao.deleteMentoReview(user_id);
-        dao.deleteMentoTime(user_id);
         dao.deleteMento(user_id);
 
         return dao.deleteMember(user_id);

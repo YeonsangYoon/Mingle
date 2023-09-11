@@ -56,9 +56,6 @@ public class StudyDAO {
 	public void deleteStudyReplyByStudyId(int study_id){
 		mapper.deleteStudyReplyByStudyId(study_id);
 	}
-	public void deleteStudyFileByStudyId(int study_id){
-		mapper.deleteStudyFileByStudyId(study_id);
-	}
 	public void deleteStudyLikeByStudyId(int study_id){
 		mapper.deleteStudyLikeByStudyId(study_id);
 	}

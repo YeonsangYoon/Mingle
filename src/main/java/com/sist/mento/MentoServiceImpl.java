@@ -79,10 +79,6 @@ public class MentoServiceImpl implements MentoService{
         dao.mentoEditUpdate(map);
     }
 
-
-    public void deleteMentoTimeByMentoNo(int mento_no){
-        dao.deleteMentoTimeByMentoNo(mento_no);
-    }
     public void deleteMentoCounselByMentoNo(int mento_no){
         dao.deleteMentoCounselByMentoNo(mento_no);
     }
