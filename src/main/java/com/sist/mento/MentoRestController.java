@@ -159,43 +159,6 @@ public class MentoRestController {
 		return "OK";
 	}
 
-//	//태그 편집
-//	@GetMapping(value="mento/mento_edit_data.do", produces="text/plain;charset=UTF-8")
-//	public String mento_edit_data() throws Exception{
-//		List<MentoVO> list=service.mentoEdit();
-//
-//		for(MentoVO vo:list) {
-//			Map map=new HashMap();
-//
-//			String intro=vo.getIntro().replaceAll("(<p>)", "");
-//			intro=intro.replaceAll("(</p>)", "");
-//			intro=intro.replaceAll("(<br>)", "");
-//
-//			String career=vo.getCareer().replaceAll("(<p>)", "");
-//			career=career.replaceAll("(</p>)", "");
-//			career=career.replaceAll("(<br>)", "");
-//
-//			int mento_no=vo.getMento_no();
-//
-//			System.out.println(vo.getMento_no());
-//			System.out.println(intro);
-//
-//			System.out.println("---------------");
-//			map.put("intro", intro);
-//			map.put("mento_no", mento_no);
-//			map.put("career", career);
-//
-//			service.mentoEditUpdate(map);
-//			System.out.println("---------------");
-//
-//		}
-//
-//		ObjectMapper mapper=new ObjectMapper();
-//
-//		return "占쏙옙占쏙옙 占쏙옙占쏙옙";
-//
-//	}
-
 	// 멘토 팔로우 관련
 	@PostMapping("mento/follow.do")
 	public String followMentor(int mento_no, boolean isFollowed, HttpSession session){
