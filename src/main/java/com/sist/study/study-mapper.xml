@@ -130,7 +130,7 @@
         ON STUDY.STUDY_ID = STUDY_TECH.STUDY_ID
         WHERE STUDY.STUDY_ID = #{study_id}
     </select>
-    
+
     <delete id="deleteReplys" parameterType="java.util.List">
         DELETE FROM STUDY_REPLY
         WHERE REPLY_ID IN

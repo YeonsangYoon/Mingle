@@ -666,14 +666,14 @@
 
 .study-reply-block .reply-regdate {
     color: #a6a6a6;
-    margin-bottom: 5px;
+    margin: 0 0 5px 5px;
 }
 
 .study-reply-block .reply-open {
     display: inline-block;
     cursor: pointer;
     font-size: 13px;
-    margin-left: 10px;
+    margin-left: 5px;
     color: #007bff;
 }
 

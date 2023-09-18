@@ -212,20 +212,20 @@ public class StudyServiceImpl implements StudyService{
 	// 댓글 목록
 	@Override
 	public List<ReplyVO> getReplyList(int study_id) {
-		List<ReplyVO> list = dao.getReplyList(study_id);
-		Map<Integer, ReplyVO> rMap = new HashMap<>();
-		Map<Integer, List<Integer>> adjlist = new HashMap<>();
+		List<ReplyVO> list = dao.getReplyList(study_id); // repository에서 가져온 댓글 목록
 
 		// 아이디 보호
-		for(ReplyVO vo : list){
-			rMap.put(vo.getReply_id(), vo);
-			adjlist.put(vo.getReply_id(), new ArrayList<>());
-			String user_id = vo.getUser_id();
-			vo.setUser_id(user_id.substring(0, 4) + user_id.substring(4).replaceAll(".", "*"));
-		}
+		markUserId(list);
 
-		// 재정렬
-		List<Integer> roots = new ArrayList<>();
+		// 자료구조 생성 (댓글 HashMap, root 리스트, 인접리스트 생성)
+		Map<Integer, ReplyVO> replyMap = new HashMap<>(); // 댓글 HashMap
+		Map<Integer, List<Integer>> adjlist = new HashMap<>(); // 인접 리스트
+		List<Integer> roots = new ArrayList<>(); // root 리스트
+
+		for(ReplyVO vo : list){
+			adjlist.put(vo.getReply_id(), new ArrayList<>());
+			replyMap.put(vo.getReply_id(), vo);
+		}
 		for(ReplyVO vo : list){
 			if(vo.getReply_id() == vo.getParent_id()){
 				roots.add(vo.getReply_id());
@@ -235,24 +235,33 @@ public class StudyServiceImpl implements StudyService{
 			}
 		}
 
+		// root를 기준으로 dfs 수행
 		List<ReplyVO> retval = new ArrayList<>();
 		for(int root : roots){
 			List<Integer> ordered = new ArrayList<>();
 			dfs(root, ordered, adjlist);
 			for(int i : ordered){
-				retval.add(rMap.get(i));
+				retval.add(replyMap.get(i));
 			}
 		}
 
 		return retval;
 	}
-
+	// dfs 수행 하면서 방문 수행
 	void dfs(int cur, List<Integer> ordered, Map<Integer, List<Integer>> adjlist){
 		ordered.add(cur);
 		for(int child : adjlist.get(cur)){
 			dfs(child, ordered, adjlist);
 		}
 	}
+
+	void markUserId(List<ReplyVO> list){
+		for(ReplyVO vo : list){
+			String user_id = vo.getUser_id();
+			vo.setUser_id(user_id.substring(0, 4) + user_id.substring(4).replaceAll(".", "*"));
+		}
+	}
+
 
 	// 삽입
 	@Override
@@ -276,8 +285,10 @@ public class StudyServiceImpl implements StudyService{
 	public int deleteReply(int reply_id){
 		List<ReplyVO> group = dao.getReplyBySameGroup(reply_id);
 
-		// 연결리스트 생성
+		// 자료구조 생성(연결리스트, BFS 용 Queue, 삭제할 목록)
 		Map<Integer, List<Integer>> adjlist = new HashMap<>();
+		Queue<Integer> queue = new ArrayDeque<>();
+		List<Integer> deleteList = new ArrayList<>();
 		for(ReplyVO vo : group){
 			int rid = vo.getReply_id();
 			int pid = vo.getParent_id();
@@ -291,10 +302,8 @@ public class StudyServiceImpl implements StudyService{
 			adjlist.get(pid).add(rid);
 		}
 
-		List<Integer> deleteList = new ArrayList<>();
-		Queue<Integer> queue = new ArrayDeque<>();
+		// BFS 수행(하위 댓글 추출)
 		queue.add(reply_id);
-
 		while(!queue.isEmpty()){
 			int cur = queue.poll();
 			deleteList.add(cur);
